@@ -22,8 +22,8 @@ nav a {
 }
 
 .logo img {
-    width: 80px; /* Ajuste o tamanho da imagem conforme necessário */
-    height: 80px;
+    width: 85px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 85px;
 }
 
 /*configurações da caixa de pesquisa*/
@@ -72,35 +72,57 @@ nav a {
 }
 
 .icones a img{
-    width: 25px; /* ajuste o tamanho do ícone conforme necessário */
-    height: 25px;/* ajuste o tamanho do ícone conforme necessário */
-    margin-top: 0;
-    margin-bottom: 0;
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 30px; /* ajuste o tamanho do ícone conforme necessário */
+    height: auto;/* ajuste o tamanho do ícone conforme necessário */
+    
+    padding-top: 10px; /* remove o espaçamento interno do elemento img */
+    grid-row: 1/3; /*OCUPA AS DUAS LINHAS DO GRADE PARA O ICONE*/
+    margin: 5px; /* remove as margens do elemento img */
 }
 /*CONFIGURANDO OS ICONES DO LADO*/
 .icones a small{
-    font-size: 18px; /* ajuste o tamanho do texto conforme necessário */
+    font-size: 16px; /* ajuste o tamanho do texto conforme necessário */
     color: #ffffff; /* cor do texto dos ícones */
     display: block; /* exibe o texto em uma nova linha abaixo do ícone */
-    
+    grid-column: 2; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
+    grid-row: 1; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO
+    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
+    margin: 0; /* remove as margens do elemento small */
    
 }
 .icones a p{
-    font-size: 18px; /* ajuste o tamanho do texto conforme necessário */
+    font-size: 16px; /* ajuste o tamanho do texto conforme necessário */
     color: #ffffff; /* cor do texto dos ícones */
     display: block; /* exibe o texto em uma nova linha abaixo do ícone */
+    grid-template-columns: 30px auto; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
+    grid-template-rows: auto auto; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO 
+    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
+    grid-column: 2; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
+    grid-row: 2; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO
+    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
+    margin: 0; /* remove as margens do elemento small */
+    margin-right: 10px; /* espaçamento entre o texto e o ícone */
 }
 
 .icones a{
     text-decoration: none; /* remove o sublinhado doslink */
+    display: grid; /* exibe os elementos em linha/grade */
 }
     /*configurando a div icones*/
 .icones{
     display: flex; /* exibe os elementos em linha */
     align-items: center; /* alinha os elementos verticalmente */
     gap: 20px; /* espaçamento entre os ícones */
-    margin-top: 10px; /* espaçamento superior da div de ícones */
-    margin-bottom: 10px; /* espaçamento inferior da div de ícones */
+    
+}
+/*configurando a AREA DO BANNER*/
+.imagem-banner img{
+    max-width: 100%; /* largura maxima do banner */
+    
+}
+.banner{
+    display: flex; /* exibe os elementos em linha */
+    align-items: center; /* alinha os elementos verticalmente */
+    justify-content: space-between; /* distribui os elementos com espaço entre eles */
+  
 }
