@@ -8,7 +8,7 @@ nav a {
     color:rgb(255, 255, 255);
     text-decoration: none;
     margin: 0 60px;
-  
+    
     font-size: 18px;
 }
     
@@ -30,14 +30,13 @@ nav a {
 .caixa-de-pesquisa input{
     padding: 3px; /* espaçamento interno da caixa de pesquisa */
     border: 1px solid #ffffff;/* cor da borda da caixa de pesquisa */
-    border-radius: 15px;/* borda arredondada da caixa de pesquisa */
     font-family: "Saira", sans-serif;
     width: 400px; /* largura da caixa de pesquisa */
    color: #000000; /* cor do texto da caixa de pesquisa */
-   background: rgba(255, 255, 255, 0.50);
+   background: rgba(255, 255, 255, 0.76);
    backdrop-filter: blur(40px) saturate(163%);
    -webkit-backdrop-filter: blur(0px) saturate(163%);
-   border: 1px solid rgba(253, 253, 253, 0);
+   border: 1px solid rgba(255, 255, 255, 0);
    border-radius: 27px;
    box-shadow: 20px 8px 12px rgba(255, 255, 255, 0.623);
    padding-left: 20px;/* espaçamento interno da caixa de pesquisa */
@@ -117,12 +116,35 @@ nav a {
 }
 /*configurando a AREA DO BANNER*/
 .imagem-banner img{
-    max-width: 100%; /* largura maxima do banner */
+    
+    display: block; /* remove o espaçamento embaixo da imagem */
+    width: 100%; /* largura do banner */
+    height: auto; /* altura do banner ajustada automaticamente para manter a proporção */
     
 }
 .banner{
-    display: flex; /* exibe os elementos em linha */
-    align-items: center; /* alinha os elementos verticalmente */
-    justify-content: space-between; /* distribui os elementos com espaço entre eles */
+    width: 100vw; /* largura do banner */
+    height: auto; /* altura do banner ajustada automaticamente para manter a proporção */
+    margin : 0; /* remove as margens do banner */
+    padding: 0; /* remove o espaçamento interno do banner */
   
 }
+
+.imagens-banner{
+    width: 100%; /* largura do container do banner */
+    margin-top: 20px; /* espaçamento superior do banner */
+    /*TROCAR O BANNER DENOVO POR 1440 E 350!!!!!!!!!!!!*/
+}
+
+nav a:hover {
+    color: #000000; /* cor do texto dos links ao passar o mouse */
+    transition: color 0.5s ease; /* adiciona uma transição suave para a mudança de cor */
+    background: #b1d4c300; /* cor de fundo ao passar o mouse nos links do nav */
+    border-radius: 10px; /* borda arredondada ao passar o mouse nos links do nav */
+    padding: 5.5px; /* espaçamento interno do link ao passar o mouse */
+    backdrop-filter: blur(0px) saturate(60%);
+    -webkit-backdrop-filter: blur(5px) saturate(60%);
+    border: 2px solid rgba(255, 255, 255, 0.00);
+    border-radius: 20px;
+    box-shadow: 10px 4px 12px rgba(255, 254, 254, 0.719);
+    }
