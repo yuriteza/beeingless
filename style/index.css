@@ -139,7 +139,7 @@ nav a {
 nav a:hover {
     color: #000000; /* cor do texto dos links ao passar o mouse */
     transition: color 0.5s ease; /* adiciona uma transição suave para a mudança de cor */
-    background: #b1d4c300; /* cor de fundo ao passar o mouse nos links do nav */
+    background: #d5e9df; /* cor de fundo ao passar o mouse nos links do nav */
     border-radius: 10px; /* borda arredondada ao passar o mouse nos links do nav */
     padding: 5.5px; /* espaçamento interno do link ao passar o mouse */
     backdrop-filter: blur(0px) saturate(60%);
@@ -148,3 +148,93 @@ nav a:hover {
     border-radius: 20px;
     box-shadow: 10px 4px 12px rgba(255, 254, 254, 0.719);
     }
+    /*configurando a area de ofertas*/
+.ofertas{
+    font-family: "Saira", sans-serif;
+    color: #000000;
+}
+.titulo-ofertas{
+    font-family: "Saira", sans-serif;
+    grid-template-columns: 40px; /* define uma coluna para o título */
+    grid-template-rows: auto auto; /* define uma linha para o título */
+    display: grid; /* exibe os elementos em grade */
+}
+.titulo-ofertas h2{
+    font-size: 24px; /* ajuste o tamanho do título conforme necessário */
+    color: #000000; /* cor do título */
+    grid-column: 1; /* define a coluna para o título */
+    grid-row: 1; /* define a linha para o título */
+    margin: 0; /* remove as margens do título */
+   }
+   
+   /*cards por aqui*/
+    .card-produtos {
+    width: 38%;
+    height: 48%;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+
+    padding: 10px;
+    margin-left: 100px;
+    grid-row: 1/2;
+    }
+
+
+
+
+
+   /*RODAPE*/
+   footer{
+    background-color: #64997f;
+    color: #EFEBBB;
+    font: "Saira", sans-serif;
+    font-family: "Saira Stencil", sans-serif;
+    padding: 20px;
+    box-shadow: 20px 8px 12px #000000;
+   }
+  
+    .superior{
+        display: flex;/*permite flexibilidae entre as colunas*/
+        gap: 50px; /*espacamento entre as divs*/
+        justify-content: space-between; /* espacamento igual entre as divs, colunas etc.*/
+        flex-wrap: wrap;
+    }
+
+    .inferior{
+        display: flex;/*permite flexibilidae entre as colunas*/
+        gap: 10px; /*espacamento entre as divs*/
+        justify-content: space-between; /* espacamento igual entre as divs, colunas etc.*/
+        flex-wrap: wrap;
+        align-items: center;
+    }
+.coluna1,.coluna2{
+ flex:1; /*que cada coluna ocupe apenas um espaco*/
+
+}
+   .superior h2{
+    font-size: 18px;
+    margin-left: 640px ;
+   }
+   .superior p{
+    font-size: 10px;
+   }
+   .superior a{
+    color: #EFEBBB;
+    font-size: 18px;
+    text-decoration: none;
+    
+    margin-left: 640px;
+   }
+   .superior ul{
+    text-decoration: none;
+    list-style: none;
+    padding: 0px
+   }
+   .superior img{
+    height:auto;
+    width: 30px;
+    margin-left: 30px ;
+    align-items: baseline;
+     }
+   
