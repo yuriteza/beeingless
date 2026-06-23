@@ -1,15 +1,15 @@
 /*colocando cor de fundo no cabecalho*/
 header {
-background-color: #64997f; 
+background-color: #64997f;
 font-family: "Saira", sans-serif; /* fonte do header ou cabecalho */
 color:rgb(255, 255, 255);
 box-shadow: 20px 8px 12px #979595;
+z-index:1000;
 }
 nav a {  
     color:rgb(255, 255, 255);
     text-decoration: none;
     margin: 0 60px;
-    
     font-size: 18px;
 }
     
@@ -29,11 +29,11 @@ nav a {
 
 /*configurações da caixa de pesquisa*/
 .caixa-de-pesquisa input{
-    padding: 3px; /* espaçamento interno da caixa de pesquisa */
-    border: 1px solid #ffffff;/* cor da borda da caixa de pesquisa */
+    padding: 14px 20px; /* espaçamento interno da caixa de pesquisa */
+   
     font-family: "Saira", sans-serif;
     width: 400px; /* largura da caixa de pesquisa */
-   color: #000000; /* cor do texto da caixa de pesquisa */
+  
    background: rgba(255, 255, 255, 0.76);
    backdrop-filter: blur(40px) saturate(163%);
    -webkit-backdrop-filter: blur(0px) saturate(163%);
@@ -57,6 +57,7 @@ nav a {
     align-items: center; /* alinha os elementos verticalmente */
     justify-content: space-between; /* distribui os elementos com espaço entre eles */
     padding: 10px; /* espaçamento interno da div */
+    margin:auto;
 }
  /*configurando os icones*/
  .caixa-de-pesquisa img{
@@ -138,16 +139,12 @@ nav a {
 }
 
 nav a:hover {
-    color: #000000; /* cor do texto dos links ao passar o mouse */
+    color:#357959;; /* cor do texto dos links ao passar o mouse */
     transition: color 0.5s ease; /* adiciona uma transição suave para a mudança de cor */
-    background: #d5e9df; /* cor de fundo ao passar o mouse nos links do nav */
+   
     border-radius: 10px; /* borda arredondada ao passar o mouse nos links do nav */
     padding: 5.5px; /* espaçamento interno do link ao passar o mouse */
-    backdrop-filter: blur(0px) saturate(60%);
-    -webkit-backdrop-filter: blur(5px) saturate(60%);
-    border: 2px solid rgba(255, 255, 255, 0.00);
-    border-radius: 20px;
-    box-shadow: 10px 4px 12px rgba(255, 254, 254, 0.719);
+    
     }
     /*configurando a area de ofertas*/
 .ofertas{
@@ -187,12 +184,24 @@ nav a:hover {
 
    /*RODAPE*/
    footer{
+    
     background-color: #64997f;
     color: #EFEBBB;
     font: "Saira", sans-serif;
     font-family: "Saira Stencil", sans-serif;
     padding: 10px;
     box-shadow: 20px 8px 12px #979595;
+    margin-top:30px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    border-top:1px solid rgba(255,255,255,.2);
+
+    padding-top:15px;
+
+    font-size:13px;
    }
   
     .superior{
@@ -223,12 +232,13 @@ nav a:hover {
 }
    .superior h2{
     font-size: 18px;
-    
-   
-    }
+    margin-right: 600px;
+    color: #EFEBBB;
+     }
 
     .superior .rdlogo{
         margin-left: 5px;
+        color: #EFEBBB;
         
     }
    .superior p{
@@ -241,24 +251,25 @@ nav a:hover {
     text-decoration: none;
     box-shadow: #000000;
     margin-left: 640px;
+    text-shadow: #000000;
    }
    .superior ul{
     text-decoration: none;
     list-style: none;
     padding: 0px;
-    box-shadow: #000000;
+    text-shadow: #000000;
    }
    .superior img{
     height:auto;
     width: 30px;
     margin-left: 30px ;
-    box-shadow: #000000;
+    text-shadow: #000000;
    }
 
   
   /*CONFIURANDO O PARAGRAFO*/
    .inferior p{
-    font-size: 20px;
+    font-size: 13px;
 
    }
 
@@ -272,9 +283,6 @@ nav a:hover {
    
 }
    
-
-
-
 
 .sobre {
     position: relative;
