@@ -179,110 +179,221 @@ nav a:hover {
     }
 
 
+/*-------------------------------------rodape---------------------------------------------------------------------------------------------------*/
 
 
-
-   /*RODAPE*/
-   footer{
-    
-    background-color: #64997f;
+/* RODAPÉ */
+footer{
+    background: linear-gradient(
+        135deg,
+        #5d9174,
+        #84ad97
+    );
     color: #EFEBBB;
-    font: "Saira", sans-serif;
-    font-family: "Saira Stencil", sans-serif;
-    padding: 10px;
-    box-shadow: 20px 8px 12px #979595;
-    margin-top:30px;
+    font-family: "Saira", sans-serif;
+    margin-top: 30px;
 
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
 
-    border-top:1px solid rgba(255,255,255,.2);
+    width: 100%;
+    padding: 40px 40px 15px;
 
-    padding-top:15px;
-
-    font-size:13px;
-   }
-  
-    .superior{
-        display: flex;/*permite flexibilidae entre as colunas*/
-        gap: 50px; /*espacamento entre as divs*/
-        justify-content: space-between; /* espacamento igual entre as divs, colunas etc.*/
-        flex-wrap: wrap;
-    }
-
-    .inferior{
-        display: flex;/*permite flexibilidae entre as colunas*/
-        gap: 10px; /*espacamento entre as divs*/
-        justify-content: space-between; /* espacamento igual entre as divs, colunas etc.*/
-        flex-wrap: wrap;
-        align-items: center;
-        border-top: #efebbb5e solid 2px;
-    }
-.coluna1,.coluna2{
- flex:1; /*que cada coluna ocupe apenas um espaco*/
-
+    
 }
 
+/* PARTE SUPERIOR */
+.superior{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 50px;
+     
+    
+}
+
+/* COLUNAS */
+.coluna1,
+.coluna2{
+    flex: 1;
+}
+
+/* COLUNA ESQUERDA */
+.coluna1{
+    text-align: left;
+}
+
+/* COLUNA DIREITA */
+.coluna2{
+    text-align: right;
+    margin-right: 50px;
+}
+
+/* LISTA DA COLUNA 2 */
+.coluna2 ul{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
 .coluna2 li{
     display: flex;
-    gap: 30px;
     align-items: center;
+    justify-content: flex-end;
+    gap: 15px;
 }
-   .superior h2{
-    font-size: 18px;
-    margin-right: 600px;
+
+/* LOGO */
+.superior .rdlogo{
+    margin: 0;
+    font-size: 3rem;
+    line-height: .9;
+    font-family: "Saira Stencil", sans-serif;
     color: #EFEBBB;
-     }
+}
 
-    .superior .rdlogo{
-        margin-left: 5px;
-        color: #EFEBBB;
-        
-    }
-   .superior p{
-    font-size: 5px;
-
-   }
-   .superior a{
+/* REMOVE MARGENS QUE EMPURRAM OS ITENS */
+.superior a{
     color: #EFEBBB;
     font-size: 18px;
     text-decoration: none;
-    box-shadow: #000000;
-    margin-left: 640px;
-    text-shadow: #000000;
-   }
-   .superior ul{
-    text-decoration: none;
-    list-style: none;
-    padding: 0px;
-    text-shadow: #000000;
-   }
-   .superior img{
-    height:auto;
+    margin-left: 0;
+}
+
+.superior img{
     width: 30px;
-    margin-left: 30px ;
-    text-shadow: #000000;
-   }
+    height: auto;
+    margin-left: 0;
+}
 
-  
-  /*CONFIURANDO O PARAGRAFO*/
-   .inferior p{
-    font-size: 13px;
+/* PARTE INFERIOR */
+.inferior{
+    width: 100%;
+    margin-top: 30px;
+    padding-top: 15px;
 
-   }
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+/* LINHA BRANCA DIVISÓRIA */
+ border-top: 1px solid rgba(247, 246, 221, 0.575);
+    
+}
 
-   .inferior .links{
-   font-size: 10px;
-   color: #EFEBBB;
-   }
 
-   .inferior a{
-   color: #EFEBBB;
+
+.links{
+    margin-right: 50px;
+    
+}
+.footer{
+    
+    background:linear-gradient(
+        135deg,
+        #5d9174,
+        #84ad97
+    );
+
+   
+
+    padding:40px 40px 15px;
+    color: #EFEBBB;
+    
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.footer-logo h2{
+    font-size:3rem;
+    line-height:0.9;
+    font-weight:800;
+    color:#f6ecc6;
+    font-family: "Saira Stencil", sans-serif;
    
 }
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.social-item{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:15px;
+}
+
+.social-item span{
+    display:block;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.social-item p{
+    font-size:13px;
+}
+
+.social-item i{
+    font-size:28px;
+    color:#f6ecc6;
+}
+
+.footer-bottom{
+    margin-top:30px;
+    font: "Saira", sans-serif;
    
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid rgba(247, 246, 221, 0.575);
+    padding-top:15px;
+    font-size:13px;
+}
+
+
+
+
+/* RESPONSIVO */
+@media (max-width: 768px){
+    .superior{
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .coluna1,
+    .coluna2{
+        width: 100%;
+        text-align: left;
+    }
+
+    .coluna2 ul{
+        align-items: flex-start;
+    }
+
+    .coluna2 li{
+        justify-content: flex-start;
+    }
+
+    .inferior{
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+}
+   
+/*-------------------------------------rodape---------------------------------------------------------------------------------------------------*/
 
 .sobre {
     position: relative;

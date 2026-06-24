@@ -1,0 +1,296 @@
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background:#fff;
+    min-height:100vh;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header{
+    width:100%;
+    height:20px;
+    background:#222;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.login-container{
+    min-height:calc(100vh - 80px);
+    display:flex;
+}
+
+/* =========================
+   LADO ESQUERDO
+========================= */
+
+.welcome-section{
+    width:50%;
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
+
+/* Círculos */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+}
+
+.circle-1{
+    width:420px;
+    height:420px;
+    background:#96d6b0;
+    top:-30px;
+    left:30px;
+}
+
+.circle-2{
+    width:270px;
+    height:270px;
+    background:#4ca96d;
+    top:20px;
+    left:40px;
+}
+
+.circle-3{
+    width:420px;
+    height:420px;
+    background:#134c28;
+    bottom:40px;
+    left:30px;
+}
+
+.circle-4{
+    width:220px;
+    height:220px;
+    background:#72a97f;
+    bottom:40px;
+    left:110px;
+}
+
+.circle-5{
+    width:130px;
+    height:130px;
+    background:#bdf7c9;
+    top:180px;
+    left:60px;
+}
+
+/* Card Welcome */
+
+.welcome-card{
+    position:absolute;
+    top:80px;
+    left:30px;
+
+    width:280px;
+
+    background:rgba(67,133,86,.70);
+
+    padding:25px;
+
+    text-align:center;
+
+    z-index:10;
+}
+
+.welcome-title{
+    color:white;
+    font-size:30px;
+    font-weight:300;
+    line-height:1;
+    letter-spacing:2px;
+}
+
+.welcome-subtitle{
+    margin-top:15px;
+    color:#e5e5e5;
+    font-size:11px;
+    letter-spacing:2px;
+}
+
+/* =========================
+   FORMULÁRIO
+========================= */
+
+.form-section{
+    width:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:40px;
+}
+
+.login-box{
+    width:100%;
+    max-width:520px;
+}
+
+.login-title{
+    font-size:52px;
+    font-weight:bold;
+    color:#111;
+}
+
+.login-description{
+    margin-top:10px;
+    color:#555;
+    font-size:14px;
+}
+
+.form-group{
+    margin-top:30px;
+}
+
+.form-label{
+    display:block;
+    margin-bottom:8px;
+    font-size:13px;
+    font-weight:600;
+}
+
+.form-input{
+    width:100%;
+    height:48px;
+    padding:0 15px;
+    border:1px solid #ddd;
+    border-radius:4px;
+}
+
+.input-info{
+    margin-top:5px;
+    color:#999;
+    font-size:12px;
+}
+
+.forgot-password{
+    text-align:right;
+    margin-top:20px;
+}
+
+.forgot-password a{
+    text-decoration:none;
+    color:#000;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.buttons{
+    display:flex;
+    gap:10px;
+    margin-top:30px;
+}
+
+.btn{
+    flex:1;
+    height:50px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+.btn-outline{
+    background:white;
+    border:1px solid #000;
+}
+
+.btn-dark{
+    background:black;
+    color:white;
+    border:none;
+}
+
+.separator{
+    margin:40px 0 20px;
+    border-top:1px solid #ddd;
+}
+
+.google-btn{
+    width:100%;
+    height:50px;
+    border:1px solid #999;
+    background:white;
+    border-radius:6px;
+    cursor:pointer;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+
+    font-weight:600;
+}
+
+.google-icon{
+    font-size:26px;
+    color:#67c8d8;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    width:100%;
+    height:60px;
+    background:#222;
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+
+@media(max-width:900px){
+
+    .login-container{
+        flex-direction:column;
+    }
+
+    .welcome-section{
+        width:100%;
+        min-height:350px;
+    }
+
+    .form-section{
+        width:100%;
+    }
+
+    .login-title{
+        font-size:38px;
+    }
+
+}
+
+@media(max-width:600px){
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .welcome-card{
+        width:220px;
+    }
+
+    .welcome-title{
+        font-size:24px;
+    }
+
+}
