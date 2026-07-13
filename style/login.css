@@ -1,6 +1,6 @@
-/* =========================
+/* ==================================================
    RESET
-========================= */
+================================================== */
 
 *{
     margin:0;
@@ -8,289 +8,1173 @@
     box-sizing:border-box;
 }
 
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background:#fff;
-    min-height:100vh;
+/* ==================================================
+   VARIÁVEIS
+================================================== */
+
+:root{
+
+    --primary:#64997F;
+    --primary-dark:#A1D3BA;
+    --primary-light:#014E4E;
+
+    --background:#edf1f4;
+
+    --white:#ffffff;
+
+    --text:#222;
+
+    --text-light:#6b7280;
+
+    --border:#d8dde3;
+
+    --shadow:
+        0 18px 45px rgba(0,0,0,.15);
+
+    --radius:20px;
+
+    --transition:.6s ease;
+
+    --max-width:1200px;
+
 }
 
-/* =========================
+/* ==================================================
+   BODY
+================================================== */
+
+body{
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:var(--background);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+/* ==================================================
    HEADER
-========================= */
+================================================== */
 
 header{
+
     width:100%;
-    height:20px;
-    background:#222;
-}
 
-/* =========================
-   CONTAINER
-========================= */
+    height:80px;
 
-.login-container{
-    min-height:calc(100vh - 80px);
     display:flex;
-}
 
-/* =========================
-   LADO ESQUERDO
-========================= */
-
-.welcome-section{
-    width:50%;
-    position:relative;
-    overflow:hidden;
-    display:flex;
     justify-content:center;
+
     align-items:center;
-    padding:40px;
+
 }
 
-/* Círculos */
+.logo-container{
 
-.circle{
+    width:100%;
+
+    max-width:var(--max-width);
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 30px;
+
+}
+
+#logo{
+
+    width:170px;
+
+    object-fit:contain;
+
+}
+
+/* ==================================================
+   MAIN
+================================================== */
+
+main{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:30px;
+
+}
+
+/* ==================================================
+   CONTAINER
+================================================== */
+
+.auth-container{
+
+    position:relative;
+
+    width:100%;
+
+    max-width:1200px;
+
+    min-height:720px;
+
+    background:var(--white);
+
+    border-radius:var(--radius);
+
+    overflow:hidden;
+
+    box-shadow:var(--shadow);
+
+}
+
+/* ==================================================
+   PAINÉIS DOS FORMULÁRIOS
+================================================== */
+
+.form-panel{
+
     position:absolute;
-    border-radius:50%;
+
+    top:0;
+
+    width:50%;
+
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px;
+
+    transition:var(--transition);
+
+    background:var(--white);
+
 }
 
-.circle-1{
-    width:420px;
-    height:420px;
-    background:#96d6b0;
-    top:-30px;
-    left:30px;
+/* Login */
+
+.login-panel{
+
+    left:0;
+
+    z-index:2;
+
 }
 
-.circle-2{
-    width:270px;
-    height:270px;
-    background:#4ca96d;
-    top:20px;
-    left:40px;
+/* Cadastro */
+
+.register-panel{
+
+    left:0;
+
+    opacity:0;
+
+    z-index:1;
+
 }
 
-.circle-3{
-    width:420px;
-    height:420px;
-    background:#134c28;
-    bottom:40px;
-    left:30px;
+/* ==================================================
+   FORMULÁRIO
+================================================== */
+
+form{
+
+    width:100%;
+
+    max-width:420px;
+
+    display:flex;
+
+    flex-direction:column;
+
 }
 
-.circle-4{
-    width:220px;
-    height:220px;
-    background:#72a97f;
-    bottom:40px;
-    left:110px;
+form h1{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+    color:var(--text);
+
 }
 
-.circle-5{
-    width:130px;
-    height:130px;
-    background:#bdf7c9;
-    top:180px;
-    left:60px;
+form p{
+
+    font-size:15px;
+
+    color:var(--text-light);
+
+    margin-bottom:35px;
+
 }
 
-/* Card Welcome */
+/* ==================================================
+   OVERLAY
+================================================== */
 
-.welcome-card{
+.overlay-container{
+
     position:absolute;
-    top:80px;
-    left:30px;
 
-    width:280px;
+    top:0;
 
-    background:rgba(67,133,86,.70);
+    left:50%;
 
-    padding:25px;
+    width:50%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    transition:var(--transition);
+
+    z-index:100;
+
+    border-radius:150px 0 0 100px;
+
+}
+
+.overlay{
+
+    position:relative;
+
+    left:-100%;
+
+    width:200%;
+
+    height:100%;
+
+    transition:var(--transition);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--primary-light),
+            var(--primary),
+            var(--primary-dark)
+        );
+
+}
+
+/* ==================================================
+   PAINÉIS INTERNOS
+================================================== */
+
+.overlay-panel{
+
+    position:absolute;
+
+    width:50%;
+
+    height:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
 
     text-align:center;
 
-    z-index:10;
-}
+    padding:60px;
 
-.welcome-title{
     color:white;
-    font-size:30px;
-    font-weight:300;
-    line-height:1;
-    letter-spacing:2px;
+
+    transition:var(--transition);
+
 }
 
-.welcome-subtitle{
-    margin-top:15px;
-    color:#e5e5e5;
-    font-size:11px;
-    letter-spacing:2px;
+/* Painel esquerdo */
+
+.overlay-left{
+
+    transform:translateX(-200%);
+
 }
 
-/* =========================
-   FORMULÁRIO
-========================= */
+/* Painel direito */
 
-.form-section{
-    width:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:40px;
+.overlay-right{
+
+    right:0;
+
 }
 
-.login-box{
-    width:100%;
-    max-width:520px;
+/* ==================================================
+   IMAGENS
+================================================== */
+
+.overlay-panel img{
+
+    width:170px;
+
+    margin-bottom:30px;
+
 }
 
-.login-title{
-    font-size:52px;
-    font-weight:bold;
-    color:#111;
+/* ==================================================
+   TEXTOS
+================================================== */
+
+.overlay-panel h1{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
 }
 
-.login-description{
-    margin-top:10px;
-    color:#555;
-    font-size:14px;
+.overlay-panel p{
+
+    max-width:320px;
+
+    line-height:28px;
+
+    margin-bottom:35px;
+
 }
+
+/* ==================================================
+   BOTÃO DO PAINEL
+================================================== */
+
+.overlay-panel button{
+
+    width:180px;
+
+    height:50px;
+
+    border:2px solid white;
+
+    border-radius:30px;
+
+    background:transparent;
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.overlay-panel button:hover{
+
+    background:white;
+
+    color:var(--primary);
+
+}
+
+/* ==================================================
+   DECORAÇÃO
+================================================== */
+
+.overlay::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:480px;
+
+    height:480px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    top:-120px;
+
+    left:80px;
+
+}
+
+.overlay::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+
+    height:320px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.10);
+
+    bottom:-100px;
+
+    right:120px;
+
+}
+
+/* ==================================================
+   GRUPOS DE CAMPOS
+================================================== */
 
 .form-group{
-    margin-top:30px;
-}
 
-.form-label{
-    display:block;
-    margin-bottom:8px;
-    font-size:13px;
-    font-weight:600;
-}
-
-.form-input{
-    width:100%;
-    height:48px;
-    padding:0 15px;
-    border:1px solid #ddd;
-    border-radius:4px;
-}
-
-.input-info{
-    margin-top:5px;
-    color:#999;
-    font-size:12px;
-}
-
-.forgot-password{
-    text-align:right;
-    margin-top:20px;
-}
-
-.forgot-password a{
-    text-decoration:none;
-    color:#000;
-    font-size:12px;
-    font-weight:bold;
-}
-
-.buttons{
     display:flex;
-    gap:10px;
-    margin-top:30px;
+
+    flex-direction:column;
+
+    margin-bottom:22px;
+
 }
 
-.btn{
-    flex:1;
-    height:50px;
-    border-radius:6px;
-    cursor:pointer;
+/* ==================================================
+   LABELS
+================================================== */
+
+.form-group label{
+
+    font-size:14px;
+
     font-weight:600;
+
+    color:var(--text);
+
+    margin-bottom:8px;
+
 }
 
-.btn-outline{
-    background:white;
-    border:1px solid #000;
+/* ==================================================
+   INPUTS
+================================================== */
+
+.form-group input{
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 18px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    outline:none;
+
+    background:#fff;
+
+    color:var(--text);
+
+    font-size:15px;
+
+    transition:.30s;
+
 }
 
-.btn-dark{
-    background:black;
-    color:white;
+.form-group input::placeholder{
+
+    color:#9ca3af;
+
+}
+
+.form-group input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 4px rgba(47,143,91,.15);
+
+}
+
+/* ==================================================
+   ESQUECI A SENHA
+================================================== */
+
+.forgot-area{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    margin-top:-5px;
+
+    margin-bottom:28px;
+
+}
+
+.forgot-area a{
+
+    text-decoration:none;
+
+    color:var(--primary-dark);
+
+    font-size:14px;
+
+    font-weight:600;
+
+    transition:.30s;
+
+}
+
+.forgot-area a:hover{
+
+    color:var(--primary);
+
+}
+
+/* ==================================================
+   BOTÕES
+================================================== */
+
+button{
+
     border:none;
+
+    cursor:pointer;
+
+    transition:.30s;
+
+    font-size:15px;
+
+    font-weight:600;
+
 }
+
+/* ==================================================
+   BOTÃO LOGIN
+================================================== */
+
+#loginButton,
+#registerButton{
+
+    width:100%;
+
+    height:52px;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:white;
+
+    margin-top:5px;
+
+}
+
+#loginButton:hover,
+#registerButton:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-2px);
+
+}
+
+/* ==================================================
+   SEPARADOR
+================================================== */
 
 .separator{
-    margin:40px 0 20px;
-    border-top:1px solid #ddd;
-}
-
-.google-btn{
-    width:100%;
-    height:50px;
-    border:1px solid #999;
-    background:white;
-    border-radius:6px;
-    cursor:pointer;
 
     display:flex;
+
     align-items:center;
+
+    gap:15px;
+
+    margin:30px 0;
+
+}
+
+.separator::before,
+.separator::after{
+
+    content:"";
+
+    flex:1;
+
+    height:1px;
+
+    background:var(--border);
+
+}
+
+.separator span{
+
+    color:var(--text-light);
+
+    font-size:13px;
+
+}
+
+/* ==================================================
+   GOOGLE
+================================================== */
+
+#googleButton{
+
+    width:100%;
+
+    height:52px;
+
+    display:flex;
+
+    align-items:center;
+
     justify-content:center;
-    gap:10px;
 
-    font-weight:600;
+    gap:12px;
+
+    background:white;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
 }
 
-.google-icon{
-    font-size:26px;
-    color:#67c8d8;
+#googleButton:hover{
+
+    background:#f6f6f6;
+
 }
 
-/* =========================
+#googleIcon{
+
+    width:22px;
+
+    height:22px;
+
+    object-fit:contain;
+
+}
+
+#googleText{
+
+    color:var(--text);
+
+}
+
+/* ==================================================
+   ESTADO ATIVO
+================================================== */
+
+.auth-container.active .login-panel{
+
+    transform:translateX(100%);
+
+}
+
+.auth-container.active .register-panel{
+
+    transform:translateX(100%);
+
+    opacity:1;
+
+    z-index:5;
+
+}
+
+/* ==================================================
+   OVERLAY
+================================================== */
+
+.auth-container.active .overlay-container{
+
+    transform:translateX(-100%);
+
+    border-radius:0 150px 100px 0;
+
+}
+
+.auth-container.active .overlay{
+
+    transform:translateX(50%);
+
+}
+
+.auth-container.active .overlay-left{
+
+    transform:translateX(0);
+
+}
+
+.auth-container.active .overlay-right{
+
+    transform:translateX(200%);
+
+}
+
+/* ==================================================
+   ANIMAÇÃO DOS FORMULÁRIOS
+================================================== */
+
+.register-panel{
+
+    animation-duration:.7s;
+
+    animation-fill-mode:forwards;
+
+}
+
+@keyframes fadeRegister{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(100%);
+
+    }
+
+}
+
+.auth-container.active .register-panel{
+
+    animation-name:fadeRegister;
+
+}
+
+/* ==================================================
+   HOVER CONTAINER
+================================================== */
+
+.auth-container:hover{
+
+    box-shadow:
+
+        0 20px 55px rgba(0,0,0,.20);
+
+}
+/* ==================================================
    FOOTER
-========================= */
+================================================== */
 
 footer{
+
     width:100%;
-    height:60px;
-    background:#222;
-}
 
-/* =========================
-   RESPONSIVO
-========================= */
+    min-height:70px;
 
-@media(max-width:900px){
+    display:flex;
 
-    .login-container{
-        flex-direction:column;
-    }
+    justify-content:center;
 
-    .welcome-section{
-        width:100%;
-        min-height:350px;
-    }
+    align-items:center;
 
-    .form-section{
-        width:100%;
-    }
+    padding:20px;
 
-    .login-title{
-        font-size:38px;
-    }
+    color:var(--text-light);
+
+    font-size:14px;
 
 }
 
-@media(max-width:600px){
+#footerText{
 
-    .buttons{
+    text-align:center;
+
+}
+
+/* ==================================================
+   TRANSIÇÕES
+================================================== */
+
+.auth-container,
+.form-panel,
+.overlay-container,
+.overlay,
+.overlay-panel,
+button,
+input,
+a{
+
+    transition:all .4s ease;
+
+}
+
+/* ==================================================
+   SCROLL
+================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececec;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:10px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/* ==================================================
+   TABLET
+================================================== */
+
+@media(max-width:992px){
+
+    main{
+
+        padding:20px;
+
+    }
+
+    .auth-container{
+
+        min-height:680px;
+
+    }
+
+    form h1{
+
+        font-size:34px;
+
+    }
+
+    .overlay-panel h1{
+
+        font-size:34px;
+
+    }
+
+    .overlay-panel img{
+
+        width:140px;
+
+    }
+
+    .overlay-panel p{
+
+        font-size:15px;
+
+        line-height:24px;
+
+    }
+
+}
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media(max-width:768px){
+
+    header{
+
+        height:70px;
+
+    }
+
+    .logo-container{
+
+        justify-content:center;
+
+    }
+
+    #logo{
+
+        width:140px;
+
+    }
+
+    main{
+
+        padding:15px;
+
+    }
+
+    .auth-container{
+
+        display:flex;
+
         flex-direction:column;
+
+        min-height:900px;
+
     }
 
-    .welcome-card{
-        width:220px;
+    .form-panel{
+
+        position:absolute;
+
+        width:100%;
+
+        height:60%;
+
+        left:0;
+
+        top:0;
+
+        padding:35px;
+
     }
 
-    .welcome-title{
+    .overlay-container{
+
+        width:100%;
+
+        height:40%;
+
+        left:0;
+
+        top:60%;
+
+        border-radius:40px 40px 0 0;
+
+    }
+
+    .overlay{
+
+        width:100%;
+
+        height:200%;
+
+        left:0;
+
+        top:-100%;
+
+    }
+
+    .overlay-panel{
+
+        width:100%;
+
+        height:50%;
+
+        padding:30px;
+
+    }
+
+    .overlay-left{
+
+        top:0;
+
+        transform:translateY(-100%);
+
+    }
+
+    .overlay-right{
+
+        bottom:0;
+
+        right:auto;
+
+        transform:translateY(0);
+
+    }
+
+    /* Estado ativo */
+
+    .auth-container.active .login-panel{
+
+        transform:translateY(-100%);
+
+    }
+
+    .auth-container.active .register-panel{
+
+        transform:translateY(0);
+
+    }
+
+    .auth-container.active .overlay-container{
+
+        transform:translateY(-150%);
+
+    }
+
+    .auth-container.active .overlay{
+
+        transform:translateY(50%);
+
+    }
+
+    .auth-container.active .overlay-left{
+
+        transform:translateY(0);
+
+    }
+
+    .auth-container.active .overlay-right{
+
+        transform:translateY(100%);
+
+    }
+
+}
+
+/* ==================================================
+   CELULAR PEQUENO
+================================================== */
+
+@media(max-width:480px){
+
+    .auth-container{
+
+        min-height:860px;
+
+    }
+
+    .form-panel{
+
+        padding:25px;
+
+    }
+
+    form h1{
+
+        font-size:28px;
+
+    }
+
+    form p{
+
+        font-size:14px;
+
+    }
+
+    .form-group input{
+
+        height:48px;
+
+        font-size:14px;
+
+    }
+
+    #loginButton,
+    #registerButton,
+    #googleButton{
+
+        height:48px;
+
+    }
+
+    .overlay-panel{
+
+        padding:20px;
+
+    }
+
+    .overlay-panel img{
+
+        width:110px;
+
+    }
+
+    .overlay-panel h1{
+
         font-size:24px;
+
     }
+
+    .overlay-panel p{
+
+        font-size:13px;
+
+        line-height:22px;
+
+        margin-bottom:25px;
+
+    }
+
+    .overlay-panel button{
+
+        width:160px;
+
+        height:45px;
+
+    }
+
+}
+
+/* ==================================================
+   ANIMAÇÃO DE ENTRADA
+================================================== */
+
+.auth-container{
+
+    animation:fadeIn .8s ease;
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==================================================
+   FOCO PARA ACESSIBILIDADE
+================================================== */
+
+button:focus,
+input:focus,
+a:focus{
+
+    outline:2px solid var(--primary-light);
+
+    outline-offset:2px;
 
 }

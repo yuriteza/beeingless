@@ -27,10 +27,11 @@ header{
     position:inherit;
     top:0;
     z-index:1000;
+    box-shadow: 20px 8px 12px #979595;
 }
 
  nav a {  
-    color:rgb(255, 255, 255);
+    color:rgb(36, 35, 35);
     text-decoration: none;
     margin: 0 60px;
     font-size: 18px;

@@ -1,205 +1,737 @@
-/* =====================================
-   DADOS
-===================================== */
+/*=========================================================
+    DADOS DA APLICAÇÃO
+=========================================================*/
 
-const appData = {
+const app = {
 
-    header: "",
+    pageTitle: "Login",
 
-    welcome: {
-        title: "WELCOME BACK",
-        subtitle: "VDFBHBBVNIZNJJDGDVXVHB HAGFEBBVNV"
+   
+
+    footer: "© BEE • Todos os direitos reservados",
+
+    login:{
+
+        title:"Login",
+
+        subtitle:"Entre utilizando sua conta.",
+
+        emailLabel:"E-mail",
+
+        emailPlaceholder:"Digite seu e-mail",
+
+        passwordLabel:"Senha",
+
+        passwordPlaceholder:"Digite sua senha",
+
+        forgot:"Esqueceu sua senha?",
+
+        button:"Entrar",
+
+        separator:"ou",
+
+        google:"Entrar com Google"
+
     },
 
-    login: {
-        title: "Login",
-        description: "Acesso seguro para alunos B.E.E.",
+    register:{
 
-        email: {
-            label: "Email",
-            placeholder: "seuemail@dominio.com",
-            info: "Ex: nome@empresa.com"
-        },
+        title:"Criar Conta",
 
-        password: {
-            label: "Senha",
-            placeholder: "••••••••",
-            info: "Mantenha sua conta protegida"
-        }
+        subtitle:"Preencha os dados abaixo.",
+
+        nameLabel:"Nome",
+
+        namePlaceholder:"Digite seu nome",
+
+        emailLabel:"E-mail",
+
+        emailPlaceholder:"Digite seu e-mail",
+
+        passwordLabel:"Senha",
+
+        passwordPlaceholder:"Crie uma senha",
+
+        confirmLabel:"Confirmar senha",
+
+        confirmPlaceholder:"Confirme sua senha",
+
+        button:"Cadastrar"
+
     },
 
-    footer: "© 2026 B.E.E."
+    leftPanel:{
+
+        title:"Bem-vindo novamente ✧⁠◝⁠(⁠⁰⁠▿⁠⁰⁠)⁠◜⁠✧",
+
+        description:
+        "Já possui uma conta? Faça login para acessar sua plataforma ｡",
+
+        button:"Entrar"
+
+    },
+
+    rightPanel:{
+
+        title:"Olá! Estamos feliz em telo(a) aqui (っ ͡ ͡º ⁠▿ ͡ ͡º ς)  ",
+       
+        description:
+        "Ainda não possui cadastro? Crie sua conta gratuitamente ｡⁠",
+
+        button:"Criar Conta"
+
+    }
+
 };
 
-/* =====================================
-   WELCOME
-===================================== */
 
-function renderWelcome(){
+/*=========================================================
+    ELEMENTOS
+=========================================================*/
 
-    const section = document.getElementById("welcomeSection");
+const authContainer =
+document.getElementById("authContainer");
 
-    section.innerHTML = `
 
-        <div class="circle circle-1"></div>
-        <div class="circle circle-2"></div>
-        <div class="circle circle-3"></div>
-        <div class="circle circle-4"></div>
-        <div class="circle circle-5"></div>
+/*=========================================================
+    FUNÇÃO AUXILIAR
+=========================================================*/
 
-        <div class="welcome-card">
+function setText(id,text){
 
-            <h2 class="welcome-title">
-                ${appData.welcome.title}
-            </h2>
+    const element=document.getElementById(id);
 
-            <p class="welcome-subtitle">
-                ${appData.welcome.subtitle}
-            </p>
+    if(element){
 
-        </div>
+        element.textContent=text;
 
-    `;
+    }
+
 }
 
-/* =====================================
-   LOGIN
-===================================== */
+function setPlaceholder(id,text){
 
-function renderLogin(){
+    const element=document.getElementById(id);
 
-    const section = document.getElementById("loginSection");
+    if(element){
 
-    section.innerHTML = `
+        element.placeholder=text;
 
-        <div class="login-box">
+    }
 
-            <h1 class="login-title">
-                ${appData.login.title}
-            </h1>
-
-            <p class="login-description">
-                ${appData.login.description}
-            </p>
-
-            <form id="loginForm">
-
-                <div class="form-group">
-
-                    <label class="form-label">
-                        ${appData.login.email.label}
-                    </label>
-
-                    <input
-                        type="email"
-                        class="form-input"
-                        placeholder="${appData.login.email.placeholder}"
-                        required
-                    >
-
-                    <div class="input-info">
-                        ${appData.login.email.info}
-                    </div>
-
-                </div>
-
-                <div class="form-group">
-
-                    <label class="form-label">
-                        ${appData.login.password.label}
-                    </label>
-
-                    <input
-                        type="password"
-                        class="form-input"
-                        placeholder="${appData.login.password.placeholder}"
-                        required
-                    >
-
-                    <div class="input-info">
-                        ${appData.login.password.info}
-                    </div>
-
-                </div>
-
-                <div class="forgot-password">
-                    <a href="#">
-                        Esqueceu a senha?
-                    </a>
-                </div>
-
-                <div class="buttons">
-
-                    <button
-                        type="button"
-                        class="btn btn-outline"
-                    >
-                        Criar conta
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="btn btn-dark"
-                    >
-                        Entrar
-                    </button>
-
-                </div>
-
-                <div class="separator"></div>
-
-                <button
-                    type="button"
-                    class="google-btn"
-                >
-                    <span class="google-icon">G</span>
-                    Entrar com o Google
-                </button>
-
-            </form>
-
-        </div>
-
-    `;
 }
 
-/* =====================================
-   FOOTER
-===================================== */
+function setImage(id,src){
 
-function renderFooter(){
+    const element=document.getElementById(id);
 
-    document.getElementById("footer").innerHTML =
-    `<p style="color:white;text-align:center;padding-top:20px;">
-        ${appData.footer}
-    </p>`;
+    if(element){
+
+        element.src=src;
+
+    }
+
 }
 
-/* =====================================
-   EVENTOS
-===================================== */
 
-function registerEvents(){
+/*=========================================================
+    TÍTULO DA PÁGINA
+=========================================================*/
 
-    document.addEventListener("submit", function(e){
+document.title=app.pageTitle;
 
-        if(e.target.id === "loginForm"){
 
-            e.preventDefault();
+/*=========================================================
+    LOGOS
+=========================================================*/
 
-            alert("Login enviado!");
+setImage("logo",app.logo);
+
+setImage("leftLogo",app.logo);
+
+setImage("rightLogo",app.logo);
+
+setImage("googleIcon",app.googleIcon);
+
+
+/*=========================================================
+    LOGIN
+=========================================================*/
+
+setText(
+    "loginTitle",
+    app.login.title
+);
+
+setText(
+    "loginSubtitle",
+    app.login.subtitle
+);
+
+setText(
+    "loginEmailLabel",
+    app.login.emailLabel
+);
+
+setText(
+    "loginPasswordLabel",
+    app.login.passwordLabel
+);
+
+setText(
+    "forgotPassword",
+    app.login.forgot
+);
+
+setText(
+    "loginButton",
+    app.login.button
+);
+
+setText(
+    "separatorText",
+    app.login.separator
+);
+
+setText(
+    "googleText",
+    app.login.google
+);
+
+setPlaceholder(
+    "loginEmail",
+    app.login.emailPlaceholder
+);
+
+setPlaceholder(
+    "loginPassword",
+    app.login.passwordPlaceholder
+);
+
+
+/*=========================================================
+    CADASTRO
+=========================================================*/
+
+setText(
+    "registerTitle",
+    app.register.title
+);
+
+setText(
+    "registerSubtitle",
+    app.register.subtitle
+);
+
+setText(
+    "registerNameLabel",
+    app.register.nameLabel
+);
+
+setText(
+    "registerEmailLabel",
+    app.register.emailLabel
+);
+
+setText(
+    "registerPasswordLabel",
+    app.register.passwordLabel
+);
+
+setText(
+    "confirmPasswordLabel",
+    app.register.confirmLabel
+);
+
+setText(
+    "registerButton",
+    app.register.button
+);
+
+setPlaceholder(
+    "registerName",
+    app.register.namePlaceholder
+);
+
+setPlaceholder(
+    "registerEmail",
+    app.register.emailPlaceholder
+);
+
+setPlaceholder(
+    "registerPassword",
+    app.register.passwordPlaceholder
+);
+
+setPlaceholder(
+    "confirmPassword",
+    app.register.confirmPlaceholder
+);
+/*=========================================================
+    PAINEL ESQUERDO
+=========================================================*/
+
+setText(
+    "leftTitle",
+    app.leftPanel.title
+);
+
+setText(
+    "leftDescription",
+    app.leftPanel.description
+);
+
+setText(
+    "goLogin",
+    app.leftPanel.button
+);
+
+
+/*=========================================================
+    PAINEL DIREITO
+=========================================================*/
+
+setText(
+    "rightTitle",
+    app.rightPanel.title
+);
+
+setText(
+    "rightDescription",
+    app.rightPanel.description
+);
+
+setText(
+    "goRegister",
+    app.rightPanel.button
+);
+
+
+/*=========================================================
+    FOOTER
+=========================================================*/
+
+setText(
+    "footerText",
+    app.footer
+);
+
+
+/*=========================================================
+    ELEMENTOS DOS BOTÕES
+=========================================================*/
+
+const btnGoRegister =
+document.getElementById("goRegister");
+
+const btnGoLogin =
+document.getElementById("goLogin");
+
+const loginForm =
+document.getElementById("loginForm");
+
+const registerForm =
+document.getElementById("registerForm");
+
+
+/*=========================================================
+    CONTROLE DO PAINEL
+=========================================================*/
+
+function showRegister(){
+
+    authContainer.classList.add("active");
+
+}
+
+function showLogin(){
+
+    authContainer.classList.remove("active");
+
+}
+
+
+/*=========================================================
+    EVENTOS DOS BOTÕES
+=========================================================*/
+
+btnGoRegister.addEventListener(
+
+    "click",
+
+    function(){
+
+        showRegister();
+
+    }
+
+);
+
+btnGoLogin.addEventListener(
+
+    "click",
+
+    function(){
+
+        showLogin();
+
+    }
+
+);
+
+
+/*=========================================================
+    EVENTO LOGIN
+=========================================================*/
+
+loginForm.addEventListener(
+
+    "submit",
+
+    function(event){
+
+        event.preventDefault();
+
+        console.clear();
+
+        console.log("========== LOGIN ==========");
+
+        console.log(
+            "Email:",
+            document.getElementById("loginEmail").value
+        );
+
+        console.log(
+            "Senha:",
+            document.getElementById("loginPassword").value
+        );
+
+        console.log("===========================");
+
+    }
+
+);
+
+
+/*=========================================================
+    EVENTO CADASTRO
+=========================================================*/
+
+registerForm.addEventListener(
+
+    "submit",
+
+    function(event){
+
+        event.preventDefault();
+
+        console.clear();
+
+        console.log("======= CADASTRO =======");
+
+        console.log(
+            "Nome:",
+            document.getElementById("registerName").value
+        );
+
+        console.log(
+            "Email:",
+            document.getElementById("registerEmail").value
+        );
+
+        console.log(
+            "Senha:",
+            document.getElementById("registerPassword").value
+        );
+
+        console.log(
+            "Confirmar:",
+            document.getElementById("confirmPassword").value
+        );
+
+        console.log("========================");
+
+    }
+
+);
+
+
+/*=========================================================
+    GOOGLE
+=========================================================*/
+
+document
+.getElementById("googleButton")
+.addEventListener(
+
+    "click",
+
+    function(){
+
+        console.log(
+            "Login Google..."
+        );
+
+    }
+
+);
+
+
+/*=========================================================
+    ESQUECI SENHA
+=========================================================*/
+
+document
+.getElementById("forgotPassword")
+.addEventListener(
+
+    "click",
+
+    function(event){
+
+        event.preventDefault();
+
+        console.log(
+            "Abrir recuperação de senha."
+        );
+
+    }
+
+);
+/*=========================================================
+    VALIDAÇÃO DOS CAMPOS
+=========================================================*/
+
+function isEmpty(value){
+
+    return value.trim()==="";
+
+}
+
+function validateLogin(){
+
+    const email =
+    document.getElementById("loginEmail").value;
+
+    const password =
+    document.getElementById("loginPassword").value;
+
+    if(isEmpty(email)){
+
+        alert("Informe seu e-mail.");
+
+        return false;
+
+    }
+
+    if(isEmpty(password)){
+
+        alert("Informe sua senha.");
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+function validateRegister(){
+
+    const name =
+    document.getElementById("registerName").value;
+
+    const email =
+    document.getElementById("registerEmail").value;
+
+    const password =
+    document.getElementById("registerPassword").value;
+
+    const confirm =
+    document.getElementById("confirmPassword").value;
+
+    if(isEmpty(name)){
+
+        alert("Informe seu nome.");
+
+        return false;
+
+    }
+
+    if(isEmpty(email)){
+
+        alert("Informe seu e-mail.");
+
+        return false;
+
+    }
+
+    if(isEmpty(password)){
+
+        alert("Informe uma senha.");
+
+        return false;
+
+    }
+
+    if(password!==confirm){
+
+        alert("As senhas não coincidem.");
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*=========================================================
+    SOBRESCREVE EVENTOS DOS FORMULÁRIOS
+=========================================================*/
+
+loginForm.addEventListener(
+
+    "submit",
+
+    function(event){
+
+        event.preventDefault();
+
+        if(!validateLogin()){
+
+            return;
 
         }
 
-    });
+        console.clear();
+
+        console.log("===== LOGIN =====");
+
+        console.log(
+            "Email:",
+            document.getElementById("loginEmail").value
+        );
+
+        console.log(
+            "Senha:",
+            document.getElementById("loginPassword").value
+        );
+
+        console.log("=================");
+
+        // Aqui você poderá integrar sua API futuramente.
+
+    }
+
+);
+
+registerForm.addEventListener(
+
+    "submit",
+
+    function(event){
+
+        event.preventDefault();
+
+        if(!validateRegister()){
+
+            return;
+
+        }
+
+        console.clear();
+
+        console.log("===== CADASTRO =====");
+
+        console.log(
+            "Nome:",
+            document.getElementById("registerName").value
+        );
+
+        console.log(
+            "Email:",
+            document.getElementById("registerEmail").value
+        );
+
+        console.log("====================");
+
+        // Aqui você poderá integrar sua API futuramente.
+
+    }
+
+);
+
+/*=========================================================
+    LIMPAR FORMULÁRIOS
+=========================================================*/
+
+function clearLogin(){
+
+    loginForm.reset();
 
 }
 
-/* =====================================
-   INICIALIZAÇÃO
-===================================== */
+function clearRegister(){
 
-renderWelcome();
-renderLogin();
-renderFooter();
-registerEvents();
+    registerForm.reset();
+
+}
+
+/*=========================================================
+    EVENTOS DOS PAINÉIS
+=========================================================*/
+
+btnGoRegister.addEventListener(
+
+    "click",
+
+    function(){
+
+        clearLogin();
+
+    }
+
+);
+
+btnGoLogin.addEventListener(
+
+    "click",
+
+    function(){
+
+        clearRegister();
+
+    }
+
+);
+
+/*=========================================================
+    INICIALIZAÇÃO
+=========================================================*/
+
+function init(){
+
+    authContainer.classList.remove("active");
+
+    clearLogin();
+
+    clearRegister();
+
+    console.log("Aplicação iniciada.");
+
+}
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    init
+
+);
+
+/*=========================================================
+    EXPORTAÇÃO (opcional)
+=========================================================*/
+
+window.app = app;

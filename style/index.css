@@ -182,115 +182,10 @@ nav a:hover {
 /*-------------------------------------rodape---------------------------------------------------------------------------------------------------*/
 
 
-/* RODAPÉ */
-footer{
-    background: linear-gradient(
-        135deg,
-        #5d9174,
-        #84ad97
-    );
-    color: #EFEBBB;
-    font-family: "Saira", sans-serif;
-    margin-top: 30px;
+/* ==========================
+   FOOTER
+========================== */
 
-    display: flex;
-    flex-direction: column;
-
-    width: 100%;
-    padding: 40px 40px 15px;
-
-    
-}
-
-/* PARTE SUPERIOR */
-.superior{
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 100%;
-    gap: 50px;
-     
-    
-}
-
-/* COLUNAS */
-.coluna1,
-.coluna2{
-    flex: 1;
-}
-
-/* COLUNA ESQUERDA */
-.coluna1{
-    text-align: left;
-}
-
-/* COLUNA DIREITA */
-.coluna2{
-    text-align: right;
-    margin-right: 50px;
-}
-
-/* LISTA DA COLUNA 2 */
-.coluna2 ul{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 20px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.coluna2 li{
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 15px;
-}
-
-/* LOGO */
-.superior .rdlogo{
-    margin: 0;
-    font-size: 3rem;
-    line-height: .9;
-    font-family: "Saira Stencil", sans-serif;
-    color: #EFEBBB;
-}
-
-/* REMOVE MARGENS QUE EMPURRAM OS ITENS */
-.superior a{
-    color: #EFEBBB;
-    font-size: 18px;
-    text-decoration: none;
-    margin-left: 0;
-}
-
-.superior img{
-    width: 30px;
-    height: auto;
-    margin-left: 0;
-}
-
-/* PARTE INFERIOR */
-.inferior{
-    width: 100%;
-    margin-top: 30px;
-    padding-top: 15px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-/* LINHA BRANCA DIVISÓRIA */
- border-top: 1px solid rgba(247, 246, 221, 0.575);
-    
-}
-
-
-
-.links{
-    margin-right: 50px;
-    
-}
 .footer{
     
     background:linear-gradient(
@@ -311,15 +206,15 @@ footer{
     justify-content:space-between;
     align-items:flex-start;
     gap:40px;
+    color: #EFEBBB;
 }
 
 .footer-logo h2{
     font-size:3rem;
     line-height:0.9;
     font-weight:800;
-    color:#f6ecc6;
+    color:#2e46d3;
     font-family: "Saira Stencil", sans-serif;
-   
 }
 
 .footer-links{
@@ -362,6 +257,39 @@ footer{
     font-size:13px;
 }
 
+.footer-bottom p{
+    color:#f6ecc6;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .footer{
+        padding:30px 20px;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .footer-logo h2{
+        font-size:2.2rem;
+    }
+
+    .social-item{
+        justify-content:center;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+}
 
 
 
