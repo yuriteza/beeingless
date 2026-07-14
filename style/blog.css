@@ -1,133 +1,19 @@
-/*colocando cor de fundo no cabecalho*/
-header {
-background-color: #64997f;
-font-family: "Saira", sans-serif; /* fonte do header ou cabecalho */
-color:rgb(255, 255, 255);
-box-shadow: 20px 8px 12px #979595;
-z-index:1000;
-}
-nav a {  
-    color:rgb(255, 255, 255);
-    text-decoration: none;
-    margin: 0 60px;
-    font-size: 18px;
-}
-    
- nav{  
-      text-align: center;
-    border-color:rgb(255, 255, 255);
-    border-width: 1px;
-    border-style: solid;
-    padding: 10px;
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 1
+=
+= Reset
+= Variáveis
+= Configurações Globais
+= Container
+=
+=====================================================*/
 
-}
 
-.logo img {
-    width: 85px; /* Ajuste o tamanho da imagem conforme necessário */
-    height: 85px;
-}
-
-/*configurações da caixa de pesquisa*/
-.caixa-de-pesquisa input{
-    padding: 14px 20px; /* espaçamento interno da caixa de pesquisa */
-   
-    font-family: "Saira", sans-serif;
-    width: 400px; /* largura da caixa de pesquisa */
-  
-   background: rgba(255, 255, 255, 0.76);
-   backdrop-filter: blur(40px) saturate(163%);
-   -webkit-backdrop-filter: blur(0px) saturate(163%);
-   border: 1px solid rgba(255, 255, 255, 0);
-   border-radius: 27px;
-   box-shadow: 20px 8px 12px rgba(255, 255, 255, 0.623);
-   padding-left: 20px;/* espaçamento interno da caixa de pesquisa */
-
-}
-/*configurando a div caixa de pesquisa*/
-.caixa-de-pesquisa{
-    display: flex; /* exibe os elementos em linha */
-    justify-content: center;/* centraliza os elementos horizontalmente */
-    margin-top: 10px;/* espaçamento superior da caixa de pesquisa */
-    margin-bottom: 10px;/* espaçamento inferior da caixa de pesquisa */
-    position: relative;/* define a posição relativa para permitir o posicionamento absoluto do ícone */
-}
-/* alinhar as divs do cabecalho */
-.topo {
-    display: flex; /* exibe os elementos em linha */
-    align-items: center; /* alinha os elementos verticalmente */
-    justify-content: space-between; /* distribui os elementos com espaço entre eles */
-    padding: 10px; /* espaçamento interno da div */
-    margin:auto;
-}
- /*configurando os icones*/
- .caixa-de-pesquisa img{
-    width: 20px; /* ajuste o tamanho do ícone conforme necessário */
-    height: 20px;/* ajuste o tamanho do ícone conforme necessário */
-    position: absolute; /* posicionamento absoluto para colocar o ícone dentro da caixa de pesquisa */
-    right: 20px; /* distância do ícone em relação à borda direita da caixa de pesquisa */
-    top:50%; /* centraliza verticalmente o ícone em relação à caixa de pesquisa */
-    transform: translateY(-50%); /* ajusta a posição vertical do ícone */
-}
-.caixa-de-pesquisa placeholder {
-    padding-left: 20px; /* espaçamento interno da caixa de pesquisa */
-}
-
-.icones a img{
-    width: 30px; /* ajuste o tamanho do ícone conforme necessário */
-    height: auto;/* ajuste o tamanho do ícone conforme necessário */
-    
-    padding-top: 10px; /* remove o espaçamento interno do elemento img */
-    grid-row: 1/3; /*OCUPA AS DUAS LINHAS DO GRADE PARA O ICONE*/
-    margin: 5px; /* remove as margens do elemento img */
-}
-/*CONFIGURANDO OS ICONES DO LADO*/
-.icones a small{
-    font-size: 16px; /* ajuste o tamanho do texto conforme necessário */
-    color: #ffffff; /* cor do texto dos ícones */
-    display: block; /* exibe o texto em uma nova linha abaixo do ícone */
-    grid-column: 2; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
-    grid-row: 1; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO
-    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
-    margin: 0; /* remove as margens do elemento small */
-   
-}
-.icones a p{
-    font-size: 16px; /* ajuste o tamanho do texto conforme necessário */
-    color: #ffffff; /* cor do texto dos ícones */
-    display: block; /* exibe o texto em uma nova linha abaixo do ícone */
-    grid-template-columns: 30px auto; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
-    grid-template-rows: auto auto; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO 
-    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
-    grid-column: 2; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
-    grid-row: 2; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO
-    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
-    margin: 0; /* remove as margens do elemento small */
-    margin-right: 10px; /* espaçamento entre o texto e o ícone */
-}
-
-.icones a{
-    text-decoration: none; /* remove o sublinhado doslink */
-    display: grid; /* exibe os elementos em linha/grade */
-}
-    /*configurando a div icones*/
-.icones{
-    display: flex; /* exibe os elementos em linha */
-    align-items: center; /* alinha os elementos verticalmente */
-    gap: 20px; /* espaçamento entre os ícones */
-    
-}
-
-nav a:hover {
-    color:#357959;; /* cor do texto dos links ao passar o mouse */
-    transition: color 0.5s ease; /* adiciona uma transição suave para a mudança de cor */
-   
-    border-radius: 10px; /* borda arredondada ao passar o mouse nos links do nav */
-    padding: 5.5px; /* espaçamento interno do link ao passar o mouse */
-}
-
-/*==================================================
-=                 RESET GERAL
-==================================================*/
+/*=========================
+        RESET
+=========================*/
 
 *{
     margin:0;
@@ -142,39 +28,30 @@ html{
 body{
 
     font-family:'Inter',sans-serif;
-    background:#fafaf7;
-    color:#243238;
+
+    background:#F8F8F4;
+
+    color:#1F2937;
+
     overflow-x:hidden;
+
+    min-height:100vh;
 
 }
 
 img{
 
-    max-width:100%;
     display:block;
+
+    max-width:100%;
 
 }
 
 a{
 
     text-decoration:none;
+
     color:inherit;
-
-}
-
-button{
-
-    border:none;
-    outline:none;
-    cursor:pointer;
-    background:none;
-
-}
-
-input{
-
-    outline:none;
-    border:none;
 
 }
 
@@ -184,60 +61,295 @@ ul{
 
 }
 
+button{
 
-/*==================================================
-=                VARIÁVEIS
-==================================================*/
+    border:none;
 
-:root{
+    background:none;
 
-    --primary:#2D5C59;
+    cursor:pointer;
 
-    --secondary:#C9EECF;
+    font-family:inherit;
 
-    --accent:#DDB845;
+}
 
-    --white:#ffffff;
+input{
 
-    --black:#1D1D1D;
+    border:none;
 
-    --gray:#6B7280;
+    outline:none;
 
-    --light:#F8F8F6;
+    font-family:inherit;
 
-    --border:#ECECEC;
+}
 
-    --radius:18px;
+textarea{
 
-    --shadow:0 10px 30px rgba(0,0,0,.08);
+    resize:none;
 
-    --transition:.35s;
+    outline:none;
+
+    font-family:inherit;
 
 }
 
 
-/*==================================================
-=               CONTAINER
-==================================================*/
+
+/*=========================
+        VARIÁVEIS
+=========================*/
+
+:root{
+
+    --primary:#1F5A56;
+
+    --primary-dark:#154440;
+
+    --secondary:#E5F7E8;
+
+    --accent:#D5B04A;
+
+    --white:#FFFFFF;
+
+    --black:#1E1E1E;
+
+    --text:#404040;
+
+    --gray:#6B7280;
+
+    --border:#ECECEC;
+
+    --background:#F8F8F4;
+
+    --shadow:0 12px 30px rgba(0,0,0,.08);
+
+    --shadow-hover:0 20px 40px rgba(0,0,0,.12);
+
+    --radius:20px;
+
+    --transition:.35s ease;
+
+}
+
+
+
+/*=========================
+      TIPOGRAFIA
+=========================*/
+
+h1,h2,h3,h4{
+
+    font-family:'Playfair Display',serif;
+
+    color:var(--primary);
+
+}
+
+p{
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+small{
+
+    color:var(--gray);
+
+}
+
+
+
+/*=========================
+      CONTAINER
+=========================*/
 
 .container{
 
-    width:min(1240px,92%);
+    width:min(1280px,92%);
+
     margin:auto;
 
 }
 
 
-/*==================================================
-=               HEADER
-==================================================*/
+
+/*=========================
+      BOTÕES
+=========================*/
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:15px 32px;
+
+    border-radius:40px;
+
+    background:var(--accent);
+
+    color:#fff;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(213,176,74,.35);
+
+}
+
+
+
+/*=========================
+      UTILITÁRIOS
+=========================*/
+
+.section{
+
+    padding:80px 0;
+
+}
+
+.text-center{
+
+    text-align:center;
+
+}
+
+.mb-20{
+
+    margin-bottom:20px;
+
+}
+
+.mb-30{
+
+    margin-bottom:30px;
+
+}
+
+.mb-40{
+
+    margin-bottom:40px;
+
+}
+
+.hidden{
+
+    display:none;
+
+}
+
+
+
+/*=========================
+      SCROLLBAR
+=========================*/
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#EFEFEF;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:30px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--primary-dark);
+
+}
+
+
+
+/*=========================
+      SELEÇÃO
+=========================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+
+/*=========================
+      PLACEHOLDER
+=========================*/
+
+input::placeholder{
+
+    color:#9CA3AF;
+
+}
+
+
+
+/*=========================
+      TRANSIÇÕES
+=========================*/
+
+a,
+button,
+input,
+img{
+
+    transition:var(--transition);
+
+}
+
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 2
+=
+= Header
+= Navbar
+= Menu Desktop
+= Menu Mobile
+=
+=====================================================*/
+
+
+/*=========================
+        HEADER
+=========================*/
 
 .header{
 
     width:100%;
+
     height:90px;
 
-    background:#fff;
+    background:var(--white);
 
     position:sticky;
 
@@ -245,9 +357,17 @@ ul{
 
     left:0;
 
-    z-index:999;
+    z-index:1000;
 
-    border-bottom:1px solid #efefef;
+    border-bottom:1px solid var(--border);
+
+    transition:var(--transition);
+
+}
+
+.header.scrolled{
+
+    box-shadow:var(--shadow);
 
 }
 
@@ -257,16 +377,17 @@ ul{
 
     display:flex;
 
-    justify-content:space-between;
-
     align-items:center;
+
+    justify-content:space-between;
 
 }
 
 
-/*==================================================
-=                LOGO
-==================================================*/
+
+/*=========================
+          LOGO
+=========================*/
 
 .logo{
 
@@ -280,16 +401,19 @@ ul{
 
 .logo img{
 
-    width:90px;
+    width:56px;
+
+    height:auto;
 
 }
 
 
-/*==================================================
-=               MENU
-==================================================*/
 
-.menu{
+/*=========================
+        NAVBAR
+=========================*/
+
+.navbar{
 
     display:flex;
 
@@ -297,104 +421,164 @@ ul{
 
 }
 
-.menu-list{
+#menu{
 
     display:flex;
 
-    gap:45px;
+    align-items:center;
+
+    gap:38px;
 
 }
 
-.menu-list li a{
-
-    font-size:14px;
-
-    color:#444;
-
-    font-weight:500;
-
-    transition:.3s;
+#menu li{
 
     position:relative;
 
 }
 
-.menu-list li a:hover{
-
-    color:var(--primary);
-
-}
-
-.menu-list li a.active{
-
-    background:var(--secondary);
-
-    color:var(--primary);
-
-    padding:7px 14px;
-
-    border-radius:30px;
-
-}
-
-
-/*==================================================
-=           HEADER ICONS
-==================================================*/
-
-.header-icons{
+#menu li a{
 
     display:flex;
 
     align-items:center;
 
-    gap:15px;
+    justify-content:center;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:var(--text);
+
+    padding:10px 0;
+
+    transition:var(--transition);
 
 }
 
-.search-btn{
-
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    background:#F2F2F2;
-
-    transition:.3s;
-
-}
-
-.search-btn:hover{
-
-    background:var(--secondary);
-
-}
-
-.search-btn i{
-
-    font-size:17px;
+#menu li a:hover{
 
     color:var(--primary);
 
 }
 
-.menu-mobile{
+#menu li a::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-5px;
+
+    width:0;
+
+    height:3px;
+
+    background:var(--accent);
+
+    border-radius:20px;
+
+    transition:var(--transition);
+
+}
+
+#menu li:hover a::after{
+
+    width:100%;
+
+}
+
+#menu li a.active{
+
+    color:var(--primary);
+
+}
+
+#menu li a.active::after{
+
+    width:100%;
+
+}
+
+
+
+/*=========================
+     HEADER ACTIONS
+=========================*/
+
+.header-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+
+
+/*=========================
+      BOTÕES HEADER
+=========================*/
+
+#searchToggle,
+#menuMobile{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:var(--transition);
+
+}
+
+#searchToggle{
+
+    background:#F3F4F6;
+
+}
+
+#searchToggle:hover{
+
+    background:var(--secondary);
+
+}
+
+#searchToggle i{
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+#menuMobile{
 
     display:none;
-
-    width:45px;
-
-    height:45px;
-
-    border-radius:10px;
 
     background:var(--primary);
 
 }
 
-.menu-mobile i{
+#menuMobile:hover{
+
+    background:var(--primary-dark);
+
+}
+
+#menuMobile i{
 
     color:#fff;
 
@@ -403,45 +587,171 @@ ul{
 }
 
 
-/*==================================================
-=               HERO
-==================================================*/
+
+/*=========================
+      MENU MOBILE
+=========================*/
+
+@media(max-width:991px){
+
+    .navbar{
+
+        position:fixed;
+
+        top:0;
+
+        right:-100%;
+
+        width:300px;
+
+        height:100vh;
+
+        background:#fff;
+
+        display:flex;
+
+        align-items:center;
+
+        justify-content:center;
+
+        box-shadow:-10px 0 30px rgba(0,0,0,.08);
+
+        transition:.4s;
+
+        z-index:1001;
+
+    }
+
+    .navbar.active{
+
+        right:0;
+
+    }
+
+    #menu{
+
+        width:100%;
+
+        flex-direction:column;
+
+        gap:28px;
+
+        padding:40px;
+
+    }
+
+    #menu li{
+
+        width:100%;
+
+    }
+
+    #menu li a{
+
+        justify-content:center;
+
+        font-size:16px;
+
+        padding:12px;
+
+    }
+
+    #menu li a::after{
+
+        display:none;
+
+    }
+
+    #menuMobile{
+
+        display:flex;
+
+    }
+
+}
+
+
+
+/*=========================
+      OVERLAY
+=========================*/
+
+#overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:999;
+
+}
+
+#overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 3
+=
+= Hero Banner
+=
+=====================================================*/
+
+
+/*=========================
+          HERO
+=========================*/
 
 .hero{
 
-    padding:10px 0;
+    padding:45px 0 70px;
+
+    background:var(--background);
 
 }
 
-#heroBanner{
+#heroContainer{
 
     width:100%;
 
 }
 
-#heroBanner img{
 
-    width:100%;
-
-}
-
-
-
-/* Banner criado pelo JS */
+/*=========================
+      HERO CARD
+=========================*/
 
 .hero-card{
 
     position:relative;
 
+    width:100%;
+
+    height:540px;
+
     overflow:hidden;
 
-    border-radius:28px;
-
-    height:470px;
+    border-radius:32px;
 
     background-size:cover;
 
     background-position:center;
+
+    background-repeat:no-repeat;
 
     display:flex;
 
@@ -452,7 +762,9 @@ ul{
 }
 
 
-/* camada escura */
+/*=========================
+      OVERLAY
+=========================*/
 
 .hero-card::before{
 
@@ -463,27 +775,25 @@ ul{
     inset:0;
 
     background:linear-gradient(
-
-    90deg,
-
-    rgba(22,42,44,.78),
-
-    rgba(22,42,44,.45),
-
-    rgba(22,42,44,.15)
-
+        90deg,
+        rgba(22,38,39,.90)0%,
+        rgba(22,38,39,.75)35%,
+        rgba(22,38,39,.35)65%,
+        rgba(22,38,39,.05)100%
     );
 
 }
 
 
-/* conteúdo */
+/*=========================
+      HERO CONTENT
+=========================*/
 
 .hero-content{
 
     position:relative;
 
-    z-index:10;
+    z-index:2;
 
     width:48%;
 
@@ -491,119 +801,326 @@ ul{
 
 }
 
+
+/*=========================
+      CATEGORY
+=========================*/
+
 .hero-category{
 
     display:inline-flex;
 
     align-items:center;
 
-    padding:7px 16px;
+    justify-content:center;
 
-    background:rgba(221,184,69,.18);
-
-    color:#FFD560;
-
-    border:1px solid rgba(255,255,255,.2);
+    padding:9px 18px;
 
     border-radius:30px;
 
-    font-size:12px;
+    background:rgba(255,255,255,.12);
+
+    border:1px solid rgba(255,255,255,.18);
+
+    color:#FFD66B;
+
+    font-size:13px;
 
     font-weight:600;
 
-    margin-bottom:25px;
+    margin-bottom:28px;
+
+    backdrop-filter:blur(6px);
 
 }
+
+
+/*=========================
+        TITLE
+=========================*/
 
 .hero-content h1{
 
-    font-family:'Playfair Display',serif;
-
     color:#fff;
 
-    font-size:56px;
+    font-size:58px;
 
     line-height:1.15;
 
-    margin-bottom:25px;
+    margin-bottom:24px;
 
 }
 
-.hero-content h1 span{
+.hero-content span{
 
     color:var(--accent);
 
-    font-style:italic;
-
 }
+
+
+/*=========================
+      DESCRIPTION
+=========================*/
 
 .hero-content p{
 
-    color:#ECECEC;
+    color:#F3F4F6;
 
-    font-size:17px;
+    font-size:18px;
 
-    line-height:1.8;
+    line-height:1.9;
 
-    margin-bottom:35px;
+    margin-bottom:40px;
 
     max-width:520px;
 
 }
 
+
+/*=========================
+        BUTTON
+=========================*/
+
 .hero-content button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:17px 36px;
 
     background:var(--accent);
 
-    color:#1d1d1d;
+    color:#fff;
+
+    border-radius:50px;
+
+    font-size:15px;
 
     font-weight:700;
 
-    padding:15px 35px;
+    letter-spacing:.5px;
 
-    border-radius:40px;
-
-    transition:.35s;
+    transition:var(--transition);
 
 }
 
 .hero-content button:hover{
 
-    transform:translateY(-3px);
+    transform:translateY(-5px);
 
-    box-shadow:0 10px 25px rgba(221,184,69,.35);
+    box-shadow:0 15px 35px rgba(213,176,74,.45);
 
 }
 
-/*==================================================
-=                CATEGORIAS
-==================================================*/
+
+/*=========================
+      HERO DECORATION
+=========================*/
+
+.hero-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+
+    height:420px;
+
+    right:-160px;
+
+    bottom:-160px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.05);
+
+}
+
+
+/*=========================
+      RESPONSIVO
+=========================*/
+
+@media(max-width:1100px){
+
+    .hero-card{
+
+        height:480px;
+
+    }
+
+    .hero-content{
+
+        width:60%;
+
+        padding-left:50px;
+
+    }
+
+    .hero-content h1{
+
+        font-size:48px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .hero{
+
+        padding:25px 0 45px;
+
+    }
+
+    .hero-card{
+
+        height:400px;
+
+        border-radius:24px;
+
+    }
+
+    .hero-content{
+
+        width:90%;
+
+        padding:35px;
+
+    }
+
+    .hero-content h1{
+
+        font-size:38px;
+
+    }
+
+    .hero-content p{
+
+        font-size:15px;
+
+        margin-bottom:30px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .hero-card{
+
+        height:330px;
+
+    }
+
+    .hero-content{
+
+        width:100%;
+
+        padding:25px;
+
+    }
+
+    .hero-category{
+
+        font-size:11px;
+
+        margin-bottom:18px;
+
+    }
+
+    .hero-content h1{
+
+        font-size:30px;
+
+    }
+
+    .hero-content p{
+
+        display:none;
+
+    }
+
+    .hero-content button{
+
+        padding:14px 28px;
+
+        font-size:14px;
+
+    }
+
+}
+
+@media(max-width:420px){
+
+    .hero-card{
+
+        height:290px;
+
+    }
+
+    .hero-content h1{
+
+        font-size:25px;
+
+    }
+
+}
+
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 4
+=
+= Categorias
+= Grid Principal
+= Área dos Posts
+= Sidebar
+=
+=====================================================*/
+
+
+/*=========================
+        CATEGORIAS
+=========================*/
 
 .categories{
-    padding:15px 0 50px;
+
+    padding:0 0 60px;
+
 }
 
 #categoriesContainer{
+
     display:flex;
+
     justify-content:center;
+
     align-items:center;
+
     flex-wrap:wrap;
-    gap:15px;
+
+    gap:16px;
+
 }
 
 .category-btn{
 
-    padding:12px 28px;
-
-    border:1px solid var(--border);
+    padding:14px 28px;
 
     border-radius:40px;
 
-    background:#fff;
+    border:1px solid var(--border);
+
+    background:var(--white);
 
     color:var(--primary);
 
-    font-size:14px;
+    font-size:15px;
 
     font-weight:600;
 
@@ -632,21 +1149,26 @@ ul{
 }
 
 
-/*==================================================
-=              BLOG GRID
-==================================================*/
+/*=========================
+        BLOG
+=========================*/
 
-.blog-section{
+.blog{
 
-    padding-bottom:70px;
+    padding-bottom:80px;
 
 }
 
-.blog-grid{
+
+/*=========================
+      GRID PRINCIPAL
+=========================*/
+
+.blog-layout{
 
     display:grid;
 
-    grid-template-columns:2.2fr 1fr;
+    grid-template-columns:2fr 370px;
 
     gap:45px;
 
@@ -655,15 +1177,20 @@ ul{
 }
 
 
-/*==================================================
-=              POSTS
-==================================================*/
+/*=========================
+      ÁREA POSTS
+=========================*/
 
-.posts{
+.posts-area{
 
     width:100%;
 
 }
+
+
+/*=========================
+      CONTAINER POSTS
+=========================*/
 
 #postsContainer{
 
@@ -676,21 +1203,53 @@ ul{
 }
 
 
-/*==================================================
-=              CARD
-==================================================*/
+/*=========================
+      SIDEBAR
+=========================*/
+
+.sidebar{
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+
+/*=========================
+      CARD PADRÃO
+=========================*/
+
+.card{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    box-shadow:var(--shadow);
+
+}
+
+
+/*=========================
+      POST CARD
+=========================*/
 
 .post-card{
 
     background:#fff;
 
-    border-radius:22px;
+    border-radius:24px;
 
     overflow:hidden;
 
     box-shadow:var(--shadow);
 
-    transition:.35s;
+    transition:var(--transition);
 
     display:flex;
 
@@ -702,7 +1261,14 @@ ul{
 
     transform:translateY(-8px);
 
+    box-shadow:var(--shadow-hover);
+
 }
+
+
+/*=========================
+      IMAGEM
+=========================*/
 
 .post-image{
 
@@ -710,7 +1276,7 @@ ul{
 
     overflow:hidden;
 
-    height:235px;
+    height:250px;
 
 }
 
@@ -733,9 +1299,9 @@ ul{
 }
 
 
-/*==================================================
-=              BADGE
-==================================================*/
+/*=========================
+        BADGE
+=========================*/
 
 .post-category{
 
@@ -745,32 +1311,30 @@ ul{
 
     left:18px;
 
+    padding:8px 18px;
+
+    border-radius:30px;
+
     background:var(--accent);
 
     color:#fff;
 
-    font-size:11px;
-
-    text-transform:uppercase;
-
-    letter-spacing:1px;
-
-    padding:7px 16px;
-
-    border-radius:30px;
+    font-size:12px;
 
     font-weight:700;
+
+    letter-spacing:.6px;
 
 }
 
 
-/*==================================================
-=             CONTEÚDO
-==================================================*/
+/*=========================
+      CONTEÚDO
+=========================*/
 
 .post-content{
 
-    padding:28px;
+    padding:30px;
 
     display:flex;
 
@@ -780,19 +1344,24 @@ ul{
 
 }
 
+
+/*=========================
+        META
+=========================*/
+
 .post-meta{
 
     display:flex;
 
-    gap:18px;
-
     flex-wrap:wrap;
 
-    font-size:13px;
+    gap:20px;
+
+    margin-bottom:18px;
 
     color:var(--gray);
 
-    margin-bottom:18px;
+    font-size:13px;
 
 }
 
@@ -802,7 +1371,7 @@ ul{
 
     align-items:center;
 
-    gap:6px;
+    gap:8px;
 
 }
 
@@ -813,23 +1382,85 @@ ul{
 }
 
 
-/*==================================================
-=               TITULO
-==================================================*/
+/*=========================
+        RESPONSIVO
+=========================*/
+
+@media(max-width:1200px){
+
+    .blog-layout{
+
+        grid-template-columns:1fr 320px;
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .blog-layout{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sidebar{
+
+        margin-top:40px;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    #postsContainer{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .category-btn{
+
+        width:100%;
+
+        text-align:center;
+
+    }
+
+}
+
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 5
+=
+= Cards dos Posts
+=
+=====================================================*/
+
+
+/*=========================
+      TÍTULO DO POST
+=========================*/
 
 .post-title{
 
     font-family:'Playfair Display',serif;
 
-    color:var(--primary);
-
     font-size:30px;
 
-    line-height:1.3;
+    line-height:1.25;
 
-    margin-bottom:16px;
+    color:var(--primary);
 
-    transition:.3s;
+    margin-bottom:18px;
+
+    transition:var(--transition);
 
 }
 
@@ -840,28 +1471,28 @@ ul{
 }
 
 
-/*==================================================
-=            DESCRIÇÃO
-==================================================*/
+/*=========================
+      DESCRIÇÃO
+=========================*/
 
 .post-description{
 
-    color:#666;
+    color:var(--text);
 
     font-size:15px;
 
     line-height:1.8;
 
-    margin-bottom:30px;
+    margin-bottom:28px;
 
     flex:1;
 
 }
 
 
-/*==================================================
-=            BOTÃO
-==================================================*/
+/*=========================
+      BOTÃO
+=========================*/
 
 .read-more{
 
@@ -869,23 +1500,21 @@ ul{
 
     align-items:center;
 
-    gap:10px;
+    gap:12px;
+
+    margin-top:auto;
 
     color:var(--accent);
 
-    font-weight:700;
+    font-size:14px;
 
-    text-transform:uppercase;
+    font-weight:700;
 
     letter-spacing:.8px;
 
-    transition:.3s;
+    text-transform:uppercase;
 
-}
-
-.read-more:hover{
-
-    gap:16px;
+    transition:var(--transition);
 
 }
 
@@ -893,20 +1522,55 @@ ul{
 
     font-size:12px;
 
+    transition:var(--transition);
+
+}
+
+.read-more:hover{
+
+    color:var(--primary);
+
+}
+
+.read-more:hover i{
+
+    transform:translateX(6px);
+
 }
 
 
-/*==================================================
-=          ANIMAÇÃO DOS CARDS
-==================================================*/
+/*=========================
+      LINHA SUPERIOR
+=========================*/
+
+.post-content::before{
+
+    content:"";
+
+    width:65px;
+
+    height:4px;
+
+    border-radius:20px;
+
+    background:var(--accent);
+
+    margin-bottom:20px;
+
+}
+
+
+/*=========================
+      ANIMAÇÃO
+=========================*/
 
 .post-card{
 
     opacity:0;
 
-    transform:translateY(40px);
+    transform:translateY(35px);
 
-    animation:fadeCard .8s forwards;
+    animation:cardFade .7s forwards;
 
 }
 
@@ -940,7 +1604,19 @@ ul{
 
 }
 
-@keyframes fadeCard{
+.post-card:nth-child(7){
+
+    animation-delay:.90s;
+
+}
+
+.post-card:nth-child(8){
+
+    animation-delay:1.05s;
+
+}
+
+@keyframes cardFade{
 
     to{
 
@@ -952,429 +1628,831 @@ ul{
 
 }
 
-/*==================================================
-=                  SIDEBAR
-==================================================*/
 
-.sidebar{
-    display:flex;
-    flex-direction:column;
-    gap:30px;
+/*=========================
+      SOMBRA
+=========================*/
+
+.post-card:hover{
+
+    box-shadow:0 22px 50px rgba(0,0,0,.12);
+
 }
 
-.sidebar-box{
-    background:#fff;
-    border-radius:22px;
-    padding:28px;
-    box-shadow:var(--shadow);
+
+/*=========================
+      BADGE HOVER
+=========================*/
+
+.post-category{
+
+    transition:var(--transition);
+
 }
 
-.sidebar-box h3{
-    font-family:'Playfair Display',serif;
-    color:var(--primary);
-    font-size:24px;
-    margin-bottom:25px;
-}
+.post-card:hover .post-category{
 
-/*==================================================
-=                  PESQUISA
-==================================================*/
-
-.search{
-    display:flex;
-    border:1px solid var(--border);
-    border-radius:50px;
-    overflow:hidden;
-}
-
-.search input{
-    flex:1;
-    padding:15px 20px;
-    font-size:15px;
-    background:#fff;
-}
-
-.search button{
-    width:60px;
     background:var(--primary);
-    color:#fff;
-    transition:.3s;
+
 }
 
-.search button:hover{
-    background:var(--accent);
-    color:#222;
-}
 
-/*==================================================
-=            POSTS POPULARES
-==================================================*/
+/*=========================
+      IMAGEM
+=========================*/
 
-#popularPosts{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
+.post-image::after{
 
-.popular-post{
-    display:flex;
-    gap:15px;
-    align-items:center;
-}
+    content:"";
 
-.popular-post img{
-    width:85px;
-    height:85px;
-    border-radius:14px;
-    object-fit:cover;
-}
+    position:absolute;
 
-.popular-content{
-    flex:1;
-}
+    inset:0;
 
-.popular-content h4{
-    color:var(--primary);
-    font-size:15px;
-    line-height:1.4;
-    margin-bottom:8px;
-    transition:.3s;
-}
-
-.popular-content h4:hover{
-    color:var(--accent);
-}
-
-.popular-content span{
-    color:var(--gray);
-    font-size:13px;
-}
-
-/*==================================================
-=              NEWSLETTER
-==================================================*/
-
-.newsletter p{
-    color:#666;
-    line-height:1.7;
-    margin-bottom:20px;
-}
-
-.newsletter form{
-    display:flex;
-    flex-direction:column;
-    gap:15px;
-}
-
-.newsletter input{
-    border:1px solid var(--border);
-    border-radius:12px;
-    padding:15px;
-    font-size:15px;
-}
-
-.newsletter button{
-    background:var(--primary);
-    color:#fff;
-    border-radius:12px;
-    padding:15px;
-    font-weight:600;
-    transition:.3s;
-}
-
-.newsletter button:hover{
-    background:var(--accent);
-    color:#222;
-}
-
-/*==================================================
-=                     TAGS
-==================================================*/
-
-#tagsContainer{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-}
-
-.tag{
-    padding:10px 18px;
-    background:#f4f4f4;
-    border-radius:30px;
-    font-size:13px;
-    color:var(--primary);
-    transition:.3s;
-    cursor:pointer;
-}
-
-.tag:hover{
-    background:var(--secondary);
-}
-
-/*==================================================
-=                PAGINAÇÃO
-==================================================*/
-
-#pagination{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:12px;
-    margin-top:50px;
-}
-
-.page-btn{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    background:#fff;
-    border:1px solid var(--border);
-    color:var(--primary);
-    font-weight:600;
-    transition:.3s;
-}
-
-.page-btn:hover{
-    background:var(--secondary);
-}
-
-.page-btn.active{
-    background:var(--primary);
-    color:#fff;
-}
-
-/* ==========================
-   FOOTER
-========================== */
-
-.footer{
-    
     background:linear-gradient(
-        135deg,
-        #5d9174,
-        #84ad97
+
+        rgba(0,0,0,0),
+
+        rgba(0,0,0,.05)
+
     );
 
-   
-
-    padding:40px 40px 15px;
-    color: #EFEBBB;
-    
 }
 
-.footer-container{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    gap:40px;
-}
 
-.footer-logo h2{
-    font-size:3rem;
-    line-height:0.9;
-    font-weight:800;
-    color:#f6ecc6;
-    font-family: "Saira Stencil", sans-serif;
-}
+/*=========================
+      RESPONSIVO
+=========================*/
 
-.footer-links{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
+@media(max-width:992px){
 
-.social-item{
-    display:flex;
-    align-items:center;
-    justify-content:flex-end;
-    gap:15px;
-}
+    .post-title{
 
-.social-item span{
-    display:block;
-    font-size:12px;
-    letter-spacing:1px;
-}
+        font-size:28px;
 
-.social-item p{
-    font-size:13px;
-}
-
-.social-item i{
-    font-size:28px;
-    color:#f6ecc6;
-}
-
-.footer-bottom{
-    margin-top:30px;
-    font: "Saira", sans-serif;
-   
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-top:1px solid rgba(247, 246, 221, 0.575);
-    padding-top:15px;
-    font-size:13px;
-}
-
-.footer-bottom p{
-    color:#f6ecc6;
-}
-
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-    .footer{
-        padding:30px 20px;
-    }
-
-    .footer-container{
-        flex-direction:column;
-        align-items:center;
-        text-align:center;
-    }
-
-    .footer-logo h2{
-        font-size:2.2rem;
-    }
-
-    .social-item{
-        justify-content:center;
-    }
-
-    .footer-bottom{
-        flex-direction:column;
-        gap:10px;
-        text-align:center;
-    }
-
-}
-
-/*==================================================
-=                 OVERLAY
-==================================================*/
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    opacity:0;
-    visibility:hidden;
-    transition:.35s;
-    z-index:998;
-}
-
-.overlay.active{
-    opacity:1;
-    visibility:visible;
-}
-
-/*==================================================
-=              RESPONSIVO
-==================================================*/
-
-@media(max-width:1100px){
-
-    .blog-grid{
-        grid-template-columns:1fr;
-    }
-
-    .sidebar{
-        margin-top:40px;
-    }
-
-}
-
-@media(max-width:900px){
-
-    .menu{
-        position:fixed;
-        top:0;
-        right:-100%;
-        width:280px;
-        height:100vh;
-        background:#fff;
-        display:flex;
-        justify-content:center;
-        align-items:center;
-        transition:.4s;
-        z-index:999;
-        box-shadow:-10px 0 25px rgba(0,0,0,.08);
-    }
-
-    .menu.active{
-        right:0;
-    }
-
-    .menu-list{
-        flex-direction:column;
-        gap:30px;
-        text-align:center;
-    }
-
-    .menu-mobile{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-    }
-
-    .hero-card{
-        height:420px;
-    }
-
-    .hero-content{
-        width:70%;
-        padding-left:45px;
-    }
-
-    .hero-content h1{
-        font-size:42px;
-    }
-
-    #postsContainer{
-        grid-template-columns:1fr;
     }
 
 }
 
 @media(max-width:768px){
 
-    .header{
-        height:75px;
+    .post-image{
+
+        height:230px;
+
     }
 
-    .logo img{
-        width:45px;
-    }
+    .post-content{
 
-    .hero{
-        padding:20px 0 40px;
-    }
+        padding:25px;
 
-    .hero-card{
-        height:360px;
-    }
-
-    .hero-content{
-        width:90%;
-        padding:30px;
-    }
-
-    .hero-content h1{
-        font-size:34px;
-    }
-
-    .hero-content p{
-        font-size:15px;
-    }
-
-    .sidebar-box{
-        padding:22px;
     }
 
     .post-title{
-        font-size:26px;
+
+        font-size:25px;
+
+    }
+
+}
+
+@media(max-width:576px){
+
+    .post-image{
+
+        height:210px;
+
+    }
+
+    .post-content{
+
+        padding:22px;
+
+    }
+
+    .post-title{
+
+        font-size:22px;
+
+    }
+
+    .post-description{
+
+        font-size:14px;
+
+    }
+
+    .read-more{
+
+        font-size:13px;
+
+    }
+
+}
+
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 6
+=
+= Sidebar
+= Pesquisa
+= Posts Populares
+= Newsletter
+= Tags
+= Paginação
+=
+=====================================================*/
+
+
+/*=========================
+        SIDEBAR
+=========================*/
+
+.sidebar{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:30px;
+
+}
+
+
+/*=========================
+      CARD SIDEBAR
+=========================*/
+
+.sidebar-card{
+
+    background:var(--white);
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.sidebar-card h3{
+
+    font-size:26px;
+
+    margin-bottom:25px;
+
+    color:var(--primary);
+
+}
+
+
+/*=========================
+        PESQUISA
+=========================*/
+
+#searchForm{
+
+    display:flex;
+
+    align-items:center;
+
+    border:1px solid var(--border);
+
+    border-radius:50px;
+
+    overflow:hidden;
+
+    background:#fff;
+
+}
+
+#searchForm input{
+
+    flex:1;
+
+    padding:16px 22px;
+
+    font-size:15px;
+
+    background:transparent;
+
+}
+
+#searchForm button{
+
+    width:58px;
+
+    height:58px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    transition:var(--transition);
+
+}
+
+#searchForm button:hover{
+
+    background:var(--accent);
+
+}
+
+
+/*=========================
+    POSTS POPULARES
+=========================*/
+
+#popularPosts{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.popular-post{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+}
+
+.popular-post img{
+
+    width:90px;
+
+    height:90px;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    flex-shrink:0;
+
+}
+
+.popular-content{
+
+    flex:1;
+
+}
+
+.popular-content h4{
+
+    font-size:16px;
+
+    line-height:1.4;
+
+    color:var(--primary);
+
+    margin-bottom:8px;
+
+    transition:var(--transition);
+
+}
+
+.popular-content h4:hover{
+
+    color:var(--accent);
+
+}
+
+.popular-content span{
+
+    color:var(--gray);
+
+    font-size:13px;
+
+}
+
+
+/*=========================
+    CATEGORIAS SIDEBAR
+=========================*/
+
+#sidebarCategories{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.sidebar-category{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 16px;
+
+    border-radius:12px;
+
+    background:#F8F8F8;
+
+    transition:var(--transition);
+
+    cursor:pointer;
+
+}
+
+.sidebar-category:hover{
+
+    background:var(--secondary);
+
+}
+
+.sidebar-category span:last-child{
+
+    font-size:13px;
+
+    color:var(--gray);
+
+}
+
+
+/*=========================
+      NEWSLETTER
+=========================*/
+
+.newsletter p{
+
+    margin-bottom:20px;
+
+    color:var(--text);
+
+    line-height:1.8;
+
+}
+
+#newsletter{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+}
+
+#newsletter input{
+
+    padding:16px;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    font-size:15px;
+
+}
+
+#newsletter button{
+
+    padding:16px;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+#newsletter button:hover{
+
+    background:var(--accent);
+
+}
+
+
+/*=========================
+          TAGS
+=========================*/
+
+#tagsContainer{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.tag{
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    background:#F3F4F6;
+
+    color:var(--primary);
+
+    font-size:14px;
+
+    font-weight:500;
+
+    cursor:pointer;
+
+    transition:var(--transition);
+
+}
+
+.tag:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+/*=========================
+        PAGINAÇÃO
+=========================*/
+
+#pagination{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:60px;
+
+}
+
+.page-btn{
+
+    width:46px;
+
+    height:46px;
+
+    border-radius:50%;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    color:var(--primary);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.page-btn:hover{
+
+    background:var(--secondary);
+
+}
+
+.page-btn.active{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    border-color:var(--primary);
+
+}
+
+
+/*=========================
+      RESPONSIVO
+=========================*/
+
+@media(max-width:768px){
+
+    .sidebar-card{
+
+        padding:24px;
+
+    }
+
+    .sidebar-card h3{
+
+        font-size:22px;
+
+    }
+
+    .popular-post img{
+
+        width:75px;
+
+        height:75px;
+
+    }
+
+}
+
+@media(max-width:480px){
+
+    .sidebar-card{
+
+        padding:20px;
+
+    }
+
+    #searchForm input{
+
+        padding:14px 16px;
+
+    }
+
+    #searchForm button{
+
+        width:52px;
+
+        height:52px;
+
+    }
+
+    .tag{
+
+        font-size:13px;
+
+        padding:8px 14px;
+
+    }
+
+    .page-btn{
+
+        width:40px;
+
+        height:40px;
+
+    }
+
+}
+
+/*====================================================
+=
+=           BLOG.CSS
+=           PARTE 7
+=
+= Footer
+= Responsividade Final
+= Animações
+= Ajustes Gerais
+=
+=====================================================*/
+
+
+/*=========================
+        FOOTER
+=========================*/
+
+.footer{
+
+    background:var(--white);
+
+    border-top:1px solid var(--border);
+
+    margin-top:80px;
+
+}
+
+.footer-content{
+
+    min-height:120px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.footer-content img{
+
+    width:55px;
+
+}
+
+.footer-content p{
+
+    color:var(--gray);
+
+    font-size:14px;
+
+}
+
+
+/*=========================
+      ANIMAÇÕES GLOBAIS
+=========================*/
+
+.fade-up{
+
+    animation:fadeUp .8s ease forwards;
+
+}
+
+.fade-in{
+
+    animation:fadeIn .7s ease forwards;
+
+}
+
+.zoom{
+
+    animation:zoom .5s ease forwards;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+@keyframes zoom{
+
+    from{
+
+        transform:scale(.95);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/*=========================
+      HOVER GERAL
+=========================*/
+
+img{
+
+    transition:.4s;
+
+}
+
+button{
+
+    transition:.3s;
+
+}
+
+a{
+
+    transition:.3s;
+
+}
+
+
+/*=========================
+      FOCUS
+=========================*/
+
+input:focus{
+
+    border-color:var(--primary);
+
+}
+
+button:focus{
+
+    outline:none;
+
+}
+
+
+/*=========================
+      LINKS
+=========================*/
+
+a:hover{
+
+    color:var(--primary);
+
+}
+
+
+/*=========================
+      RESPONSIVO
+=========================*/
+
+@media(max-width:1200px){
+
+    .container{
+
+        width:min(1100px,94%);
+
+    }
+
+}
+
+@media(max-width:992px){
+
+    .header{
+
+        height:80px;
+
+    }
+
+    .footer-content{
+
+        flex-direction:column;
+
+        justify-content:center;
+
+        text-align:center;
+
+        padding:25px 0;
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    body{
+
+        font-size:15px;
+
+    }
+
+    .container{
+
+        width:94%;
+
+    }
+
+    .footer{
+
+        margin-top:60px;
+
     }
 
 }
@@ -1382,91 +2460,69 @@ ul{
 @media(max-width:576px){
 
     .container{
-        width:94%;
+
+        width:95%;
+
     }
 
-    .header-icons{
-        gap:10px;
+    .footer-content img{
+
+        width:45px;
+
     }
 
-    .hero-card{
-        height:320px;
-        border-radius:18px;
-    }
+    .footer-content p{
 
-    .hero-content{
-        width:100%;
-        padding:22px;
-    }
+        font-size:13px;
 
-    .hero-category{
-        font-size:11px;
-        margin-bottom:15px;
-    }
-
-    .hero-content h1{
-        font-size:28px;
-    }
-
-    .hero-content p{
-        display:none;
-    }
-
-    .hero-content button{
-        padding:13px 25px;
-        font-size:14px;
-    }
-
-    .post-content{
-        padding:22px;
-    }
-
-    .post-title{
-        font-size:23px;
-    }
-
-    .sidebar-box h3{
-        font-size:21px;
-    }
-
-    .popular-post img{
-        width:70px;
-        height:70px;
-    }
-
-    .popular-content h4{
-        font-size:14px;
-    }
-
-    .newsletter button{
-        padding:14px;
-    }
-
-    .page-btn{
-        width:38px;
-        height:38px;
     }
 
 }
 
-@media(max-width:400px){
+@media(max-width:380px){
 
-    .hero-card{
-        height:280px;
-    }
+    html{
 
-    .hero-content h1{
-        font-size:24px;
-    }
+        font-size:93%;
 
-    .category-btn{
-        width:100%;
-        text-align:center;
-    }
-
-    .page-btn{
-        width:35px;
-        height:35px;
     }
 
 }
+
+
+/*=========================
+      PRINT
+=========================*/
+
+@media print{
+
+    .header,
+    .sidebar,
+    .footer,
+    #pagination,
+    #menuMobile,
+    #overlay{
+
+        display:none !important;
+
+    }
+
+    body{
+
+        background:#fff;
+
+    }
+
+    .blog-layout{
+
+        display:block;
+
+    }
+
+}
+
+
+/*=========================
+      FIM DO CSS
+=========================*/
+

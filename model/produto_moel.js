@@ -5,27 +5,24 @@ const conexao = require("../conexao/conexao.js");
 // Cadastrar Usuario
 // =========================
 
-function cadastrar(usuario, callback) {
+function cadastrar(produto, callback) {
 
-    const sql = `INSERT INTO Usuario
-        ( nome,telefone,email,senha,
-        Loja_idLoja )
-        VALUES (?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO Imagem_Produto
+        ( arquivo,Produto_idProduto )
+        VALUES ( ?, ?)`;
 
     conexao.query(
         sql,
         [
-            usuario.nome,
-            usuario.telefone,
-            usuario.email,
-            usuario.senha,
-            usuario.Loja_idLoja
+            produto.arquivo,
+            produto.Produto_idProduto
         ],
         callback
     );
 
 }
 
+       
 // =========================
 // Listar Usuarios
 // =========================
@@ -33,7 +30,7 @@ function cadastrar(usuario, callback) {
 function listar(callback) {
 
     const sql = `
-        SELECT * FROM Usuario
+        SELECT * FROM Imagem_Produto
     `;
 
     conexao.query(sql, callback);
@@ -48,8 +45,8 @@ function buscarPorId(id, callback) {
 
     const sql = `
         SELECT *
-        FROM Usuario
-        WHERE idUsuario = ?
+        FROM Imagem_Produto
+        WHERE idImagem_Produto = ?
     `;
 
     conexao.query(sql, [id], callback);
@@ -63,7 +60,7 @@ function buscarPorId(id, callback) {
 function buscarPorEmail(email, callback) {
 
     const sql = `
-        SELECT * FROM Usuario
+        SELECT * FROM Imagem_Produto
         WHERE email = ?
     `;
 
@@ -72,32 +69,26 @@ function buscarPorEmail(email, callback) {
 }
 
 // =========================
-// Atualizar Usuario
+// Atualizar Produto
 // =========================
 
-function atualizar(id, usuario, callback) {
+function atualizar(id, imagem_produto, callback) {
 
     const sql = `
-        UPDATE Usuario
+        UPDATE Imagem_Produto
         SET
 
-            nome = ?,
-            telefone = ?,
-            email = ?,
-            senha = ?,
-            Loja_idLoja = ?
+            arquivo = ?,
+            Produto_idProduto = ?
 
-        WHERE idUsuario = ?
+        WHERE idImagem_Produto = ?
     `;
 
     conexao.query(
         sql,
         [
-            usuario.nome,
-            usuario.telefone,
-            usuario.email,
-            usuario.senha,
-            usuario.Loja_idLoja,
+            imagem_produto.arquivo,
+            imagem_produto.Produto_idProduto,
             id
         ],
         callback
@@ -112,8 +103,8 @@ function atualizar(id, usuario, callback) {
 function excluir(id, callback) {
 
     const sql = `
-        DELETE FROM Usuario
-        WHERE idUsuario = ?
+        DELETE FROM Imagem_Produto
+        WHERE idImagem_Produto = ?
     `;
 
     conexao.query(sql, [id], callback);

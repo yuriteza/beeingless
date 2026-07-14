@@ -1,75 +1,111 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
+
     <meta charset="UTF-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog</title>
-    <link rel="stylesheet" href="/style/blog.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <!--IMAGEM DA LOGO P/ NAVEGADOR-->
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+
+    <title>Blog | English Learning</title>
+
+    <link rel="stylesheet" href="css/blog.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
 </head>
 
 <body>
 
-  <header>
-    <div class="topo">
-      <!-- Logo do site -->
-      <div class="logo">
-        <img src="/assets/logo.png" alt="Logo do BEE INGLES">
-      </div>
-      <!-- CAIXAS DE PESQUISA -->
-      <div class="caixa-de-pesquisa">
-        <input type="text" placeholder="what would you like to learn today?">
-        <img src="/assets/lupa 128.png" alt="Lupa de pesquisa">
-      </div>
-      <!-- -->
-      <div class="icones">
-        <a href="">
-          <img src="/assets/user.png" alt="login">
-          <small>Olá aluno(a)</small>
-          <p>ENTRAR</p>
-        </a>
-        <a href="">
-          <img src="/assets/notificacao pixel.png" alt="notification">
-          <p>NOTIFICAÇÃO</p>
-        </a>
-      </div>
-    </div>
+    <!--==========================
+            HEADER
+    ===========================-->
+
+    <header class="header">
+
+        <div class="container">
+
+            <a href="#" class="logo">
+
+                <img src="img/logo.svg" alt="Logo">
+
+            </a>
+
+            <nav class="navbar">
+
+                <ul id="menu">
+
+                    <li><a href="#">HOME</a></li>
+
+                    <li><a href="#">NÍVEL</a></li>
+
+                    <li><a class="active" href="#">BLOG</a></li>
+
+                    <li><a href="#">TÓPICOS</a></li>
+
+                    <li><a href="#">TESTE DE NÍVEL</a></li>
+
+                    <li><a href="#">OUTROS</a></li>
+
+                </ul>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <button id="searchToggle">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                </button>
+
+                <button id="menuMobile">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </header>
 
 
-    <!-- Menu de navegação -->
-    <nav class="menu">
-      <a id="idhome" href="#">Home</a>
-      <a href="#" a>Nivel</a>
-      <a href="#">Blog</a>
-      <a href="#">Topicos</a>
-      <a href="#" a>Exercicios </a>
-      <a href="#" a>Teste de Nivel</a>
 
-    </nav>
-</header>
-
-<body>
-   <!-- ================= MAIN ================= -->
+    <!--==========================
+            MAIN
+    ===========================-->
 
     <main>
+
 
         <!-- HERO -->
 
         <section class="hero">
 
-            <div id="heroBanner">
-                <img src="/assets/bannerblog.png" alt="">
+            <div class="container">
 
-                <!-- Banner criado pelo JS -->
+                <div id="heroContainer">
+
+                    <!-- JS -->
+
+                </div>
 
             </div>
 
         </section>
+
+
 
         <!-- CATEGORIAS -->
 
@@ -78,8 +114,8 @@
             <div class="container">
 
                 <div id="categoriesContainer">
-                    
-                    <!-- Categorias criadas via JS -->
+
+                    <!-- JS -->
 
                 </div>
 
@@ -87,123 +123,112 @@
 
         </section>
 
+
+
         <!-- BLOG -->
 
-        <section class="blog-section">
+        <section class="blog">
 
             <div class="container">
 
-                <div class="blog-grid">
+                <div class="blog-layout">
 
-                    <!-- LISTA POSTS -->
 
-                    <section class="posts">
+                    <!-- COLUNA ESQUERDA -->
+
+                    <section class="posts-area">
 
                         <div id="postsContainer">
-                            <img src="/assets/vocabularioblog.png" alt="">
-                            <!-- Cards criados pelo JS -->
-                               
-                        </div>
 
-                        <!-- PAGINAÇÃO -->
+                            <!-- JS -->
+
+                        </div>
 
                         <div id="pagination">
-                           
-                        </div>
-                        <section class="posts">  
-                          <div id="postsContainer">
-                            <img src="/assets/vocabularioblog.png" alt="">
-                            <!-- Cards criados pelo JS -->
-                               
-                        </div>
-                        </section>
-                        
-                        <!-- PAGINAÇÃO -->
 
-                        <div id="pagination">
-                           
-                        </div>
-                        <section class="posts">  
-                          <div id="postsContainer"><br>
-                            <img src="/assets/vocabularioblog.png" alt="">
-                            <!-- Cards criados pelo JS -->
-                               
-                         </div>
-                         </section>
-                        <!-- PAGINAÇÃO -->
-
-                        <div id="pagination">
-                           
-                        </div>
-                        <section class="posts">  
-                          <div id="postsContainer">
-                            <br>
-                            <img src="/assets/vocabularioblog.png" alt="">
-                            <!-- Cards criados pelo JS -->
-                               
-                         </div>
-                         </section>
-       
-       
-                        
+                            <!-- JS -->
 
                         </div>
 
                     </section>
 
+
+
                     <!-- SIDEBAR -->
 
                     <aside class="sidebar">
-                                  
+
+
                         <!-- Busca -->
 
-                        <div class="sidebar-box">
+                        <div class="sidebar-card">
 
                             <h3>Pesquisar</h3>
 
-                            <div class="search">
+                            <form id="searchForm">
 
                                 <input
-                                    type="text"
                                     id="searchInput"
-                                    placeholder="Pesquisar...">
+                                    type="text"
+                                    placeholder="Pesquisar artigo">
 
-                                <button id="searchButton">
+                                <button>
 
                                     <i class="fa-solid fa-search"></i>
 
                                 </button>
 
-                            </div>
+                            </form>
 
                         </div>
 
-                        <!-- Posts Populares -->
 
-                        <div class="sidebar-box">
+
+                        <!-- Populares -->
+
+                        <div class="sidebar-card">
 
                             <h3>Posts Populares</h3>
 
                             <div id="popularPosts">
 
+                                <!-- JS -->
+
                             </div>
 
                         </div>
 
+
+
+                        <!-- Categorias -->
+
+                        <div class="sidebar-card">
+
+                            <h3>Categorias</h3>
+
+                            <div id="sidebarCategories">
+
+                                <!-- JS -->
+
+                            </div>
+
+                        </div>
+
+
+
                         <!-- Newsletter -->
 
-                        <div class="sidebar-box newsletter">
+                        <div class="sidebar-card newsletter">
 
-                            <h3>Receba Novidades</h3>
+                            <h3>Newsletter</h3>
 
                             <p>
 
-                                Cadastre seu e-mail e fique por dentro das
-                                novidades do blog.
+                                Receba novidades e conteúdos exclusivos.
 
                             </p>
 
-                            <form id="newsletterForm">
+                            <form id="newsletter">
 
                                 <input
                                     type="email"
@@ -220,17 +245,22 @@
 
                         </div>
 
+
+
                         <!-- Tags -->
 
-                        <div class="sidebar-box">
+                        <div class="sidebar-card">
 
                             <h3>Tags</h3>
 
                             <div id="tagsContainer">
 
+                                <!-- JS -->
+
                             </div>
 
                         </div>
+
 
                     </aside>
 
@@ -242,66 +272,49 @@
 
     </main>
 
-    <!-- ================= FOOTER ================= -->
+
+
+    <!--==========================
+            FOOTER
+    ===========================-->
 
     <footer class="footer">
 
-    <div class="footer-container">
-      
+        <div class="container">
 
-        <div class="footer-logo">
-            <h2>BEE<br>INGLÊS</h2>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        </div>
+            <div class="footer-content">
 
-        <div class="footer-links">
-
-            <div class="social-item">
                 <div>
-                    <span>WHATSAPP</span>
-                    <p>(63) 9302-3352</p>
-                </div>
-                <i class><img src= "/assets/whatsapp.png"></i>
-            </div>
 
-            <div class="social-item">
-                <div>
-                    <span>INSTAGRAM</span>
-                    <p>@BEEINGLES</p>
-                </div>
-                <i class><img src="/assets/instagram.png"></i>
-            </div>
+                    <img src="img/logo.svg" alt="Logo">
 
-            <div class="social-item">
-                <div>
-                    <span>G-MAIL</span>
-                    <p>DFG@MAIL</p>
                 </div>
-                <i class><img src="/assets/mail.png"></i>
+
+                <p>
+
+                    © 2026 Todos os direitos reservados.
+
+                </p>
+
             </div>
 
         </div>
 
-    </div>
+    </footer>
 
-    <div class="footer-bottom">
 
-        <p>© BEE INGLÊS</p>
 
-        <p>POLITICA DE PRIVACIDADE</p>
+    <!-- Overlay -->
 
-        <p>TERMOS DE USO</p>
+    <div id="overlay"></div>
 
-    </div>
 
-</footer>
+    <!--==========================
+            JAVASCRIPT
+    ===========================-->
 
-    <!-- ================= JS ================= -->
+    <script src="js/blog.js"></script>
 
-    <script src="/js/blog.js"></script>
-
-</body>  
+</body>
 
 </html>

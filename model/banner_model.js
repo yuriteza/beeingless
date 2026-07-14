@@ -5,35 +5,33 @@ const conexao = require("../conexao/conexao.js");
 // Cadastrar Usuario
 // =========================
 
-function cadastrar(usuario, callback) {
+function cadastrar(banner, callback) {
 
-    const sql = `INSERT INTO Usuario
-        ( nome,telefone,email,senha,
-        Loja_idLoja )
-        VALUES (?, ?, ?, ?, ?)`;
+    const sql = `INSERT INTO Banner
+        ( imagem,Loja_idLoja,Niveis_idNiveis )
+        VALUES (?, ?, ?)`;
 
     conexao.query(
         sql,
         [
-            usuario.nome,
-            usuario.telefone,
-            usuario.email,
-            usuario.senha,
-            usuario.Loja_idLoja
+            banner.imagem,
+            banner.Loja_idLoja,
+            banner.Niveis_idNiveis
         ],
         callback
     );
 
 }
 
+            
 // =========================
-// Listar Usuarios
+// Listar Banners
 // =========================
 
 function listar(callback) {
 
     const sql = `
-        SELECT * FROM Usuario
+        SELECT * FROM Banner
     `;
 
     conexao.query(sql, callback);
@@ -48,8 +46,8 @@ function buscarPorId(id, callback) {
 
     const sql = `
         SELECT *
-        FROM Usuario
-        WHERE idUsuario = ?
+        FROM Banner
+        WHERE idBanner = ?
     `;
 
     conexao.query(sql, [id], callback);
@@ -63,7 +61,7 @@ function buscarPorId(id, callback) {
 function buscarPorEmail(email, callback) {
 
     const sql = `
-        SELECT * FROM Usuario
+        SELECT * FROM Banner
         WHERE email = ?
     `;
 
@@ -72,13 +70,13 @@ function buscarPorEmail(email, callback) {
 }
 
 // =========================
-// Atualizar Usuario
+// Atualizar Banner
 // =========================
 
-function atualizar(id, usuario, callback) {
+function atualizar(id, banner, callback) {
 
     const sql = `
-        UPDATE Usuario
+        UPDATE Banner
         SET
 
             nome = ?,
@@ -87,17 +85,15 @@ function atualizar(id, usuario, callback) {
             senha = ?,
             Loja_idLoja = ?
 
-        WHERE idUsuario = ?
+        WHERE idBanner = ?
     `;
 
     conexao.query(
         sql,
         [
-            usuario.nome,
-            usuario.telefone,
-            usuario.email,
-            usuario.senha,
-            usuario.Loja_idLoja,
+            banner.imagem,
+            banner.Loja_idLoja,
+            banner.Niveis_idNiveis, 
             id
         ],
         callback
@@ -106,14 +102,14 @@ function atualizar(id, usuario, callback) {
 }
 
 // =========================
-// Excluir Usuario
+// Excluir Banner
 // =========================
 
 function excluir(id, callback) {
 
     const sql = `
-        DELETE FROM Usuario
-        WHERE idUsuario = ?
+        DELETE FROM Banner
+        WHERE idBanner = ?
     `;
 
     conexao.query(sql, [id], callback);
