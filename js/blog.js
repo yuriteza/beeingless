@@ -94,7 +94,7 @@ const posts = [
 
     descricao:"Amplie seu vocabulário aprendendo as palavras mais frequentes da língua inglesa.",
 
-    imagem:"img/post2.jpg",
+    imagem:"/img/vocabularioblog.png",
 
     autor:"Equipe",
 

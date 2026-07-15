@@ -3,23 +3,22 @@
 // passe aqui o caminho correto do seu arquivo model
 //==========================================
 
-const usuarioModel = require("../model/usuario_model");
+const bannerModel = require("../model/banner_model");
 
 //==========================================
-// CADASTRAR USUÁRIO
+// CADASTRAR BANNER
 //==========================================
 
 function cadastrar(req, res) {
 
-    const usuario = req.body;
+    const banner = req.body;
 
     // Validação dos campos obrigatórios
 
     if (
-        !usuario.nome ||
-        !usuario.email ||
-        !usuario.senha ||
-        !usuario.Loja_idLoja
+        !banner.imagem ||
+        !banner.Loja_idLoja||
+        !banner.Niveis_idNiveis 
     ) {
 
         return res.status(400).json({
@@ -30,15 +29,15 @@ function cadastrar(req, res) {
     }
 
     // Caso não seja enviado o código da loja
-    if (!usuario.Loja_idLoja) {
+    if (!banner.Loja_idLoja) {
 
-       usuario.Loja_idLoja = 1;
+       banner.Loja_idLoja = 1;
 
     }
 
     // Verifica se já existe um usuário com o mesmo e-mail
 
-    usuarioModel.buscarPorEmail(usuario.email, (erro, resultado) => {
+    bannerModel.buscarPorEmail(banner.email, (erro, resultado) => {
 
         if (erro) {
 
@@ -60,13 +59,13 @@ function cadastrar(req, res) {
 
         // Cadastra o usuário
 
-        usuarioModel.cadastrar(usuario, (erro, resultado) => {
+        bannerModel.cadastrar(banner, (erro, resultado) => {
 
             if (erro) {
 
                 return res.status(500).json({
                     sucesso: false,
-                    mensagem: "Erro ao cadastrar usuário."
+                    mensagem: "Erro ao cadastrar banner."
                 });
 
             }
@@ -74,8 +73,8 @@ function cadastrar(req, res) {
             return res.status(201).json({
 
                 sucesso: true,
-                mensagem: "Usuário cadastrado com sucesso!",
-                idUsuario: resultado.insertId
+                mensagem: "Banner cadastrado com sucesso!",
+                idBanner: resultado.insertId
 
             });
 
@@ -86,22 +85,22 @@ function cadastrar(req, res) {
 }
 
 //==========================================
-// LISTAR USUÁRIOS
+// LISTAR BANNERS
 //==========================================
 
 function listar(req, res) {
 
-    usuarioModel.listar((erro, resultado) => {
+    bannerModel.listar((erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao listar usuários."
+                mensagem: "Erro ao listar banners."
             });
 
         }
-        // Retorna a lista de usuários em formato JSON
+        // Retorna a lista de banners em formato JSON
         res.json(resultado);
 
     });
@@ -109,20 +108,20 @@ function listar(req, res) {
 }
 
 //==========================================
-// BUSCAR USUÁRIO POR ID
+// BUSCAR BANNER POR ID
 //==========================================
 
 function buscarPorId(req, res) {
 
     const id = req.params.id;
 
-    usuarioModel.buscarPorId(id, (erro, resultado) => {
+    bannerModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao buscar usuário."
+                mensagem: "Erro ao buscar banner."
             });
 
         }
@@ -131,11 +130,11 @@ function buscarPorId(req, res) {
 
             return res.status(404).json({
                 sucesso: false,
-                mensagem: "Usuário não encontrado."
+                mensagem: "Banner não encontrado."
             });
 
         }
-        // Retorna o usuário encontrado em formato JSON
+        // Retorna o banner encontrado em formato JSON
         res.json(resultado[0]);
 
     });
@@ -143,29 +142,29 @@ function buscarPorId(req, res) {
 }
 
 //==========================================
-// ATUALIZAR USUÁRIO
+// ATUALIZAR BANNER
 //==========================================
 
 function atualizar(req, res) {
-    // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
+    // Obtém o ID do banner a ser atualizado a partir dos parâmetros da URL
     const id = req.params.id;
-    // Obtém os dados atualizados do usuário a partir do corpo da requisição
-    const usuario = req.body;
+    // Obtém os dados atualizados do banner a partir do corpo da requisição
+    const banner = req.body;
 
-    usuarioModel.atualizar(id, usuario, (erro, resultado) => {
+    bannerModel.atualizar(id, banner, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao atualizar usuário."
+                mensagem: "Erro ao atualizar banner."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Usuário atualizado com sucesso."
+            mensagem: "Banner atualizado com sucesso."
         });
 
     });
@@ -173,27 +172,27 @@ function atualizar(req, res) {
 }
 
 //==========================================
-// EXCLUIR CLIENTE
+// EXCLUIR BANNER
 //==========================================
 
 function excluir(req, res) {
-    // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
+    // Obtém o ID do banner a ser excluído a partir dos parâmetros da URL
     const id = req.params.id;
 
-    usuarioModel.excluir(id, (erro, resultado) => {
+    bannerModel.excluir(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir conta."
+                mensagem: "Erro ao excluir banner."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Conta excluída com sucesso."
+            mensagem: "Banner excluído com sucesso."
         });
 
     });

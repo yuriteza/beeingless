@@ -3,23 +3,23 @@
 // passe aqui o caminho correto do seu arquivo model
 //==========================================
 
-const usuarioModel = require("../model/usuario_model");
+const produtoModel = require("../model/produto_model");
 
 //==========================================
-// CADASTRAR USUÁRIO
+// CADASTRAR PRODUTO
 //==========================================
 
 function cadastrar(req, res) {
 
-    const usuario = req.body;
+    const produto = req.body;
 
     // Validação dos campos obrigatórios
 
     if (
-        !usuario.nome ||
-        !usuario.email ||
-        !usuario.senha ||
-        !usuario.Loja_idLoja
+        !produto.nome ||
+        !produto.descricao ||
+        !produto.preco ||
+        !produto.Loja_idLoja
     ) {
 
         return res.status(400).json({
@@ -30,15 +30,15 @@ function cadastrar(req, res) {
     }
 
     // Caso não seja enviado o código da loja
-    if (!usuario.Loja_idLoja) {
+    if (!produto.Loja_idLoja) {
 
-       usuario.Loja_idLoja = 1;
+       produto.Loja_idLoja = 1;
 
     }
 
-    // Verifica se já existe um usuário com o mesmo e-mail
+    // Verifica se já existe um produto com o mesmo nome
 
-    usuarioModel.buscarPorEmail(usuario.email, (erro, resultado) => {
+    produtoModel.buscarPorNome(produto.nome, (erro, resultado) => {
 
         if (erro) {
 
@@ -53,20 +53,20 @@ function cadastrar(req, res) {
 
             return res.status(409).json({
                 sucesso: false,
-                mensagem: "E-mail já cadastrado."
+                mensagem: "Produto já cadastrado."
             });
 
         }
 
-        // Cadastra o usuário
+        // Cadastra o produto
 
-        usuarioModel.cadastrar(usuario, (erro, resultado) => {
+        produtoModel.cadastrar(produto, (erro, resultado) => {
 
             if (erro) {
 
                 return res.status(500).json({
                     sucesso: false,
-                    mensagem: "Erro ao cadastrar usuário."
+                    mensagem: "Erro ao cadastrar produto."
                 });
 
             }
@@ -74,8 +74,8 @@ function cadastrar(req, res) {
             return res.status(201).json({
 
                 sucesso: true,
-                mensagem: "Usuário cadastrado com sucesso!",
-                idUsuario: resultado.insertId
+                mensagem: "Produto cadastrado com sucesso!",
+                idProduto: resultado.insertId
 
             });
 
@@ -91,17 +91,17 @@ function cadastrar(req, res) {
 
 function listar(req, res) {
 
-    usuarioModel.listar((erro, resultado) => {
+    produtoModel.listar((erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao listar usuários."
+                mensagem: "Erro ao listar produtos."
             });
 
         }
-        // Retorna a lista de usuários em formato JSON
+        // Retorna a lista de produtos em formato JSON
         res.json(resultado);
 
     });
@@ -109,20 +109,20 @@ function listar(req, res) {
 }
 
 //==========================================
-// BUSCAR USUÁRIO POR ID
+// BUSCAR PRODUTO POR ID
 //==========================================
 
 function buscarPorId(req, res) {
 
     const id = req.params.id;
 
-    usuarioModel.buscarPorId(id, (erro, resultado) => {
+    produtoModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao buscar usuário."
+                mensagem: "Erro ao buscar produto."
             });
 
         }
@@ -131,11 +131,11 @@ function buscarPorId(req, res) {
 
             return res.status(404).json({
                 sucesso: false,
-                mensagem: "Usuário não encontrado."
+                mensagem: "Produto não encontrado."
             });
 
         }
-        // Retorna o usuário encontrado em formato JSON
+        // Retorna o produto encontrado em formato JSON
         res.json(resultado[0]);
 
     });
@@ -143,29 +143,29 @@ function buscarPorId(req, res) {
 }
 
 //==========================================
-// ATUALIZAR USUÁRIO
+// ATUALIZAR PRODUTO
 //==========================================
 
 function atualizar(req, res) {
-    // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
+    // Obtém o ID do produto a ser atualizado a partir dos parâmetros da URL
     const id = req.params.id;
-    // Obtém os dados atualizados do usuário a partir do corpo da requisição
-    const usuario = req.body;
+    // Obtém os dados atualizados do produto a partir do corpo da requisição
+    const produto = req.body;
 
-    usuarioModel.atualizar(id, usuario, (erro, resultado) => {
+    produtoModel.atualizar(id, produto, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao atualizar usuário."
+                mensagem: "Erro ao atualizar produto."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Usuário atualizado com sucesso."
+            mensagem: "Produto atualizado com sucesso."
         });
 
     });
@@ -173,27 +173,27 @@ function atualizar(req, res) {
 }
 
 //==========================================
-// EXCLUIR CLIENTE
+// EXCLUIR PRODUTO
 //==========================================
 
 function excluir(req, res) {
     // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
     const id = req.params.id;
 
-    usuarioModel.excluir(id, (erro, resultado) => {
+    produtoModel.excluir(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir conta."
+                mensagem: "Erro ao excluir produto."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Conta excluída com sucesso."
+            mensagem: "Produto excluído com sucesso."
         });
 
     });

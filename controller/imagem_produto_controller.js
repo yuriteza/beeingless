@@ -3,23 +3,20 @@
 // passe aqui o caminho correto do seu arquivo model
 //==========================================
 
-const usuarioModel = require("../model/usuario_model");
+const imagem_produtoModel = require("../model/imagem_produto_model");
 
 //==========================================
-// CADASTRAR USUÁRIO
+// CADASTRAR IMAGEM DE PRODUTO
 //==========================================
 
 function cadastrar(req, res) {
 
-    const usuario = req.body;
+    const imagem_produto = req.body;
 
     // Validação dos campos obrigatórios
-
-    if (
-        !usuario.nome ||
-        !usuario.email ||
-        !usuario.senha ||
-        !usuario.Loja_idLoja
+  if (
+        !imagem_produto.arquivo ||
+        !imagem_produto.Produto_idProduto
     ) {
 
         return res.status(400).json({
@@ -30,15 +27,15 @@ function cadastrar(req, res) {
     }
 
     // Caso não seja enviado o código da loja
-    if (!usuario.Loja_idLoja) {
+    if (!imagem_produto.Produto_idProduto) {
 
-       usuario.Loja_idLoja = 1;
+       imagem_produto.Produto_idProduto = 1;
 
     }
 
-    // Verifica se já existe um usuário com o mesmo e-mail
+    // Verifica se já existe uma imagem de produto com o mesmo arquivo
 
-    usuarioModel.buscarPorEmail(usuario.email, (erro, resultado) => {
+    imagem_produtoModel.buscarPorArquivo(imagem_produto.arquivo, (erro, resultado) => {
 
         if (erro) {
 
@@ -53,20 +50,20 @@ function cadastrar(req, res) {
 
             return res.status(409).json({
                 sucesso: false,
-                mensagem: "E-mail já cadastrado."
+                mensagem: "Arquivo de imagem já cadastrado."
             });
 
         }
 
-        // Cadastra o usuário
+        // Cadastra a imagem de produto
 
-        usuarioModel.cadastrar(usuario, (erro, resultado) => {
+        imagem_produtoModel.cadastrar(imagem_produto, (erro, resultado) => {
 
             if (erro) {
 
                 return res.status(500).json({
                     sucesso: false,
-                    mensagem: "Erro ao cadastrar usuário."
+                    mensagem: "Erro ao cadastrar imagem de produto."
                 });
 
             }
@@ -74,8 +71,8 @@ function cadastrar(req, res) {
             return res.status(201).json({
 
                 sucesso: true,
-                mensagem: "Usuário cadastrado com sucesso!",
-                idUsuario: resultado.insertId
+                mensagem: "Imagem de produto cadastrada com sucesso!",
+                idImagemProduto: resultado.insertId
 
             });
 
@@ -86,22 +83,22 @@ function cadastrar(req, res) {
 }
 
 //==========================================
-// LISTAR USUÁRIOS
+// LISTAR IMAGENS DE PRODUTO
 //==========================================
 
 function listar(req, res) {
 
-    usuarioModel.listar((erro, resultado) => {
+    imagem_produtoModel.listar((erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao listar usuários."
+                mensagem: "Erro ao listar imagens de produto."
             });
 
         }
-        // Retorna a lista de usuários em formato JSON
+        // Retorna a lista de imagens de produto em formato JSON
         res.json(resultado);
 
     });
@@ -109,20 +106,20 @@ function listar(req, res) {
 }
 
 //==========================================
-// BUSCAR USUÁRIO POR ID
+// BUSCAR IMAGEM DE PRODUTO POR ID
 //==========================================
 
 function buscarPorId(req, res) {
 
     const id = req.params.id;
 
-    usuarioModel.buscarPorId(id, (erro, resultado) => {
+    imagem_produtoModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao buscar usuário."
+                mensagem: "Erro ao buscar imagem de produto."
             });
 
         }
@@ -131,11 +128,11 @@ function buscarPorId(req, res) {
 
             return res.status(404).json({
                 sucesso: false,
-                mensagem: "Usuário não encontrado."
+                mensagem: "Imagem de produto não encontrada."
             });
 
         }
-        // Retorna o usuário encontrado em formato JSON
+        // Retorna a imagem de produto encontrada em formato JSON
         res.json(resultado[0]);
 
     });
@@ -143,29 +140,29 @@ function buscarPorId(req, res) {
 }
 
 //==========================================
-// ATUALIZAR USUÁRIO
+// ATUALIZAR IMAGEM DE PRODUTO
 //==========================================
 
 function atualizar(req, res) {
-    // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
+    // Obtém o ID da imagem de produto a ser atualizada a partir dos parâmetros da URL
     const id = req.params.id;
-    // Obtém os dados atualizados do usuário a partir do corpo da requisição
-    const usuario = req.body;
+    // Obtém os dados atualizados da imagem de produto a partir do corpo da requisição
+    const imagem_produto = req.body;
 
-    usuarioModel.atualizar(id, usuario, (erro, resultado) => {
+    imagem_produtoModel.atualizar(id, imagem_produto, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao atualizar usuário."
+                mensagem: "Erro ao atualizar imagem de produto."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Usuário atualizado com sucesso."
+            mensagem: "Imagem de produto atualizada com sucesso."
         });
 
     });
@@ -173,27 +170,27 @@ function atualizar(req, res) {
 }
 
 //==========================================
-// EXCLUIR CLIENTE
+// EXCLUIR IMAGEM DE PRODUTO
 //==========================================
 
 function excluir(req, res) {
-    // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
+    // Obtém o ID da imagem de produto a ser excluída a partir dos parâmetros da URL
     const id = req.params.id;
 
-    usuarioModel.excluir(id, (erro, resultado) => {
+    imagem_produtoModel.excluir(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir conta."
+                mensagem: "Erro ao excluir imagem de produto."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Conta excluída com sucesso."
+            mensagem: "Imagem de produto excluída com sucesso."
         });
 
     });

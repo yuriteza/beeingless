@@ -3,23 +3,39 @@
 // passe aqui o caminho correto do seu arquivo model
 //==========================================
 
-const usuarioModel = require("../model/usuario_model");
+const videoModel = require("../model/video_model");
 
 //==========================================
-// CADASTRAR USUÁRIO
+// CADASTRAR VÍDEO
 //==========================================
 
 function cadastrar(req, res) {
 
-    const usuario = req.body;
+    const video = req.body;
 
     // Validação dos campos obrigatórios
 
     if (
-        !usuario.nome ||
-        !usuario.email ||
-        !usuario.senha ||
-        !usuario.Loja_idLoja
+        !video.basico||
+        !video.basico_pronuncia ||
+        !video.basico_vocabulario ||
+        !video.basico_gramatica ||
+        !video.basico_exterior_trabalho ||
+        !video.basico_exterior_travel ||
+        !video.intermediario    ||
+        !video.intermediario_pronuncia ||
+        !video.intermediario_vocabulario ||
+        !video.intermediario_gramatica ||
+        !video.intermediario_exterior_trabalho ||
+        !video.intermediario_exterior_travel,
+        !video.avancado ||
+        !video.avancado_pronuncia   ||
+        !video.avancado_vocabulario ||
+        !video.avancado_gramatica ||
+        !video.avancado_exterior_trabalho ||
+        !video.avancado_exterior_travel ||
+        !video.Produto_idProduto ||
+        !video.Niveis_idNiveis
     ) {
 
         return res.status(400).json({
@@ -30,15 +46,15 @@ function cadastrar(req, res) {
     }
 
     // Caso não seja enviado o código da loja
-    if (!usuario.Loja_idLoja) {
+    if (!video.Loja_idLoja) {
 
-       usuario.Loja_idLoja = 1;
+       video.Loja_idLoja = 1;
 
     }
 
     // Verifica se já existe um usuário com o mesmo e-mail
 
-    usuarioModel.buscarPorEmail(usuario.email, (erro, resultado) => {
+    videoModel.buscarPorEmail(video.email, (erro, resultado) => {
 
         if (erro) {
 
@@ -53,20 +69,20 @@ function cadastrar(req, res) {
 
             return res.status(409).json({
                 sucesso: false,
-                mensagem: "E-mail já cadastrado."
+                mensagem: "Vídeo já cadastrado."
             });
 
         }
 
-        // Cadastra o usuário
+        // Cadastra o vídeo
 
-        usuarioModel.cadastrar(usuario, (erro, resultado) => {
+        videoModel.cadastrar(video, (erro, resultado) => {
 
             if (erro) {
 
                 return res.status(500).json({
                     sucesso: false,
-                    mensagem: "Erro ao cadastrar usuário."
+                    mensagem: "Erro ao cadastrar vídeo."
                 });
 
             }
@@ -74,8 +90,8 @@ function cadastrar(req, res) {
             return res.status(201).json({
 
                 sucesso: true,
-                mensagem: "Usuário cadastrado com sucesso!",
-                idUsuario: resultado.insertId
+                mensagem: "Vídeo cadastrado com sucesso!",
+                idVideo: resultado.insertId
 
             });
 
@@ -86,22 +102,22 @@ function cadastrar(req, res) {
 }
 
 //==========================================
-// LISTAR USUÁRIOS
+// LISTAR VÍDEOS
 //==========================================
 
 function listar(req, res) {
 
-    usuarioModel.listar((erro, resultado) => {
+    videoModel.listar((erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao listar usuários."
+                mensagem: "Erro ao listar vídeos."
             });
 
         }
-        // Retorna a lista de usuários em formato JSON
+        // Retorna a lista de vídeos em formato JSON
         res.json(resultado);
 
     });
@@ -109,20 +125,20 @@ function listar(req, res) {
 }
 
 //==========================================
-// BUSCAR USUÁRIO POR ID
+// BUSCAR VÍDEO POR ID
 //==========================================
 
 function buscarPorId(req, res) {
 
     const id = req.params.id;
 
-    usuarioModel.buscarPorId(id, (erro, resultado) => {
+    videoModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao buscar usuário."
+                mensagem: "Erro ao buscar vídeo."
             });
 
         }
@@ -131,11 +147,11 @@ function buscarPorId(req, res) {
 
             return res.status(404).json({
                 sucesso: false,
-                mensagem: "Usuário não encontrado."
+                mensagem: "Vídeo não encontrado."
             });
 
         }
-        // Retorna o usuário encontrado em formato JSON
+        // Retorna o vídeo encontrado em formato JSON
         res.json(resultado[0]);
 
     });
@@ -143,29 +159,29 @@ function buscarPorId(req, res) {
 }
 
 //==========================================
-// ATUALIZAR USUÁRIO
+// ATUALIZAR VÍDEO
 //==========================================
 
 function atualizar(req, res) {
-    // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
+    // Obtém o ID do vídeo a ser atualizado a partir dos parâmetros da URL
     const id = req.params.id;
-    // Obtém os dados atualizados do usuário a partir do corpo da requisição
-    const usuario = req.body;
+    // Obtém os dados atualizados do vídeo a partir do corpo da requisição
+    const video = req.body;
 
-    usuarioModel.atualizar(id, usuario, (erro, resultado) => {
+    videoModel.atualizar(id, video, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao atualizar usuário."
+                mensagem: "Erro ao atualizar vídeo."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Usuário atualizado com sucesso."
+            mensagem: "Vídeo atualizado com sucesso."
         });
 
     });
@@ -173,27 +189,27 @@ function atualizar(req, res) {
 }
 
 //==========================================
-// EXCLUIR CLIENTE
+// EXCLUIR VÍDEO
 //==========================================
 
 function excluir(req, res) {
-    // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
+    // Obtém o ID do vídeo a ser excluído a partir dos parâmetros da URL
     const id = req.params.id;
 
-    usuarioModel.excluir(id, (erro, resultado) => {
+    videoModel.excluir(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir conta."
+                mensagem: "Erro ao excluir vídeo."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Conta excluída com sucesso."
+            mensagem: "Vídeo excluído com sucesso."
         });
 
     });

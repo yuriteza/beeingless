@@ -8,15 +8,14 @@ const conexao = require("../conexao/conexao.js");
 function cadastrar(usuario, callback) {
 
     const sql = `INSERT INTO Usuario
-        ( nome,telefone,email,senha,
+        ( nome,email,senha,
         Loja_idLoja )
-        VALUES (?, ?, ?, ?, ?)`;
+        VALUES (?,?,?, ?)`;
 
     conexao.query(
         sql,
         [
             usuario.nome,
-            usuario.telefone,
             usuario.email,
             usuario.senha,
             usuario.Loja_idLoja
@@ -82,7 +81,6 @@ function atualizar(id, usuario, callback) {
         SET
 
             nome = ?,
-            telefone = ?,
             email = ?,
             senha = ?,
             Loja_idLoja = ?
@@ -94,7 +92,6 @@ function atualizar(id, usuario, callback) {
         sql,
         [
             usuario.nome,
-            usuario.telefone,
             usuario.email,
             usuario.senha,
             usuario.Loja_idLoja,

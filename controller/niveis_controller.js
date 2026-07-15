@@ -3,23 +3,42 @@
 // passe aqui o caminho correto do seu arquivo model
 //==========================================
 
-const usuarioModel = require("../model/usuario_model");
+const niveisModel = require("../model/niveis_model");
 
 //==========================================
-// CADASTRAR USUÁRIO
+// CADASTRAR NÍVEL
 //==========================================
 
 function cadastrar(req, res) {
 
-    const usuario = req.body;
+    const niveis = req.body;
 
     // Validação dos campos obrigatórios
 
     if (
-        !usuario.nome ||
-        !usuario.email ||
-        !usuario.senha ||
-        !usuario.Loja_idLoja
+        !niveis.basico ||
+        !niveis.basico_pronuncia ||
+        !niveis.basico_vocabulario ||
+        !niveis.basico_gramatica ||
+        !niveis.basico ||
+        !niveis.basico_pronuncia ||
+        !niveis.basico_vocabulario ||
+        !niveis.basico_gramatica ||
+        !niveis.basico_exterior_trabalho ||
+        !niveis.basico_exterior_travel ||
+        !niveis.intermediario ||
+        !niveis.intermediario_pronuncia ||
+        !niveis.intermediario_vocabulario ||
+        !niveis.intermediario_gramatica ||
+        !niveis.intermediario_exterior_trabalho ||
+        !niveis.intermediario_exterior_travel ||
+        !niveis.avancado||
+        !niveis.avancado_pronuncia||
+        !niveis.avancado_vocabulario||
+        !niveis.avancado_gramatica||
+        !niveis.avancado_exterior_trabalho||
+        !niveis.avancado_exterior_travel||
+        !niveis.Produto_idProduto
     ) {
 
         return res.status(400).json({
@@ -30,15 +49,15 @@ function cadastrar(req, res) {
     }
 
     // Caso não seja enviado o código da loja
-    if (!usuario.Loja_idLoja) {
+    if (!niveis.Loja_idLoja) {
 
-       usuario.Loja_idLoja = 1;
+       niveis.Loja_idLoja = 1;
 
     }
 
     // Verifica se já existe um usuário com o mesmo e-mail
 
-    usuarioModel.buscarPorEmail(usuario.email, (erro, resultado) => {
+    niveisModel.buscarPorEmail(niveis.email, (erro, resultado) => {
 
         if (erro) {
 
@@ -60,13 +79,13 @@ function cadastrar(req, res) {
 
         // Cadastra o usuário
 
-        usuarioModel.cadastrar(usuario, (erro, resultado) => {
+        niveisModel.cadastrar(niveis, (erro, resultado) => {
 
             if (erro) {
 
                 return res.status(500).json({
                     sucesso: false,
-                    mensagem: "Erro ao cadastrar usuário."
+                    mensagem: "Erro ao cadastrar nível."
                 });
 
             }
@@ -74,8 +93,8 @@ function cadastrar(req, res) {
             return res.status(201).json({
 
                 sucesso: true,
-                mensagem: "Usuário cadastrado com sucesso!",
-                idUsuario: resultado.insertId
+                mensagem: "Nível cadastrado com sucesso!",
+                idNivel: resultado.insertId
 
             });
 
@@ -86,22 +105,22 @@ function cadastrar(req, res) {
 }
 
 //==========================================
-// LISTAR USUÁRIOS
+// LISTAR NÍVEIS
 //==========================================
 
 function listar(req, res) {
 
-    usuarioModel.listar((erro, resultado) => {
+    niveisModel.listar((erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao listar usuários."
+                mensagem: "Erro ao listar níveis."
             });
 
         }
-        // Retorna a lista de usuários em formato JSON
+        // Retorna a lista de níveis em formato JSON
         res.json(resultado);
 
     });
@@ -109,20 +128,20 @@ function listar(req, res) {
 }
 
 //==========================================
-// BUSCAR USUÁRIO POR ID
+// BUSCAR NÍVEL POR ID
 //==========================================
 
 function buscarPorId(req, res) {
 
     const id = req.params.id;
 
-    usuarioModel.buscarPorId(id, (erro, resultado) => {
+    niveisModel.buscarPorId(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao buscar usuário."
+                mensagem: "Erro ao buscar nível."
             });
 
         }
@@ -131,11 +150,11 @@ function buscarPorId(req, res) {
 
             return res.status(404).json({
                 sucesso: false,
-                mensagem: "Usuário não encontrado."
+                mensagem: "Nível não encontrado."
             });
 
         }
-        // Retorna o usuário encontrado em formato JSON
+        // Retorna o nível encontrado em formato JSON
         res.json(resultado[0]);
 
     });
@@ -143,29 +162,29 @@ function buscarPorId(req, res) {
 }
 
 //==========================================
-// ATUALIZAR USUÁRIO
+// ATUALIZAR NÍVEL
 //==========================================
 
 function atualizar(req, res) {
-    // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
+    // Obtém o ID do nível a ser atualizado a partir dos parâmetros da URL
     const id = req.params.id;
-    // Obtém os dados atualizados do usuário a partir do corpo da requisição
-    const usuario = req.body;
+    // Obtém os dados atualizados do nível a partir do corpo da requisição
+    const niveis = req.body;
 
-    usuarioModel.atualizar(id, usuario, (erro, resultado) => {
+    niveisModel.atualizar(id, niveis, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao atualizar usuário."
+                mensagem: "Erro ao atualizar nível."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Usuário atualizado com sucesso."
+            mensagem: "Nível atualizado com sucesso."
         });
 
     });
@@ -173,27 +192,27 @@ function atualizar(req, res) {
 }
 
 //==========================================
-// EXCLUIR CLIENTE
+// EXCLUIR NÍVEL
 //==========================================
 
 function excluir(req, res) {
-    // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
+    // Obtém o ID do nível a ser excluído a partir dos parâmetros da URL
     const id = req.params.id;
 
-    usuarioModel.excluir(id, (erro, resultado) => {
+    niveisModel.excluir(id, (erro, resultado) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir conta."
+                mensagem: "Erro ao excluir nível."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Conta excluída com sucesso."
+            mensagem: "Nível excluído com sucesso."
         });
 
     });
