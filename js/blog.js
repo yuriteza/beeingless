@@ -24,7 +24,7 @@ const hero = {
     descricao:
         "Descubra conteúdos sobre gramática, vocabulário, pronúncia, listening, speaking e muito mais.",
 
-    imagem: "img/banner.jpg",
+    imagem: "../assets/bannerblog.png",
 
     botao: "Começar Agora"
 
@@ -74,7 +74,7 @@ const posts = [
 
     descricao:"Aprenda uma metodologia simples para dominar os tempos verbais rapidamente.",
 
-    imagem:"img/post1.jpg",
+    imagem:"../assets/grammaticablog.png",
 
     autor:"Equipe",
 
@@ -94,7 +94,7 @@ const posts = [
 
     descricao:"Amplie seu vocabulário aprendendo as palavras mais frequentes da língua inglesa.",
 
-    imagem:"/img/vocabularioblog.png",
+    imagem: "../assets/vocabularioblog.png",
 
     autor:"Equipe",
 
@@ -114,7 +114,7 @@ const posts = [
 
     descricao:"Dicas práticas para desenvolver confiança durante conversações.",
 
-    imagem:"img/post3.jpg",
+    imagem:"../assets/speakingblog.png",
 
     autor:"Equipe",
 
@@ -134,13 +134,13 @@ const posts = [
 
     descricao:"Exercícios simples para melhorar sua compreensão auditiva.",
 
-    imagem:"img/post4.jpg",
+    imagem:"../assets/listeningblog.png",
 
     autor:"Equipe",
 
     data:"08 Jul 2026",
 
-    leitura:"7 min"
+    audio:"7 min"
 
 },
 
@@ -154,7 +154,8 @@ const posts = [
 
     descricao:"Aprenda técnicas para compreender textos naturalmente.",
 
-    imagem:"img/post5.jpg",
+    imagem: "../assets/readingblog.png",
+
 
     autor:"Equipe",
 
@@ -174,7 +175,7 @@ const posts = [
 
     descricao:"Evite traduções literais e escreva de maneira natural.",
 
-    imagem:"img/post6.jpg",
+    imagem:"../assets/writingblog.png",
 
     autor:"Equipe",
 
@@ -185,6 +186,40 @@ const posts = [
 }
 
 ];
+
+
+
+function obterTextoBotao(categoria){
+
+    switch(categoria){
+
+        case "Grammar":
+            return "Aprenda Mais";
+
+        case "Vocabulary":
+            return "Amplie seu Vocabulário";
+
+        case "Speaking":
+            return "Pratique Agora";
+
+        case "Listening":
+            return "Ouça Agora";
+
+        case "Reading":
+            return "Continue Lendo";
+
+        case "Writing":
+            return "Escreva Melhor";
+
+        case "Pronunciation":
+            return "Treine a Pronúncia";
+
+        default:
+            return "Saiba Mais";
+
+    }
+
+}
 
 
 /*=========================
@@ -214,10 +249,6 @@ const tags = [
 
     "Business",
 
-    "TOEFL",
-
-    "IELTS",
-
     "Speaking",
 
     "Listening",
@@ -226,11 +257,11 @@ const tags = [
 
     "Writing",
 
-    "Phrasal Verbs",
+    "Phrasal Verbs"
 
-    "Idioms",
+    
 
-    "Conversation"
+    
 
 ];
 
@@ -692,7 +723,7 @@ function criarCard(post){
                     data-id="${post.id}"
                 >
 
-                    Leia Mais
+                   ${obterTextoBotao(post.categoria)}
 
                     <i class="fa-solid fa-arrow-right"></i>
 
@@ -704,7 +735,11 @@ function criarCard(post){
 
     `;
 
+    
+
 }
+
+
 
 
 /*=========================
