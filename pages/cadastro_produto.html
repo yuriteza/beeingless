@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cadastro de Produto</title>
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="../style/cadastro_produto.css">
+<link rel="icon" type="image/png" href="/assets/logo.png">
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ===============================
+            CÍRCULOS DECORATIVOS
+    ================================ -->
+
+    <div class="background-circles">
+
+        <span class="circle circle1"></span>
+        <span class="circle circle2"></span>
+        <span class="circle circle3"></span>
+        <span class="circle circle4"></span>
+        <span class="circle circle5"></span>
+        <span class="circle circle6"></span>
+
+    </div>
+
+    <!-- ===============================
+            CONTAINER PRINCIPAL
+    ================================ -->
+
+    <main class="cadastro-container">
+
+        <!-- ===============================
+                CABEÇALHO
+        ================================ -->
+
+        <header class="page-header">
+
+            <h1 id="tituloPagina"></h1>
+
+            <p id="descricaoPagina"></p>
+
+        </header>
+
+        <!-- ===============================
+                ETAPAS
+        ================================ -->
+
+        <section class="steps">
+
+            <div class="step active">
+
+                <div class="step-number">1</div>
+
+                <span>Informações</span>
+
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step">
+
+                <div class="step-number">2</div>
+
+                <span>Vídeo</span>
+
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step">
+
+                <div class="step-number">3</div>
+
+                <span>Capa</span>
+
+            </div>
+
+            <div class="step-line"></div>
+
+            <div class="step">
+
+                <div class="step-number">4</div>
+
+                <span>Publicação</span>
+
+            </div>
+
+        </section>
+
+        <!-- ===============================
+                FORMULÁRIO
+        ================================ -->
+
+        <form id="formCadastro">
+
+            <!-- ===============================
+                    INFORMAÇÕES
+            ================================ -->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <h2 id="tituloInformacoes"></h2>
+
+                    <p id="descricaoInformacoes"></p>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <div class="input-group">
+
+                        <label id="lblTitulo"></label>
+
+                        <input
+                            type="text"
+                            id="tituloAula"
+                            placeholder="">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label id="lblNivel"></label>
+
+                        <select id="nivel">
+
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label id="lblCategoria"></label>
+
+                        <select id="categoria">
+
+                        </select>
+
+                    </div>
+
+                    
+
+                </div>
+
+                <div class="input-group">
+
+                    <label id="lblDescricao"></label>
+
+                    <textarea
+                        id="descricao"
+                        rows="6"
+                        placeholder=""></textarea>
+
+                </div>
+
+            </section>
+
+            <!-- ===============================
+                    VÍDEO
+            ================================ -->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <h2 id="tituloVideo"></h2>
+
+                    <p id="descricaoVideo"></p>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <div class="upload-box">
+
+                        <label id="lblUploadVideo"></label>
+
+                        <input
+                            type="file"
+                            id="arquivoVideo"
+                            accept="video/*">
+
+                        <div
+                            class="preview-video"
+                            id="previewVideo">
+
+                        </div>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label id="lblYoutube"></label>
+
+                        <input
+                            type="url"
+                            id="youtube"
+                            placeholder="">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===============================
+                    CAPA
+            ================================ -->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <h2 id="tituloThumbnail"></h2>
+
+                    <p id="descricaoThumbnail"></p>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <div class="upload-box">
+
+                        <label id="lblThumbnail"></label>
+
+                        <input
+                            type="file"
+                            id="thumbnail"
+                            accept="image/*">
+
+                    </div>
+
+                    <div
+                        class="thumbnail-preview"
+                        id="previewThumbnail">
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===============================
+                    CONFIGURAÇÕES
+            ================================ -->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <h2 id="tituloConfiguracoes"></h2>
+
+                    <p id="descricaoConfiguracoes"></p>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <div class="input-group">
+
+                        <label id="lblDuracao"></label>
+
+                        <input
+                            type="text"
+                            id="duracao"
+                            placeholder="">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label id="lblOrdem"></label>
+
+                        <input
+                            type="number"
+                            id="ordem">
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label id="lblStatus"></label>
+
+                        <select id="status">
+
+                        </select>
+
+                    </div>
+
+                    <div class="input-group">
+
+                        <label id="lblVisibilidade"></label>
+
+                        <select id="visibilidade">
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ===============================
+                    BOTÕES
+            ================================ -->
+
+            <section class="buttons">
+
+                <button
+                    type="button"
+                    id="btnVisualizar">
+
+                </button>
+
+                <button
+                    type="button"
+                    id="btnRascunho">
+
+                </button>
+
+                <button
+                    type="submit"
+                    id="btnPublicar">
+
+                </button>
+
+            </section>
+
+        </form>
+
+    </main>
+
+    <!-- JavaScript -->
+
+    <script src="../js/cadastro_produto.js"></script>
+
+</body>
+
+</html>

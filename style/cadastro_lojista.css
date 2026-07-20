@@ -1,0 +1,1040 @@
+/*==================================================
+=                 RESET
+==================================================*/
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+
+    --primary:#2E7D32;
+    --primary-light:#4CAF50;
+    --background:#F6FBF7;
+    --card:#FFFFFF;
+    --text:#2D3436;
+    --border:#DCE5DD;
+    --shadow:rgba(0,0,0,.12);
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    min-height:100vh;
+
+    overflow-x:hidden;
+
+    font-family:
+    "Segoe UI",
+    Arial,
+    sans-serif;
+
+    background:
+    linear-gradient(
+        135deg,
+        #F4FBF5,
+        #ECF7EE,
+        #F7FCF8
+    );
+
+    position:relative;
+
+}
+
+/*==================================================
+=          CÍRCULOS DO FUNDO
+==================================================*/
+
+#background-circles{
+
+    position:fixed;
+
+    inset:0;
+
+    overflow:hidden;
+
+    pointer-events:none;
+
+    z-index:0;
+
+}
+
+/*==================================================
+=             ESTILO DOS CÍRCULOS
+==================================================*/
+
+
+.circle{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    pointer-events:none;
+
+    will-change:transform;
+
+}
+    
+    
+
+
+
+/*==================================================
+=             TAMANHOS
+==================================================*/
+
+.c1{
+
+    width:420px;
+    height:420px;
+
+    top:-150px;
+    left:-120px;
+
+    animation-duration:38s;
+
+}
+
+.c2{
+
+    width:260px;
+    height:260px;
+
+    top:8%;
+    right:-60px;
+
+    animation-duration:30s;
+
+}
+
+.c3{
+
+    width:160px;
+    height:160px;
+
+    left:18%;
+    bottom:5%;
+
+    animation-duration:28s;
+
+}
+
+.c4{
+
+    width:340px;
+    height:340px;
+
+    right:18%;
+    bottom:-150px;
+
+    animation-duration:45s;
+
+}
+
+.c5{
+
+    width:110px;
+    height:110px;
+
+    left:45%;
+    top:10%;
+
+    animation-duration:20s;
+
+}
+
+.c6{
+
+    width:200px;
+    height:200px;
+
+    left:72%;
+    top:52%;
+
+    animation-duration:34s;
+
+}
+
+.c7{
+
+    width:150px;
+    height:150px;
+
+    left:12%;
+    top:45%;
+
+    animation-duration:26s;
+
+}
+
+.c8{
+
+    width:95px;
+    height:95px;
+
+    right:26%;
+    top:22%;
+
+    animation-duration:24s;
+
+}
+
+.c9{
+
+    width:260px;
+    height:260px;
+
+    left:58%;
+    top:-100px;
+
+    animation-duration:40s;
+
+}
+
+.c10{
+
+    width:180px;
+    height:180px;
+
+    left:-60px;
+    bottom:15%;
+
+    animation-duration:36s;
+
+}
+
+.c11{
+
+    width:90px;
+    height:90px;
+
+    right:12%;
+    bottom:28%;
+
+    animation-duration:22s;
+
+}
+
+.c12{
+
+    width:320px;
+    height:320px;
+
+    left:35%;
+    bottom:-160px;
+
+    animation-duration:46s;
+
+}
+
+.c13{
+
+    width:140px;
+    height:140px;
+
+    top:30%;
+    left:80%;
+
+    animation-duration:25s;
+
+}
+
+.c14{
+
+    width:220px;
+    height:220px;
+
+    bottom:12%;
+    right:40%;
+
+    animation-duration:32s;
+
+}
+
+.c15{
+
+    width:130px;
+    height:130px;
+
+    top:75%;
+    left:65%;
+
+    animation-duration:27s;
+
+}
+
+/*==================================================
+=          CONTAINER PRINCIPAL
+==================================================*/
+
+#cadastro-container{
+
+    position:relative;
+
+    z-index:10;
+
+    width:min(1200px,92%);
+
+    margin:auto;
+
+    padding:50px 0;
+
+}
+
+/*==================================================
+=               CABEÇALHO
+==================================================*/
+
+#cabecalho{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+}
+
+#titulo{
+
+    font-size:3rem;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+#subtitulo{
+
+    font-size:1.1rem;
+
+    color:#6C757D;
+
+}
+
+/*==================================================
+=                 CARD
+==================================================*/
+
+#card-cadastro{
+
+    position:relative;
+
+    z-index:20;
+
+    background:
+    rgba(255,255,255,.72);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid
+    rgba(255,255,255,.7);
+
+    border-radius:28px;
+
+    padding:45px;
+
+    box-shadow:
+
+    0 20px 60px
+
+    rgba(46,125,50,.12);
+
+}
+
+/*==================================================
+=                FORMULÁRIO
+==================================================*/
+
+#formCadastro{
+
+    width:100%;
+
+}
+
+/*==================================================
+=                  GRID
+==================================================*/
+
+#grid-formulario{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px 35px;
+
+}
+
+/*==================================================
+=                  CAMPOS
+==================================================*/
+
+.campo{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.campo label{
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    color:#44524B;
+
+    margin-bottom:10px;
+
+}
+
+/*==================================================
+=                  INPUTS
+==================================================*/
+
+.campo input{
+
+    width:100%;
+
+    height:58px;
+
+    padding:0 18px;
+
+    border:2px solid var(--border);
+
+    border-radius:16px;
+
+    background:#FFFFFF;
+
+    font-size:16px;
+
+    color:var(--text);
+
+    transition:all .35s ease;
+
+}
+
+.campo input::placeholder{
+
+    color:#A5B1AA;
+
+}
+
+.campo input:hover{
+
+    border-color:#A9D5B1;
+
+}
+
+.campo input:focus{
+
+    outline:none;
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 5px
+
+        rgba(76,175,80,.15);
+
+}
+
+/*==================================================
+=                SENHA
+==================================================*/
+
+.senha-box{
+
+    position:relative;
+
+}
+
+.senha-box input{
+
+    padding-right:60px;
+
+}
+
+/*==================================================
+=              BOTÃO OLHO
+==================================================*/
+
+#btnSenha{
+
+    position:absolute;
+
+    top:50%;
+
+    right:8px;
+
+    transform:translateY(-50%);
+
+    width:42px;
+
+    height:42px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:transparent;
+
+    cursor:pointer;
+
+    color:#5E6A64;
+
+    transition:.3s;
+
+}
+
+#btnSenha:hover{
+
+    background:#EDF8EF;
+
+    color:var(--primary);
+
+}
+
+#btnSenha i{
+
+    font-size:16px;
+
+}
+
+/*==================================================
+=           MENSAGENS DE ERRO
+==================================================*/
+
+.campo small{
+
+    height:18px;
+
+    margin-top:8px;
+
+    color:#E53935;
+
+    font-size:.82rem;
+
+    font-weight:500;
+
+}
+
+/*==================================================
+=                 BOTÕES
+==================================================*/
+
+#botoes{
+
+    margin-top:45px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+/*==================================================
+=          BOTÃO CADASTRAR
+==================================================*/
+
+#btnCadastrar{
+
+    min-width:220px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    background:
+
+    linear-gradient(
+
+        135deg,
+
+        var(--primary),
+
+        var(--primary-light)
+
+    );
+
+    color:#FFFFFF;
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+
+        0 15px 30px
+
+        rgba(46,125,50,.25);
+
+}
+
+#btnCadastrar:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+        0 20px 40px
+
+        rgba(46,125,50,.35);
+
+}
+
+#btnCadastrar:active{
+
+    transform:scale(.98);
+
+}
+
+/*==================================================
+=            BOTÃO LIMPAR
+==================================================*/
+
+#btnLimpar{
+
+    min-width:180px;
+
+    height:58px;
+
+    border-radius:16px;
+
+    border:2px solid var(--primary);
+
+    background:#FFFFFF;
+
+    color:var(--primary);
+
+    font-size:17px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+}
+
+#btnLimpar:hover{
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+/*==================================================
+=        ANIMAÇÃO DOS CAMPOS
+==================================================*/
+
+.campo{
+
+    opacity:0;
+
+    animation:fadeUp .7s ease forwards;
+
+}
+
+.campo:nth-child(1){
+
+    animation-delay:.10s;
+
+}
+
+.campo:nth-child(2){
+
+    animation-delay:.18s;
+
+}
+
+.campo:nth-child(3){
+
+    animation-delay:.26s;
+
+}
+
+.campo:nth-child(4){
+
+    animation-delay:.34s;
+
+}
+
+.campo:nth-child(5){
+
+    animation-delay:.42s;
+
+}
+
+.campo:nth-child(6){
+
+    animation-delay:.50s;
+
+}
+
+/*==================================================
+=           ANIMAÇÃO DOS CÍRCULOS
+==================================================*/
+
+@keyframes floatCircle{
+
+    0%{
+
+        transform:
+        translate3d(0,0,0)
+        scale(1)
+        rotate(0deg);
+
+    }
+
+    20%{
+
+        transform:
+        translate3d(80px,-120px,0)
+        scale(1.08)
+        rotate(70deg);
+
+    }
+
+    40%{
+
+        transform:
+        translate3d(-100px,-220px,0)
+        scale(.95)
+        rotate(150deg);
+
+    }
+
+    60%{
+
+        transform:
+        translate3d(120px,-320px,0)
+        scale(1.12)
+        rotate(240deg);
+
+    }
+
+    80%{
+
+        transform:
+        translate3d(-80px,-160px,0)
+        scale(1.03)
+        rotate(310deg);
+
+    }
+
+    100%{
+
+        transform:
+        translate3d(0,0,0)
+        scale(1)
+        rotate(360deg);
+
+    }
+
+}
+
+/*==================================================
+=          ANIMAÇÃO DOS CAMPOS
+==================================================*/
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:
+        translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+        translateY(0);
+
+    }
+
+}
+
+/*==================================================
+=           EFEITO PULSANTE
+==================================================*/
+
+@keyframes pulse{
+
+    0%{
+
+        opacity:.20;
+
+    }
+
+    50%{
+
+        opacity:.45;
+
+    }
+
+    100%{
+
+        opacity:.20;
+
+    }
+
+}
+
+.circle{
+
+   
+
+    animation-timing-function:
+    linear,
+    ease-in-out;
+
+    animation-iteration-count:
+    infinite,
+    infinite;
+
+}
+
+/*==================================================
+=        MELHOR PERFORMANCE
+==================================================*/
+
+.circle{
+
+    will-change:
+    transform,
+    opacity;
+
+    backface-visibility:hidden;
+
+    transform:translate3d(0,0,0);
+
+}
+
+/*==================================================
+=      GARANTE A CAMADA DOS ELEMENTOS
+==================================================*/
+
+#background-circles{
+
+    z-index:0;
+
+}
+
+#cadastro-container{
+
+    position:relative;
+
+    z-index:20;
+
+}
+
+#card-cadastro{
+
+    position:relative;
+
+    z-index:30;
+
+}
+
+#formCadastro{
+
+    position:relative;
+
+    z-index:40;
+
+}
+
+/*==================================================
+=             RESPONSIVIDADE
+==================================================*/
+
+@media(max-width:992px){
+
+    #grid-formulario{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+
+    }
+
+    #titulo{
+
+        font-size:2.4rem;
+
+    }
+
+    #card-cadastro{
+
+        padding:35px;
+
+    }
+
+}
+
+/*==================================================
+=               CELULAR
+==================================================*/
+
+@media(max-width:768px){
+
+    #cadastro-container{
+
+        width:94%;
+
+        padding:30px 0;
+
+    }
+
+    #titulo{
+
+        font-size:2rem;
+
+    }
+
+    #subtitulo{
+
+        font-size:.95rem;
+
+    }
+
+    #card-cadastro{
+
+        padding:25px;
+
+        border-radius:22px;
+
+    }
+
+    .campo input{
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+    #btnCadastrar,
+    #btnLimpar{
+
+        width:100%;
+
+    }
+
+    #botoes{
+
+        flex-direction:column;
+
+    }
+
+}
+
+/*==================================================
+=          CELULARES PEQUENOS
+==================================================*/
+
+@media(max-width:480px){
+
+    #titulo{
+
+        font-size:1.7rem;
+
+    }
+
+    #subtitulo{
+
+        font-size:.9rem;
+
+    }
+
+    #card-cadastro{
+
+        padding:20px;
+
+    }
+
+    .campo label{
+
+        font-size:.92rem;
+
+    }
+
+    .campo input{
+
+        height:50px;
+
+        padding:0 15px;
+
+    }
+
+}
+
+/*==================================================
+=      TAMANHOS MENORES DOS CÍRCULOS
+==================================================*/
+
+@media(max-width:768px){
+
+    .c1,
+    .c4,
+    .c9,
+    .c12{
+
+        width:220px;
+        height:220px;
+
+    }
+
+    .c2,
+    .c6,
+    .c14{
+
+        width:160px;
+        height:160px;
+
+    }
+
+}
+
+/*==================================================
+=         REMOVE SCROLL HORIZONTAL
+==================================================*/
+
+html,
+body{
+
+    overflow-x:hidden;
+
+}
