@@ -5,15 +5,11 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title id="Login "></title>
 
-    <link
-        rel="stylesheet"
-        href="/style/login.css">
+    <link rel="stylesheet" href="/style/login.css">
 
 </head>
 
@@ -25,7 +21,7 @@
 
     <header id="header">
 
-        
+
 
     </header>
 
@@ -36,21 +32,15 @@
 
     <main>
 
-        <section
-            class="auth-container"
-            id="authContainer">
+        <section class="auth-container" id="authContainer">
 
             <!-- ======================
                  LOGIN
             ======================= -->
 
-            <section
-                class="form-panel login-panel"
-                id="loginPanel">
+            <section class="form-panel login-panel" id="loginPanel">
 
-                <form
-                    id="loginForm"
-                    autocomplete="off">
+                <form id="loginForm" autocomplete="off">
 
                     <h1 id="loginTitle"></h1>
 
@@ -60,14 +50,10 @@
 
                     <div class="form-group">
 
-                        <label
-                            id="loginEmailLabel"
-                            for="loginEmail">
+                        <label id="loginEmailLabel" for="loginEmail">
                         </label>
 
-                        <input
-                            id="loginEmail"
-                            type="email">
+                        <input id="loginEmail" type="email">
 
                     </div>
 
@@ -75,14 +61,10 @@
 
                     <div class="form-group">
 
-                        <label
-                            id="loginPasswordLabel"
-                            for="loginPassword">
+                        <label id="loginPasswordLabel" for="loginPassword">
                         </label>
 
-                        <input
-                            id="loginPassword"
-                            type="password">
+                        <input id="loginPassword" type="password">
 
                     </div>
 
@@ -90,19 +72,17 @@
 
                     <div class="forgot-area">
 
-                        <a
-                            href="#"
-                            id="forgotPassword">
+                        <a href="#" id="forgotPassword">
                         </a>
 
                     </div>
 
                     <!-- Botão -->
 
-                    <button
-                        id="loginButton"
-                        type="submit">
+                    <button id="loginButton" type="button">
                     </button>
+
+                    <div id="mensagem"></div>
 
                     <!-- Separador -->
 
@@ -114,11 +94,9 @@
 
                     <!-- Google -->
 
-                    <button
-                        id="googleButton"
-                        type="button">
+                    <button id="googleButton" type="button">
 
-                        <img src="/assets/google.png "alt="Google">
+                        <img src="/assets/google.png " alt="Google">
 
                         <span id="googleText"></span>
 
@@ -132,13 +110,9 @@
                  CADASTRO
             ======================= -->
 
-            <section
-                class="form-panel register-panel"
-                id="registerPanel">
+            <section class="form-panel register-panel" id="registerPanel">
 
-                <form
-                    id="registerForm"
-                    autocomplete="off">
+                <form id="registerForm" autocomplete="off">
 
                     <h1 id="registerTitle"></h1>
 
@@ -148,14 +122,10 @@
 
                     <div class="form-group">
 
-                        <label
-                            id="registerNameLabel"
-                            for="registerName">
+                        <label id="registerNameLabel" for="registerName">
                         </label>
 
-                        <input
-                            id="registerName"
-                            type="text">
+                        <input id="registerName" type="text">
 
                     </div>
 
@@ -163,52 +133,52 @@
 
                     <div class="form-group">
 
-                        <label
-                            id="registerEmailLabel"
-                            for="registerEmail">
+                        <label id="registerEmailLabel" for="registerEmail">
                         </label>
 
-                        <input
-                            id="registerEmail"
-                            type="email">
+                        <input id="registerEmail" type="email">
 
                     </div>
-                                          <!-- Senha -->
+                      <div class="form-group">
+
+                        <label id="registerPhoneLabel" for="registerPhone">
+                            Telefone
+                        </label>
+
+                        <input id="registerPhone" type="tel" placeholder="(00) 00000-0000" pattern="\(\d{2}\)\s\d{4,5}-\d{4}">
+
+                    </div>
+                    <!-- Senha -->
 
                     <div class="form-group">
 
-                        <label
-                            id="registerPasswordLabel"
-                            for="registerPassword">
+                        <label id="registerPasswordLabel" for="registerPassword">
                         </label>
 
-                        <input
-                            id="registerPassword"
-                            type="password">
+                        <input id="registerPassword" type="password">
 
                     </div>
+
+
+                  
 
                     <!-- Confirmar Senha -->
 
                     <div class="form-group">
 
-                        <label
-                            id="confirmPasswordLabel"
-                            for="confirmPassword">
+                        <label id="confirmPasswordLabel" for="confirmPassword">
                         </label>
 
-                        <input
-                            id="confirmPassword"
-                            type="password">
+                        <input id="confirmPassword" type="password">
 
                     </div>
 
                     <!-- Botão -->
 
-                    <button
-                        id="registerButton"
-                        type="submit">
+                    <button id="registerButton" type="BUTTON">
                     </button>
+
+                    <DIV id="mensagem"></DIV>
 
                 </form>
 
@@ -218,31 +188,23 @@
                     PAINEL DESLIZANTE
             ====================================== -->
 
-            <section
-                class="overlay-container"
-                id="overlayContainer">
+            <section class="overlay-container" id="overlayContainer">
 
-                <div
-                    class="overlay"
-                    id="overlay">
+                <div class="overlay" id="overlay">
 
                     <!-- =========================
                             PAINEL ESQUERDO
                     ========================== -->
 
-                    <div
-                        class="overlay-panel overlay-left"
-                        id="overlayLeft">
+                    <div class="overlay-panel overlay-left" id="overlayLeft">
 
-                        
+
 
                         <h1 id="leftTitle"></h1>
 
                         <p id="leftDescription"></p>
 
-                        <button
-                            id="goLogin"
-                            type="button">
+                        <button id="goLogin" type="button">
                         </button>
 
                     </div>
@@ -251,18 +213,14 @@
                             PAINEL DIREITO
                     ========================== -->
 
-                    <div
-                        class="overlay-panel overlay-right"
-                        id="overlayRight">
+                    <div class="overlay-panel overlay-right" id="overlayRight">
 
-                        
+
                         <h1 id="rightTitle"></h1>
 
                         <p id="rightDescription"></p>
 
-                        <button
-                            id="goRegister"
-                            type="button">
+                        <button id="goRegister" type="button">
                         </button>
 
                     </div>
@@ -294,4 +252,3 @@
 </body>
 
 </html>
-                  

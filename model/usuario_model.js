@@ -1,21 +1,32 @@
-//CONEXAO com o banco de dados
+//=========================================================
+// CONEXÃO COM O BANCO DE DADOS
+//=========================================================
+
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Usuario
-// =========================
+//=========================================================
+// CADASTRAR USUÁRIO
+//=========================================================
 
 function cadastrar(usuario, callback) {
 
-    const sql = `INSERT INTO Usuario
-        ( nome,email,senha,
-        Loja_idLoja )
-        VALUES (?,?,?, ?)`;
+    const sql = `
+        INSERT INTO Usuario
+        (
+            nome,
+            telefone,
+            email,
+            senha,
+            Loja_idLoja
+        )
+        VALUES (?, ?, ?, ?, ?)
+    `;
 
     conexao.query(
         sql,
         [
             usuario.nome,
+            usuario.telefone,
             usuario.email,
             usuario.senha,
             usuario.Loja_idLoja
@@ -25,44 +36,64 @@ function cadastrar(usuario, callback) {
 
 }
 
-// =========================
-// Listar Usuarios
-// =========================
+//=========================================================
+// LISTAR USUÁRIOS
+//=========================================================
 
 function listar(callback) {
 
     const sql = `
-        SELECT * FROM Usuario
+        SELECT
+            u.idUsuario,
+            u.nome,
+            u.telefone,
+            u.email,
+            u.Loja_idLoja,
+            l.nome AS loja
+        FROM Usuario u
+        INNER JOIN Loja l
+            ON u.Loja_idLoja = l.idLoja
+        ORDER BY u.nome
     `;
 
     conexao.query(sql, callback);
 
 }
 
-// =========================
-// Buscar por ID
-// =========================
+//=========================================================
+// BUSCAR USUÁRIO POR ID
+//=========================================================
 
 function buscarPorId(id, callback) {
 
     const sql = `
-        SELECT *
-        FROM Usuario
-        WHERE idUsuario = ?
+        SELECT
+            u.idUsuario,
+            u.nome,
+            u.telefone,
+            u.email,
+            u.senha,
+            u.Loja_idLoja,
+            l.nome AS loja
+        FROM Usuario u
+        INNER JOIN Loja l
+            ON u.Loja_idLoja = l.idLoja
+        WHERE u.idUsuario = ?
     `;
 
     conexao.query(sql, [id], callback);
 
 }
 
-// =========================
-// Buscar por Email
-// =========================
+//=========================================================
+// BUSCAR USUÁRIO POR EMAIL
+//=========================================================
 
 function buscarPorEmail(email, callback) {
 
     const sql = `
-        SELECT * FROM Usuario
+        SELECT *
+        FROM Usuario
         WHERE email = ?
     `;
 
@@ -70,21 +101,20 @@ function buscarPorEmail(email, callback) {
 
 }
 
-// =========================
-// Atualizar Usuario
-// =========================
+//=========================================================
+// ATUALIZAR USUÁRIO
+//=========================================================
 
 function atualizar(id, usuario, callback) {
 
     const sql = `
         UPDATE Usuario
         SET
-
             nome = ?,
+            telefone = ?,
             email = ?,
             senha = ?,
             Loja_idLoja = ?
-
         WHERE idUsuario = ?
     `;
 
@@ -92,6 +122,7 @@ function atualizar(id, usuario, callback) {
         sql,
         [
             usuario.nome,
+            usuario.telefone,
             usuario.email,
             usuario.senha,
             usuario.Loja_idLoja,
@@ -102,9 +133,9 @@ function atualizar(id, usuario, callback) {
 
 }
 
-// =========================
-// Excluir Usuario
-// =========================
+//=========================================================
+// EXCLUIR USUÁRIO
+//=========================================================
 
 function excluir(id, callback) {
 
@@ -116,6 +147,10 @@ function excluir(id, callback) {
     conexao.query(sql, [id], callback);
 
 }
+
+//=========================================================
+// EXPORTAÇÃO DAS FUNÇÕES
+//=========================================================
 
 module.exports = {
 

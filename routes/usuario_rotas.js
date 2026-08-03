@@ -13,6 +13,7 @@ const router = express.Router();
 const UsuarioController = require("../controller/usuario_controller.js");
 
 router.post("/", UsuarioController.cadastrar);
+router.post("/login", UsuarioController.login);
 
 router.get("/", UsuarioController.listar);
 
@@ -21,5 +22,7 @@ router.get("/:id", UsuarioController.buscarPorId);
 router.put("/:id", UsuarioController.atualizar);
 
 router.delete("/:id", UsuarioController.excluir);
+
+
 
 module.exports = router;

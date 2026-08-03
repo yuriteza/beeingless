@@ -287,6 +287,56 @@ setText(
 );
 
 
+/*=========================================
+    MÁSCARA DO TELEFONE
+=========================================*/
+
+const telefone = document.getElementById("registerPhone");
+
+telefone.addEventListener("input", (e) => {
+
+    let valor = e.target.value;
+
+    // Remove tudo que não for número
+    valor = valor.replace(/\D/g, "");
+
+    // Limita a 11 números
+    valor = valor.substring(0, 11);
+
+    // Aplica a máscara
+    if (valor.length > 10) {
+
+        valor = valor.replace(
+            /^(\d{2})(\d{5})(\d{4}).*/,
+            "($1) $2-$3"
+        );
+
+    } else if (valor.length > 6) {
+
+        valor = valor.replace(
+            /^(\d{2})(\d{4})(\d+)/,
+            "($1) $2-$3"
+        );
+
+    } else if (valor.length > 2) {
+
+        valor = valor.replace(
+            /^(\d{2})(\d+)/,
+            "($1) $2"
+        );
+
+    } else if (valor.length > 0) {
+
+        valor = valor.replace(
+            /^(\d*)/,
+            "($1"
+        );
+
+    }
+
+    e.target.value = valor;
+
+});
 /*=========================================================
     PAINEL DIREITO
 =========================================================*/
@@ -367,93 +417,98 @@ btnGoRegister.addEventListener(
 
 );
 
-btnGoLogin.addEventListener(
 
-    "click",
 
-    function(){
 
-        showLogin();
+
+
+const btnEntrar = document.getElementById("loginButton");
+
+btnEntrar.addEventListener("click", () => {
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const senha = document.getElementById("loginPassword").value.trim();
+
+    const mensagem = document.getElementById("mensagem");
+
+    if (email === "" || senha === "") {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Preencha todos os campos.";
+        return;
 
     }
 
-);
+    if (senha.length < 6 || senha.length > 12) {
 
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha deve possuir entre 6 e 12 caracteres.";
+        return;
 
+    }
+
+    fetch("http://localhost:3000/usuario/login", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            email: email,
+            senha: senha
+        })
+
+    })
+
+    .then(res => res.json())
+
+    .then(resposta => {
+
+        if (resposta.sucesso) {
+
+            localStorage.setItem(
+                "usuario",
+                JSON.stringify(resposta.usuario)
+            );
+
+            mensagem.style.color = "green";
+            mensagem.innerHTML = "Login realizado com sucesso!";
+
+            setTimeout(() => {
+                window.location.href = "../index.html";
+            }, 800);
+
+        } else {
+
+            mensagem.style.color = "red";
+            mensagem.innerHTML = resposta.mensagem;
+
+        }
+
+    })
+
+    .catch(() => {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Erro ao conectar com o servidor.";
+
+    });
+
+});
 /*=========================================================
     EVENTO LOGIN
 =========================================================*/
 
-loginForm.addEventListener(
 
-    "submit",
-
-    function(event){
-
-        event.preventDefault();
-
-        console.clear();
-
-        console.log("========== LOGIN ==========");
-
-        console.log(
-            "Email:",
-            document.getElementById("loginEmail").value
-        );
-
-        console.log(
-            "Senha:",
-            document.getElementById("loginPassword").value
-        );
-
-        console.log("===========================");
-
-    }
-
-);
 
 
 /*=========================================================
     EVENTO CADASTRO
 =========================================================*/
 
-registerForm.addEventListener(
 
-    "submit",
-
-    function(event){
-
-        event.preventDefault();
-
-        console.clear();
-
-        console.log("======= CADASTRO =======");
-
-        console.log(
-            "Nome:",
-            document.getElementById("registerName").value
-        );
-
-        console.log(
-            "Email:",
-            document.getElementById("registerEmail").value
-        );
-
-        console.log(
-            "Senha:",
-            document.getElementById("registerPassword").value
-        );
-
-        console.log(
-            "Confirmar:",
-            document.getElementById("confirmPassword").value
-        );
-
-        console.log("========================");
-
-    }
-
-);
 
 
 /*=========================================================
@@ -626,41 +681,6 @@ loginForm.addEventListener(
 
 );
 
-registerForm.addEventListener(
-
-    "submit",
-
-    function(event){
-
-        event.preventDefault();
-
-        if(!validateRegister()){
-
-            return;
-
-        }
-
-        console.clear();
-
-        console.log("===== CADASTRO =====");
-
-        console.log(
-            "Nome:",
-            document.getElementById("registerName").value
-        );
-
-        console.log(
-            "Email:",
-            document.getElementById("registerEmail").value
-        );
-
-        console.log("====================");
-
-        // Aqui você poderá integrar sua API futuramente.
-
-    }
-
-);
 
 /*=========================================================
     LIMPAR FORMULÁRIOS
@@ -735,3 +755,217 @@ document.addEventListener(
 =========================================================*/
 
 window.app = app;
+
+
+
+
+//BOTAO CADASTRAR
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//===================================  ==================================================
+//===============================            ======================================================
+//=========================                      =============================================================
+//====================                                 ===================================================================
+//==============                                                 ============================================================================
+//===================                                                ===================================================================
+//======================                                               ==============================================================
+//=====================                                               =====================================================================
+//=======================                                          ===================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//==========================================================================================
+//============================= ============================================================
+//==========================================================================================
+//==========================================================================================
+document.getElementById("registerButton").addEventListener("click", () => {
+
+    const nome = document.getElementById("registerName").value.trim();
+    const email = document.getElementById("registerEmail").value.trim();
+    const telefone = document.getElementById("registerPhone").value.trim();
+    const senha = document.getElementById("registerPassword").value.trim();
+    const confirmPassword = document.getElementById("confirmPassword").value.trim();
+
+    const mensagem = document.getElementById("mensagem");
+
+    // Campos obrigatórios
+    if (
+        nome === "" ||
+        email === "" ||
+        telefone === "" ||
+        senha === "" ||
+        confirmPassword === ""
+    ) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Preencha todos os campos.";
+        return;
+
+    }
+
+    // Telefone
+    const somenteNumeros = telefone.replace(/\D/g, "");
+
+    if (somenteNumeros.length !== 11) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Digite um telefone válido.";
+        return;
+
+    }
+
+    // Tamanho da senha
+    if (senha.length < 6 || senha.length > 12) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha deve possuir entre 6 e 12 caracteres.";
+        return;
+
+    }
+
+    // Duas letras maiúsculas
+    const maiusculas = senha.match(/[A-Z]/g) || [];
+
+    if (maiusculas.length < 2) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha deve conter pelo menos duas letras maiúsculas.";
+        return;
+
+    }
+
+    // Duas letras minúsculas
+    const minusculas = senha.match(/[a-z]/g) || [];
+
+    if (minusculas.length < 2) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha deve conter pelo menos duas letras minúsculas.";
+        return;
+
+    }
+
+    // Número
+    if (!/[0-9]/.test(senha)) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha deve conter pelo menos um número.";
+        return;
+
+    }
+
+    // Não pode terminar com número
+    if (/\d$/.test(senha)) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha não pode terminar com um número.";
+        return;
+
+    }
+
+    // Não pode conter o nome
+    if (senha.toLowerCase().includes(nome.toLowerCase())) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha não pode conter o nome do usuário.";
+        return;
+
+    }
+
+    // Confirmação
+    if (senha !== confirmPassword) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "As senhas não coincidem.";
+        return;
+
+    }
+
+    // E-mail
+    if (
+        !email.includes("@gmail.com") &&
+        !email.includes("@hotmail.com") &&
+        !email.includes("@yahoo.com") &&
+        !email.includes("@outlook.com") &&
+        !email.includes("@icloud.com")
+    ) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Digite um e-mail válido.";
+        return;
+
+    }
+
+    const usuario = {
+
+        nome: nome,
+        email: email,
+        telefone: telefone,
+        senha: senha,
+        Loja_idLoja: 1
+
+    };
+
+    console.log(usuario);
+
+    fetch("http://localhost:3000/usuario", {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify(usuario)
+
+    })
+
+    .then(res => res.json())
+
+    .then(resposta => {
+
+        if (resposta.sucesso) {
+
+            mensagem.style.color = "green";
+            mensagem.innerHTML = resposta.mensagem;
+
+            document.getElementById("registerName").value = "";
+            document.getElementById("registerEmail").value = "";
+            document.getElementById("registerPhone").value = "";
+            document.getElementById("registerPassword").value = "";
+            document.getElementById("confirmPassword").value = "";
+
+            setTimeout(() => {
+
+                window.location.href = "../pages/login.html";
+
+            }, 1000);
+
+        } else {
+
+            mensagem.style.color = "red";
+            mensagem.innerHTML = resposta.mensagem;
+
+        }
+
+    })
+
+    .catch(() => {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Erro ao conectar com o servidor.";
+
+    });
+
+});

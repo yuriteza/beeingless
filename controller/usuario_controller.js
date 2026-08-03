@@ -1,25 +1,28 @@
-//==========================================
+//=========================================================
 // IMPORTA O MODEL
-// passe aqui o caminho correto do seu arquivo model
-//==========================================
+//=========================================================
 
 const usuarioModel = require("../model/usuario_model");
 
-//==========================================
+//=========================================================
 // CADASTRAR USUÁRIO
-//==========================================
+//=========================================================
 
 function cadastrar(req, res) {
 
     const usuario = req.body;
 
-    // Validação dos campos obrigatórios
+    // Caso não seja enviada a loja, utiliza a loja padrão
+    if (!usuario.Loja_idLoja) {
+        usuario.Loja_idLoja = 1;
+    }
 
+    // Validação dos campos obrigatórios
     if (
         !usuario.nome ||
+        !usuario.telefone ||
         !usuario.email ||
-        !usuario.senha ||
-        !usuario.Loja_idLoja
+        !usuario.senha
     ) {
 
         return res.status(400).json({
@@ -28,15 +31,6 @@ function cadastrar(req, res) {
         });
 
     }
-
-    // Caso não seja enviado o código da loja
-    if (!usuario.Loja_idLoja) {
-
-       usuario.Loja_idLoja = 1;
-
-    }
-
-    // Verifica se já existe um usuário com o mesmo e-mail
 
     usuarioModel.buscarPorEmail(usuario.email, (erro, resultado) => {
 
@@ -57,8 +51,6 @@ function cadastrar(req, res) {
             });
 
         }
-
-        // Cadastra o usuário
 
         usuarioModel.cadastrar(usuario, (erro, resultado) => {
 
@@ -85,9 +77,9 @@ function cadastrar(req, res) {
 
 }
 
-//==========================================
+//=========================================================
 // LISTAR USUÁRIOS
-//==========================================
+//=========================================================
 
 function listar(req, res) {
 
@@ -101,16 +93,16 @@ function listar(req, res) {
             });
 
         }
-        // Retorna a lista de usuários em formato JSON
+
         res.json(resultado);
 
     });
 
 }
 
-//==========================================
-// BUSCAR USUÁRIO POR ID
-//==========================================
+//=========================================================
+// BUSCAR POR ID
+//=========================================================
 
 function buscarPorId(req, res) {
 
@@ -135,21 +127,20 @@ function buscarPorId(req, res) {
             });
 
         }
-        // Retorna o usuário encontrado em formato JSON
+
         res.json(resultado[0]);
 
     });
 
 }
 
-//==========================================
-// ATUALIZAR USUÁRIO
-//==========================================
+//=========================================================
+// ATUALIZAR
+//=========================================================
 
 function atualizar(req, res) {
-    // Obtém o ID do usuário a ser atualizado a partir dos parâmetros da URL
+
     const id = req.params.id;
-    // Obtém os dados atualizados do usuário a partir do corpo da requisição
     const usuario = req.body;
 
     usuarioModel.atualizar(id, usuario, (erro, resultado) => {
@@ -163,21 +154,32 @@ function atualizar(req, res) {
 
         }
 
+        if (resultado.affectedRows == 0) {
+
+            return res.status(404).json({
+                sucesso: false,
+                mensagem: "Usuário não encontrado."
+            });
+
+        }
+
         res.json({
+
             sucesso: true,
             mensagem: "Usuário atualizado com sucesso."
+
         });
 
     });
 
 }
 
-//==========================================
-// EXCLUIR CLIENTE
-//==========================================
+//=========================================================
+// EXCLUIR
+//=========================================================
 
 function excluir(req, res) {
-    // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
+
     const id = req.params.id;
 
     usuarioModel.excluir(id, (erro, resultado) => {
@@ -186,23 +188,110 @@ function excluir(req, res) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir conta."
+                mensagem: "Erro ao excluir usuário."
+            });
+
+        }
+
+        if (resultado.affectedRows == 0) {
+
+            return res.status(404).json({
+                sucesso: false,
+                mensagem: "Usuário não encontrado."
             });
 
         }
 
         res.json({
+
             sucesso: true,
-            mensagem: "Conta excluída com sucesso."
+            mensagem: "Usuário excluído com sucesso."
+
         });
 
     });
 
 }
 
-//==========================================
+//=========================================================
+// LOGIN
+//=========================================================
+
+function login(req, res) {
+
+    const { email, senha } = req.body;
+
+    if (!email || !senha) {
+
+        return res.status(400).json({
+
+            sucesso: false,
+            mensagem: "Informe o e-mail e a senha."
+
+        });
+
+    }
+
+    usuarioModel.buscarPorEmail(email, (erro, resultado) => {
+
+        if (erro) {
+
+            return res.status(500).json({
+
+                sucesso: false,
+                mensagem: "Erro interno."
+
+            });
+
+        }
+
+        if (resultado.length === 0) {
+
+            return res.json({
+
+                sucesso: false,
+                mensagem: "E-mail ou senha inválidos."
+
+            });
+
+        }
+
+        const usuario = resultado[0];
+
+        if (usuario.senha !== senha) {
+
+            return res.json({
+
+                sucesso: false,
+                mensagem: "E-mail ou senha inválidos."
+
+            });
+
+        }
+
+        res.json({
+
+            sucesso: true,
+
+            usuario: {
+
+                id: usuario.idUsuario,
+                nome: usuario.nome,
+                telefone: usuario.telefone,
+                email: usuario.email,
+                Loja_idLoja: usuario.Loja_idLoja
+
+            }
+
+        });
+
+    });
+
+}
+
+//=========================================================
 // EXPORTAÇÃO
-//==========================================
+//=========================================================
 
 module.exports = {
 
@@ -210,6 +299,7 @@ module.exports = {
     listar,
     buscarPorId,
     atualizar,
-    excluir
+    excluir,
+    login
 
 };

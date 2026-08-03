@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Gerenciamento de Usuários</title>
+
+    <link rel="stylesheet" href="../style/gerenciamento_usuario_lojista.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+</head>
+
+<body>
+
+    <!-- ===========================
+            FUNDO ANIMADO
+    ============================ -->
+
+    <div id="background-circles"></div>
+
+    <!-- ===========================
+            CONTEÚDO
+    ============================ -->
+
+    <main class="container">
+
+        <!-- ===========================
+                TÍTULO
+        ============================ -->
+
+        <section class="titulo">
+
+            <h1 id="tituloPagina"></h1>
+
+            <p id="subtituloPagina"></p>
+
+        </section>
+
+        <!-- ===========================
+                PESQUISA
+        ============================ -->
+
+        <section class="pesquisa">
+
+            <input
+                type="text"
+                id="pesquisa"
+                placeholder="Pesquisar usuário...">
+
+            <select id="filtroStatus">
+
+            </select>
+
+            <button id="btnPesquisar">
+
+            </button>
+
+        </section>
+
+        <!-- ===========================
+                FORMULÁRIO
+        ============================ -->
+
+        <section class="card-formulario">
+
+            <h2 id="tituloFormulario"></h2>
+
+            <div class="linha">
+
+                <div class="campo">
+
+                    <label>Nome</label>
+
+                    <input
+                        type="text"
+                        id="nome">
+
+                </div>
+
+                <div class="campo">
+
+                    <label>E-mail</label>
+
+                    <input
+                        type="email"
+                        id="email">
+
+                </div>
+
+            </div>
+
+            <div class="linha">
+
+                <div class="campo">
+
+                    <label>Telefone</label>
+
+                    <input
+                        type="text"
+                        id="telefone">
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Status</label>
+
+                    <select id="status">
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="linha">
+
+                <div class="campo">
+
+                    <label>Data de Cadastro</label>
+
+                    <input
+                        type="text"
+                        id="cadastro">
+
+                </div>
+
+                <div class="campo">
+
+                    <label>Último Acesso</label>
+
+                    <input
+                        type="text"
+                        id="ultimoAcesso">
+
+                </div>
+
+            </div>
+
+            <div class="linha">
+
+                <div class="campo campo-grande">
+
+                    <label>Observações</label>
+
+                    <textarea id="observacoes"></textarea>
+
+                </div>
+
+            </div>
+
+            <div class="acoes">
+
+                <button id="btnSalvar"></button>
+
+                <button id="btnBloquear"></button>
+
+                <button id="btnExcluir"></button>
+
+                <button id="btnLimpar"></button>
+
+            </div>
+
+        </section>
+
+        <!-- ===========================
+                TABELA
+        ============================ -->
+
+        <section class="card-tabela">
+
+            <h2 id="tituloTabela"></h2>
+
+            <div class="table-responsive">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Foto</th>
+
+                            <th>Nome</th>
+
+                            <th>E-mail</th>
+
+                            <th>Telefone</th>
+
+                            <th>Status</th>
+
+                            <th>Cadastro</th>
+
+                            <th>Ações</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="listaUsuarios">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+        <!-- ===========================
+                PAGINAÇÃO
+        ============================ -->
+
+        <section class="paginacao">
+
+            <button id="btnAnterior">
+
+                <i class="fa-solid fa-chevron-left"></i>
+
+            </button>
+
+            <div id="numerosPaginas"></div>
+
+            <button id="btnProximo">
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </button>
+
+        </section>
+
+    </main>
+
+    <script src="../js/gerenciamento_usuario_lojista.js"></script>
+
+</body>
+
+</html>
