@@ -18,7 +18,6 @@ function cadastrar(req, res) {
     if (
         !produto.nome ||
         !produto.descricao ||
-        !produto.preco ||
         !produto.Loja_idLoja
     ) {
 

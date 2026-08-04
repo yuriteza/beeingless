@@ -1,3 +1,4 @@
+const fundo = document.getElementById("background-circles");
 const modal = document.getElementById("videoModal");
 const video = document.getElementById("videoPlayer");
 const closeBtn = document.querySelector(".close");
@@ -6,13 +7,16 @@ document.querySelectorAll(".play-btn").forEach(btn => {
 
     btn.addEventListener("click", () => {
 
-        const videoSrc = btn.dataset.video;
+        const card = btn.closest(".card");
+
+        const videoSrc = card.dataset.video;
 
         video.src = videoSrc;
 
         modal.style.display = "flex";
 
         video.play();
+
     });
 
 });
@@ -178,5 +182,11 @@ function animar(){
 
 }
 
+animar();
 
 
+window.addEventListener("resize", () => {
+
+    criarCirculos();
+
+});

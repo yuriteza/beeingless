@@ -147,39 +147,77 @@ function carregarTextos(){
 
 }
 
-/*=====================================================
-=
-=           LABELS
-=
-=====================================================*/
+/*==========================================================
+                TEXTOS DA PÁGINA
+==========================================================*/
 
 function carregarLabels(){
 
-    lblTitulo.textContent = "Título da Aula";
+    tituloPagina.textContent = "Cadastro de Produto";
 
-    lblNivel.textContent = "Nível";
+    descricaoPagina.textContent =
+    "Cadastre vídeos para sua loja.";
 
-    lblCategoria.textContent = "Categoria";
+    tituloInformacoes.textContent =
+    "Informações do Produto";
 
-    
+    descricaoInformacoes.textContent =
+    "Preencha os dados principais do vídeo.";
 
-    lblDescricao.textContent = "Descrição";
+    lblTitulo.textContent =
+    "Nome do Produto";
 
-    lblUploadVideo.textContent = "Arquivo de Vídeo";
+    tituloVideo.textContent =
+    "Vídeo do Produto";
 
-    lblYoutube.textContent = "Link do YouTube";
+    descricaoVideo.textContent =
+    "Faça upload do vídeo ou informe um link.";
 
-    lblThumbnail.textContent = "Imagem da Thumbnail";
+    lblUploadVideo.textContent =
+    "Arquivo do Vídeo";
 
-    lblDuracao.textContent = "Duração";
+    lblYoutube.textContent =
+    "Link do YouTube";
 
-    lblOrdem.textContent = "Ordem";
+    tituloThumbnail.textContent =
+    "Capa do Produto";
 
-    lblStatus.textContent = "Status";
+    descricaoThumbnail.textContent =
+    "Escolha uma imagem para representar o vídeo.";
 
-    lblVisibilidade.textContent = "Visibilidade";
+    lblThumbnail.textContent =
+    "Imagem da Capa";
+
+    tituloConfiguracoes.textContent =
+    "Configurações";
+
+    descricaoConfiguracoes.textContent =
+    "Defina o status e a visibilidade.";
+
+    lblDuracao.textContent =
+    "Duração";
+
+    lblOrdem.textContent =
+    "Ordem";
+
+    lblStatus.textContent =
+    "Status";
+
+    lblVisibilidade.textContent =
+    "Visibilidade";
+
+    btnVisualizar.textContent =
+    "Visualizar";
+
+    btnRascunho.textContent =
+    "Salvar Rascunho";
+
+    btnPublicar.textContent =
+    "Salvar Produto";
 
 }
+
+carregarLabels();
 
 /*=====================================================
 =
@@ -812,3 +850,108 @@ window.addEventListener(
     }
 
 );
+
+/*=========================================================
+            CADASTRAR PRODUTO
+=========================================================*/
+
+document.getElementById("btnSalvar").addEventListener("click", cadastrarProduto);
+
+function cadastrarProduto() {
+
+    const nome = document.getElementById("nome").value.trim();
+    const descricao = document.getElementById("descricao").value.trim();
+
+    const mensagem = document.getElementById("mensagem");
+
+    mensagem.innerHTML = "";
+    mensagem.style.color = "red";
+
+    /*==============================
+        VALIDAÇÕES
+    ==============================*/
+
+    if (nome === "") {
+
+        mensagem.innerHTML = "Informe o nome do produto.";
+        return;
+
+    }
+
+    if (descricao === "") {
+
+        mensagem.innerHTML = "Informe a descrição do produto.";
+        return;
+
+    }
+
+    /*==============================
+        OBJETO
+    ==============================*/
+
+    const produto = {
+
+        nome: nome,
+        descricao: descricao,
+        ativo: 1,
+        Loja_idLoja: 1
+
+    };
+
+    /*==============================
+        ENVIO
+    ==============================*/
+
+    fetch("http://localhost:3000/produto", {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify(produto)
+
+    })
+
+    .then(resposta => resposta.json())
+
+    .then(dados => {
+
+        if (dados.sucesso) {
+
+            mensagem.style.color = "green";
+            mensagem.innerHTML = dados.mensagem;
+
+            limparFormulario();
+
+        } else {
+
+            mensagem.style.color = "red";
+            mensagem.innerHTML = dados.mensagem;
+
+        }
+
+    })
+
+    .catch(() => {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Erro ao conectar ao servidor.";
+
+    });
+
+}
+
+/*=========================================================
+            LIMPAR
+=========================================================*/
+
+function limparFormulario() {
+
+    document.getElementById("nome").value = "";
+    document.getElementById("descricao").value = "";
+
+}

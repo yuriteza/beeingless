@@ -13,6 +13,7 @@ const router = express.Router();
 const UsuarioController = require("../controller/usuario_controller.js");
 
 router.post("/", UsuarioController.cadastrar);
+
 router.post("/login", UsuarioController.login);
 
 router.get("/", UsuarioController.listar);

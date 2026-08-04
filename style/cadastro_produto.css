@@ -347,7 +347,7 @@ body{
 
     background:#243b55;
 
-    color:#ffffff;
+    color:#fffefe;
 
     display:flex;
 
@@ -365,7 +365,7 @@ body{
 
     background:#51708d;
 
-    color:#F3FFF8;
+    color:#000000;
 
 }
 
@@ -815,7 +815,7 @@ body{
 
 #btnVisualizar{
 
-    background:rgba(255,255,255,.08);
+    background:rgba(218, 168, 32, 0.747);
 
     color:#000000;
 
@@ -825,7 +825,7 @@ body{
 
 #btnVisualizar:hover{
 
-    background:rgba(255,255,255,.15);
+    background:rgba(212, 158, 10, 0.849);
 
     transform:translateY(-3px);
 
@@ -839,15 +839,15 @@ body{
 
 #btnRascunho{
 
-    background:#264653;
+    background:#3387a8;
 
-    color:#6b6464;
+    color:#000000;
 
 }
 
 #btnRascunho:hover{
 
-    background:#2f5f72;
+    background:#286580;
 
     transform:translateY(-3px);
 
@@ -861,9 +861,9 @@ body{
 
 #btnPublicar{
 
-    background:#316872;
+    background:#4e7fad;
 
-    color:#126333;
+    color:#000000;
 
     box-shadow:0 10px 30px rgba(81,112,141,.35);
 

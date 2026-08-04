@@ -224,12 +224,11 @@ function animar(){
 
         Math.sin(Date.now()/1500+c.angulo)*0.08;
 
-        c.el.style.transform=
-
-        `translate(${c.x}px,${c.y}px)s
-         scale(${pulsar})
-         rotate(${c.angulo}deg)`;
-
+       c.el.style.transform = `
+    translate(${c.x}px, ${c.y}px)
+    scale(${pulsar})
+    rotate(${c.angulo}deg)
+`;
     });
 
     requestAnimationFrame(animar);

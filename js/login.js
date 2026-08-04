@@ -6,79 +6,79 @@ const app = {
 
     pageTitle: "Login",
 
-   
+
 
     footer: "© BEE • Todos os direitos reservados",
 
-    login:{
+    login: {
 
-        title:"Login",
+        title: "Login",
 
-        subtitle:"Entre utilizando sua conta.",
+        subtitle: "Entre utilizando sua conta.",
 
-        emailLabel:"E-mail",
+        emailLabel: "E-mail",
 
-        emailPlaceholder:"Digite seu e-mail",
+        emailPlaceholder: "Digite seu e-mail",
 
-        passwordLabel:"Senha",
+        passwordLabel: "Senha",
 
-        passwordPlaceholder:"Digite sua senha",
+        passwordPlaceholder: "Digite sua senha",
 
-        forgot:"Esqueceu sua senha?",
+        forgot: "Esqueceu sua senha?",
 
-        button:"Entrar",
+        button: "Entrar",
 
-        separator:"ou",
+        separator: "ou",
 
-        google:"Entrar com Google"
-
-    },
-
-    register:{
-
-        title:"Criar Conta",
-
-        subtitle:"Preencha os dados abaixo.",
-
-        nameLabel:"Nome",
-
-        namePlaceholder:"Digite seu nome",
-
-        emailLabel:"E-mail",
-
-        emailPlaceholder:"Digite seu e-mail",
-
-        passwordLabel:"Senha",
-
-        passwordPlaceholder:"Crie uma senha",
-
-        confirmLabel:"Confirmar senha",
-
-        confirmPlaceholder:"Confirme sua senha",
-
-        button:"Cadastrar"
+        google: "Entrar com Google"
 
     },
 
-    leftPanel:{
+    register: {
 
-        title:"Bem-vindo novamente ✧⁠◝⁠(⁠⁰⁠▿⁠⁰⁠)⁠◜⁠✧",
+        title: "Criar Conta",
+
+        subtitle: "Preencha os dados abaixo.",
+
+        nameLabel: "Nome",
+
+        namePlaceholder: "Digite seu nome",
+
+        emailLabel: "E-mail",
+
+        emailPlaceholder: "Digite seu e-mail",
+
+        passwordLabel: "Senha",
+
+        passwordPlaceholder: "Crie uma senha",
+
+        confirmLabel: "Confirmar senha",
+
+        confirmPlaceholder: "Confirme sua senha",
+
+        button: "Cadastrar"
+
+    },
+
+    leftPanel: {
+
+        title: "Bem-vindo novamente ✧⁠◝⁠(⁠⁰⁠▿⁠⁰⁠)⁠◜⁠✧",
 
         description:
-        "Já possui uma conta? Faça login para acessar sua plataforma ｡",
+            "Já possui uma conta? Faça login para acessar sua plataforma ｡",
 
-        button:"Entrar"
+        button: "Entrar"
 
     },
 
-    rightPanel:{
+    rightPanel: {
 
-        title:"Olá! Estamos feliz em telo(a) aqui (っ ͡ ͡º ⁠▿ ͡ ͡º ς)  ",
-       
+        title: "Olá! Estamos feliz em telo(a) aqui (っ ͡ ͡º ⁠▿ ͡ ͡º ς)  ",
+
         description:
-        "Ainda não possui cadastro? Crie sua conta gratuitamente ｡⁠",
+            "Ainda não possui cadastro? Crie sua conta gratuitamente ｡⁠",
 
-        button:"Criar Conta"
+        button: "Criar Conta"
 
     }
 
@@ -90,44 +90,44 @@ const app = {
 =========================================================*/
 
 const authContainer =
-document.getElementById("authContainer");
+    document.getElementById("authContainer");
 
 
 /*=========================================================
     FUNÇÃO AUXILIAR
 =========================================================*/
 
-function setText(id,text){
+function setText(id, text) {
 
-    const element=document.getElementById(id);
+    const element = document.getElementById(id);
 
-    if(element){
+    if (element) {
 
-        element.textContent=text;
-
-    }
-
-}
-
-function setPlaceholder(id,text){
-
-    const element=document.getElementById(id);
-
-    if(element){
-
-        element.placeholder=text;
+        element.textContent = text;
 
     }
 
 }
 
-function setImage(id,src){
+function setPlaceholder(id, text) {
 
-    const element=document.getElementById(id);
+    const element = document.getElementById(id);
 
-    if(element){
+    if (element) {
 
-        element.src=src;
+        element.placeholder = text;
+
+    }
+
+}
+
+function setImage(id, src) {
+
+    const element = document.getElementById(id);
+
+    if (element) {
+
+        element.src = src;
 
     }
 
@@ -138,20 +138,20 @@ function setImage(id,src){
     TÍTULO DA PÁGINA
 =========================================================*/
 
-document.title=app.pageTitle;
+document.title = app.pageTitle;
 
 
 /*=========================================================
     LOGOS
 =========================================================*/
 
-setImage("logo",app.logo);
+setImage("logo", app.logo);
 
-setImage("leftLogo",app.logo);
+setImage("leftLogo", app.logo);
 
-setImage("rightLogo",app.logo);
+setImage("rightLogo", app.logo);
 
-setImage("googleIcon",app.googleIcon);
+setImage("googleIcon", app.googleIcon);
 
 
 /*=========================================================
@@ -287,56 +287,6 @@ setText(
 );
 
 
-/*=========================================
-    MÁSCARA DO TELEFONE
-=========================================*/
-
-const telefone = document.getElementById("registerPhone");
-
-telefone.addEventListener("input", (e) => {
-
-    let valor = e.target.value;
-
-    // Remove tudo que não for número
-    valor = valor.replace(/\D/g, "");
-
-    // Limita a 11 números
-    valor = valor.substring(0, 11);
-
-    // Aplica a máscara
-    if (valor.length > 10) {
-
-        valor = valor.replace(
-            /^(\d{2})(\d{5})(\d{4}).*/,
-            "($1) $2-$3"
-        );
-
-    } else if (valor.length > 6) {
-
-        valor = valor.replace(
-            /^(\d{2})(\d{4})(\d+)/,
-            "($1) $2-$3"
-        );
-
-    } else if (valor.length > 2) {
-
-        valor = valor.replace(
-            /^(\d{2})(\d+)/,
-            "($1) $2"
-        );
-
-    } else if (valor.length > 0) {
-
-        valor = valor.replace(
-            /^(\d*)/,
-            "($1"
-        );
-
-    }
-
-    e.target.value = valor;
-
-});
 /*=========================================================
     PAINEL DIREITO
 =========================================================*/
@@ -372,29 +322,29 @@ setText(
 =========================================================*/
 
 const btnGoRegister =
-document.getElementById("goRegister");
+    document.getElementById("goRegister");
 
 const btnGoLogin =
-document.getElementById("goLogin");
+    document.getElementById("goLogin");
 
 const loginForm =
-document.getElementById("loginForm");
+    document.getElementById("loginForm");
 
 const registerForm =
-document.getElementById("registerForm");
+    document.getElementById("registerForm");
 
 
 /*=========================================================
     CONTROLE DO PAINEL
 =========================================================*/
 
-function showRegister(){
+function showRegister() {
 
     authContainer.classList.add("active");
 
 }
 
-function showLogin(){
+function showLogin() {
 
     authContainer.classList.remove("active");
 
@@ -409,7 +359,7 @@ btnGoRegister.addEventListener(
 
     "click",
 
-    function(){
+    function () {
 
         showRegister();
 
@@ -417,98 +367,93 @@ btnGoRegister.addEventListener(
 
 );
 
+btnGoLogin.addEventListener(
 
+    "click",
 
+    function () {
 
-
-
-const btnEntrar = document.getElementById("loginButton");
-
-btnEntrar.addEventListener("click", () => {
-
-    const email = document.getElementById("loginEmail").value.trim();
-    const senha = document.getElementById("loginPassword").value.trim();
-
-    const mensagem = document.getElementById("mensagem");
-
-    if (email === "" || senha === "") {
-
-        mensagem.style.color = "red";
-        mensagem.innerHTML = "Preencha todos os campos.";
-        return;
+        showLogin();
 
     }
 
-    if (senha.length < 6 || senha.length > 12) {
+);
 
-        mensagem.style.color = "red";
-        mensagem.innerHTML = "A senha deve possuir entre 6 e 12 caracteres.";
-        return;
 
-    }
-
-    fetch("http://localhost:3000/usuario/login", {
-
-        method: "POST",
-
-        headers: {
-            "Content-Type": "application/json"
-        },
-
-        body: JSON.stringify({
-            email: email,
-            senha: senha
-        })
-
-    })
-
-    .then(res => res.json())
-
-    .then(resposta => {
-
-        if (resposta.sucesso) {
-
-            localStorage.setItem(
-                "usuario",
-                JSON.stringify(resposta.usuario)
-            );
-
-            mensagem.style.color = "green";
-            mensagem.innerHTML = "Login realizado com sucesso!";
-
-            setTimeout(() => {
-                window.location.href = "../index.html";
-            }, 800);
-
-        } else {
-
-            mensagem.style.color = "red";
-            mensagem.innerHTML = resposta.mensagem;
-
-        }
-
-    })
-
-    .catch(() => {
-
-        mensagem.style.color = "red";
-        mensagem.innerHTML = "Erro ao conectar com o servidor.";
-
-    });
-
-});
 /*=========================================================
     EVENTO LOGIN
 =========================================================*/
 
+loginForm.addEventListener(
 
+    "submit",
+
+    function (event) {
+
+        event.preventDefault();
+
+        console.clear();
+
+        console.log("========== LOGIN ==========");
+
+        console.log(
+            "Email:",
+            document.getElementById("loginEmail").value
+        );
+
+        console.log(
+            "Senha:",
+            document.getElementById("loginPassword").value
+        );
+
+        console.log("===========================");
+
+    }
+
+);
 
 
 /*=========================================================
     EVENTO CADASTRO
 =========================================================*/
 
+registerForm.addEventListener(
 
+    "submit",
+
+    function (event) {
+
+        event.preventDefault();
+
+        console.clear();
+
+        console.log("======= CADASTRO =======");
+
+        console.log(
+            "Nome:",
+            document.getElementById("registerName").value
+        );
+
+        console.log(
+            "Email:",
+            document.getElementById("registerEmail").value
+        );
+
+        console.log(
+            "Senha:",
+            document.getElementById("registerPassword").value
+        );
+
+        console.log(
+            "Confirmar:",
+            document.getElementById("confirmPassword").value
+        );
+
+        console.log("========================");
+
+    }
+
+);
 
 
 /*=========================================================
@@ -516,20 +461,20 @@ btnEntrar.addEventListener("click", () => {
 =========================================================*/
 
 document
-.getElementById("googleButton")
-.addEventListener(
+    .getElementById("googleButton")
+    .addEventListener(
 
-    "click",
+        "click",
 
-    function(){
+        function () {
 
-        console.log(
-            "Login Google..."
-        );
+            console.log(
+                "Login Google..."
+            );
 
-    }
+        }
 
-);
+    );
 
 
 /*=========================================================
@@ -537,41 +482,41 @@ document
 =========================================================*/
 
 document
-.getElementById("forgotPassword")
-.addEventListener(
+    .getElementById("forgotPassword")
+    .addEventListener(
 
-    "click",
+        "click",
 
-    function(event){
+        function (event) {
 
-        event.preventDefault();
+            event.preventDefault();
 
-        console.log(
-            "Abrir recuperação de senha."
-        );
+            console.log(
+                "Abrir recuperação de senha."
+            );
 
-    }
+        }
 
-);
+    );
 /*=========================================================
     VALIDAÇÃO DOS CAMPOS
 =========================================================*/
 
-function isEmpty(value){
+function isEmpty(value) {
 
-    return value.trim()==="";
+    return value.trim() === "";
 
 }
 
-function validateLogin(){
+function validateLogin() {
 
     const email =
-    document.getElementById("loginEmail").value;
+        document.getElementById("loginEmail").value;
 
     const password =
-    document.getElementById("loginPassword").value;
+        document.getElementById("loginPassword").value;
 
-    if(isEmpty(email)){
+    if (isEmpty(email)) {
 
         alert("Informe seu e-mail.");
 
@@ -579,7 +524,7 @@ function validateLogin(){
 
     }
 
-    if(isEmpty(password)){
+    if (isEmpty(password)) {
 
         alert("Informe sua senha.");
 
@@ -591,21 +536,21 @@ function validateLogin(){
 
 }
 
-function validateRegister(){
+function validateRegister() {
 
     const name =
-    document.getElementById("registerName").value;
+        document.getElementById("registerName").value;
 
     const email =
-    document.getElementById("registerEmail").value;
+        document.getElementById("registerEmail").value;
 
     const password =
-    document.getElementById("registerPassword").value;
+        document.getElementById("registerPassword").value;
 
     const confirm =
-    document.getElementById("confirmPassword").value;
+        document.getElementById("confirmPassword").value;
 
-    if(isEmpty(name)){
+    if (isEmpty(name)) {
 
         alert("Informe seu nome.");
 
@@ -613,7 +558,7 @@ function validateRegister(){
 
     }
 
-    if(isEmpty(email)){
+    if (isEmpty(email)) {
 
         alert("Informe seu e-mail.");
 
@@ -621,7 +566,7 @@ function validateRegister(){
 
     }
 
-    if(isEmpty(password)){
+    if (isEmpty(password)) {
 
         alert("Informe uma senha.");
 
@@ -629,7 +574,7 @@ function validateRegister(){
 
     }
 
-    if(password!==confirm){
+    if (password !== confirm) {
 
         alert("As senhas não coincidem.");
 
@@ -649,11 +594,11 @@ loginForm.addEventListener(
 
     "submit",
 
-    function(event){
+    function (event) {
 
         event.preventDefault();
 
-        if(!validateLogin()){
+        if (!validateLogin()) {
 
             return;
 
@@ -681,18 +626,53 @@ loginForm.addEventListener(
 
 );
 
+registerForm.addEventListener(
+
+    "submit",
+
+    function (event) {
+
+        event.preventDefault();
+
+        if (!validateRegister()) {
+
+            return;
+
+        }
+
+        console.clear();
+
+        console.log("===== CADASTRO =====");
+
+        console.log(
+            "Nome:",
+            document.getElementById("registerName").value
+        );
+
+        console.log(
+            "Email:",
+            document.getElementById("registerEmail").value
+        );
+
+        console.log("====================");
+
+        // Aqui você poderá integrar sua API futuramente.
+
+    }
+
+);
 
 /*=========================================================
     LIMPAR FORMULÁRIOS
 =========================================================*/
 
-function clearLogin(){
+function clearLogin() {
 
     loginForm.reset();
 
 }
 
-function clearRegister(){
+function clearRegister() {
 
     registerForm.reset();
 
@@ -706,7 +686,7 @@ btnGoRegister.addEventListener(
 
     "click",
 
-    function(){
+    function () {
 
         clearLogin();
 
@@ -718,7 +698,7 @@ btnGoLogin.addEventListener(
 
     "click",
 
-    function(){
+    function () {
 
         clearRegister();
 
@@ -730,7 +710,7 @@ btnGoLogin.addEventListener(
     INICIALIZAÇÃO
 =========================================================*/
 
-function init(){
+function init() {
 
     authContainer.classList.remove("active");
 
@@ -758,43 +738,13 @@ window.app = app;
 
 
 
-
-//BOTAO CADASTRAR
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//===================================  ==================================================
-//===============================            ======================================================
-//=========================                      =============================================================
-//====================                                 ===================================================================
-//==============                                                 ============================================================================
-//===================                                                ===================================================================
-//======================                                               ==============================================================
-//=====================                                               =====================================================================
-//=======================                                          ===================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//==========================================================================================
-//============================= ============================================================
-//==========================================================================================
-//==========================================================================================
 document.getElementById("registerButton").addEventListener("click", () => {
 
     const nome = document.getElementById("registerName").value.trim();
     const email = document.getElementById("registerEmail").value.trim();
-    const telefone = document.getElementById("registerPhone").value.trim();
     const senha = document.getElementById("registerPassword").value.trim();
-    const confirmPassword = document.getElementById("confirmPassword").value.trim();
-
+    const confirmPassword = document.getElementById("confirmPassword").value;
+    const telefone = document.getElementById("registerPhone").value.trim();
     const mensagem = document.getElementById("mensagem");
 
     // Campos obrigatórios
@@ -931,26 +881,105 @@ document.getElementById("registerButton").addEventListener("click", () => {
 
     })
 
+        .then(res => res.json())
+
+        .then(resposta => {
+
+            if (resposta.sucesso) {
+
+                mensagem.style.color = "green";
+                mensagem.innerHTML = resposta.mensagem;
+
+                document.getElementById("registerName").value = "";
+                document.getElementById("registerEmail").value = "";
+                document.getElementById("registerPhone").value = "";
+                document.getElementById("registerPassword").value = "";
+                document.getElementById("confirmPassword").value = "";
+
+                setTimeout(() => {
+
+                    window.location.href = "../pages/login.html";
+
+                }, 1000);
+
+            } else {
+
+                mensagem.style.color = "red";
+                mensagem.innerHTML = resposta.mensagem;
+
+            }
+
+        })
+
+        .catch(() => {
+
+            mensagem.style.color = "red";
+            mensagem.innerHTML = "Erro ao conectar com o servidor.";
+
+        });
+
+});
+
+
+
+
+const btnEntrar = document.getElementById("loginButton");
+
+btnEntrar.addEventListener("click", () => {
+
+    const email = document.getElementById("loginEmail").value.trim();
+    const senha = document.getElementById("loginPassword").value.trim();
+
+    const mensagem = document.getElementById("mensagem");
+
+    if (email === "" || senha === "") {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "Preencha todos os campos.";
+        return;
+
+    }
+
+    if (senha.length < 6 || senha.length > 12) {
+
+        mensagem.style.color = "red";
+        mensagem.innerHTML = "A senha deve possuir entre 6 e 12 caracteres.";
+        return;
+
+    }
+
+    fetch("http://localhost:3000/usuario/login", {
+
+        method: "POST",
+
+        headers: {
+            "Content-Type": "application/json"
+        },
+
+        body: JSON.stringify({
+            email: email,
+            senha: senha
+        })
+
+    })
+
     .then(res => res.json())
 
     .then(resposta => {
 
         if (resposta.sucesso) {
 
-            mensagem.style.color = "green";
-            mensagem.innerHTML = resposta.mensagem;
+            localStorage.setItem(
+                "usuario",
+                JSON.stringify(resposta.usuario)
+            );
 
-            document.getElementById("registerName").value = "";
-            document.getElementById("registerEmail").value = "";
-            document.getElementById("registerPhone").value = "";
-            document.getElementById("registerPassword").value = "";
-            document.getElementById("confirmPassword").value = "";
+            mensagem.style.color = "green";
+            mensagem.innerHTML = "Login realizado com sucesso!";
 
             setTimeout(() => {
-
-                window.location.href = "../pages/login.html";
-
-            }, 1000);
+                window.location.href = "../index.html";
+            }, 800);
 
         } else {
 

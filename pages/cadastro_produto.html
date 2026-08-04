@@ -5,26 +5,35 @@
 
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Cadastro de Produto</title>
 
     <!-- CSS -->
+    <link
+        rel="stylesheet"
+        href="../style/cadastro_produto.css">
 
-    <link rel="stylesheet" href="../style/cadastro_produto.css">
-<link rel="icon" type="image/png" href="/assets/logo.png">
+    <!-- Ícone -->
+    <link
+        rel="icon"
+        type="image/png"
+        href="../assets/logo.png">
+
     <!-- Font Awesome -->
-
-    <link rel="stylesheet"
+    <link
+        rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
 
-    <!-- ===============================
-            CÍRCULOS DECORATIVOS
-    ================================ -->
+    <!--=========================================
+                CÍRCULOS DECORATIVOS
+    ==========================================-->
 
     <div class="background-circles">
 
@@ -37,15 +46,15 @@
 
     </div>
 
-    <!-- ===============================
-            CONTAINER PRINCIPAL
-    ================================ -->
+    <!--=========================================
+                CONTAINER PRINCIPAL
+    ==========================================-->
 
     <main class="cadastro-container">
 
-        <!-- ===============================
-                CABEÇALHO
-        ================================ -->
+        <!--=========================================
+                    CABEÇALHO
+        ==========================================-->
 
         <header class="page-header">
 
@@ -55,15 +64,17 @@
 
         </header>
 
-        <!-- ===============================
-                ETAPAS
-        ================================ -->
+        <!--=========================================
+                    ETAPAS
+        ==========================================-->
 
         <section class="steps">
 
             <div class="step active">
 
-                <div class="step-number">1</div>
+                <div class="step-number">
+                    1
+                </div>
 
                 <span>Informações</span>
 
@@ -73,7 +84,9 @@
 
             <div class="step">
 
-                <div class="step-number">2</div>
+                <div class="step-number">
+                    2
+                </div>
 
                 <span>Vídeo</span>
 
@@ -83,7 +96,9 @@
 
             <div class="step">
 
-                <div class="step-number">3</div>
+                <div class="step-number">
+                    3
+                </div>
 
                 <span>Capa</span>
 
@@ -93,7 +108,9 @@
 
             <div class="step">
 
-                <div class="step-number">4</div>
+                <div class="step-number">
+                    4
+                </div>
 
                 <span>Publicação</span>
 
@@ -101,15 +118,15 @@
 
         </section>
 
-        <!-- ===============================
-                FORMULÁRIO
-        ================================ -->
+        <!--=========================================
+                    FORMULÁRIO
+        ==========================================-->
 
         <form id="formCadastro">
 
-            <!-- ===============================
-                    INFORMAÇÕES
-            ================================ -->
+                        <!--=========================================
+                        INFORMAÇÕES
+            ==========================================-->
 
             <section class="card">
 
@@ -123,57 +140,55 @@
 
                 <div class="grid-2">
 
+                    <!-- TÍTULO -->
+
                     <div class="input-group">
 
-                        <label id="lblTitulo"></label>
+                        <label
+                            id="lblTitulo"
+                            for="nome">
+                        </label>
 
                         <input
                             type="text"
-                            id="tituloAula"
-                            placeholder="">
+                            id="nome"
+                            required>
 
                     </div>
-
-                    <div class="input-group">
-
-                        <label id="lblNivel"></label>
-
-                        <select id="nivel">
-
-                        </select>
-
-                    </div>
-
-                    <div class="input-group">
-
-                        <label id="lblCategoria"></label>
-
-                        <select id="categoria">
-
-                        </select>
-
-                    </div>
-
-                    
 
                 </div>
 
+                <!-- DESCRIÇÃO -->
+
                 <div class="input-group">
 
-                    <label id="lblDescricao"></label>
+                    <label
+                        id="lblDescricao"
+                        for="descricao">
+                    </label>
 
                     <textarea
                         id="descricao"
                         rows="6"
-                        placeholder=""></textarea>
+                        required>
+                    </textarea>
 
+                </div>
+
+                <!-- MENSAGEM -->
+
+                <div
+                    id="mensagem"
+                    class="mensagem">
                 </div>
 
             </section>
 
-            <!-- ===============================
-                    VÍDEO
-            ================================ -->
+
+
+                        <!--=========================================
+                        VÍDEO
+            ==========================================-->
 
             <section class="card">
 
@@ -187,9 +202,14 @@
 
                 <div class="grid-2">
 
+                    <!-- Upload do vídeo -->
+
                     <div class="upload-box">
 
-                        <label id="lblUploadVideo"></label>
+                        <label
+                            id="lblUploadVideo"
+                            for="arquivoVideo">
+                        </label>
 
                         <input
                             type="file"
@@ -200,18 +220,26 @@
                             class="preview-video"
                             id="previewVideo">
 
+                            <i class="fa-solid fa-video"></i>
+
+                            <p id="textoPreviewVideo"></p>
+
                         </div>
 
                     </div>
 
+                    <!-- Link do YouTube -->
+
                     <div class="input-group">
 
-                        <label id="lblYoutube"></label>
+                        <label
+                            id="lblYoutube"
+                            for="youtube">
+                        </label>
 
                         <input
                             type="url"
-                            id="youtube"
-                            placeholder="">
+                            id="youtube">
 
                     </div>
 
@@ -219,9 +247,9 @@
 
             </section>
 
-            <!-- ===============================
-                    CAPA
-            ================================ -->
+                        <!--=========================================
+                        CAPA (THUMBNAIL)
+            ==========================================-->
 
             <section class="card">
 
@@ -235,9 +263,14 @@
 
                 <div class="grid-2">
 
+                    <!-- Upload da Thumbnail -->
+
                     <div class="upload-box">
 
-                        <label id="lblThumbnail"></label>
+                        <label
+                            id="lblThumbnail"
+                            for="thumbnail">
+                        </label>
 
                         <input
                             type="file"
@@ -246,9 +279,15 @@
 
                     </div>
 
+                    <!-- Preview da Thumbnail -->
+
                     <div
                         class="thumbnail-preview"
                         id="previewThumbnail">
+
+                        <i class="fa-regular fa-image"></i>
+
+                        <p id="textoPreviewThumbnail"></p>
 
                     </div>
 
@@ -256,9 +295,9 @@
 
             </section>
 
-            <!-- ===============================
+                        <!--=========================================
                     CONFIGURAÇÕES
-            ================================ -->
+            ==========================================-->
 
             <section class="card">
 
@@ -272,42 +311,70 @@
 
                 <div class="grid-2">
 
+                    <!-- Duração -->
+
                     <div class="input-group">
 
-                        <label id="lblDuracao"></label>
+                        <label
+                            id="lblDuracao"
+                            for="duracao">
+                        </label>
 
                         <input
                             type="text"
-                            id="duracao"
-                            placeholder="">
+                            id="duracao">
 
                     </div>
 
+                    <!-- Ordem -->
+
                     <div class="input-group">
 
-                        <label id="lblOrdem"></label>
+                        <label
+                            id="lblOrdem"
+                            for="ordem">
+                        </label>
 
                         <input
                             type="number"
-                            id="ordem">
+                            id="ordem"
+                            min="1">
 
                     </div>
 
+                    <!-- Status -->
+
                     <div class="input-group">
 
-                        <label id="lblStatus"></label>
+                        <label
+                            id="lblStatus"
+                            for="status">
+                        </label>
 
                         <select id="status">
+
+                            <option value="">Selecione</option>
+                            <option value="Ativo">Ativo</option>
+                            <option value="Inativo">Inativo</option>
 
                         </select>
 
                     </div>
 
+                    <!-- Visibilidade -->
+
                     <div class="input-group">
 
-                        <label id="lblVisibilidade"></label>
+                        <label
+                            id="lblVisibilidade"
+                            for="visibilidade">
+                        </label>
 
                         <select id="visibilidade">
+
+                            <option value="">Selecione</option>
+                            <option value="Publico">Público</option>
+                            <option value="Privado">Privado</option>
 
                         </select>
 
@@ -317,28 +384,25 @@
 
             </section>
 
-            <!-- ===============================
-                    BOTÕES
-            ================================ -->
+            <!--=========================================
+                        BOTÕES
+            ==========================================-->
 
             <section class="buttons">
 
                 <button
                     type="button"
                     id="btnVisualizar">
-
                 </button>
 
                 <button
                     type="button"
                     id="btnRascunho">
-
                 </button>
 
                 <button
                     type="submit"
                     id="btnPublicar">
-
                 </button>
 
             </section>
@@ -347,7 +411,9 @@
 
     </main>
 
-    <!-- JavaScript -->
+    <!--=========================================
+                JAVASCRIPT
+    ==========================================-->
 
     <script src="../js/cadastro_produto.js"></script>
 
