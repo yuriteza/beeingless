@@ -7,14 +7,19 @@
 
 
 const express = require("express");
+
 // Importando o módulo express para criar rotas e lidar com requisições HTTP.
 const router = express.Router();
+
 // Criando um objeto router para definir as rotas relacionadas às imagens de produto.
 const Imagem_ProdutoController = require("../controller/imagem_produto_controller.js");
 
 router.post("/", Imagem_ProdutoController.cadastrar);
 
 router.get("/", Imagem_ProdutoController.listar);
+
+// Listar imagens de um produto
+router.get("/produto/:id", Imagem_ProdutoController.listarPorProduto);
 
 router.get("/:id", Imagem_ProdutoController.buscarPorId);
 

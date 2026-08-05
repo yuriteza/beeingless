@@ -26,35 +26,11 @@ function cadastrar(req, res) {
 
     }
 
-    // Caso não seja enviado o código da loja
-    if (!imagem_produto.Produto_idProduto) {
-
-       imagem_produto.Produto_idProduto = 1;
-
-    }
+    
 
     // Verifica se já existe uma imagem de produto com o mesmo arquivo
 
-    imagem_produtoModel.buscarPorArquivo(imagem_produto.arquivo, (erro, resultado) => {
-
-        if (erro) {
-
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao consultar o banco de dados."
-            });
-
-        }
-
-        if (resultado.length > 0) {
-
-            return res.status(409).json({
-                sucesso: false,
-                mensagem: "Arquivo de imagem já cadastrado."
-            });
-
-        }
-
+   
         // Cadastra a imagem de produto
 
         imagem_produtoModel.cadastrar(imagem_produto, (erro, resultado) => {
@@ -77,6 +53,25 @@ function cadastrar(req, res) {
             });
 
         });
+
+    }
+
+function listarPorProduto(req, res) {
+
+    const idProduto = req.params.id;
+
+    imagem_produtoModel.listarPorProduto(idProduto, (erro, resultado) => {
+
+        if (erro) {
+
+            return res.status(500).json({
+                sucesso: false,
+                mensagem: "Erro ao listar imagens."
+            });
+
+        }
+
+        res.json(resultado);
 
     });
 
@@ -149,6 +144,19 @@ function atualizar(req, res) {
     // Obtém os dados atualizados da imagem de produto a partir do corpo da requisição
     const imagem_produto = req.body;
 
+if (
+    !imagem_produto.arquivo ||
+    !imagem_produto.Produto_idProduto
+) {
+
+    return res.status(400).json({
+        sucesso: false,
+        mensagem: "Preencha todos os campos."
+    });
+
+}
+
+
     imagem_produtoModel.atualizar(id, imagem_produto, (erro, resultado) => {
 
         if (erro) {
@@ -177,23 +185,45 @@ function excluir(req, res) {
     // Obtém o ID da imagem de produto a ser excluída a partir dos parâmetros da URL
     const id = req.params.id;
 
-    imagem_produtoModel.excluir(id, (erro, resultado) => {
+    imagem_produtoModel.buscarPorId(id, (erro, resultado) => {
+
+    if (erro) {
+
+        return res.status(500).json({
+            sucesso: false,
+            mensagem: "Erro ao buscar imagem."
+        });
+
+    }
+
+    if (resultado.length === 0) {
+
+        return res.status(404).json({
+            sucesso: false,
+            mensagem: "Imagem não encontrada."
+        });
+
+    }
+
+    imagem_produtoModel.excluir(id, (erro) => {
 
         if (erro) {
 
             return res.status(500).json({
                 sucesso: false,
-                mensagem: "Erro ao excluir imagem de produto."
+                mensagem: "Erro ao excluir imagem."
             });
 
         }
 
         res.json({
             sucesso: true,
-            mensagem: "Imagem de produto excluída com sucesso."
+            mensagem: "Imagem excluída com sucesso."
         });
 
     });
+
+});
 
 }
 
@@ -205,6 +235,7 @@ module.exports = {
 
     cadastrar,
     listar,
+    listarPorProduto,
     buscarPorId,
     atualizar,
     excluir

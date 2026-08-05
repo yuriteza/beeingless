@@ -13,17 +13,22 @@ function cadastrar(req, res) {
 
     const produto = req.body;
 
+    if (produto.ativo === undefined) {
+
+    produto.ativo = true;
+
+}
+
     // Validação dos campos obrigatórios
 
     if (
         !produto.nome ||
-        !produto.descricao ||
-        !produto.Loja_idLoja
+        !produto.descricao 
     ) {
 
         return res.status(400).json({
             sucesso: false,
-            mensagem: "Preencha todos os campos."
+            mensagem: "Nome e descrição são obrigatórios."
         });
 
     }
@@ -85,7 +90,7 @@ function cadastrar(req, res) {
 }
 
 //==========================================
-// LISTAR USUÁRIOS
+// LISTAR PRODUTOS
 //==========================================
 
 function listar(req, res) {
@@ -179,23 +184,53 @@ function excluir(req, res) {
     // Obtém o ID do cliente a ser excluído a partir dos parâmetros da URL
     const id = req.params.id;
 
-    produtoModel.excluir(id, (erro, resultado) => {
+    produtoModel.buscarPorId(id, (erro, resultado) => {
+
+    if (erro) {
+
+        return res.status(500).json({
+
+            sucesso:false,
+            mensagem:"Erro ao buscar produto."
+
+        });
+
+    }
+
+    if (resultado.length == 0) {
+
+        return res.status(404).json({
+
+            sucesso:false,
+            mensagem:"Produto não encontrado."
+
+        });
+
+    }
+
+    produtoModel.excluir(id, (erro) => {
 
         if (erro) {
 
             return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao excluir produto."
+
+                sucesso:false,
+                mensagem:"Erro ao excluir produto."
+
             });
 
         }
 
         res.json({
-            sucesso: true,
-            mensagem: "Produto excluído com sucesso."
+
+            sucesso:true,
+            mensagem:"Produto excluído com sucesso."
+
         });
 
     });
+
+});
 
 }
 

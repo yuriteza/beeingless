@@ -2,20 +2,21 @@
 const conexao = require("../conexao/conexao.js");
 
 // =========================
-// Cadastrar Usuario
+// Cadastrar Produto
 // =========================
 
 function cadastrar(produto, callback) {
 
     const sql = `INSERT INTO Produto
-        ( nome, descricao,  Loja_idLoja )
-        VALUES ( ?, ?,  ?)`;
+        ( nome, descricao, ativo, Loja_idLoja )
+        VALUES ( ?, ?, ?, ?)`;
 
     conexao.query(
         sql,
         [
             produto.nome,
             produto.descricao,
+            produto.ativo,
             produto.Loja_idLoja
         ],
         callback
@@ -25,7 +26,7 @@ function cadastrar(produto, callback) {
 
        
 // =========================
-// Listar Usuarios
+// Listar Produtos
 // =========================
 
 function listar(callback) {
@@ -55,20 +56,20 @@ function buscarPorId(id, callback) {
 }
 
 // =========================
-// Buscar por Email
+// Buscar por Nome
 // =========================
 
-function buscarPorEmail(email, callback) {
+function buscarPorNome(nome, callback) {
 
     const sql = `
-        SELECT * FROM Produto
-        WHERE email = ?
+        SELECT *
+        FROM Produto
+        WHERE nome = ?
     `;
 
-    conexao.query(sql, [email], callback);
+    conexao.query(sql, [nome], callback);
 
 }
-
 // =========================
 // Atualizar Produto
 // =========================
@@ -81,6 +82,7 @@ function atualizar(id, produto, callback) {
 
             nome = ?,
             descricao = ?,
+            ativo = ?,
             Loja_idLoja = ?
 
         WHERE idProduto = ?
@@ -91,6 +93,7 @@ function atualizar(id, produto, callback) {
         [
             produto.nome,
             produto.descricao,
+            produto.ativo,
             produto.Loja_idLoja,
             id
         ],
@@ -100,7 +103,7 @@ function atualizar(id, produto, callback) {
 }
 
 // =========================
-// Excluir Usuario
+// Excluir Produto
 // =========================
 
 function excluir(id, callback) {
@@ -119,7 +122,7 @@ module.exports = {
     cadastrar,
     listar,
     buscarPorId,
-    buscarPorEmail,
+    buscarPorNome,
     atualizar,
     excluir
 

@@ -15,6 +15,9 @@ router.post("/", VideoController.cadastrar);
 
 router.get("/", VideoController.listar);
 
+// Listar vídeos de um produto
+router.get("/produto/:id", VideoController.listarPorProduto);
+
 router.get("/:id", VideoController.buscarPorId);
 
 router.put("/:id", VideoController.atualizar);

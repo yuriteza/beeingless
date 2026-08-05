@@ -15,91 +15,53 @@ function cadastrar(req, res) {
 
     // Validação dos campos obrigatórios
 
-    if (
-        !video.basico||
-        !video.basico_pronuncia ||
-        !video.basico_vocabulario ||
-        !video.basico_gramatica ||
-        !video.basico_exterior_trabalho ||
-        !video.basico_exterior_travel ||
-        !video.intermediario    ||
-        !video.intermediario_pronuncia ||
-        !video.intermediario_vocabulario ||
-        !video.intermediario_gramatica ||
-        !video.intermediario_exterior_trabalho ||
-        !video.intermediario_exterior_travel,
-        !video.avancado ||
-        !video.avancado_pronuncia   ||
-        !video.avancado_vocabulario ||
-        !video.avancado_gramatica ||
-        !video.avancado_exterior_trabalho ||
-        !video.avancado_exterior_travel ||
-        !video.Produto_idProduto ||
-        !video.Niveis_idNiveis
-    ) {
+     if (
+    !video.Produto_idProduto ||
+    !video.Niveis_idNiveis ||
+    !video.categoria ||
+    !video.link
+) {
 
-        return res.status(400).json({
-            sucesso: false,
-            mensagem: "Preencha todos os campos."
-        });
-
-    }
-
-    // Caso não seja enviado o código da loja
-    if (!video.Loja_idLoja) {
-
-       video.Loja_idLoja = 1;
-
-    }
-
-    // Verifica se já existe um usuário com o mesmo e-mail
-
-    videoModel.buscarPorEmail(video.email, (erro, resultado) => {
-
-        if (erro) {
-
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao consultar o banco de dados."
-            });
-
-        }
-
-        if (resultado.length > 0) {
-
-            return res.status(409).json({
-                sucesso: false,
-                mensagem: "Vídeo já cadastrado."
-            });
-
-        }
-
-        // Cadastra o vídeo
-
-        videoModel.cadastrar(video, (erro, resultado) => {
-
-            if (erro) {
-
-                return res.status(500).json({
-                    sucesso: false,
-                    mensagem: "Erro ao cadastrar vídeo."
-                });
-
-            }
-
-            return res.status(201).json({
-
-                sucesso: true,
-                mensagem: "Vídeo cadastrado com sucesso!",
-                idVideo: resultado.insertId
-
-            });
-
-        });
-
+    return res.status(400).json({
+        sucesso: false,
+        mensagem: "Preencha todos os campos."
     });
 
 }
+   
+    
+
+    // Verifica se já existe um usuário com o mesmo e-mail
+
+videoModel.cadastrar(video, (erro, resultado) => {
+
+    if (erro) {
+
+        return res.status(500).json({
+
+            sucesso:false,
+
+            mensagem:"Erro ao cadastrar vídeo."
+
+        });
+
+    }
+
+    return res.status(201).json({
+
+        sucesso:true,
+
+        mensagem:"Vídeo cadastrado com sucesso!",
+
+        idVideo: resultado.insertId
+
+    });
+
+});
+
+}
+  
+
 
 //==========================================
 // LISTAR VÍDEOS
@@ -108,22 +70,53 @@ function cadastrar(req, res) {
 function listar(req, res) {
 
     videoModel.listar((erro, resultado) => {
+          
+         if (erro) {
 
-        if (erro) {
+    console.log(erro);
 
-            return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao listar vídeos."
-            });
+    return res.status(500).json({
+        sucesso: false,
+        mensagem: erro.sqlMessage
+    });
 
-        }
-        // Retorna a lista de vídeos em formato JSON
+} 
+
         res.json(resultado);
 
     });
 
 }
 
+
+
+//==========================================
+// LISTAR VÍDEOS
+//==========================================
+
+function listarPorProduto(req, res) {
+
+    const idProduto = req.params.id;
+
+    videoModel.listarPorProduto(idProduto, (erro, resultado) => {
+
+        if (erro) {
+
+            return res.status(500).json({
+
+                sucesso:false,
+
+                mensagem:"Erro ao listar vídeos."
+
+            });
+
+        }
+
+        res.json(resultado);
+
+    });
+
+}
 //==========================================
 // BUSCAR VÍDEO POR ID
 //==========================================
@@ -168,6 +161,20 @@ function atualizar(req, res) {
     // Obtém os dados atualizados do vídeo a partir do corpo da requisição
     const video = req.body;
 
+    if (
+    !video.Produto_idProduto ||
+    !video.Niveis_idNiveis ||
+    !video.categoria ||
+    !video.link
+) {
+
+    return res.status(400).json({
+        sucesso: false,
+        mensagem: "Preencha todos os campos."
+    });
+
+}
+
     videoModel.atualizar(id, video, (erro, resultado) => {
 
         if (erro) {
@@ -196,23 +203,57 @@ function excluir(req, res) {
     // Obtém o ID do vídeo a ser excluído a partir dos parâmetros da URL
     const id = req.params.id;
 
-    videoModel.excluir(id, (erro, resultado) => {
+    videoModel.buscarPorId(id, (erro, resultado) => {
 
-        if (erro) {
+    if (erro) {
+
+        return res.status(500).json({
+
+            sucesso:false,
+
+            mensagem:"Erro ao buscar vídeo."
+
+        });
+
+    }
+
+    if(resultado.length == 0){
+
+        return res.status(404).json({
+
+            sucesso:false,
+
+            mensagem:"Vídeo não encontrado."
+
+        });
+
+    }
+
+    videoModel.excluir(id, (erro)=>{
+
+        if(erro){
 
             return res.status(500).json({
-                sucesso: false,
-                mensagem: "Erro ao excluir vídeo."
+
+                sucesso:false,
+
+                mensagem:"Erro ao excluir vídeo."
+
             });
 
         }
 
         res.json({
-            sucesso: true,
-            mensagem: "Vídeo excluído com sucesso."
+
+            sucesso:true,
+
+            mensagem:"Vídeo excluído com sucesso."
+
         });
 
     });
+
+});
 
 }
 
@@ -224,8 +265,11 @@ module.exports = {
 
     cadastrar,
     listar,
+    listarPorProduto,
     buscarPorId,
     atualizar,
     excluir
+    };     
 
-};
+
+

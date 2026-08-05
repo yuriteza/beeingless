@@ -4,7 +4,7 @@
 =
 =========================================*/
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800&display=swap');
 
 /*=========================================
 =
@@ -20,7 +20,7 @@
 
 html{
 
-    scroll-behavior:smooth;
+    scroll-behavior:smooth; 
 
 }
 
@@ -365,7 +365,7 @@ body{
 
     background:#51708d;
 
-    color:#000000;
+    color:#F3FFF8;
 
 }
 
@@ -567,7 +567,7 @@ body{
 
 .input-group input,
 
-.input-group select,S
+.input-group select,
 
 .input-group textarea{
 
@@ -681,33 +681,7 @@ body{
 
 }
 
-.upload-box input[type=file]{
 
-    width:100%;
-
-    padding:18px;
-
-    border:2px dashed rgba(255,255,255,.20);
-
-    border-radius:15px;
-
-    background:rgba(255,255,255,.05);
-
-    color:#00000079;
-
-    cursor:pointer;
-
-    transition:.35s;
-
-}
-
-.upload-box input[type=file]:hover{
-
-    border-color:#51708d;
-
-    background:rgba(255,255,255,.09);
-
-}
 
 /*=========================================
 =
