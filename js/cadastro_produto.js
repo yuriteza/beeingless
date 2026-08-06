@@ -1,6 +1,18 @@
 /*=====================================================
 =
-=           ELEMENTOS
+=           API
+=
+=====================================================*/
+
+const API = "http://localhost:3000";
+
+const URL_PRODUTO = `${API}/produto`;
+const URL_VIDEO = `${API}/video`;
+const URL_IMAGEM = `${API}/imagem_produto`;
+
+/*=====================================================
+=
+=           ELEMENTOS DA PÁGINA
 =
 =====================================================*/
 
@@ -13,63 +25,38 @@ const descricaoInformacoes = document.getElementById("descricaoInformacoes");
 const tituloVideo = document.getElementById("tituloVideo");
 const descricaoVideo = document.getElementById("descricaoVideo");
 
-const tituloThumbnail = document.getElementById("tituloThumbnail");
-const descricaoThumbnail = document.getElementById("descricaoThumbnail");
+const tituloImagem = document.getElementById("tituloImagem");
+const descricaoImagem = document.getElementById("descricaoImagem");
 
-const tituloConfiguracoes = document.getElementById("tituloConfiguracoes");
-const descricaoConfiguracoes = document.getElementById("descricaoConfiguracoes");
-
-/*=====================================================
-=
-=           LABELS
-=
-=====================================================*/
-
-const lblTitulo = document.getElementById("lblTitulo");
-const lblNivel = document.getElementById("lblNivel");
-const lblCategoria = document.getElementById("lblCategoria");
-
-const lblDescricao = document.getElementById("lblDescricao");
-
-const lblUploadVideo = document.getElementById("lblUploadVideo");
-const lblYoutube = document.getElementById("lblYoutube");
-
-const lblThumbnail = document.getElementById("lblThumbnail");
-
-const lblDuracao = document.getElementById("lblDuracao");
-const lblOrdem = document.getElementById("lblOrdem");
-const lblStatus = document.getElementById("lblStatus");
-const lblVisibilidade = document.getElementById("lblVisibilidade");
+const mensagem = document.getElementById("mensagem");
 
 /*=====================================================
 =
-=           CAMPOS
+=           CAMPOS PRODUTO
 =
 =====================================================*/
 
-const tituloAula = document.getElementById("tituloAula");
+const nome = document.getElementById("nome");
+const descricao = document.getElementById("descricao");
+const ativo = document.getElementById("ativo");
+
+/*=====================================================
+=
+=           CAMPOS VÍDEO
+=
+=====================================================*/
+
 const nivel = document.getElementById("nivel");
 const categoria = document.getElementById("categoria");
-
-const descricao = document.getElementById("descricao");
-
-const arquivoVideo = document.getElementById("arquivoVideo");
 const youtube = document.getElementById("youtube");
-
-const thumbnail = document.getElementById("thumbnail");
-
-const duracao = document.getElementById("duracao");
-const ordem = document.getElementById("ordem");
-const status = document.getElementById("status");
-const visibilidade = document.getElementById("visibilidade");
 
 /*=====================================================
 =
-=           PREVIEWS
+=           CAMPOS IMAGEM
 =
 =====================================================*/
 
-const previewVideo = document.getElementById("previewVideo");
+const thumbnail = document.getElementById("thumbnail");
 const previewThumbnail = document.getElementById("previewThumbnail");
 
 /*=====================================================
@@ -78,238 +65,166 @@ const previewThumbnail = document.getElementById("previewThumbnail");
 =
 =====================================================*/
 
-const btnVisualizar = document.getElementById("btnVisualizar");
-const btnRascunho = document.getElementById("btnRascunho");
-const btnPublicar = document.getElementById("btnPublicar");
+const btnSalvarProduto = document.getElementById("btnSalvarProduto");
+const btnSalvarVideo = document.getElementById("btnSalvarVideo");
+const btnSalvarImagem = document.getElementById("btnSalvarImagem");
 
 /*=====================================================
 =
-=           DADOS DA TELA
+=           ID DO PRODUTO CADASTRADO
 =
 =====================================================*/
 
-const dadosTela = {
-
-    tituloPagina: "Cadastro de Produto",
-
-    descricaoPagina:
-        "Cadastre novas aulas, vídeos ou produtos da plataforma Bee Inglês.",
-
-    tituloInformacoes: "Informações Gerais",
-
-    descricaoInformacoes:
-        "Preencha os dados principais do conteúdo.",
-
-    tituloVideo: "Vídeo da Aula",
-
-    descricaoVideo:
-        "Faça upload de um vídeo ou informe um link do YouTube.",
-
-    tituloThumbnail: "Thumbnail",
-
-    descricaoThumbnail:
-        "Escolha uma imagem de capa para o conteúdo.",
-
-    tituloConfiguracoes: "Configurações",
-
-    descricaoConfiguracoes:
-        "Defina status, ordem e visibilidade do conteúdo."
-
-};
+let idProduto = null;
 
 /*=====================================================
 =
-=           PREENCHER TEXTOS
+=           TEXTOS DA TELA
 =
 =====================================================*/
 
-function carregarTextos(){
-
-    tituloPagina.textContent = dadosTela.tituloPagina;
-
-    descricaoPagina.textContent = dadosTela.descricaoPagina;
-
-    tituloInformacoes.textContent = dadosTela.tituloInformacoes;
-
-    descricaoInformacoes.textContent = dadosTela.descricaoInformacoes;
-
-    tituloVideo.textContent = dadosTela.tituloVideo;
-
-    descricaoVideo.textContent = dadosTela.descricaoVideo;
-
-    tituloThumbnail.textContent = dadosTela.tituloThumbnail;
-
-    descricaoThumbnail.textContent = dadosTela.descricaoThumbnail;
-
-    tituloConfiguracoes.textContent = dadosTela.tituloConfiguracoes;
-
-    descricaoConfiguracoes.textContent = dadosTela.descricaoConfiguracoes;
-
-}
-
-/*==========================================================
-                TEXTOS DA PÁGINA
-==========================================================*/
-
-function carregarLabels(){
+function carregarTextos() {
 
     tituloPagina.textContent = "Cadastro de Produto";
 
     descricaoPagina.textContent =
-    "Cadastre vídeos para sua loja.";
+    "Cadastre primeiro o produto, depois o vídeo e por último a imagem.";
 
     tituloInformacoes.textContent =
     "Informações do Produto";
 
     descricaoInformacoes.textContent =
-    "Preencha os dados principais do vídeo.";
-
-    lblTitulo.textContent =
-    "Nome do Produto";
+    "Cadastre o produto na plataforma.";
 
     tituloVideo.textContent =
-    "Vídeo do Produto";
+    "Vídeo";
 
     descricaoVideo.textContent =
-    "Faça upload do vídeo ou informe um link.";
+    "Cadastre o vídeo relacionado ao produto.";
 
-    lblUploadVideo.textContent =
-    "Arquivo do Vídeo";
+    tituloImagem.textContent =
+    "Imagem";
 
-    lblYoutube.textContent =
-    "Link do YouTube";
-
-    tituloThumbnail.textContent =
-    "Capa do Produto";
-
-    descricaoThumbnail.textContent =
-    "Escolha uma imagem para representar o vídeo.";
-
-    lblThumbnail.textContent =
-    "Imagem da Capa";
-
-    tituloConfiguracoes.textContent =
-    "Configurações";
-
-    descricaoConfiguracoes.textContent =
-    "Defina o status e a visibilidade.";
-
-    lblDuracao.textContent =
-    "Duração";
-
-    lblOrdem.textContent =
-    "Ordem";
-
-    lblStatus.textContent =
-    "Status";
-
-    lblVisibilidade.textContent =
-    "Visibilidade";
-
-    btnVisualizar.textContent =
-    "Visualizar";
-
-    btnRascunho.textContent =
-    "Salvar Rascunho";
-
-    btnPublicar.textContent =
-    "Salvar Produto";
-
-}
-
-carregarLabels();
-
-/*=====================================================
-=
-=           PLACEHOLDERS
-=
-=====================================================*/
-
-function carregarPlaceholders(){
-
-    tituloAula.placeholder = "Digite o título da aula";
-
-   
-
-    descricao.placeholder = "Descreva o conteúdo...";
-
-    youtube.placeholder = "https://youtube.com/...";
-
-    duracao.placeholder = "00:00";
+    descricaoImagem.textContent =
+    "Cadastre a imagem de capa do produto.";
 
 }
 
 /*=====================================================
 =
-=           INICIAR
+=           MENSAGEM
 =
 =====================================================*/
 
-carregarTextos();
+function mostrarMensagem(texto, cor = "red") {
 
-carregarLabels();
+    mensagem.style.color = cor;
+    mensagem.textContent = texto;
 
-carregarPlaceholders();
+}
 
 /*=====================================================
 =
-=           PREENCHER SELECTS
+=           INICIALIZAÇÃO
 =
 =====================================================*/
 
-const listaNiveis = [
+window.onload = function () {
 
-    "Básico",
-    "Intermediário",
-    "Avançado"
+    carregarTextos();
 
-];
-
-const listaCategorias = [
-
-    "Gramática",
-    "Vocabulário",
-    "Listening",
-    "Speaking",
-    "Pronúncia",
-    "Expressões",
-    "Phrasal Verbs"
-
-];
-
-const listaStatus = [
-
-    "Rascunho",
-    "Publicado"
-
-];
-
-const listaVisibilidade = [
-
-    "Público",
-    "Privado"
-
-];
+};
 
 /*=====================================================
 =
-=           FUNÇÃO AUXILIAR
+=           CADASTRAR PRODUTO
 =
 =====================================================*/
 
-function preencherSelect(select, lista){
+btnSalvarProduto.addEventListener("click", cadastrarProduto);
 
-    select.innerHTML = "";
+function cadastrarProduto() {
 
-    lista.forEach(item=>{
+    const dados = {
 
-        const option = document.createElement("option");
+        nome: nome.value.trim(),
+        descricao: descricao.value.trim(),
+        ativo: Number(ativo.value),
+        Loja_idLoja: 1
 
-        option.value = item;
+    };
 
-        option.textContent = item;
+    /*=========================================
+        VALIDAÇÃO
+    =========================================*/
 
-        select.appendChild(option);
+    if (dados.nome === "") {
+
+        mostrarMensagem("Informe o nome do produto.");
+        nome.focus();
+        return;
+
+    }
+
+    if (dados.descricao === "") {
+
+        mostrarMensagem("Informe a descrição.");
+        descricao.focus();
+        return;
+
+    }
+
+    /*=========================================
+        ENVIO PARA API
+    =========================================*/
+
+    fetch(URL_PRODUTO, {
+
+        method: "POST",
+
+        headers: {
+
+            "Content-Type": "application/json"
+
+        },
+
+        body: JSON.stringify(dados)
+
+    })
+
+    .then(resposta => resposta.json())
+
+    .then(retorno => {
+
+        if (retorno.sucesso) {
+
+            idProduto = retorno.idProduto;
+
+            mostrarMensagem(
+
+                "Produto cadastrado com sucesso! Agora cadastre o vídeo.",
+
+                "green"
+
+            );
+
+            btnSalvarProduto.disabled = true;
+
+            console.log("ID Produto:", idProduto);
+
+        }
+
+        else{
+
+            mostrarMensagem(retorno.mensagem);
+
+        }
+
+    })
+
+    .catch(() => {
+
+        mostrarMensagem("Erro ao conectar com o servidor.");
 
     });
 
@@ -317,287 +232,30 @@ function preencherSelect(select, lista){
 
 /*=====================================================
 =
-=           CARREGAR SELECTS
+=           LIMPAR PRODUTO
 =
 =====================================================*/
 
-function carregarSelects(){
+function limparProduto(){
 
-    preencherSelect(
-
-        nivel,
-
-        listaNiveis
-
-    );
-
-    preencherSelect(
-
-        categoria,
-
-        listaCategorias
-
-    );
-
-    preencherSelect(
-
-        status,
-
-        listaStatus
-
-    );
-
-    preencherSelect(
-
-        visibilidade,
-
-        listaVisibilidade
-
-    );
+    nome.value = "";
+    descricao.value = "";
 
 }
 
-carregarSelects();
-
 /*=====================================================
 =
-=           PREVIEW THUMBNAIL
+=           HABILITAR ETAPAS
 =
 =====================================================*/
 
-thumbnail.addEventListener(
+function verificarProduto(){
 
-    "change",
+    if(idProduto === null){
 
-    function(){
-
-        const arquivo = this.files[0];
-
-        if(!arquivo){
-
-            previewThumbnail.innerHTML = "";
-
-            return;
-
-        }
-
-        const leitor = new FileReader();
-
-        leitor.onload = function(e){
-
-            previewThumbnail.innerHTML = `
-
-                <img
-                    src="${e.target.result}"
-                    alt="Thumbnail"
-                >
-
-            `;
-
-        }
-
-        leitor.readAsDataURL(arquivo);
-
-    }
-
-);
-
-/*=====================================================
-=
-=           PREVIEW VÍDEO
-=
-=====================================================*/
-
-arquivoVideo.addEventListener(
-
-    "change",
-
-    function(){
-
-        const arquivo = this.files[0];
-
-        if(!arquivo){
-
-            previewVideo.innerHTML = "";
-
-            return;
-
-        }
-
-        const url = URL.createObjectURL(arquivo);
-
-        previewVideo.innerHTML = `
-
-            <video controls>
-
-                <source
-                    src="${url}"
-                    type="${arquivo.type}"
-                >
-
-            </video>
-
-        `;
-
-    }
-
-);
-
-/*=====================================================
-=
-=           LINK DO YOUTUBE
-=
-=====================================================*/
-
-youtube.addEventListener(
-
-    "input",
-
-    function(){
-
-        if(this.value.trim() !== ""){
-
-            arquivoVideo.disabled = true;
-
-        }
-
-        else{
-
-            arquivoVideo.disabled = false;
-
-        }
-
-    }
-
-);
-
-/*=====================================================
-=
-=           UPLOAD DE VÍDEO
-=
-=====================================================*/
-
-arquivoVideo.addEventListener(
-
-    "change",
-
-    function(){
-
-        if(this.files.length > 0){
-
-            youtube.disabled = true;
-
-        }
-
-        else{
-
-            youtube.disabled = false;
-
-        }
-
-    }
-
-);
-
-/*=====================================================
-=
-=           FORMULÁRIO
-=
-=====================================================*/
-
-const formCadastro = document.getElementById("formCadastro");
-
-/*=====================================================
-=
-=           MÁSCARA DURAÇÃO
-=
-=====================================================*/
-
-duracao.addEventListener("input", () => {
-
-    let valor = duracao.value.replace(/\D/g, "");
-
-    valor = valor.substring(0, 4);
-
-    if (valor.length > 2) {
-
-        valor = valor.replace(/(\d{2})(\d+)/, "$1:$2");
-
-    }
-
-    duracao.value = valor;
-
-});
-
-/*=====================================================
-=
-=           VALIDAÇÃO
-=
-=====================================================*/
-
-function validarFormulario() {
-
-    if (tituloAula.value.trim() === "") {
-
-        alert("Informe o título da aula.");
-
-        tituloAula.focus();
-
-        return false;
-
-    }
-
-    if (categoria.value === "") {
-
-        alert("Selecione uma categoria.");
-
-        categoria.focus();
-
-        return false;
-
-    }
-
-    if (nivel.value === "") {
-
-        alert("Selecione um nível.");
-
-        nivel.focus();
-
-        return false;
-
-    }
-
-    if (descricao.value.trim() === "") {
-
-        alert("Digite uma descrição.");
-
-        descricao.focus();
-
-        return false;
-
-    }
-
-    if (
-
-        arquivoVideo.files.length === 0 &&
-
-        youtube.value.trim() === ""
-
-    ) {
-
-        alert("Selecione um vídeo ou informe um link do YouTube.");
-
-        return false;
-
-    }
-
-    if (
-
-        thumbnail.files.length === 0
-
-    ) {
-
-        alert("Selecione uma thumbnail.");
+        mostrarMensagem(
+            "Cadastre primeiro o produto."
+        );
 
         return false;
 
@@ -609,300 +267,71 @@ function validarFormulario() {
 
 /*=====================================================
 =
-=           LIMPAR FORMULÁRIO
+=           CADASTRAR VÍDEO
 =
 =====================================================*/
 
-function limparFormulario() {
+btnSalvarVideo.addEventListener("click", cadastrarVideo);
 
-    formCadastro.reset();
+function cadastrarVideo() {
 
-    previewThumbnail.innerHTML = "";
+    if (!verificarProduto()) {
 
-    previewVideo.innerHTML = "";
-
-    youtube.disabled = false;
-
-    arquivoVideo.disabled = false;
-
-}
-
-/*=====================================================
-=
-=           VISUALIZAR
-=
-=====================================================*/
-
-btnVisualizar.addEventListener(
-
-    "click",
-
-    () => {
-
-        console.clear();
-
-        console.table({
-
-            titulo: tituloAula.value,
-
-            categoria: categoria.value,
-
-            nivel: nivel.value,
-
-           
-
-            descricao: descricao.value,
-
-            youtube: youtube.value,
-
-            duracao: duracao.value,
-
-            ordem: ordem.value,
-
-            status: status.value,
-
-            visibilidade: visibilidade.value
-
-        });
-
-        alert("Os dados foram exibidos no Console do navegador.");
-
-    }
-
-);
-
-/*=====================================================
-=
-=           SALVAR RASCUNHO
-=
-=====================================================*/
-
-btnRascunho.addEventListener(
-
-    "click",
-
-    () => {
-
-        const dados = {
-
-            titulo: tituloAula.value,
-
-            categoria: categoria.value,
-
-            nivel: nivel.value,
-
-           
-
-            descricao: descricao.value,
-
-            youtube: youtube.value,
-
-            duracao: duracao.value,
-
-            ordem: ordem.value,
-
-            status: status.value,
-
-            visibilidade: visibilidade.value
-
-        };
-
-        localStorage.setItem(
-
-            "rascunhoProduto",
-
-            JSON.stringify(dados)
-
-        );
-
-        alert("Rascunho salvo com sucesso.");
-
-    }
-
-);
-
-/*=====================================================
-=
-=           CARREGAR RASCUNHO
-=
-=====================================================*/
-
-function carregarRascunho() {
-
-    const dados = localStorage.getItem("rascunhoProduto");
-
-    if (!dados) return;
-
-    const produto = JSON.parse(dados);
-
-    tituloAula.value = produto.titulo || "";
-
-    categoria.value = produto.categoria || "";
-
-    nivel.value = produto.nivel || "";
-
-   
-
-    descricao.value = produto.descricao || "";
-
-    youtube.value = produto.youtube || "";
-
-    duracao.value = produto.duracao || "";
-
-    ordem.value = produto.ordem || "";
-
-    status.value = produto.status || "";
-
-    visibilidade.value = produto.visibilidade || "";
-
-}
-
-/*=====================================================
-=
-=           PUBLICAR
-=
-=====================================================*/
-
-formCadastro.addEventListener(
-
-    "submit",
-
-    function (e) {
-
-        e.preventDefault();
-
-        if (!validarFormulario()) {
-
-            return;
-
-        }
-
-        alert("Produto cadastrado com sucesso!");
-
-        localStorage.removeItem("rascunhoProduto");
-
-        limparFormulario();
-
-    }
-
-);
-
-/*=====================================================
-=
-=           ANIMAÇÃO DAS ETAPAS
-=
-=====================================================*/
-
-const campos = document.querySelectorAll(
-
-    "input, textarea, select"
-
-);
-
-const etapas = document.querySelectorAll(".step");
-
-campos.forEach((campo, indice) => {
-
-    campo.addEventListener("focus", () => {
-
-        if (indice <= 4) {
-
-            etapas[0].classList.add("active");
-
-        }
-
-        else if (indice <= 6) {
-
-            etapas[1].classList.add("active");
-
-        }
-
-        else if (indice <= 7) {
-
-            etapas[2].classList.add("active");
-
-        }
-
-        else {
-
-            etapas[3].classList.add("active");
-
-        }
-
-    });
-
-});
-
-/*=====================================================
-=
-=           INICIALIZAÇÃO
-=
-=====================================================*/
-
-window.addEventListener(
-
-    "load",
-
-    () => {
-
-        carregarRascunho();
-
-    }
-
-);
-
-/*=========================================================
-            CADASTRAR PRODUTO
-=========================================================*/
-
-document.getElementById("btnSalvar").addEventListener("click", cadastrarProduto);
-
-function cadastrarProduto() {
-
-    const nome = document.getElementById("nome").value.trim();
-    const descricao = document.getElementById("descricao").value.trim();
-
-    const mensagem = document.getElementById("mensagem");
-
-    mensagem.innerHTML = "";
-    mensagem.style.color = "red";
-
-    /*==============================
-        VALIDAÇÕES
-    ==============================*/
-
-    if (nome === "") {
-
-        mensagem.innerHTML = "Informe o nome do produto.";
         return;
 
     }
 
-    if (descricao === "") {
+    const dados = {
 
-        mensagem.innerHTML = "Informe a descrição do produto.";
-        return;
+        Produto_idProduto: idProduto,
 
-    }
+        Niveis_idNiveis: Number(nivel.value),
 
-    /*==============================
-        OBJETO
-    ==============================*/
+        categoria: categoria.value,
 
-    const produto = {
-
-        nome: nome,
-        descricao: descricao,
-        ativo: 1,
-        Loja_idLoja: 1
+        link: youtube.value.trim()
 
     };
 
-    /*==============================
-        ENVIO
-    ==============================*/
+    /*=========================================
+        VALIDAÇÃO
+    =========================================*/
 
-    fetch("http://localhost:3000/produto", {
+    if (dados.Niveis_idNiveis === 0 || isNaN(dados.Niveis_idNiveis)) {
+
+        mostrarMensagem("Selecione um nível.");
+
+        nivel.focus();
+
+        return;
+
+    }
+
+    if (dados.categoria === "") {
+
+        mostrarMensagem("Selecione uma categoria.");
+
+        categoria.focus();
+
+        return;
+
+    }
+
+    if (dados.link === "") {
+
+        mostrarMensagem("Informe o link do vídeo.");
+
+        youtube.focus();
+
+        return;
+
+    }
+
+    /*=========================================
+        ENVIO
+    =========================================*/
+
+    fetch(URL_VIDEO, {
 
         method: "POST",
 
@@ -912,25 +341,31 @@ function cadastrarProduto() {
 
         },
 
-        body: JSON.stringify(produto)
+        body: JSON.stringify(dados)
 
     })
 
     .then(resposta => resposta.json())
 
-    .then(dados => {
+    .then(retorno => {
 
-        if (dados.sucesso) {
+        if (retorno.sucesso) {
 
-            mensagem.style.color = "green";
-            mensagem.innerHTML = dados.mensagem;
+            mostrarMensagem(
 
-            limparFormulario();
+                "Vídeo cadastrado com sucesso! Agora cadastre a imagem.",
 
-        } else {
+                "green"
 
-            mensagem.style.color = "red";
-            mensagem.innerHTML = dados.mensagem;
+            );
+
+            btnSalvarVideo.disabled = true;
+
+        }
+
+        else {
+
+            mostrarMensagem(retorno.mensagem);
 
         }
 
@@ -938,20 +373,263 @@ function cadastrarProduto() {
 
     .catch(() => {
 
-        mensagem.style.color = "red";
-        mensagem.innerHTML = "Erro ao conectar ao servidor.";
+        mostrarMensagem("Erro ao conectar ao servidor.");
 
     });
 
 }
 
-/*=========================================================
-            LIMPAR
-=========================================================*/
+/*=====================================================
+=
+=           PREVIEW DA IMAGEM
+=
+=====================================================*/
 
-function limparFormulario() {
+thumbnail.addEventListener("change", function () {
 
-    document.getElementById("nome").value = "";
-    document.getElementById("descricao").value = "";
+    const arquivo = this.files[0];
+
+    if (!arquivo) {
+
+        previewThumbnail.innerHTML = `
+
+            <i class="fa-regular fa-image fa-4x"></i>
+
+            <p>Nenhuma imagem selecionada</p>
+
+        `;
+
+        return;
+
+    }
+
+    const leitor = new FileReader();
+
+    leitor.onload = function (e) {
+
+        previewThumbnail.innerHTML = `
+
+            <img
+                src="${e.target.result}"
+                alt="Preview da imagem"
+                class="imagem-preview"
+            >
+
+        `;
+
+    };
+
+    leitor.readAsDataURL(arquivo);
+
+});
+/*=====================================================
+=
+=           CADASTRAR IMAGEM
+=
+=====================================================*/
+
+btnSalvarImagem.addEventListener("click", cadastrarImagem);
+
+function cadastrarImagem() {
+
+    if (!verificarProduto()) {
+
+        return;
+
+    }
+
+    if (thumbnail.files.length === 0) {
+
+        mostrarMensagem("Selecione uma imagem.");
+
+        thumbnail.focus();
+
+        return;
+
+    }
+
+    
+
+    const dados = new FormData();
+
+    dados.append(
+        "arquivo",
+        thumbnail.files[0]
+    );
+
+    dados.append(
+        "Produto_idProduto",
+        idProduto
+    );
+
+    fetch(URL_IMAGEM, {
+
+        method: "POST",
+
+        body: dados
+
+    })
+
+    .then(resposta => resposta.json())
+
+    .then(retorno => {
+
+        if (retorno.sucesso) {
+
+            mostrarMensagem(
+
+                "Produto cadastrado com sucesso!",
+
+                "green"
+
+            );
+
+            btnSalvarImagem.disabled = true;
+
+            limparFormularioCompleto();
+
+        }
+
+        else {
+
+            mostrarMensagem(retorno.mensagem);
+
+        }
+
+    })
+
+    .catch(() => {
+
+        mostrarMensagem("Erro ao conectar ao servidor.");
+
+    });
+
+    
 
 }
+
+
+
+/*=====================================================
+=
+=           LIMPAR FORMULÁRIO
+=
+=====================================================*/
+
+function limparFormularioCompleto() {
+
+    nome.value = "";
+
+    descricao.value = "";
+
+    nivel.selectedIndex = 0;
+
+    categoria.selectedIndex = 0;
+
+    youtube.value = "";
+
+    thumbnail.value = "";
+
+    previewThumbnail.innerHTML = "";
+
+    idProduto = null;
+
+    btnSalvarProduto.disabled = false;
+
+    btnSalvarVideo.disabled = false;
+
+    btnSalvarImagem.disabled = false;
+
+}
+
+
+
+
+
+/*=====================================================
+=
+=           REMOVER IMAGEM
+=
+=====================================================*/
+
+const btnRemoverImagem =
+document.getElementById("btnRemoverImagem");
+
+btnRemoverImagem.addEventListener("click", () => {
+
+    thumbnail.value = "";
+
+    previewThumbnail.innerHTML = `
+
+        <i class="fa-regular fa-image fa-4x"></i>
+
+        <p>Nenhuma imagem selecionada</p>
+
+    `;
+
+});
+
+/*=====================================================
+=
+=           INICIALIZAÇÃO
+=
+=====================================================*/
+
+window.addEventListener("load", () => {
+
+    carregarTextos();
+
+});
+
+// ===========================================
+//               CADSATRAR CATEGORIA
+// ===========================================
+
+
+document.getElementById("btnSalvarProduto").
+addEventListener("click", function() {
+ //capturar os dados do input
+ const produtoNome
+    = document.getElementById("nome").value;
+
+    const produtoDescricao
+    = document.getElementById("descricao").value;
+
+    const produtoAtivo
+    = document.getElementById("ativo").value;
+
+  // criar um if para validar se o campo está vazio    
+        if (produtoNome === "") {
+            alert("Por favor, preencha o nome do produto.");
+            return;
+        }
+ 
+        // criar um objeto com os dados da categoria
+        const produto = {
+            nome: produtoNome,
+ 
+            descricao: produtoDescricao,
+    
+            ativo: produtoAtivo
+ 
+        };
+ 
+        // enviar os dados para o servidor
+        fetch("http://localhost:3000/produto", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(produto)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Produto cadastrado:", data);
+                alert("Produto cadastrado com sucesso!");
+            })
+            .catch(error => {
+                console.error("Erro ao cadastrar produto:", error);
+                alert("Erro ao cadastrar produto.");
+            });
+});
+    

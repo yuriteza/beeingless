@@ -1,16 +1,16 @@
-/*=========================================
+/*==================================================
 =
-=           GOOGLE FONTS
+=               GOOGLE FONTS
 =
-=========================================*/
+==================================================*/
 
 @import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800&display=swap');
 
-/*=========================================
+/*==================================================
 =
-=           RESET
+=                   RESET
 =
-=========================================*/
+==================================================*/
 
 *{
     margin:0;
@@ -19,64 +19,60 @@
 }
 
 html{
-
-    scroll-behavior:smooth; 
-
+    scroll-behavior:smooth;
 }
 
 body{
 
-    font-family:'Poppins',sans-serif;
+    font-family:'Saira', sans-serif;
 
-    background:linear-gradient(150deg,#dbece2,#F3FFF8,#e8f7ee);
+    min-height:100vh;
 
-    color:#F3FFF8;
+    background:linear-gradient(
+        135deg,
+        #d8f3dc 0%,
+        #f3fff8 50%,
+        #d7eef9 100%
+    );
+
+    color:#222;
 
     overflow-x:hidden;
 
     position:relative;
-
-    min-height:100vh;
-
 }
 
-/*=========================================
+/*==================================================
 =
-=       SCROLLBAR
+=               SCROLLBAR
 =
-=========================================*/
+==================================================*/
 
 ::-webkit-scrollbar{
-
     width:10px;
-
 }
 
 ::-webkit-scrollbar-track{
-
-    background:#0d1b2a;
-
+    background:#dbe9e2;
 }
 
 ::-webkit-scrollbar-thumb{
 
-    background:#1c5174;
+    background:#4f6d8d;
 
-    border-radius:30px;
-
+    border-radius:20px;
 }
 
 ::-webkit-scrollbar-thumb:hover{
 
-    background:#2c976e;
-
+    background:#35516e;
 }
 
-/*=========================================
+/*==================================================
 =
-=       CÍRCULOS DECORATIVOS
+=          CÍRCULOS DECORATIVOS
 =
-=========================================*/
+==================================================*/
 
 .background-circles{
 
@@ -86,10 +82,9 @@ body{
 
     overflow:hidden;
 
-    z-index:0;
-
     pointer-events:none;
 
+    z-index:0;
 }
 
 .circle{
@@ -100,154 +95,183 @@ body{
 
     filter:blur(5px);
 
-    opacity:.22;
+    opacity:.18;
 
-    animation:floatCircle 18s ease-in-out infinite alternate;
-
+    animation:flutuar 20s ease-in-out infinite alternate;
 }
 
-/*=========================================
+/*==================================================
 =
-=       POSIÇÕES
+=            POSIÇÃO DOS CÍRCULOS
 =
-=========================================*/
+==================================================*/
 
 .circle1{
 
-    width:320px;
+    width:300px;
+    height:300px;
 
-    height:320px;
+    background:#49a078;
 
-    background:#2ec4ff;
-
-    top:-90px;
-
-    left:-120px;
-
+    top:-100px;
+    left:-80px;
 }
 
 .circle2{
 
     width:220px;
-
     height:220px;
 
-    background:#2b88528a;
+    background:#4f6d8d;
 
     top:180px;
+    right:-70px;
 
-    right:-60px;
-
-    animation-duration:20s;
-
+    animation-duration:24s;
 }
 
 .circle3{
 
-    width:180px;
+    width:170px;
+    height:170px;
 
-    height:180px;
+    background:#8fd3fe;
 
-    background:#2b8852;
-
-    bottom:150px;
-
+    bottom:80px;
     left:5%;
 
-    animation-duration:24s;
-
+    animation-duration:18s;
 }
 
 .circle4{
 
-    width:280px;
+    width:260px;
+    height:260px;
 
-    height:280px;
-
-    background:#6dd5ed;
-
-    bottom:-120px;
+    background:#90e0ef;
 
     right:-80px;
+    bottom:-80px;
 
+    animation-duration:26s;
 }
 
 .circle5{
 
-    width:130px;
+    width:120px;
+    height:120px;
 
-    height:130px;
-
-    background:#fffb00c7;
-
-    top:45%;
+    background:#ffd166;
 
     left:48%;
+    top:45%;
 
-    opacity:.08;
-
-    animation-duration:15s;
-
+    opacity:.12;
 }
 
 .circle6{
 
-    width:240px;
+    width:180px;
+    height:180px;
 
-    height:240px;
+    background:#52b788;
 
-    background:#3a86ff;
-
-    top:65%;
-
-    right:25%;
-
-    opacity:.15;
+    right:20%;
+    bottom:30%;
 
     animation-duration:22s;
-
 }
 
-/*=========================================
+/*==================================================
 =
-=       ANIMAÇÃO
+=              ANIMAÇÃO
 =
-=========================================*/
+==================================================*/
 
-@keyframes floatCircle{
+@keyframes flutuar{
 
     0%{
 
         transform:
-        translateY(0)
-        translateX(0)
+        translate(0,0)
         scale(1);
-
     }
 
     50%{
 
         transform:
-        translateY(-35px)
-        translateX(20px)
-        scale(1.08);
-
+        translate(25px,-35px)
+        scale(1.05);
     }
 
     100%{
 
         transform:
-        translateY(30px)
-        translateX(-15px)
+        translate(-20px,25px)
         scale(.95);
-
     }
 
 }
 
+/*==================================================
+=
+=          CONTAINER PRINCIPAL
+=
+==================================================*/
+
+.cadastro-container{
+
+    position:relative;
+
+    z-index:2;
+
+    width:min(1200px,92%);
+
+    margin:50px auto;
+    
+}
+
+
+/*==================================================
+=
+=              CABEÇALHO
+=
+==================================================*/
+
+.page-header{
+
+    text-align:center;
+
+    margin-bottom:50px;
+}
+
+.page-header h1{
+
+    font-size:2.8rem;
+
+    font-weight:700;
+
+    color:#29445d;
+
+    margin-bottom:12px;
+}
+
+.page-header p{
+
+    color:#4b5563;
+
+    font-size:1rem;
+
+    max-width:700px;
+
+    margin:auto;
+
+    line-height:1.7;
+}
+
 /*=========================================
 =
-=       CONTAINER
+=           CONTAINER PRINCIPAL
 =
 =========================================*/
 
@@ -265,7 +289,7 @@ body{
 
 /*=========================================
 =
-=       CABEÇALHO
+=           CABEÇALHO
 =
 =========================================*/
 
@@ -273,7 +297,7 @@ body{
 
     text-align:center;
 
-    margin-bottom:60px;
+    margin-bottom:50px;
 
 }
 
@@ -283,29 +307,29 @@ body{
 
     font-weight:700;
 
-    margin-bottom:15px;
+    color:#173F5F;
 
-    color:#09128f91;
+    margin-bottom:12px;
 
 }
 
 .page-header p{
 
-    color:#000000cc;
-
-    font-size:1rem;
-
-    max-width:650px;
+    max-width:700px;
 
     margin:auto;
 
-    line-height:1.7;
+    color:#555;
+
+    line-height:1.8;
+
+    font-size:1rem;
 
 }
 
 /*=========================================
 =
-=       ETAPAS
+=           ETAPAS
 =
 =========================================*/
 
@@ -345,9 +369,9 @@ body{
 
     border-radius:50%;
 
-    background:#243b55;
+    background:#d5d5d5;
 
-    color:#fffefe;
+    color:#444;
 
     display:flex;
 
@@ -355,35 +379,39 @@ body{
 
     align-items:center;
 
+    font-size:1rem;
+
     font-weight:700;
 
-    transition:.4s;
+    transition:.3s;
 
 }
 
 .step.active .step-number{
 
-    background:#51708d;
+    background:#1f6aa5;
 
-    color:#F3FFF8;
+    color:#fff;
 
 }
 
 .step span{
 
-    font-size:.92rem;
+    color:#444;
 
-    color:#000000cb;
+    font-size:.9rem;
+
+    font-weight:600;
 
 }
 
 .step-line{
 
-    width:90px;
+    width:80px;
 
-    height:3px;
+    height:4px;
 
-    background:rgba(255,255,255,.12);
+    background:#d5d5d5;
 
     border-radius:20px;
 
@@ -401,7 +429,7 @@ body{
 
     flex-direction:column;
 
-    gap:40px;
+    gap:60px;
 
 }
 
@@ -413,74 +441,37 @@ body{
 
 .card{
 
-    position:relative;
-
-    background:rgba(0, 0, 0, 0.08);
+    background:rgba(255, 255, 255, 0.308);
 
     backdrop-filter:blur(18px);
 
-    -webkit-backdrop-filter:blur(18px);
-
-    border:1px solid rgba(255,255,255,.08);
-
     border-radius:25px;
 
-    padding:45px;
+    padding:40px;
 
-    overflow:hidden;
+    border:1px solid rgba(255,255,255,.6);
 
     box-shadow:
 
-        0 20px 40px rgba(0,0,0,.25),
+        0 15px 35px rgba(0,0,0,.08);
 
-        inset 0 1px rgba(255,255,255,.05);
+    transition:.3s;
 
-    transition:.35s;
+    margin-bottom:30px;
 
 }
 
 .card:hover{
 
-    transform:translateY(-4px);
-
-    border-color:rgb(138, 132, 132);
+    transform:translateY(-3px);
 
 }
 
-/*=========================================
-=
-=           LINHA SUPERIOR
-=
-=========================================*/
+#ativo{
 
-.card::before{
-
-    content:"";
-
-    position:absolute;
-
-    left:0;
-
-    top:0;
-
-    width:100%;
-
-    height:4px;
-
-    background:linear-gradient(
-
-        20deg,
-
-        #51708d,
-
-        #51708d 50%,
-
-        #51708d
-
-    );
+    margin-top:8px;
 
 }
-
 /*=========================================
 =
 =           TÍTULOS
@@ -489,29 +480,25 @@ body{
 
 .section-title{
 
-    margin-bottom:35px;
+    margin-bottom:30px;
 
 }
 
 .section-title h2{
 
-    font-size:2rem;
+    color:#173F5F;
 
-    font-weight:700;
+    font-size:1.8rem;
 
-    color:#0000009d;
-
-    margin-bottom:10px;
+    margin-bottom:8px;
 
 }
 
 .section-title p{
 
-    color:#000000ab;
+    color:#666;
 
-    font-size:.95rem;
-
-    line-height:1.8;
+    line-height:1.7;
 
 }
 
@@ -529,7 +516,15 @@ body{
 
     gap:25px;
 
-    margin-bottom:25px;
+}
+
+.grid-3{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:25px;
 
 }
 
@@ -545,17 +540,17 @@ body{
 
     flex-direction:column;
 
-    gap:10px;
+    gap:8px;
 
 }
 
 .input-group label{
 
-    font-size:.92rem;
+    color:#173F5F;
 
     font-weight:600;
 
-    color:#000000;
+    font-size:.95rem;
 
 }
 
@@ -566,30 +561,28 @@ body{
 =========================================*/
 
 .input-group input,
-
 .input-group select,
-
 .input-group textarea{
 
     width:100%;
 
-    background:rgba(255,255,255,.08);
+    padding:15px 18px;
 
-    border:1px solid rgba(255,255,255,.12);
-
-    color:#00000065;
+    border:1px solid #cfd8dc;
 
     border-radius:12px;
 
-    padding:15px 18px;
+    background:#ffffff;
+
+    color:#173F5F;
+
+    font-family:'Saira',sans-serif;
+
+    font-size:1rem;
 
     outline:none;
 
     transition:.3s;
-
-    font-size:.95rem;
-
-    font-family:'Saira',sans-serif;
 
 }
 
@@ -597,21 +590,24 @@ body{
 
     resize:vertical;
 
-    min-height:140px;
+    min-height:180px;
 
 }
 
-/*=========================================
-=
-=           PLACEHOLDER
-=
-=========================================*/
-
 .input-group input::placeholder,
-
 .input-group textarea::placeholder{
 
-    color:#000000;
+    color:#888;
+
+}
+
+.input-group input:focus,
+.input-group textarea:focus,
+.input-group select:focus{
+
+    border-color:#1f6aa5;
+
+    box-shadow:0 0 0 4px rgba(31,106,165,.18);
 
 }
 
@@ -629,35 +625,13 @@ body{
 
 .input-group option{
 
-    color:#222;
+    color:#173F5F;
 
 }
 
 /*=========================================
 =
-=           FOCUS
-=
-=========================================*/
-
-.input-group input:focus,
-
-.input-group textarea:focus,
-
-.input-group select:focus{
-
-    border-color:#51708d;
-
-    box-shadow:
-
-        0 0 0 4px rgba(81,112,141,.18);
-
-    background:rgba(255,255,255,.12);
-
-}
-
-/*=========================================
-=
-=           ÁREA DE UPLOAD
+=           UPLOAD
 =
 =========================================*/
 
@@ -673,15 +647,37 @@ body{
 
 .upload-box label{
 
-    font-size:.92rem;
-
     font-weight:600;
 
-    color:#000000;
+    color:#173F5F;
 
 }
 
+.upload-box input[type="file"]{
 
+    width:100%;
+
+    padding:16px;
+
+    border:2px dashed #1f6aa5;
+
+    border-radius:15px;
+
+    background:#f8fbfd;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    font-family:'Saira',sans-serif;
+
+}
+
+.upload-box input[type="file"]:hover{
+
+    background:#eef7fc;
+
+}
 
 /*=========================================
 =
@@ -690,30 +686,66 @@ body{
 =========================================*/
 
 .preview-video,
-
 .thumbnail-preview{
 
     width:100%;
 
-    min-height:240px;
-
-    border-radius:18px;
-
-    border:2px dashed rgba(255,255,255,.12);
-
-    background:rgba(255,255,255,.05);
+    min-height:260px;
 
     display:flex;
 
-    align-items:center;
+    flex-direction:column;
 
     justify-content:center;
 
-    overflow:hidden;
+    align-items:center;
 
-    color:#000000;
+    gap:15px;
 
-    transition:.35s;
+    border:2px dashed #cfd8dc;
+
+    border-radius:18px;
+
+    background:#fafafa;
+
+    transition:.3s;
+
+}
+
+.preview-video:hover,
+.thumbnail-preview:hover{
+
+    border-color:#1f6aa5;
+
+}
+
+.preview-video i,
+.thumbnail-preview i{
+
+    font-size:60px;
+
+    color:#1f6aa5;
+
+}
+
+.preview-video p,
+.thumbnail-preview p{
+
+    color:#666;
+
+    text-align:center;
+
+    font-size:.95rem;
+
+    padding:0 20px;
+
+}
+
+.preview-video video{
+
+    width:100%;
+
+    border-radius:15px;
 
 }
 
@@ -725,23 +757,31 @@ body{
 
     object-fit:cover;
 
-    border-radius:18px;
-
-}
-
-.preview-video video{
-
-    width:100%;
-
-    border-radius:18px;
+    border-radius:15px;
 
 }
 
 /*=========================================
 =
-=           BOTÕES
+=           MENSAGEM
 =
 =========================================*/
+
+.mensagem{
+
+    margin-top:20px;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+}
+
+/*=====================================================
+=
+=           BOTÕES
+=
+=====================================================*/
 
 .buttons{
 
@@ -749,11 +789,9 @@ body{
 
     justify-content:flex-end;
 
-    align-items:center;
+    gap:18px;
 
-    gap:20px;
-
-    margin-top:10px;
+    margin-top:20px;
 
     flex-wrap:wrap;
 
@@ -763,7 +801,7 @@ body{
 
     min-width:180px;
 
-    height:55px;
+    height:52px;
 
     border:none;
 
@@ -771,99 +809,154 @@ body{
 
     font-family:'Saira',sans-serif;
 
-    font-size:.95rem;
+    font-size:16px;
 
     font-weight:600;
 
     cursor:pointer;
 
-    transition:.35s;
+    transition:.3s;
+
+    color:#fff;
 
 }
 
-/*=========================================
-=
-=       BOTÃO VISUALIZAR
-=
-=========================================*/
+#btnSalvarProduto{
+
+    background:#2563EB;
+
+}
+
+#btnSalvarProduto:hover{
+
+    background:#1D4ED8;
+
+    transform:translateY(-3px);
+
+}
+
+#btnSalvarVideo{
+
+    background:#0F766E;
+
+}
+
+#btnSalvarVideo:hover{
+
+    background:#115E59;
+
+    transform:translateY(-3px);
+
+}
+
+#btnSalvarImagem{
+
+    background:#D97706;
+
+}
+
+#btnSalvarImagem:hover{
+
+    background:#B45309;
+
+    transform:translateY(-3px);
+
+}
 
 #btnVisualizar{
 
-    background:rgba(218, 168, 32, 0.747);
-
-    color:#000000;
-
-    border:1px solid rgba(255,255,255,.15);
+    background:#4c4f55;
 
 }
 
 #btnVisualizar:hover{
 
-    background:rgba(212, 158, 10, 0.849);
+    background:#4B5563;
 
     transform:translateY(-3px);
 
 }
 
-/*=========================================
-=
-=       BOTÃO RASCUNHO
-=
-=========================================*/
-
 #btnRascunho{
 
-    background:#3387a8;
-
-    color:#000000;
+    background:#3a07b1;
 
 }
 
 #btnRascunho:hover{
 
-    background:#286580;
+    background:#2e0772;
 
     transform:translateY(-3px);
 
 }
 
-/*=========================================
-=
-=       BOTÃO PUBLICAR
-=
-=========================================*/
+#btnFinalizar{
 
-#btnPublicar{
+    background:#F59E0B;
 
-    background:#4e7fad;
+    color:#111;
 
-    color:#000000;
-
-    box-shadow:0 10px 30px rgba(81,112,141,.35);
+    font-weight:700;
 
 }
 
-#btnPublicar:hover{
+#btnFinalizar:hover{
 
-    background:#51708d;
+    background:#D97706;
+
+    color:#fff;
 
     transform:translateY(-3px);
 
-    box-shadow:0 15px 35px rgba(81,112,141,.45);
+}
+  
+
+/*=========================================
+    BOTÃO REMOVER IMAGEM
+=========================================*/
+
+.btn-remover{
+
+    margin-top:15px;
+
+    width:100%;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#d62828;
+
+    color:#fff;
+
+    font-family:'Saira',sans-serif;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.btn-remover:hover{
+
+    background:#b71c1c;
 
 }
 
 /*=========================================
 =
-=       IMAGENS
+=       EFEITO AO CLICAR
 =
 =========================================*/
 
-img{
+.buttons button:active{
 
-    max-width:100%;
-
-    display:block;
+    transform:scale(.97);
 
 }
 
@@ -901,27 +994,15 @@ img{
 
 /*=========================================
 =
-=       ANIMAÇÃO DOS BOTÕES
+=       RESPONSIVO TABLET
 =
 =========================================*/
 
-.buttons button:active{
-
-    transform:scale(.96);
-
-}
-
-/*=========================================
-=
-=       TABLET
-=
-=========================================*/
-
-@media (max-width:992px){
+@media(max-width:992px){
 
     .cadastro-container{
 
-        width:94%;
+        width:95%;
 
     }
 
@@ -931,9 +1012,15 @@ img{
 
     }
 
+    .grid-3{
+
+        grid-template-columns:1fr;
+
+    }
+
     .card{
 
-        padding:35px;
+        padding:30px;
 
     }
 
@@ -943,15 +1030,9 @@ img{
 
     }
 
-    .steps{
-
-        gap:15px;
-
-    }
-
     .step-line{
 
-        width:50px;
+        width:45px;
 
     }
 
@@ -959,17 +1040,11 @@ img{
 
 /*=========================================
 =
-=       MOBILE
+=       RESPONSIVO CELULAR
 =
 =========================================*/
 
-@media (max-width:768px){
-
-    .cadastro-container{
-
-        margin:30px auto;
-
-    }
+@media(max-width:768px){
 
     .page-header{
 
@@ -985,27 +1060,7 @@ img{
 
     .page-header p{
 
-        font-size:.92rem;
-
-    }
-
-    .card{
-
-        padding:25px;
-
-        border-radius:18px;
-
-    }
-
-    .section-title{
-
-        margin-bottom:25px;
-
-    }
-
-    .section-title h2{
-
-        font-size:1.4rem;
+        font-size:.95rem;
 
     }
 
@@ -1019,9 +1074,30 @@ img{
 
     .step-line{
 
-        width:3px;
+        width:4px;
 
-        height:35px;
+        height:40px;
+
+    }
+
+    .card{
+
+        padding:22px;
+
+        border-radius:18px;
+
+    }
+
+    .section-title h2{
+
+        font-size:1.5rem;
+
+    }
+
+    .preview-video,
+    .thumbnail-preview{
+
+        min-height:180px;
 
     }
 
@@ -1029,21 +1105,11 @@ img{
 
         flex-direction:column;
 
-        align-items:stretch;
-
     }
 
     .buttons button{
 
         width:100%;
-
-    }
-
-    .preview-video,
-
-    .thumbnail-preview{
-
-        min-height:180px;
 
     }
 
@@ -1055,13 +1121,7 @@ img{
 =
 =========================================*/
 
-@media (max-width:480px){
-
-    .card{
-
-        padding:20px;
-
-    }
+@media(max-width:480px){
 
     .page-header h1{
 
@@ -1071,7 +1131,7 @@ img{
 
     .page-header p{
 
-        font-size:.88rem;
+        font-size:.9rem;
 
     }
 
@@ -1080,14 +1140,6 @@ img{
         width:42px;
 
         height:42px;
-
-        font-size:.9rem;
-
-    }
-
-    .step span{
-
-        font-size:.82rem;
 
     }
 
@@ -1101,9 +1153,9 @@ img{
 
     .circle2{
 
-        width:140px;
+        width:130px;
 
-        height:140px;
+        height:130px;
 
     }
 
@@ -1143,7 +1195,6 @@ img{
 
 /*=========================================
 =
-=       FIM DO ARQUIVO
+=       FIM DO CSS
 =
 =========================================*/
-
