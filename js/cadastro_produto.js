@@ -1,6 +1,6 @@
 /*=====================================================
 =
-=           API
+=                 API
 =
 =====================================================*/
 
@@ -12,66 +12,133 @@ const URL_IMAGEM = `${API}/imagem_produto`;
 
 /*=====================================================
 =
-=           ELEMENTOS DA PÁGINA
+=          TÍTULOS DA PÁGINA
 =
 =====================================================*/
 
 const tituloPagina = document.getElementById("tituloPagina");
 const descricaoPagina = document.getElementById("descricaoPagina");
 
-const tituloInformacoes = document.getElementById("tituloInformacoes");
-const descricaoInformacoes = document.getElementById("descricaoInformacoes");
+const tituloInformacoes =
+document.getElementById("tituloInformacoes");
 
-const tituloVideo = document.getElementById("tituloVideo");
-const descricaoVideo = document.getElementById("descricaoVideo");
+const descricaoInformacoes =
+document.getElementById("descricaoInformacoes");
 
-const tituloImagem = document.getElementById("tituloImagem");
-const descricaoImagem = document.getElementById("descricaoImagem");
+const tituloVideo =
+document.getElementById("tituloVideo");
 
-const mensagem = document.getElementById("mensagem");
+const descricaoVideo =
+document.getElementById("descricaoVideo");
+
+const tituloImagem =
+document.getElementById("tituloImagem");
+
+const descricaoImagem =
+document.getElementById("descricaoImagem");
 
 /*=====================================================
 =
-=           CAMPOS PRODUTO
+=              CAMPOS PRODUTO
 =
 =====================================================*/
 
-const nome = document.getElementById("nome");
-const descricao = document.getElementById("descricao");
-const ativo = document.getElementById("ativo");
+const nome =
+document.getElementById("nome");
+
+const descricao =
+document.getElementById("descricao");
+
+const ativo =
+document.getElementById("ativo");
 
 /*=====================================================
 =
-=           CAMPOS VÍDEO
+=              CAMPOS VÍDEO
 =
 =====================================================*/
 
-const nivel = document.getElementById("nivel");
-const categoria = document.getElementById("categoria");
-const youtube = document.getElementById("youtube");
+const nivel =
+document.getElementById("nivel");
+
+const categoria =
+document.getElementById("categoria");
+
+const youtube =
+document.getElementById("youtube");
 
 /*=====================================================
 =
-=           CAMPOS IMAGEM
+=              CAMPOS IMAGEM
 =
 =====================================================*/
 
-const thumbnail = document.getElementById("thumbnail");
-const previewThumbnail = document.getElementById("previewThumbnail");
+const thumbnail =
+document.getElementById("thumbnail");
+
+const previewThumbnail =
+document.getElementById("previewThumbnail");
+
+const btnRemoverImagem =
+document.getElementById("btnRemoverImagem");
 
 /*=====================================================
 =
-=           BOTÕES
+=               BOTÕES
 =
 =====================================================*/
 
-const btnSalvarProduto = document.getElementById("btnSalvarProduto");
-const btnSalvarVideo = document.getElementById("btnSalvarVideo");
-const btnSalvarImagem = document.getElementById("btnSalvarImagem");
+const btnSalvarProduto =
+document.getElementById("btnSalvarProduto");
+
+const btnSalvarVideo =
+document.getElementById("btnSalvarVideo");
+
+const btnSalvarImagem =
+document.getElementById("btnSalvarImagem");
+
+const btnVisualizar =
+document.getElementById("btnVisualizar");
+
+const btnRascunho =
+document.getElementById("btnRascunho");
+
+const btnFinalizar =
+document.getElementById("btnFinalizar");
 
 /*=====================================================
 =
-=           ID DO PRODUTO CADASTRADO
+=              MENSAGENS
+=
+=====================================================*/
+
+const mensagemProduto =
+document.getElementById("mensagemProduto");
+
+const mensagemVideo =
+document.getElementById("mensagemVideo");
+
+const mensagemImagem =
+document.getElementById("mensagemImagem");
+
+/*=====================================================
+=
+=                 ETAPAS
+=
+=====================================================*/
+
+const stepProduto =
+document.getElementById("stepProduto");
+
+const stepVideo =
+document.getElementById("stepVideo");
+
+const stepImagem =
+document.getElementById("stepImagem");
+
+/*=====================================================
+=
+=          VARIÁVEIS GLOBAIS
 =
 =====================================================*/
 
@@ -79,173 +146,265 @@ let idProduto = null;
 
 /*=====================================================
 =
+=             INICIALIZAÇÃO
+=
+=====================================================*/
+
+window.addEventListener("load", iniciarPagina);
+
+function iniciarPagina(){
+
+    carregarTextos();
+
+    bloquearEtapas();
+
+}
+
+/*=====================================================
+=
 =           TEXTOS DA TELA
 =
 =====================================================*/
 
-function carregarTextos() {
+function carregarTextos(){
 
-    tituloPagina.textContent = "Cadastro de Produto";
+    tituloPagina.textContent =
+    "Cadastro de Aula";
 
     descricaoPagina.textContent =
     "Cadastre primeiro o produto, depois o vídeo e por último a imagem.";
 
     tituloInformacoes.textContent =
-    "Informações do Produto";
+    "Informações da Aula";
 
     descricaoInformacoes.textContent =
-    "Cadastre o produto na plataforma.";
+    "Informe os dados principais da aula.";
 
     tituloVideo.textContent =
-    "Vídeo";
+    "Vídeo da Aula";
 
     descricaoVideo.textContent =
-    "Cadastre o vídeo relacionado ao produto.";
+    "Cadastre o vídeo relacionado à aula.";
 
     tituloImagem.textContent =
-    "Imagem";
+    "Imagem da Aula";
 
     descricaoImagem.textContent =
-    "Cadastre a imagem de capa do produto.";
+    "Escolha a imagem que será exibida na plataforma.";
 
 }
 
 /*=====================================================
 =
-=           MENSAGEM
+=        HABILITA / DESABILITA ETAPAS
 =
 =====================================================*/
 
-function mostrarMensagem(texto, cor = "red") {
+function bloquearEtapas(){
 
-    mensagem.style.color = cor;
-    mensagem.textContent = texto;
+    btnSalvarVideo.disabled = true;
+
+    btnSalvarImagem.disabled = true;
+
+}
+
+function liberarVideo(){
+
+    btnSalvarVideo.disabled = false;
+
+    stepVideo.classList.add("active");
+
+}
+
+function liberarImagem(){
+
+    btnSalvarImagem.disabled = false;
+
+    stepImagem.classList.add("active");
 
 }
 
 /*=====================================================
 =
-=           INICIALIZAÇÃO
+=           MENSAGENS
 =
 =====================================================*/
 
-window.onload = function () {
+function limparMensagens(){
 
-    carregarTextos();
+    mensagemProduto.textContent = "";
+    mensagemVideo.textContent = "";
+    mensagemImagem.textContent = "";
 
-};
+    mensagemProduto.className = "mensagem";
+    mensagemVideo.className = "mensagem";
+    mensagemImagem.className = "mensagem";
+
+}
+
+function mostrarMensagem(elemento, texto, sucesso = false){
+
+    elemento.textContent = texto;
+
+    if(sucesso){
+
+        elemento.classList.add("sucesso");
+
+    }else{
+
+        elemento.classList.add("erro");
+
+    }
+
+}
 
 /*=====================================================
 =
-=           CADASTRAR PRODUTO
+=         VALIDAR PRODUTO
 =
 =====================================================*/
 
-btnSalvarProduto.addEventListener("click", cadastrarProduto);
+function validarProduto(){
 
-function cadastrarProduto() {
+    limparMensagens();
 
-    const dados = {
+    if(nome.value.trim() === ""){
+
+        mostrarMensagem(
+            mensagemProduto,
+            "Informe o título da aula."
+        );
+
+        nome.focus();
+
+        return false;
+
+    }
+
+    if(descricao.value.trim() === ""){
+
+        mostrarMensagem(
+            mensagemProduto,
+            "Informe a descrição da aula."
+        );
+
+        descricao.focus();
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*=====================================================
+=
+=      CADASTRAR PRODUTO
+=
+=====================================================*/
+
+btnSalvarProduto.addEventListener(
+    "click",
+    cadastrarProduto
+);
+
+async function cadastrarProduto(){
+
+    if(!validarProduto()){
+
+        return;
+
+    }
+
+    const produto = {
 
         nome: nome.value.trim(),
+
         descricao: descricao.value.trim(),
+
         ativo: Number(ativo.value),
+
         Loja_idLoja: 1
 
     };
 
-    /*=========================================
-        VALIDAÇÃO
-    =========================================*/
+    btnSalvarProduto.disabled = true;
 
-    if (dados.nome === "") {
+    try{
 
-        mostrarMensagem("Informe o nome do produto.");
-        nome.focus();
-        return;
+        const resposta = await fetch(
+            URL_PRODUTO,
+            {
 
-    }
+                method:"POST",
 
-    if (dados.descricao === "") {
+                headers:{
 
-        mostrarMensagem("Informe a descrição.");
-        descricao.focus();
-        return;
+                    "Content-Type":"application/json"
 
-    }
+                },
 
-    /*=========================================
-        ENVIO PARA API
-    =========================================*/
+                body:JSON.stringify(produto)
 
-    fetch(URL_PRODUTO, {
+            }
+        );
 
-        method: "POST",
+        const retorno = await resposta.json();
 
-        headers: {
+        if(!retorno.sucesso){
 
-            "Content-Type": "application/json"
-
-        },
-
-        body: JSON.stringify(dados)
-
-    })
-
-    .then(resposta => resposta.json())
-
-    .then(retorno => {
-
-        if (retorno.sucesso) {
-
-            idProduto = retorno.idProduto;
+            btnSalvarProduto.disabled = false;
 
             mostrarMensagem(
 
-                "Produto cadastrado com sucesso! Agora cadastre o vídeo.",
+                mensagemProduto,
 
-                "green"
+                retorno.mensagem || "Erro ao cadastrar produto."
 
             );
 
-            btnSalvarProduto.disabled = true;
-
-            console.log("ID Produto:", idProduto);
+            return;
 
         }
 
-        else{
+        idProduto = retorno.idProduto;
 
-            mostrarMensagem(retorno.mensagem);
+        mostrarMensagem(
 
-        }
+            mensagemProduto,
 
-    })
+            "Produto cadastrado com sucesso!",
 
-    .catch(() => {
+            true
 
-        mostrarMensagem("Erro ao conectar com o servidor.");
+        );
 
-    });
+        liberarVideo();
+
+    }
+
+    catch(erro){
+
+        console.error(erro);
+
+        btnSalvarProduto.disabled = false;
+
+        mostrarMensagem(
+
+            mensagemProduto,
+
+            "Erro ao conectar com o servidor."
+
+        );
+
+    }
 
 }
 
 /*=====================================================
 =
-=           LIMPAR PRODUTO
-=
-=====================================================*/
-
-function limparProduto(){
-
-    nome.value = "";
-    descricao.value = "";
-
-}
-
-/*=====================================================
-=
-=           HABILITAR ETAPAS
+=       VERIFICAR PRODUTO
 =
 =====================================================*/
 
@@ -254,7 +413,11 @@ function verificarProduto(){
     if(idProduto === null){
 
         mostrarMensagem(
+
+            mensagemVideo,
+
             "Cadastre primeiro o produto."
+
         );
 
         return false;
@@ -267,21 +430,83 @@ function verificarProduto(){
 
 /*=====================================================
 =
-=           CADASTRAR VÍDEO
+=           VALIDAR VÍDEO
 =
 =====================================================*/
 
-btnSalvarVideo.addEventListener("click", cadastrarVideo);
+function validarVideo(){
 
-function cadastrarVideo() {
+    limparMensagens();
 
-    if (!verificarProduto()) {
+    if(!verificarProduto()){
+
+        return false;
+
+    }
+
+    if(nivel.value === ""){
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Selecione o nível."
+        );
+
+        nivel.focus();
+
+        return false;
+
+    }
+
+    if(categoria.value === ""){
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Selecione uma categoria."
+        );
+
+        categoria.focus();
+
+        return false;
+
+    }
+
+    if(youtube.value.trim() === ""){
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Informe o link do vídeo."
+        );
+
+        youtube.focus();
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+/*=====================================================
+=
+=          CADASTRAR VÍDEO
+=
+=====================================================*/
+
+btnSalvarVideo.addEventListener(
+    "click",
+    cadastrarVideo
+);
+
+async function cadastrarVideo(){
+
+    if(!validarVideo()){
 
         return;
 
     }
 
-    const dados = {
+    const video = {
 
         Produto_idProduto: idProduto,
 
@@ -293,111 +518,119 @@ function cadastrarVideo() {
 
     };
 
-    /*=========================================
-        VALIDAÇÃO
-    =========================================*/
+    btnSalvarVideo.disabled = true;
 
-    if (dados.Niveis_idNiveis === 0 || isNaN(dados.Niveis_idNiveis)) {
+    try{
 
-        mostrarMensagem("Selecione um nível.");
+        const resposta = await fetch(
 
-        nivel.focus();
+            URL_VIDEO,
 
-        return;
+            {
 
-    }
+                method:"POST",
 
-    if (dados.categoria === "") {
+                headers:{
 
-        mostrarMensagem("Selecione uma categoria.");
+                    "Content-Type":"application/json"
 
-        categoria.focus();
+                },
 
-        return;
+                body:JSON.stringify(video)
 
-    }
+            }
 
-    if (dados.link === "") {
+        );
 
-        mostrarMensagem("Informe o link do vídeo.");
+        const retorno = await resposta.json();
 
-        youtube.focus();
+        if(!retorno.sucesso){
 
-        return;
-
-    }
-
-    /*=========================================
-        ENVIO
-    =========================================*/
-
-    fetch(URL_VIDEO, {
-
-        method: "POST",
-
-        headers: {
-
-            "Content-Type": "application/json"
-
-        },
-
-        body: JSON.stringify(dados)
-
-    })
-
-    .then(resposta => resposta.json())
-
-    .then(retorno => {
-
-        if (retorno.sucesso) {
+            btnSalvarVideo.disabled = false;
 
             mostrarMensagem(
 
-                "Vídeo cadastrado com sucesso! Agora cadastre a imagem.",
+                mensagemVideo,
 
-                "green"
+                retorno.mensagem || "Erro ao cadastrar vídeo."
 
             );
 
-            btnSalvarVideo.disabled = true;
+            return;
 
         }
 
-        else {
+        mostrarMensagem(
 
-            mostrarMensagem(retorno.mensagem);
+            mensagemVideo,
 
-        }
+            "Vídeo cadastrado com sucesso!",
 
-    })
+            true
 
-    .catch(() => {
+        );
 
-        mostrarMensagem("Erro ao conectar ao servidor.");
+        liberarImagem();
 
-    });
+    }
+
+    catch(erro){
+
+        console.error(erro);
+
+        btnSalvarVideo.disabled = false;
+
+        mostrarMensagem(
+
+            mensagemVideo,
+
+            "Erro ao conectar ao servidor."
+
+        );
+
+    }
 
 }
 
 /*=====================================================
 =
-=           PREVIEW DA IMAGEM
+=          PREVIEW DA IMAGEM
 =
 =====================================================*/
 
-thumbnail.addEventListener("change", function () {
+thumbnail.addEventListener(
 
-    const arquivo = this.files[0];
+    "change",
 
-    if (!arquivo) {
+    carregarPreviewImagem
 
-        previewThumbnail.innerHTML = `
+);
 
-            <i class="fa-regular fa-image fa-4x"></i>
+function carregarPreviewImagem(){
 
-            <p>Nenhuma imagem selecionada</p>
+    const arquivo = thumbnail.files[0];
 
-        `;
+    if(!arquivo){
+
+        limparPreview();
+
+        return;
+
+    }
+
+    if(!arquivo.type.startsWith("image/")){
+
+        mostrarMensagem(
+
+            mensagemImagem,
+
+            "Selecione um arquivo de imagem."
+
+        );
+
+        thumbnail.value = "";
+
+        limparPreview();
 
         return;
 
@@ -405,50 +638,107 @@ thumbnail.addEventListener("change", function () {
 
     const leitor = new FileReader();
 
-    leitor.onload = function (e) {
+    leitor.onload = function(evento){
 
         previewThumbnail.innerHTML = `
 
             <img
-                src="${e.target.result}"
-                alt="Preview da imagem"
-                class="imagem-preview"
-            >
+                src="${evento.target.result}"
+                alt="Preview"
+                class="imagem-preview">
 
         `;
+
+        previewThumbnail.classList.add("tem-imagem");
 
     };
 
     leitor.readAsDataURL(arquivo);
 
-});
+}
+
 /*=====================================================
 =
-=           CADASTRAR IMAGEM
+=          LIMPAR PREVIEW
 =
 =====================================================*/
 
-btnSalvarImagem.addEventListener("click", cadastrarImagem);
+function limparPreview(){
 
-function cadastrarImagem() {
+    previewThumbnail.innerHTML = `
 
-    if (!verificarProduto()) {
+        <i class="fa-regular fa-image fa-4x"></i>
+
+        <p>
+
+            Nenhuma imagem selecionada
+
+        </p>
+
+    `;
+
+    previewThumbnail.classList.remove("tem-imagem");
+
+}
+
+/*=====================================================
+=
+=          REMOVER IMAGEM
+=
+=====================================================*/
+
+btnRemoverImagem.addEventListener(
+
+    "click",
+
+    () => {
+
+        thumbnail.value = "";
+
+        limparPreview();
+
+        limparMensagens();
+
+    }
+
+);
+
+/*=====================================================
+=
+=          CADASTRAR IMAGEM
+=
+=====================================================*/
+
+btnSalvarImagem.addEventListener(
+    "click",
+    cadastrarImagem
+);
+
+async function cadastrarImagem(){
+
+    limparMensagens();
+
+    if(idProduto === null){
+
+        mostrarMensagem(
+            mensagemImagem,
+            "Cadastre primeiro o produto."
+        );
 
         return;
 
     }
 
-    if (thumbnail.files.length === 0) {
+    if(thumbnail.files.length === 0){
 
-        mostrarMensagem("Selecione uma imagem.");
-
-        thumbnail.focus();
+        mostrarMensagem(
+            mensagemImagem,
+            "Selecione uma imagem."
+        );
 
         return;
 
     }
-
-    
 
     const dados = new FormData();
 
@@ -462,65 +752,209 @@ function cadastrarImagem() {
         idProduto
     );
 
-    fetch(URL_IMAGEM, {
+    btnSalvarImagem.disabled = true;
 
-        method: "POST",
+    try{
 
-        body: dados
+        const resposta = await fetch(
 
-    })
+            URL_IMAGEM,
 
-    .then(resposta => resposta.json())
+            {
 
-    .then(retorno => {
+                method:"POST",
 
-        if (retorno.sucesso) {
+                body:dados
 
+            }
+
+        );
+
+        const retorno = await resposta.json();
+
+        if(!retorno.sucesso){
+
+           
             mostrarMensagem(
 
-                "Produto cadastrado com sucesso!",
+                mensagemImagem,
 
-                "green"
+                retorno.mensagem ||
+                "Erro ao cadastrar imagem."
 
             );
 
-            btnSalvarImagem.disabled = true;
-
-            limparFormularioCompleto();
+            return;
 
         }
 
-        else {
+        mostrarMensagem(
 
-            mostrarMensagem(retorno.mensagem);
+            mensagemImagem,
 
-        }
+            "Imagem cadastrada com sucesso!",
 
-    })
+            true
 
-    .catch(() => {
+        );
 
-        mostrarMensagem("Erro ao conectar ao servidor.");
+        stepImagem.classList.add("active");
 
-    });
+    }
 
-    
+    catch(erro){
+
+        console.error(erro);
+
+        mostrarMensagem(
+
+            mensagemImagem,
+
+            "Erro ao conectar ao servidor."
+
+        );
+
+    }
+
+    finally{
+
+    btnSalvarImagem.disabled = false;
 
 }
 
-
+}
 
 /*=====================================================
 =
-=           LIMPAR FORMULÁRIO
+=          VISUALIZAR DADOS
 =
 =====================================================*/
 
-function limparFormularioCompleto() {
+btnVisualizar.addEventListener(
+
+    "click",
+
+    visualizarDados
+
+);
+
+function visualizarDados(){
+
+    console.clear();
+
+    console.table({
+
+        nome:nome.value,
+
+        descricao:descricao.value,
+
+        ativo:ativo.value,
+
+        nivel:nivel.value,
+
+        categoria:categoria.value,
+
+        youtube:youtube.value,
+
+        imagem:
+
+        thumbnail.files.length > 0 ?
+
+        thumbnail.files[0].name :
+
+        "Nenhuma"
+
+    });
+
+}
+
+/*=====================================================
+=
+=          SALVAR RASCUNHO
+=
+=====================================================*/
+
+btnRascunho.addEventListener(
+
+    "click",
+
+    salvarRascunho
+
+);
+
+function salvarRascunho(){
+
+    const rascunho = {
+
+        nome:nome.value,
+
+        descricao:descricao.value,
+
+        ativo:ativo.value,
+
+        nivel:nivel.value,
+
+        categoria:categoria.value,
+
+        youtube:youtube.value
+
+    };
+
+    localStorage.setItem(
+
+        "rascunhoProduto",
+
+        JSON.stringify(rascunho)
+
+    );
+
+    alert(
+
+        "Rascunho salvo com sucesso!"
+
+    );
+
+}
+
+/*=====================================================
+=
+=          FINALIZAR CADASTRO
+=
+=====================================================*/
+
+btnFinalizar.addEventListener(
+
+    "click",
+
+    finalizarCadastro
+
+);
+
+function finalizarCadastro(){
+
+    alert(
+
+        "Cadastro finalizado com sucesso!"
+
+    );
+
+    limparFormulario();
+
+}
+
+/*=====================================================
+=
+=          LIMPAR FORMULÁRIO
+=
+=====================================================*/
+
+function limparFormulario(){
 
     nome.value = "";
 
     descricao.value = "";
+
+    ativo.selectedIndex = 0;
 
     nivel.selectedIndex = 0;
 
@@ -530,106 +964,72 @@ function limparFormularioCompleto() {
 
     thumbnail.value = "";
 
-    previewThumbnail.innerHTML = "";
+    limparPreview();
+
+    limparMensagens();
 
     idProduto = null;
 
     btnSalvarProduto.disabled = false;
 
-    btnSalvarVideo.disabled = false;
+    btnSalvarVideo.disabled = true;
 
-    btnSalvarImagem.disabled = false;
+    btnSalvarImagem.disabled = true;
+
+    stepProduto.classList.add("active");
+
+    stepVideo.classList.remove("active");
+
+    stepImagem.classList.remove("active");
 
 }
 
-
-
-
-
 /*=====================================================
 =
-=           REMOVER IMAGEM
+=          CARREGAR RASCUNHO
 =
 =====================================================*/
 
-const btnRemoverImagem =
-document.getElementById("btnRemoverImagem");
+window.addEventListener(
 
-btnRemoverImagem.addEventListener("click", () => {
+    "load",
 
-    thumbnail.value = "";
+    carregarRascunho
 
-    previewThumbnail.innerHTML = `
+);
 
-        <i class="fa-regular fa-image fa-4x"></i>
+function carregarRascunho(){
 
-        <p>Nenhuma imagem selecionada</p>
+    const dados = localStorage.getItem(
 
-    `;
+        "rascunhoProduto"
 
-});
+    );
+
+    if(!dados){
+
+        return;
+
+    }
+
+    const rascunho = JSON.parse(dados);
+
+    nome.value = rascunho.nome || "";
+
+    descricao.value = rascunho.descricao || "";
+
+    ativo.value = rascunho.ativo || "1";
+
+    nivel.value = rascunho.nivel || "";
+
+    categoria.value = rascunho.categoria || "";
+
+    youtube.value = rascunho.youtube || "";
+
+}
 
 /*=====================================================
 =
-=           INICIALIZAÇÃO
+=              FIM DO ARQUIVO
 =
 =====================================================*/
-
-window.addEventListener("load", () => {
-
-    carregarTextos();
-
-});
-
-// ===========================================
-//               CADSATRAR CATEGORIA
-// ===========================================
-
-
-document.getElementById("btnSalvarProduto").
-addEventListener("click", function() {
- //capturar os dados do input
- const produtoNome
-    = document.getElementById("nome").value;
-
-    const produtoDescricao
-    = document.getElementById("descricao").value;
-
-    const produtoAtivo
-    = document.getElementById("ativo").value;
-
-  // criar um if para validar se o campo está vazio    
-        if (produtoNome === "") {
-            alert("Por favor, preencha o nome do produto.");
-            return;
-        }
- 
-        // criar um objeto com os dados da categoria
-        const produto = {
-            nome: produtoNome,
- 
-            descricao: produtoDescricao,
-    
-            ativo: produtoAtivo
- 
-        };
- 
-        // enviar os dados para o servidor
-        fetch("http://localhost:3000/produto", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(produto)
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log("Produto cadastrado:", data);
-                alert("Produto cadastrado com sucesso!");
-            })
-            .catch(error => {
-                console.error("Erro ao cadastrar produto:", error);
-                alert("Erro ao cadastrar produto.");
-            });
-});
-    

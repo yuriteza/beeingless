@@ -9,24 +9,31 @@
         name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-    <title>Cadastro de Produto</title>
+    <title>Cadastro de Aula</title>
 
+    <!-- CSS -->
     <link
         rel="stylesheet"
         href="../style/cadastro_produto.css">
 
+    <!-- Ícone -->
     <link
         rel="icon"
         type="image/png"
         href="../assets/logo.png">
 
+    <!-- Font Awesome -->
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-Saira/6.7.2/css/all.min.css">
 
 </head>
 
 <body>
+
+    <!--=========================================
+        CÍRCULOS
+    ==========================================-->
 
     <div class="background-circles">
 
@@ -39,385 +46,466 @@
 
     </div>
 
+    <!--=========================================
+        CONTAINER
+    ==========================================-->
+
     <main class="cadastro-container">
+
+        <!--=========================================
+            CABEÇALHO
+        ==========================================-->
 
         <header class="page-header">
 
-            <h1>Cadastro de Aula</h1>
+            <h1 id="tituloPagina">
+                Cadastro de Aula
+            </h1>
 
-            <p>
-                Cadastre produto, vídeo e imagem separadamente.
+            <p id="descricaoPagina">
+                Cadastre primeiro o produto, depois o vídeo e por último a imagem.
             </p>
 
         </header>
 
+        <!--=========================================
+            ETAPAS
+        ==========================================-->
+
         <section class="steps">
 
-            <div class="step active">
-                <div class="step-number">1</div>
-                <span>Produto</span>
+            <div
+                class="step active"
+                id="stepProduto">
+
+                <div class="step-number">
+                    1
+                </div>
+
+                <span>
+                    Produto
+                </span>
+
             </div>
 
             <div class="step-line"></div>
 
-            <div class="step">
-                <div class="step-number">2</div>
-                <span>Vídeo</span>
+            <div
+                class="step"
+                id="stepVideo">
+
+                <div class="step-number">
+                    2
+                </div>
+
+                <span>
+                    Vídeo
+                </span>
+
             </div>
 
             <div class="step-line"></div>
 
-            <div class="step">
-                <div class="step-number">3</div>
-                <span>Imagem</span>
-            </div>
-
-        </section>
-
-                <!--=========================================
-                    CARD - PRODUTO
-        ==========================================-->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                <h2>Informações do Produto</h2>
-
-                <p>
-                    Cadastre primeiro as informações da aula.
-                </p>
-
-            </div>
-
-            <div class="grid-2">
-
-                <!-- Nome -->
-
-                <div class="input-group">
-
-                    <label for="nome">
-
-                        Título da Aula
-
-                    </label>
-
-                    <input
-                        type="text"
-                        id="nome"
-                        placeholder="Digite o título da aula">
-
-                </div>
-
-            </div>
-
-            <!-- Descrição -->
-
-            <div class="input-group">
-
-                <label for="descricao">
-
-                    Descrição
-
-                </label>
-
-                <textarea
-                    id="descricao"
-                    rows="6"
-                    placeholder="Descreva a aula">
-                </textarea>
-
-            </div>
-
-            <!-- STATUS -->
-
-<div class="input-group">
-
-    <label id="lblStatus" for="ativo">
-        Status
-    </label>
-
-    <select id="ativo">
-
-        <option value="1">
-            Ativo
-        </option>
-
-        <option value="0">
-            Inativo
-        </option>
-
-    </select>
-
-</div>
-
-            <!-- Mensagem -->
-
             <div
-                id="mensagemProduto"
-                class="mensagem">
-            </div>
+                class="step"
+                id="stepImagem">
 
-            <!-- Botão -->
-
-            <div class="buttons">
-
-                <button
-                    type="button"
-                    id="btnSalvarProduto">
-
-                    Salvar Produto
-
-                </button>
-
-            </div>
-
-        </section>
-
-                <!--=========================================
-                    CARD - VÍDEO
-        ==========================================-->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                <h2>Vídeo da Aula</h2>
-
-                <p>
-
-                    Adicione um vídeo para esta aula.
-
-                </p>
-
-            </div>
-
-            <div class="grid-2">
-
-                <!-- Nível -->
-
-                <div class="input-group">
-
-                    <label for="nivel">
-
-                        Nível
-
-                    </label>
-
-                    <select id="nivel">
-
-                        <option value="">Selecione</option>
-
-                        <option value="1">Básico</option>
-
-                        <option value="2">Intermediário</option>
-
-                        <option value="3">Avançado</option>
-
-                    </select>
-
+                <div class="step-number">
+                    3
                 </div>
 
-                <!-- Categoria -->
-
-                <div class="input-group">
-
-                    <label for="categoria">
-
-                        Categoria
-
-                    </label>
-
-                    <select id="categoria">
-
-                        <option value="">Selecione</option>
-
-                        <option value="pronuncia">Pronúncia</option>
-
-                        <option value="vocabulario">Vocabulário</option>
-
-                        <option value="gramatica">Gramática</option>
-
-                        <option value="exterior_trabalho">
-                            Exterior - Trabalho
-                        </option>
-
-                        <option value="exterior_travel">
-                            Exterior - Travel
-                        </option>
-
-                    </select>
-
-                </div>
-
-            </div>
-
-            <!-- Link do vídeo -->
-
-            <div class="input-group">
-
-                <label for="youtube">
-
-                    Link do YouTube
-
-                </label>
-
-                <input
-                    type="url"
-                    id="youtube"
-                    placeholder="https://www.youtube.com/watch?v=...">
-
-            </div>
-
-            <!-- Mensagem -->
-
-            <div
-                id="mensagemVideo"
-                class="mensagem">
-            </div>
-
-            <!-- Botão -->
-
-            <div class="buttons">
-
-                <button
-                    type="button"
-                    id="btnSalvarVideo">
-
-                    Adicionar Vídeo
-
-                </button>
-
-            </div>
-
-        </section>
-         <!--=========================================
-                    CARD - IMAGEM
-        ==========================================-->
-
-        <section class="card">
-
-            <div class="section-title">
-
-                <h2>Capa da Aula</h2>
-
-                <p>
-
-                    Escolha a imagem que será exibida como capa da aula.
-
-                </p>
-
-            </div>
-
-            <div class="grid-2">
-
-                <!-- Upload da imagem -->
-
-                <div class="upload-box">
-
-                    <label for="thumbnail">
-
-                        Selecionar Imagem
-
-                    </label>
-
-                    <input
-                        type="file"
-                        id="thumbnail"
-                        accept="image/*">
-
-                </div>
-
-                <!-- Preview -->
-
-                <div
-                    class="thumbnail-preview"
-                    id="previewThumbnail">
-
-                    <i class="fa-regular fa-image fa-4x"></i>
-
-                    <p>
-
-                        Nenhuma imagem selecionada
-
-                    </p>
-
-                </div>
-
-                <button
-    type="button"
-    id="btnRemoverImagem"
-    class="btn-remover">
-    Remover Imagem
-</button>
-
-            </div>
-
-            <!-- Mensagem -->
-
-            <div
-                id="mensagemImagem"
-                class="mensagem">
-            </div>
-
-            <!-- Botão -->
-
-            <div class="buttons">
-
-                <button
-                    type="button"
-                    id="btnSalvarImagem">
-
-                    Adicionar Imagem
-
-                </button>
+                <span>
+                    Imagem
+                </span>
 
             </div>
 
         </section>
 
         <!--=========================================
-                    FINALIZAR
+            FORMULÁRIO
         ==========================================-->
 
-        <section class="buttons">
+        <form id="formCadastro">
 
-            <button
-                type="button"
-                id="btnVisualizar">
+            <!--=========================================
+                CARD PRODUTO
+            ==========================================-->
 
-                Visualizar
+            <section class="card">
 
-            </button>
+                <div class="section-title">
 
-            <button
-                type="button"
-                id="btnRascunho">
+                    <h2 id="tituloInformacoes">
 
-                Salvar Rascunho
+                        Informações do Produto
 
-            </button>
+                    </h2>
 
-            <button
-                type="button"
-                id="btnFinalizar">
+                    <p id="descricaoInformacoes">
 
-                Finalizar Cadastro
+                        Cadastre as informações da aula.
 
-            </button>
+                    </p>
 
-        </section>
+                </div>
 
-    </form>
+                <div class="grid-2">
 
-</main>
+                    <div class="input-group">
 
-<!--=========================================
-            JAVASCRIPT
-==========================================-->
+                        <label for="nome">
 
-<script src="../js/cadastro_produto.js"></script>
+                            Título da Aula
+
+                        </label>
+
+                        <input
+                            type="text"
+                            id="nome"
+                            placeholder="Digite o título da aula">
+
+                    </div>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="descricao">
+
+                        Descrição
+
+                    </label>
+
+                    <textarea
+                        id="descricao"
+                        rows="6"
+                        placeholder="Descreva a aula"></textarea>
+
+                </div>
+
+                <div class="input-group">
+
+                    <label for="ativo">
+
+                        Status
+
+                    </label>
+
+                    <select id="ativo">
+
+                        <option value="1">
+
+                            Ativo
+
+                        </option>
+
+                        <option value="0">
+
+                            Inativo
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div
+                    id="mensagemProduto"
+                    class="mensagem">
+                </div>
+
+                <div class="buttons">
+
+                    <button
+                        type="button"
+                        id="btnSalvarProduto">
+
+                        Salvar Produto
+
+                    </button>
+
+                </div>
+
+            </section>
+
+                  <!--=========================================
+                CARD - VÍDEO
+            ==========================================-->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <h2 id="tituloVideo">
+                        Vídeo da Aula
+                    </h2>
+
+                    <p id="descricaoVideo">
+                        Adicione o vídeo relacionado a esta aula.
+                    </p>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <!-- Nível -->
+
+                    <div class="input-group">
+
+                        <label for="nivel">
+
+                            Nível
+
+                        </label>
+
+                        <select id="nivel">
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="1">
+                                Básico
+                            </option>
+
+                            <option value="2">
+                                Intermediário
+                            </option>
+
+                            <option value="3">
+                                Avançado
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                    <!-- Categoria -->
+
+                    <div class="input-group">
+
+                        <label for="categoria">
+
+                            Categoria
+
+                        </label>
+
+                        <select id="categoria">
+
+                            <option value="">
+                                Selecione
+                            </option>
+
+                            <option value="pronuncia">
+                                Pronúncia
+                            </option>
+
+                            <option value="vocabulario">
+                                Vocabulário
+                            </option>
+
+                            <option value="gramatica">
+                                Gramática
+                            </option>
+
+                            <option value="speaking">
+                                Speaking
+                            </option>
+
+                            <option value="listening">
+                                Listening
+                            </option>
+
+                            <option value="writing">
+                                Writing
+                            </option>
+
+                            <option value="reading">
+                                Reading
+                            </option>
+
+                            <option value="phrasal_verbs">
+                                Phrasal Verbs
+                            </option>
+
+                            <option value="expressoes">
+                                Expressões
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <!-- Link -->
+
+                <div class="input-group">
+
+                    <label for="youtube">
+
+                        Link do YouTube
+
+                    </label>
+
+                    <input
+                        type="url"
+                        id="youtube"
+                        placeholder="https://www.youtube.com/watch?v=...">
+
+                </div>
+
+                <div
+                    id="mensagemVideo"
+                    class="mensagem">
+                </div>
+
+                <div class="buttons">
+
+                    <button
+                        type="button"
+                        id="btnSalvarVideo">
+
+                        Salvar Vídeo
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!--=========================================
+                CARD - IMAGEM
+            ==========================================-->
+
+            <section class="card">
+
+                <div class="section-title">
+
+                    <h2 id="tituloImagem">
+
+                        Capa da Aula
+
+                    </h2>
+
+                    <p id="descricaoImagem">
+
+                        Escolha a imagem de capa da aula.
+
+                    </p>
+
+                </div>
+
+                <div class="grid-2">
+
+                    <!-- Upload -->
+
+                    <div class="upload-box">
+
+                        <label for="thumbnail">
+
+                            Selecionar Imagem
+
+                        </label>
+
+                        <input
+                            type="file"
+                            id="thumbnail"
+                            accept="image/png,image/jpeg,image/webp,image/jpg">
+
+                    </div>
+
+                    <!-- Preview -->
+
+                    <div class="imagem-preview-area">
+
+                        <div
+                            class="thumbnail-preview"
+                            id="previewThumbnail">
+
+                            <i class="fa-regular fa-image fa-4x"></i>
+
+                            <p>
+
+                                Nenhuma imagem selecionada
+
+                            </p>
+
+                        </div>
+
+                        <button
+                            type="button"
+                            id="btnRemoverImagem"
+                            class="btn-remover">
+
+                            Remover Imagem
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <div
+                    id="mensagemImagem"
+                    class="mensagem">
+                </div>
+
+                <div class="buttons">
+
+                    <button
+                        type="button"
+                        id="btnSalvarImagem">
+
+                        Salvar Imagem
+
+                    </button>
+
+                </div>
+
+            </section>
+
+            <!--=========================================
+                BOTÕES FINAIS
+            ==========================================-->
+
+            <section class="buttons">
+
+                <button
+                    type="button"
+                    id="btnVisualizar">
+
+                    Visualizar
+
+                </button>
+
+                <button
+                    type="button"
+                    id="btnRascunho">
+
+                    Salvar Rascunho
+
+                </button>
+
+                <button
+                    type="button"
+                    id="btnFinalizar">
+
+                    Finalizar Cadastro
+
+                </button>
+
+            </section>
+
+        </form>
+
+    </main>
+
+    <!-- JavaScript -->
+
+    <script src="../js/cadastro_produto.js"></script>
 
 </body>
 
-</html>
+</html>      

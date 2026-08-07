@@ -10,6 +10,7 @@ const app = express();
 //permitir que o servidor aceite requisicoes de outros dominios
 app.use(cors());
 app.use(express.json());
+app.use("/uploads", express.static("uploads"));
 
 // importar a conexao com o banco de dados
 const conexao = require("./conexao");
@@ -42,3 +43,4 @@ app.use("/video", videoRoutas);
 app.listen(3000, () => {
     console.log("Servidor iniciando!");
 });
+

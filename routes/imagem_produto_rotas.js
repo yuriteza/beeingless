@@ -14,7 +14,13 @@ const router = express.Router();
 // Criando um objeto router para definir as rotas relacionadas às imagens de produto.
 const Imagem_ProdutoController = require("../controller/imagem_produto_controller.js");
 
-router.post("/", Imagem_ProdutoController.cadastrar);
+const upload = require("../config/upload");
+
+router.post(
+    "/",
+    upload.single("arquivo"),
+    Imagem_ProdutoController.cadastrar
+);
 
 router.get("/", Imagem_ProdutoController.listar);
 

@@ -11,51 +11,69 @@ const imagem_produtoModel = require("../model/imagem_produto_model");
 
 function cadastrar(req, res) {
 
-    const imagem_produto = req.body;
-
-    // Validação dos campos obrigatórios
-  if (
-        !imagem_produto.arquivo ||
-        !imagem_produto.Produto_idProduto
-    ) {
+    // Verifica se uma imagem foi enviada
+    if (!req.file) {
 
         return res.status(400).json({
+
             sucesso: false,
-            mensagem: "Preencha todos os campos."
+
+            mensagem: "Nenhuma imagem foi enviada."
+
         });
 
     }
 
-    
+    // Verifica se o produto foi informado
+    if (!req.body.Produto_idProduto) {
 
-    // Verifica se já existe uma imagem de produto com o mesmo arquivo
+        return res.status(400).json({
 
-   
-        // Cadastra a imagem de produto
+            sucesso: false,
 
-        imagem_produtoModel.cadastrar(imagem_produto, (erro, resultado) => {
+            mensagem: "Produto não informado."
 
-            if (erro) {
+        });
 
-                return res.status(500).json({
-                    sucesso: false,
-                    mensagem: "Erro ao cadastrar imagem de produto."
-                });
+    }
 
-            }
+    const imagem_produto = {
 
-            return res.status(201).json({
+        arquivo: req.file.filename,
 
-                sucesso: true,
-                mensagem: "Imagem de produto cadastrada com sucesso!",
-                idImagemProduto: resultado.insertId
+        Produto_idProduto: req.body.Produto_idProduto
+
+    };
+
+    imagem_produtoModel.cadastrar(imagem_produto, (erro, resultado) => {
+
+        if (erro) {
+
+            console.log(erro);
+
+            return res.status(500).json({
+
+                sucesso: false,
+
+                mensagem: erro.sqlMessage || "Erro ao cadastrar imagem."
 
             });
 
+        }
+
+        return res.status(201).json({
+
+            sucesso: true,
+
+            mensagem: "Imagem cadastrada com sucesso.",
+
+            idImagemProduto: resultado.insertId
+
         });
 
-    }
+    });
 
+}
 function listarPorProduto(req, res) {
 
     const idProduto = req.params.id;
@@ -142,7 +160,16 @@ function atualizar(req, res) {
     // Obtém o ID da imagem de produto a ser atualizada a partir dos parâmetros da URL
     const id = req.params.id;
     // Obtém os dados atualizados da imagem de produto a partir do corpo da requisição
-    const imagem_produto = req.body;
+    const imagem_produto = {
+
+    arquivo: req.file
+        ? req.file.filename
+        : req.body.arquivo,
+
+    Produto_idProduto:
+        req.body.Produto_idProduto
+
+};
 
 if (
     !imagem_produto.arquivo ||
