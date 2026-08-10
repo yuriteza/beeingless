@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Exercícios | BEE Inglês</title>
+
+    <!-- GOOGLE FONTS -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Patrick+Hand&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- FONT AWESOME -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- CSS -->
+
+    <link
+        rel="stylesheet"
+        href="../style/exercicios.css"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     FUNDO
+========================================================= -->
+
+<div id="background-circles"></div>
+
+
+<!-- =========================================================
+     MENU
+========================================================= -->
+
+<header class="menu">
+
+    <div class="menu-container">
+
+
+        <!-- LOGO -->
+
+        <a
+            href="#"
+            class="logo"
+            id="logo"
+        >
+        </a>
+
+
+        <!-- NAVEGAÇÃO -->
+
+        <nav class="menu-links">
+
+            <a
+                href="#"
+                id="linkInicio"
+            >
+            </a>
+
+            <a
+                href="#"
+                id="linkCursos"
+            >
+            </a>
+
+            <a
+                href="#"
+                id="linkExercicios"
+                class="active"
+            >
+            </a>
+
+        </nav>
+
+
+        <!-- PERFIL -->
+
+        <button
+            class="perfil-button"
+            id="perfilButton"
+            type="button"
+        >
+
+            <i class="fa-solid fa-user"></i>
+
+            <span id="nomeUsuario"></span>
+
+        </button>
+
+
+        <!-- MENU MOBILE -->
+
+        <button
+            class="menu-mobile-button"
+            id="menuMobileButton"
+            type="button"
+            aria-label="Abrir menu"
+        >
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MENU MOBILE
+========================================================= -->
+
+<nav
+    class="menu-mobile"
+    id="menuMobile"
+>
+
+    <a
+        href="#"
+        id="mobileInicio"
+    >
+    </a>
+
+    <a
+        href="#"
+        id="mobileCursos"
+    >
+    </a>
+
+    <a
+        href="#"
+        id="mobileExercicios"
+    >
+    </a>
+
+</nav>
+
+
+
+<!-- =========================================================
+     CONTEÚDO PRINCIPAL
+========================================================= -->
+
+<main class="pagina">
+
+
+    <!-- =====================================================
+         CABEÇALHO DA AULA
+    ====================================================== -->
+
+    <section class="cabecalho-exercicio">
+
+
+        <div class="cabecalho-texto">
+
+            <span
+                class="categoria"
+                id="categoria"
+            >
+            </span>
+
+
+            <h1 id="tituloExercicio">
+            </h1>
+
+
+            <p id="descricaoExercicio">
+            </p>
+
+
+            <div class="informacoes-aula">
+
+
+                <span>
+
+                    <i class="fa-solid fa-signal"></i>
+
+                    <strong id="nivelExercicio">
+                    </strong>
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <strong id="tempoExercicio">
+                    </strong>
+
+                </span>
+
+
+                <span>
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                    <strong id="totalQuestoes">
+                    </strong>
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ILUSTRAÇÃO -->
+
+        <div class="cabecalho-ilustracao">
+
+            <div class="icone-ingles">
+
+                <i
+                    class="fa-solid fa-book-open"
+                ></i>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PROGRESSO
+    ====================================================== -->
+
+    <section class="progresso-container">
+
+
+        <div class="progresso-topo">
+
+            <span id="textoProgresso">
+            </span>
+
+            <span id="porcentagemProgresso">
+            </span>
+
+        </div>
+
+
+        <div class="progresso-barra">
+
+            <div
+                class="progresso-preenchimento"
+                id="progressoPreenchimento"
+            >
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         LAYOUT DO EXERCÍCIO
+    ====================================================== -->
+
+    <section class="layout-exercicio">
+
+
+        <!-- =================================================
+             ÁREA PRINCIPAL
+        ================================================== -->
+
+        <div class="area-principal">
+
+
+            <!-- INSTRUÇÃO -->
+
+            <div class="instrucao-card">
+
+                <div class="instrucao-icone">
+
+                    <i
+                        class="fa-solid fa-lightbulb"
+                    ></i>
+
+                </div>
+
+
+                <div>
+
+                    <span id="textoInstrucaoTitulo">
+                    </span>
+
+                    <p id="textoInstrucao">
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 QUESTÃO ATUAL
+            ================================================== -->
+
+            <article
+                class="questao-card"
+                id="questaoCard"
+            >
+
+
+                <div class="questao-cabecalho">
+
+
+                    <span
+                        class="numero-questao"
+                        id="numeroQuestao"
+                    >
+                    </span>
+
+
+                    <span
+                        class="tipo-questao"
+                        id="tipoQuestao"
+                    >
+                    </span>
+
+                </div>
+
+
+
+                <div class="questao-conteudo">
+
+
+                    <p
+                        class="frase-questao"
+                        id="fraseQuestao"
+                    >
+                    </p>
+
+
+                    <!-- CAMPO DE RESPOSTA -->
+
+                    <div class="campo-resposta">
+
+
+                        <label
+                            for="resposta"
+                            id="labelResposta"
+                        >
+                        </label>
+
+
+                        <input
+                            type="text"
+                            id="resposta"
+                            autocomplete="off"
+                        >
+
+
+                        <button
+                            type="button"
+                            class="audio-button"
+                            id="audioButton"
+                            aria-label="Ouvir frase"
+                        >
+
+                            <i
+                                class="fa-solid fa-volume-high"
+                            ></i>
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- DICA -->
+
+                    <button
+                        type="button"
+                        class="dica-button"
+                        id="dicaButton"
+                    >
+
+                        <i
+                            class="fa-regular fa-lightbulb"
+                        ></i>
+
+                        <span id="textoDica">
+                        </span>
+
+                    </button>
+
+
+                    <div
+                        class="dica-box"
+                        id="dicaBox"
+                    >
+
+                        <i
+                            class="fa-solid fa-circle-info"
+                        ></i>
+
+                        <span id="dicaTexto">
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- =================================================
+                     FEEDBACK
+                ================================================== -->
+
+                <div
+                    class="feedback"
+                    id="feedback"
+                >
+
+
+                    <div class="feedback-icone">
+
+                        <i
+                            id="feedbackIcone"
+                            class="fa-solid fa-check"
+                        ></i>
+
+                    </div>
+
+
+                    <div>
+
+                        <strong id="feedbackTitulo">
+                        </strong>
+
+                        <p id="feedbackTexto">
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =================================================
+                     AÇÕES
+                ================================================== -->
+
+                <div class="questao-acoes">
+
+
+                    <button
+                        type="button"
+                        class="botao-secundario"
+                        id="botaoAnterior"
+                    >
+
+                        <i
+                            class="fa-solid fa-arrow-left"
+                        ></i>
+
+                        <span id="textoAnterior">
+                        </span>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="botao-principal"
+                        id="botaoVerificar"
+                    >
+
+                        <span id="textoVerificar">
+                        </span>
+
+                        <i
+                            class="fa-solid fa-check"
+                        ></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="botao-principal botao-proximo"
+                        id="botaoProximo"
+                    >
+
+                        <span id="textoProximo">
+                        </span>
+
+                        <i
+                            class="fa-solid fa-arrow-right"
+                        ></i>
+
+                    </button>
+
+                </div>
+
+
+            </article>
+
+
+
+            <!-- =================================================
+                 EXPLICAÇÃO
+            ================================================== -->
+
+            <section
+                class="explicacao"
+                id="explicacao"
+            >
+
+
+                <div class="explicacao-titulo">
+
+                    <i
+                        class="fa-solid fa-graduation-cap"
+                    ></i>
+
+                    <span id="tituloExplicacao">
+                    </span>
+
+                </div>
+
+
+                <p id="textoExplicacao">
+                </p>
+
+
+                <div
+                    class="exemplo"
+                    id="exemploExplicacao"
+                >
+                </div>
+
+            </section>
+
+        </div>
+
+
+
+        <!-- =================================================
+             PAINEL LATERAL
+        ================================================== -->
+
+        <aside class="painel-lateral">
+
+
+            <!-- RESULTADO -->
+
+            <div class="resultado-card">
+
+
+                <div class="resultado-titulo">
+
+                    <i
+                        class="fa-solid fa-chart-simple"
+                    ></i>
+
+                    <span id="tituloSeuProgresso">
+                    </span>
+
+                </div>
+
+
+                <div class="pontuacao">
+
+                    <strong id="pontuacao">
+                    </strong>
+
+                    <span id="textoPontos">
+                    </span>
+
+                </div>
+
+
+                <div class="estatisticas">
+
+
+                    <div class="estatistica acertos">
+
+                        <i
+                            class="fa-solid fa-check"
+                        ></i>
+
+                        <div>
+
+                            <strong id="acertos">
+                            </strong>
+
+                            <span id="textoAcertos">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="estatistica erros">
+
+                        <i
+                            class="fa-solid fa-xmark"
+                        ></i>
+
+                        <div>
+
+                            <strong id="erros">
+                            </strong>
+
+                            <span id="textoErros">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- QUESTÕES -->
+
+            <div class="questoes-card">
+
+
+                <div class="questoes-titulo">
+
+                    <span id="tituloQuestoes">
+                    </span>
+
+                    <span id="contadorQuestoes">
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="lista-questoes"
+                    id="listaQuestoes"
+                >
+
+                    <!-- OS 20 ITENS JÁ EXISTEM NO HTML.
+                         O JAVASCRIPT APENAS PREENDE. -->
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero1"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero2"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero3"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero4"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero5"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero6"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero7"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero8"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero9"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero10"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero11"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero12"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero13"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero14"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero15"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero16"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero17"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero18"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero19"
+                    >
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="questao-numero"
+                        id="questaoNumero20"
+                    >
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MATERIAL -->
+
+            <div class="material-card">
+
+
+                <div class="material-icone">
+
+                    <i
+                        class="fa-solid fa-file-lines"
+                    ></i>
+
+                </div>
+
+
+                <div>
+
+                    <strong id="tituloMaterial">
+                    </strong>
+
+                    <p id="descricaoMaterial">
+                    </p>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    id="botaoMaterial"
+                    target="_blank"
+                >
+
+                    <i
+                        class="fa-solid fa-arrow-up-right-from-square"
+                    ></i>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+    </section>
+
+</main>
+
+
+
+<!-- =========================================================
+     MODAL FINAL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="modalFinal"
+>
+
+
+    <div class="modal-final">
+
+
+        <button
+            type="button"
+            class="fechar-modal"
+            id="fecharModal"
+        >
+
+            <i
+                class="fa-solid fa-xmark"
+            ></i>
+
+        </button>
+
+
+        <div class="trofeu">
+
+            <i
+                class="fa-solid fa-trophy"
+            ></i>
+
+        </div>
+
+
+        <h2 id="tituloFinal">
+        </h2>
+
+
+        <p id="descricaoFinal">
+        </p>
+
+
+        <div class="resultado-final">
+
+
+            <div>
+
+                <strong id="resultadoPontuacao">
+                </strong>
+
+                <span id="resultadoPontos">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="resultadoAcertos">
+                </strong>
+
+                <span id="resultadoTextoAcertos">
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong id="resultadoErros">
+                </strong>
+
+                <span id="resultadoTextoErros">
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-acoes">
+
+
+            <button
+                type="button"
+                class="botao-secundario"
+                id="botaoRefazer"
+            >
+            </button>
+
+
+            <button
+                type="button"
+                class="botao-principal"
+                id="botaoProximaAula"
+            >
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================= -->
+
+<footer class="footer">
+
+    <div class="footer-container">
+
+
+        <div>
+
+            <strong id="footerLogo">
+            </strong>
+
+            <p id="footerDescricao">
+            </p>
+
+        </div>
+
+
+        <div class="footer-direitos">
+
+            <span id="footerDireitos">
+            </span>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!-- JAVASCRIPT -->
+
+<script
+    src="../js/exercicios.js"
+></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,1186 @@
+
+/*colocando cor de fundo no cabecalho*/
+header {
+background-color: #64997f;
+font-family: "Saira", sans-serif; /* fonte do header ou cabecalho */
+color:rgb(255, 255, 255);
+box-shadow: 20px 8px 12px #979595;
+z-index:1000;
+}
+nav a {  
+    color:rgb(255, 255, 255);
+    text-decoration: none;
+    margin: 0 60px;
+    font-size: 18px;
+}
+    
+ nav{  
+      text-align: center;
+    border-color:rgb(255, 255, 255);
+    border-width: 1px;
+    border-style: solid;
+    padding: 10px;
+
+}
+
+.logo img {
+    width: 85px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: 85px;
+}
+
+/*configurações da caixa de pesquisa*/
+.caixa-de-pesquisa input{
+    padding: 14px 20px; /* espaçamento interno da caixa de pesquisa */
+   
+    font-family: "Saira", sans-serif;
+    width: 400px; /* largura da caixa de pesquisa */
+  
+   background: rgba(255, 255, 255, 0.76);
+   backdrop-filter: blur(40px) saturate(163%);
+   -webkit-backdrop-filter: blur(0px) saturate(163%);
+   border: 1px solid rgba(255, 255, 255, 0);
+   border-radius: 27px;
+   box-shadow: 20px 8px 12px rgba(255, 255, 255, 0.623);
+   padding-left: 20px;/* espaçamento interno da caixa de pesquisa */
+
+}
+/*configurando a div caixa de pesquisa*/
+.caixa-de-pesquisa{
+    display: flex; /* exibe os elementos em linha */
+    justify-content: center;/* centraliza os elementos horizontalmente */
+    margin-top: 10px;/* espaçamento superior da caixa de pesquisa */
+    margin-bottom: 10px;/* espaçamento inferior da caixa de pesquisa */
+    position: relative;/* define a posição relativa para permitir o posicionamento absoluto do ícone */
+}
+/* alinhar as divs do cabecalho */
+.topo {
+    display: flex; /* exibe os elementos em linha */
+    align-items: center; /* alinha os elementos verticalmente */
+    justify-content: space-between; /* distribui os elementos com espaço entre eles */
+    padding: 10px; /* espaçamento interno da div */
+    margin:auto;
+}
+ /*configurando os icones*/
+ .caixa-de-pesquisa img{
+    width: 20px; /* ajuste o tamanho do ícone conforme necessário */
+    height: 20px;/* ajuste o tamanho do ícone conforme necessário */
+    position: absolute; /* posicionamento absoluto para colocar o ícone dentro da caixa de pesquisa */
+    right: 20px; /* distância do ícone em relação à borda direita da caixa de pesquisa */
+    top:50%; /* centraliza verticalmente o ícone em relação à caixa de pesquisa */
+    transform: translateY(-50%); /* ajusta a posição vertical do ícone */
+}
+.caixa-de-pesquisa placeholder {
+    padding-left: 20px; /* espaçamento interno da caixa de pesquisa */
+}
+
+.icones a img{
+    width: 30px; /* ajuste o tamanho do ícone conforme necessário */
+    height: auto;/* ajuste o tamanho do ícone conforme necessário */
+    
+    padding-top: 10px; /* remove o espaçamento interno do elemento img */
+    grid-row: 1/3; /*OCUPA AS DUAS LINHAS DO GRADE PARA O ICONE*/
+    margin: 5px; /* remove as margens do elemento img */
+}
+/*CONFIGURANDO OS ICONES DO LADO*/
+.icones a small{
+    font-size: 16px; /* ajuste o tamanho do texto conforme necessário */
+    color: #ffffff; /* cor do texto dos ícones */
+    display: block; /* exibe o texto em uma nova linha abaixo do ícone */
+    grid-column: 2; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
+    grid-row: 1; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO
+    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
+    margin: 0; /* remove as margens do elemento small */
+   
+}
+.icones a p{
+    font-size: 16px; /* ajuste o tamanho do texto conforme necessário */
+    color: #ffffff; /* cor do texto dos ícones */
+    display: block; /* exibe o texto em uma nova linha abaixo do ícone */
+    grid-template-columns: 30px auto; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
+    grid-template-rows: auto auto; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO 
+    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
+    grid-column: 2; /*DEFINE O TAMANHO DA COLUNA PARA O TEXTO DOS ICONES */
+    grid-row: 2; /*DEFINE O TAMANHO DA LINHA PARA O TEXTO DOS ICONES */ /* PRIMEIRO AUTO PRA LARGURA DO TEXTO
+    E O SEGUNDO AUTO PARA A ALTURA DO TEXTO */
+    margin: 0; /* remove as margens do elemento small */
+    margin-right: 10px; /* espaçamento entre o texto e o ícone */
+}
+
+.icones a{
+    text-decoration: none; /* remove o sublinhado doslink */
+    display: grid; /* exibe os elementos em linha/grade */
+}
+    /*configurando a div icones*/
+.icones{
+    display: flex; /* exibe os elementos em linha */
+    align-items: center; /* alinha os elementos verticalmente */
+    gap: 20px; /* espaçamento entre os ícones */
+    
+}
+
+
+
+/* ==========================
+   FOOTER
+========================== */
+
+.footer{
+    
+    background:linear-gradient(
+        135deg,
+        #5d9174,
+        #84ad97
+    );
+
+   
+
+    padding:40px 40px 15px;
+    color: #EFEBBB;
+    
+}
+
+.footer-container{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:40px;
+}
+
+.footer-logo h2{
+    font-size:3rem;
+    line-height:0.9;
+    font-weight:800;
+    color:#f6ecc6;
+    font-family: "Saira Stencil", sans-serif;
+}
+
+.footer-links{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.social-item{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:15px;
+}
+
+.social-item span{
+    display:block;
+    font-size:12px;
+    letter-spacing:1px;
+}
+
+.social-item p{
+    font-size:13px;
+}
+
+.social-item i{
+    font-size:28px;
+    color:#f6ecc6;
+}
+
+.footer-bottom{
+    margin-top:30px;
+    font: "Saira", sans-serif;
+   
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-top:1px solid rgba(247, 246, 221, 0.575);
+    padding-top:15px;
+    font-size:13px;
+}
+
+.footer-bottom p{
+    color:#f6ecc6;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    .footer{
+        padding:30px 20px;
+    }
+
+    .footer-container{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+
+    .footer-logo h2{
+        font-size:2.2rem;
+    }
+
+    .social-item{
+        justify-content:center;
+    }
+
+    .footer-bottom{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+}
+
+/* ==========================
+   RESPONSIVO
+========================== */
+
+@media(max-width:900px){
+
+    .topo{
+        flex-direction:column;
+    }
+
+    .caixa-de-pesquisa{
+        width:100%;
+        max-width:100%;
+    }
+
+    .icones{
+        width:100%;
+        justify-content:center;
+    }
+
+    .titulo h2{
+        font-size:2.2rem;
+    }
+}
+
+@media(max-width:600px){
+
+    .menu{
+        gap:15px;
+    }
+
+    .menu a{
+        font-size:14px;
+    }
+
+    .cards{
+        grid-template-columns:1fr;
+    }
+
+    .card{
+        min-height:200px;
+    }
+
+    .titulo h2{
+        font-size:1.8rem;
+    }
+
+    .decoracao{
+        transform:scale(.7);
+    }
+}
+
+
+/* =======================================================
+   RESET
+======================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+
+    font-family:"Saira",sans-serif;
+    background:#ffffff;
+    color:#14213D;
+    overflow-x:hidden;
+    position:relative;
+
+}
+
+img{
+
+    display:block;
+    width:100%;
+
+}
+
+a{
+
+    text-decoration:none;
+
+}
+
+button{
+
+    border:none;
+    background:none;
+    cursor:pointer;
+
+}
+
+ul{
+
+    list-style:none;
+
+}
+
+
+/* =======================================================
+   VARIÁVEIS
+======================================================= */
+
+:root{
+
+    --primary:#14213D;
+    --secondary:#F4E28A;
+    --secondary-dark:#e6d26c;
+    --white:#ffffff;
+    --gray:#6f6f6f;
+    --border:#ececec;
+    --shadow:0 12px 35px rgba(0,0,0,.08);
+    --radius:22px;
+    --transition:.35s;
+
+}
+
+
+/* =======================================================
+   PÁGINA
+======================================================= */
+
+.topicos-page{
+
+    width:100%;
+    min-height:100vh;
+    position:relative;
+    padding:90px 20px;
+    overflow:hidden;
+
+}
+
+
+/* =======================================================
+   CONTAINER
+======================================================= */
+
+.container{
+
+    width:100%;
+    max-width:1250px;
+    margin:auto;
+    position:relative;
+    z-index:2;
+
+}
+
+
+/* =======================================================
+   CABEÇALHO
+======================================================= */
+
+.section-header{
+
+    text-align:center;
+    margin-bottom:70px;
+
+}
+
+#subtitulo{
+
+    display:inline-block;
+    padding:8px 18px;
+    border-radius:50px;
+    background:#FFF8D7;
+    color:var(--primary);
+    font-size:.9rem;
+    font-weight:600;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+
+}
+
+#titulo{
+
+    font-size:3rem;
+    color:var(--primary);
+    margin-bottom:20px;
+    line-height:1.2;
+
+}
+
+#descricao{
+
+    max-width:750px;
+    margin:auto;
+    color:var(--gray);
+    font-size:1rem;
+    line-height:1.8;
+
+}
+
+
+/* =======================================================
+   GRID
+======================================================= */
+
+.topics-grid{
+
+    display:flex;
+    flex-direction:column;
+    gap:45px;
+
+}
+
+
+/* =======================================================
+   CARD
+======================================================= */
+
+.topic-card{
+
+    display:flex;
+    align-items:center;
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+    position:relative;
+    z-index:2;
+
+}
+
+.topic-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.topic-card.reverse{
+
+    flex-direction:row-reverse;
+
+}
+
+/* =======================================================
+   IMAGEM DO CARD
+======================================================= */
+
+.topic-image{
+
+    width:260px;
+    min-width:260px;
+    height:260px;
+    overflow:hidden;
+    position:relative;
+    background:#f7f7f7;
+
+}
+
+.topic-image img{
+
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.6s;
+
+}
+
+.topic-card:hover .topic-image img{
+
+    transform:scale(1.08);
+
+}
+
+
+/* =======================================================
+   CONTEÚDO
+======================================================= */
+
+.topic-content{
+
+    flex:1;
+    padding:35px 40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+
+}
+
+
+/* =======================================================
+   CATEGORIA
+======================================================= */
+
+.topic-category{
+
+    display:inline-block;
+    margin-bottom:12px;
+    color:#C39A00;
+    font-size:.75rem;
+    font-weight:700;
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+}
+
+
+/* =======================================================
+   TÍTULO
+======================================================= */
+
+.topic-content h2{
+
+    font-size:1.8rem;
+    color:var(--primary);
+    margin-bottom:15px;
+    line-height:1.3;
+    transition:.3s;
+
+}
+
+.topic-card:hover h2{
+
+    color:#1e3d74;
+
+}
+
+
+/* =======================================================
+   DESCRIÇÃO
+======================================================= */
+
+.topic-content p{
+
+    color:var(--gray);
+    line-height:1.8;
+    font-size:.98rem;
+    margin-bottom:28px;
+
+}
+
+
+/* =======================================================
+   BOTÃO
+======================================================= */
+
+.btn-topic{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    width:max-content;
+    padding:12px 24px;
+    border-radius:50px;
+    background:var(--secondary);
+    color:var(--primary);
+    font-weight:600;
+    font-size:.85rem;
+    letter-spacing:.8px;
+    transition:.35s;
+
+}
+
+.btn-topic i{
+
+    transition:.35s;
+
+}
+
+.btn-topic:hover{
+
+    background:var(--secondary-dark);
+    transform:translateY(-3px);
+
+}
+
+.btn-topic:hover i{
+
+    transform:translateX(6px);
+
+}
+
+
+/* =======================================================
+   ANIMAÇÃO DOS CARDS
+======================================================= */
+
+.topic-card{
+
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp .8s forwards;
+
+}
+
+.topic-card:nth-child(2){
+
+    animation-delay:.15s;
+
+}
+
+.topic-card:nth-child(3){
+
+    animation-delay:.30s;
+
+}
+
+.topic-card:nth-child(4){
+
+    animation-delay:.45s;
+
+}
+
+.topic-card:nth-child(5){
+
+    animation-delay:.60s;
+
+}
+
+.topic-card:nth-child(6){
+
+    animation-delay:.75s;
+
+}
+
+.topic-card:nth-child(7){
+
+    animation-delay:.90s;
+
+}
+
+.topic-card:nth-child(8){
+
+    animation-delay:1.05s;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}/* =======================================================
+   CÍRCULOS DECORATIVOS
+======================================================= */
+
+.background-circles{
+
+    position:absolute;
+    inset:0;
+    overflow:hidden;
+    pointer-events:none;
+    z-index:0;
+
+}
+
+
+/* =======================================================
+   CÍRCULOS
+======================================================= */
+
+.circle{
+
+    position:absolute;
+    border-radius:50%;
+    background:rgba(244,226,138,.75);
+    animation:floatCircle linear infinite;
+
+}
+
+
+/* =======================================================
+   POSIÇÕES
+======================================================= */
+
+.circle:nth-child(1){
+
+    width:18px;
+    height:18px;
+    top:8%;
+    left:6%;
+    animation-duration:18s;
+
+}
+
+.circle:nth-child(2){
+
+    width:26px;
+    height:26px;
+    top:12%;
+    left:12%;
+    animation-duration:20s;
+
+}
+
+.circle:nth-child(3){
+
+    width:14px;
+    height:14px;
+    top:18%;
+    left:9%;
+    animation-duration:16s;
+
+}
+
+.circle:nth-child(4){
+
+    width:22px;
+    height:22px;
+    top:22%;
+    left:32%;
+    animation-duration:22s;
+
+}
+
+.circle:nth-child(5){
+
+    width:12px;
+    height:12px;
+    top:28%;
+    left:48%;
+    animation-duration:15s;
+
+}
+
+.circle:nth-child(6){
+
+    width:18px;
+    height:18px;
+    top:34%;
+    left:38%;
+    animation-duration:19s;
+
+}
+
+.circle:nth-child(7){
+
+    width:30px;
+    height:30px;
+    top:40%;
+    left:52%;
+    animation-duration:24s;
+
+}
+
+.circle:nth-child(8){
+
+    width:18px;
+    height:18px;
+    top:48%;
+    left:30%;
+    animation-duration:17s;
+
+}
+
+.circle:nth-child(9){
+
+    width:38px;
+    height:38px;
+    top:56%;
+    left:44%;
+    animation-duration:23s;
+
+}
+
+.circle:nth-child(10){
+
+    width:16px;
+    height:16px;
+    top:64%;
+    left:60%;
+    animation-duration:18s;
+
+}
+
+.circle:nth-child(11){
+
+    width:26px;
+    height:26px;
+    top:72%;
+    left:20%;
+    animation-duration:22s;
+
+}
+
+.circle:nth-child(12){
+
+    width:34px;
+    height:34px;
+    top:82%;
+    left:78%;
+    animation-duration:26s;
+
+}
+
+.circle:nth-child(13){
+
+    width:18px;
+    height:18px;
+    top:90%;
+    left:66%;
+    animation-duration:18s;
+
+}
+
+.circle:nth-child(14){
+
+    width:42px;
+    height:42px;
+    top:95%;
+    left:86%;
+    animation-duration:25s;
+
+}
+
+
+/* =======================================================
+   ANIMAÇÃO
+======================================================= */
+
+@keyframes floatCircle{
+
+    0%{
+
+        transform:translateY(0) translateX(0) scale(1);
+
+    }
+
+    25%{
+
+        transform:translateY(-18px) translateX(12px) scale(1.08);
+
+    }
+
+    50%{
+
+        transform:translateY(-35px) translateX(-12px) scale(.96);
+
+    }
+
+    75%{
+
+        transform:translateY(-18px) translateX(8px) scale(1.04);
+
+    }
+
+    100%{
+
+        transform:translateY(0) translateX(0) scale(1);
+
+    }
+
+}
+
+
+/* =======================================================
+   EFEITO DE BRILHO
+======================================================= */
+
+.circle::after{
+
+    content:"";
+    position:absolute;
+    inset:0;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+    animation:pulse 4s ease-in-out infinite;
+
+}
+
+@keyframes pulse{
+
+    0%{
+
+        opacity:.2;
+
+    }
+
+    50%{
+
+        opacity:.7;
+
+    }
+
+    100%{
+
+        opacity:.2;
+
+    }
+
+}
+
+/* =======================================================
+   RESPONSIVIDADE
+======================================================= */
+
+
+/* ===========================
+   NOTEBOOK
+=========================== */
+
+@media (max-width:1200px){
+
+    .container{
+
+        max-width:1000px;
+
+    }
+
+    .topic-image{
+
+        width:240px;
+        min-width:240px;
+        height:190px;
+
+    }
+
+    .topic-content{
+
+        padding:30px;
+
+    }
+
+    .topic-content h2{
+
+        font-size:1.6rem;
+
+    }
+
+}
+
+
+/* ===========================
+   TABLET
+=========================== */
+
+@media (max-width:992px){
+
+    .topicos-page{
+
+        padding:70px 20px;
+
+    }
+
+    #titulo{
+
+        font-size:2.5rem;
+
+    }
+
+    .topic-card,
+    .topic-card.reverse{
+
+        flex-direction:column;
+
+    }
+
+    .topic-image{
+
+        width:100%;
+        min-width:100%;
+        height:280px;
+
+    }
+
+    .topic-content{
+
+        width:100%;
+        padding:35px;
+
+    }
+
+}
+
+
+/* ===========================
+   CELULAR
+=========================== */
+
+@media (max-width:768px){
+
+    .topicos-page{
+
+        padding:60px 18px;
+
+    }
+
+    .section-header{
+
+        margin-bottom:50px;
+
+    }
+
+    #subtitulo{
+
+        font-size:.8rem;
+
+    }
+
+    #titulo{
+
+        font-size:2rem;
+
+    }
+
+    #descricao{
+
+        font-size:.95rem;
+        line-height:1.7;
+
+    }
+
+    .topics-grid{
+
+        gap:30px;
+
+    }
+
+    .topic-card{
+
+        border-radius:18px;
+
+    }
+
+    .topic-image{
+
+        height:220px;
+
+    }
+
+    .topic-content{
+
+        padding:28px 24px;
+
+    }
+
+    .topic-content h2{
+
+        font-size:1.45rem;
+
+    }
+
+    .topic-content p{
+
+        font-size:.95rem;
+
+    }
+
+    .btn-topic{
+
+        width:100%;
+        justify-content:center;
+
+    }
+
+}
+
+
+/* ===========================
+   CELULARES PEQUENOS
+=========================== */
+
+@media (max-width:480px){
+
+    .topicos-page{
+
+        padding:50px 15px;
+
+    }
+
+    #titulo{
+
+        font-size:1.7rem;
+
+    }
+
+    #descricao{
+
+        font-size:.9rem;
+
+    }
+
+    .topic-image{
+
+        height:180px;
+
+    }
+
+    .topic-content{
+
+        padding:22px 20px;
+
+    }
+
+    .topic-content h2{
+
+        font-size:1.25rem;
+
+    }
+
+    .topic-content p{
+
+        font-size:.88rem;
+        margin-bottom:20px;
+
+    }
+
+    .btn-topic{
+
+        padding:12px 18px;
+        font-size:.82rem;
+
+    }
+
+}
+
+
+/* =======================================================
+   BARRA DE ROLAGEM
+======================================================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#f3f3f3;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--secondary);
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+    background:var(--secondary-dark);
+
+}
