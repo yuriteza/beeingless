@@ -1,20 +1,32 @@
+console.log("UPLOAD.JS CARREGADO");
+
 const multer = require("multer");
 const path = require("path");
 
-// Configuração do armazenamento
+const caminhoUploads = path.join(
+    __dirname,
+    "..",
+    "uploads"
+);
+
 const storage = multer.diskStorage({
 
     destination: function (req, file, cb) {
 
-        cb(null, "uploads/");
+        cb(null, caminhoUploads);
 
     },
 
     filename: function (req, file, cb) {
 
-        const extensao = path.extname(file.originalname);
+        const extensao =
+            path.extname(file.originalname);
 
-        const nomeArquivo = Date.now() + extensao;
+        const nomeArquivo =
+            Date.now() +
+            "-" +
+            Math.round(Math.random() * 1E9) +
+            extensao;
 
         cb(null, nomeArquivo);
 
@@ -22,7 +34,6 @@ const storage = multer.diskStorage({
 
 });
 
-// Aceita somente imagens
 const fileFilter = (req, file, cb) => {
 
     if (file.mimetype.startsWith("image/")) {
@@ -31,7 +42,10 @@ const fileFilter = (req, file, cb) => {
 
     } else {
 
-        cb(new Error("Somente imagens são permitidas."), false);
+        cb(
+            new Error("Somente imagens são permitidas."),
+            false
+        );
 
     }
 
@@ -39,7 +53,7 @@ const fileFilter = (req, file, cb) => {
 
 module.exports = multer({
 
-    storage,
-    fileFilter
+    storage: storage,
+    fileFilter: fileFilter
 
 });

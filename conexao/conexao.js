@@ -6,7 +6,7 @@ const conexao = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "", // senha do mysql
-    database: "BEEINGLES"
+    database: "BEE_INGLES"
 });
 conexao.connect((erro) => {
     

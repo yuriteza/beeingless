@@ -53,23 +53,58 @@ const ativo =
 document.getElementById("ativo");
 
 /*=====================================================
-=
 =              CAMPOS VÍDEO
-=
 =====================================================*/
 
 const nivel =
-document.getElementById("nivel");
+    document.getElementById("nivel");
 
 const categoria =
-document.getElementById("categoria");
+    document.getElementById("categoria");
 
 const youtubeIngles =
     document.getElementById("youtubeIngles");
 
+const possuiExplicacaoPortugues =
+    document.getElementById("possuiExplicacaoPortugues");
+
+const campoVideoPortugues =
+    document.getElementById("campoVideoPortugues");
+
 const youtubePortugues =
     document.getElementById("youtubePortugues");
 
+
+/*=====================================================
+=       VÍDEO EXPLICATIVO EM PORTUGUÊS
+=====================================================*/
+
+if (possuiExplicacaoPortugues) {
+
+    possuiExplicacaoPortugues.addEventListener(
+        "change",
+        function () {
+
+            if (this.checked) {
+
+                campoVideoPortugues.style.display = "flex";
+
+                youtubePortugues.required = true;
+
+            } else {
+
+                campoVideoPortugues.style.display = "none";
+
+                youtubePortugues.required = false;
+
+                youtubePortugues.value = "";
+
+            }
+
+        }
+    );
+
+}
 /*=====================================================
 =
 =              CAMPOS IMAGEM
@@ -108,6 +143,269 @@ document.getElementById("btnRascunho");
 
 const btnFinalizar =
 document.getElementById("btnFinalizar");
+
+
+/*=====================================================*
+*=              CADASTRAR VÍDEO
+*=====================================================*/
+
+btnSalvarVideo.addEventListener(
+    "click",
+    cadastrarVideo
+);
+
+async function cadastrarVideo() {
+
+    limparMensagens();
+
+    /*=================================================
+      VERIFICA PRODUTO
+    =================================================*/
+
+    if (idProduto === null) {
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Cadastre primeiro a aula."
+        );
+
+        return;
+    }
+
+
+    /*=================================================
+      VALIDA NÍVEL
+    =================================================*/
+
+    if (nivel.value === "") {
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Selecione o nível da aula."
+        );
+
+        nivel.focus();
+
+        return;
+    }
+
+
+    /*=================================================
+      VALIDA CATEGORIA
+    =================================================*/
+
+    if (categoria.value === "") {
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Selecione a categoria da aula."
+        );
+
+        categoria.focus();
+
+        return;
+    }
+
+
+    /*=================================================
+      VALIDA VÍDEO EM INGLÊS
+    =================================================*/
+
+    if (youtubeIngles.value.trim() === "") {
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Informe o link do vídeo em inglês."
+        );
+
+        youtubeIngles.focus();
+
+        return;
+    }
+
+
+    /*=================================================
+      VÍDEO EM PORTUGUÊS
+    =================================================*/
+
+    const temExplicacaoPortugues =
+        possuiExplicacaoPortugues &&
+        possuiExplicacaoPortugues.checked;
+
+
+    if (
+        temExplicacaoPortugues &&
+        youtubePortugues.value.trim() === ""
+    ) {
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Informe o link do vídeo explicativo em português."
+        );
+
+        youtubePortugues.focus();
+
+        return;
+    }
+
+
+    /*=================================================
+      DESABILITA BOTÃO
+    =================================================*/
+
+    btnSalvarVideo.disabled = true;
+
+
+    try {
+
+        /*=================================================
+          CADASTRA VÍDEO EM INGLÊS
+        =================================================*/
+
+        const videoIngles = {
+
+            Produto_idProduto: idProduto,
+
+            Niveis_idNiveis: Number(nivel.value),
+
+            categoria: categoria.value,
+
+            link: youtubeIngles.value.trim()
+
+        };
+
+
+        const respostaIngles = await fetch(
+            URL_VIDEO,
+            {
+
+                method: "POST",
+
+                headers: {
+
+                    "Content-Type": "application/json"
+
+                },
+
+                body: JSON.stringify(videoIngles)
+
+            }
+        );
+
+
+        const retornoIngles =
+            await respostaIngles.json();
+
+
+        if (!retornoIngles.sucesso) {
+
+            mostrarMensagem(
+                mensagemVideo,
+                retornoIngles.mensagem ||
+                "Erro ao cadastrar o vídeo em inglês."
+            );
+
+            btnSalvarVideo.disabled = false;
+
+            return;
+        }
+
+
+        /*=================================================
+          CADASTRA VÍDEO EXPLICATIVO EM PORTUGUÊS
+        =================================================*/
+
+        if (temExplicacaoPortugues) {
+
+            const videoPortugues = {
+
+                Produto_idProduto: idProduto,
+
+                Niveis_idNiveis: Number(nivel.value),
+
+                categoria: categoria.value,
+
+                link: youtubePortugues.value.trim()
+
+            };
+
+
+            const respostaPortugues = await fetch(
+                URL_VIDEO,
+                {
+
+                    method: "POST",
+
+                    headers: {
+
+                        "Content-Type": "application/json"
+
+                    },
+
+                    body: JSON.stringify(videoPortugues)
+
+                }
+            );
+
+
+            const retornoPortugues =
+                await respostaPortugues.json();
+
+
+            if (!retornoPortugues.sucesso) {
+
+                mostrarMensagem(
+                    mensagemVideo,
+                    retornoPortugues.mensagem ||
+                    "O vídeo em inglês foi salvo, mas houve erro ao salvar a explicação em português."
+                );
+
+                btnSalvarVideo.disabled = false;
+
+                return;
+            }
+
+        }
+
+
+        /*=================================================
+          SUCESSO
+        =================================================*/
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Vídeo cadastrado com sucesso!",
+            true
+        );
+
+
+        liberarImagem();
+
+
+    }
+    catch (erro) {
+
+        console.error(
+            "Erro ao cadastrar vídeo:",
+            erro
+        );
+
+
+        mostrarMensagem(
+            mensagemVideo,
+            "Erro ao conectar com o servidor."
+        );
+
+    }
+    finally {
+
+        btnSalvarVideo.disabled = false;
+
+    }
+
+}
+
+
 
 /*=====================================================
 =
@@ -162,6 +460,11 @@ function iniciarPagina(){
     bloquearEtapas();
 
 }
+
+
+
+
+
 
 /*=====================================================
 =
@@ -401,9 +704,11 @@ async function cadastrarProduto(){
 
         );
 
+ 
     }
 
 }
+
 
 /*=====================================================
 =
@@ -411,76 +716,95 @@ async function cadastrarProduto(){
 =
 =====================================================*/
 
-function verificarProduto(){
+function bloquearEtapas(){
 
-    if(idProduto === null){
+    btnSalvarVideo.disabled = true;
 
-        mostrarMensagem(
+    btnSalvarImagem.disabled = true;
 
-            mensagemVideo,
+}
 
-            "Cadastre primeiro o produto."
+function liberarVideo(){
 
-        );
+    btnSalvarVideo.disabled = false;
 
-        return false;
+    stepVideo.classList.add("active");
 
-    }
+}
 
-    return true;
+function liberarImagem(){
+
+    btnSalvarImagem.disabled = false;
+
+    stepImagem.classList.add("active");
 
 }
 
 /*=====================================================
 =
-=           VALIDAR VÍDEO
+=           MENSAGENS
 =
 =====================================================*/
 
-function validarVideo(){
+function limparMensagens(){
+
+    mensagemProduto.textContent = "";
+    mensagemVideo.textContent = "";
+    mensagemImagem.textContent = "";
+
+    mensagemProduto.className = "mensagem";
+    mensagemVideo.className = "mensagem";
+    mensagemImagem.className = "mensagem";
+
+}
+
+function mostrarMensagem(elemento, texto, sucesso = false){
+
+    elemento.textContent = texto;
+
+    if(sucesso){
+
+        elemento.classList.add("sucesso");
+
+    }else{
+
+        elemento.classList.add("erro");
+
+    }
+
+}
+
+/*=====================================================
+=
+=         VALIDAR PRODUTO
+=
+=====================================================*/
+
+function validarProduto(){
 
     limparMensagens();
 
-    if(!verificarProduto()){
+    if(nome.value.trim() === ""){
+
+        mostrarMensagem(
+            mensagemProduto,
+            "Informe o título da aula."
+        );
+
+        nome.focus();
 
         return false;
 
     }
 
-    if(nivel.value === ""){
+    if(descricao.value.trim() === ""){
 
         mostrarMensagem(
-            mensagemVideo,
-            "Selecione o nível."
-        );
-                            
-            nivel.focus();
-                                                                                
-        return false;                                                                      
-
-    }
-
-    if(categoria.value === ""){
-
-        mostrarMensagem(
-            mensagemVideo,
-            "Selecione uma categoria."
+            mensagemProduto,
+            "Informe a descrição da aula."
         );
 
-        categoria.focus();
-
-        return false;
-
-    }
-
-    if(youtube.value.trim() === ""){
-
-        mostrarMensagem(
-            mensagemVideo,
-            "Informe o link do vídeo."
-        );
-
-        youtube.focus();
+        descricao.focus();
 
         return false;
 
@@ -492,44 +816,41 @@ function validarVideo(){
 
 /*=====================================================
 =
-=          CADASTRAR VÍDEO
+=      CADASTRAR PRODUTO
 =
 =====================================================*/
 
-btnSalvarVideo.addEventListener(
+btnSalvarProduto.addEventListener(
     "click",
-    cadastrarVideo
+    cadastrarProduto
 );
 
-async function cadastrarVideo(){
+async function cadastrarProduto(){
 
-    if(!validarVideo()){
+    if(!validarProduto()){
 
         return;
 
     }
-const video = {
 
-    Produto_idProduto: idProduto,
+    const produto = {
 
-    Niveis_idNiveis: nivel.value,
+        nome: nome.value.trim(),
 
-    categoria: categoria.value,
+        descricao: descricao.value.trim(),
 
-    linkIngles: youtubeIngles.value,
+        ativo: Number(ativo.value),
 
-    linkPortugues: youtubePortugues.value
+        Loja_idLoja: 1
 
-};
+    };
 
-    btnSalvarVideo.disabled = true;
+    btnSalvarProduto.disabled = true;
 
     try{
 
         const resposta = await fetch(
-
-            URL_VIDEO,
-
+            URL_PRODUTO,
             {
 
                 method:"POST",
@@ -540,23 +861,22 @@ const video = {
 
                 },
 
-                body:JSON.stringify(video)
+                body:JSON.stringify(produto)
 
             }
-
         );
 
         const retorno = await resposta.json();
 
         if(!retorno.sucesso){
 
-            btnSalvarVideo.disabled = false;
+            btnSalvarProduto.disabled = false;
 
             mostrarMensagem(
 
-                mensagemVideo,
+                mensagemProduto,
 
-                retorno.mensagem || "Erro ao cadastrar vídeo."
+                retorno.mensagem || "Erro ao cadastrar produto."
 
             );
 
@@ -564,17 +884,19 @@ const video = {
 
         }
 
+        idProduto = retorno.idProduto;
+
         mostrarMensagem(
 
-            mensagemVideo,
+            mensagemProduto,
 
-            "Vídeo cadastrado com sucesso!",
+            "Produto cadastrado com sucesso!",
 
             true
 
         );
 
-        liberarImagem();
+        liberarVideo();
 
     }
 
@@ -582,19 +904,21 @@ const video = {
 
         console.error(erro);
 
-        btnSalvarVideo.disabled = false;
+        btnSalvarProduto.disabled = false;
 
         mostrarMensagem(
 
-            mensagemVideo,
+            mensagemProduto,
 
-            "Erro ao conectar ao servidor."
+            "Erro ao conectar com o servidor."
 
         );
 
+ 
     }
 
 }
+
 
 /*=====================================================
 =
@@ -707,20 +1031,39 @@ btnRemoverImagem.addEventListener(
 
 );
 
-/*=====================================================
-=
-=          CADASTRAR IMAGEM
-=
-=====================================================*/
+//=====================================================
+//              CADASTRAR IMAGEM
+//=====================================================
+
+console.log("btnSalvarImagem:", btnSalvarImagem);
+console.log("thumbnail:", thumbnail);
+console.log("URL_IMAGEM:", URL_IMAGEM);
+
+
+//=====================================================
+// EVENTO DO BOTÃO
+//=====================================================
 
 btnSalvarImagem.addEventListener(
     "click",
     cadastrarImagem
 );
 
+
+//=====================================================
+// FUNÇÃO CADASTRAR IMAGEM
+//=====================================================
+
 async function cadastrarImagem(){
 
+    console.log("CLIQUE NO BOTÃO DE IMAGEM");
+
     limparMensagens();
+
+
+    //=================================================
+    // VERIFICA SE O PRODUTO FOI CADASTRADO
+    //=================================================
 
     if(idProduto === null){
 
@@ -733,6 +1076,11 @@ async function cadastrarImagem(){
 
     }
 
+
+    //=================================================
+    // VERIFICA SE UMA IMAGEM FOI SELECIONADA
+    //=================================================
+
     if(thumbnail.files.length === 0){
 
         mostrarMensagem(
@@ -744,21 +1092,41 @@ async function cadastrarImagem(){
 
     }
 
+
+    //=================================================
+    // CRIA O FORMDATA
+    //=================================================
+
     const dados = new FormData();
+
 
     dados.append(
         "arquivo",
         thumbnail.files[0]
     );
 
+
     dados.append(
         "Produto_idProduto",
         idProduto
     );
 
+
+    //=================================================
+    // DESABILITA O BOTÃO DURANTE O ENVIO
+    //=================================================
+
     btnSalvarImagem.disabled = true;
 
+
     try{
+
+        console.log("Enviando imagem para:", URL_IMAGEM);
+
+
+        //=================================================
+        // ENVIA PARA O BACKEND
+        //=================================================
 
         const resposta = await fetch(
 
@@ -766,19 +1134,40 @@ async function cadastrarImagem(){
 
             {
 
-                method:"POST",
+                method: "POST",
 
-                body:dados
+                body: dados
 
             }
 
         );
 
+
+        console.log(
+            "Status da resposta:",
+            resposta.status
+        );
+
+
+        //=================================================
+        // CONVERTE RESPOSTA PARA JSON
+        //=================================================
+
         const retorno = await resposta.json();
+
+
+        console.log(
+            "Resposta do servidor:",
+            retorno
+        );
+
+
+        //=================================================
+        // VERIFICA ERRO DO BACKEND
+        //=================================================
 
         if(!retorno.sucesso){
 
-           
             mostrarMensagem(
 
                 mensagemImagem,
@@ -792,6 +1181,11 @@ async function cadastrarImagem(){
 
         }
 
+
+        //=================================================
+        // SUCESSO
+        //=================================================
+
         mostrarMensagem(
 
             mensagemImagem,
@@ -802,13 +1196,18 @@ async function cadastrarImagem(){
 
         );
 
+
         stepImagem.classList.add("active");
 
-    }
 
+    }
     catch(erro){
 
-        console.error(erro);
+        console.error(
+            "Erro ao cadastrar imagem:",
+            erro
+        );
+
 
         mostrarMensagem(
 
@@ -818,13 +1217,17 @@ async function cadastrarImagem(){
 
         );
 
-    }
 
+    }
     finally{
 
-    btnSalvarImagem.disabled = false;
+        //=================================================
+        // LIBERA O BOTÃO NOVAMENTE
+        //=================================================
 
-}
+        btnSalvarImagem.disabled = false;
+
+    }
 
 }
 
@@ -857,16 +1260,16 @@ function visualizarDados(){
         nivel:nivel.value,
 
         categoria:categoria.value,
+ 
+        youtubeIngles: youtubeIngles.value,
 
-        youtube:youtube.value,
+        youtubePortugues:
+            youtubePortugues.value,
 
         imagem:
-
-        thumbnail.files.length > 0 ?
-
-        thumbnail.files[0].name :
-
-        "Nenhuma"
+            thumbnail.files.length > 0
+                ? thumbnail.files[0].name
+                : "Nenhuma"
 
     });
 
@@ -900,7 +1303,16 @@ function salvarRascunho(){
 
         categoria:categoria.value,
 
-        youtube:youtube.value
+       youtubeIngles:
+            youtubeIngles.value,
+
+        youtubePortugues:
+            youtubePortugues.value,
+
+        possuiExplicacaoPortugues:
+            possuiExplicacaoPortugues
+                ? possuiExplicacaoPortugues.checked
+                : false
 
     };
 
@@ -964,7 +1376,17 @@ function limparFormulario(){
 
     categoria.selectedIndex = 0;
 
-    youtube.value = "";
+    youtubeIngles.value = "";
+
+    youtubePortugues.value = "";
+
+    if (possuiExplicacaoPortugues) {
+
+        possuiExplicacaoPortugues.checked = false;
+
+    }
+
+    campoVideoPortugues.style.display = "none";
 
     thumbnail.value = "";
 
@@ -987,27 +1409,25 @@ function limparFormulario(){
     stepImagem.classList.remove("active");
 
 }
-
 /*=====================================================
 =
 =          CARREGAR RASCUNHO
 =
 =====================================================*/
 
+/*=====================================================*
+*=          CARREGAR RASCUNHO
+*=====================================================*/
+
 window.addEventListener(
-
     "load",
-
     carregarRascunho
-
 );
 
 function carregarRascunho(){
 
     const dados = localStorage.getItem(
-
         "rascunhoProduto"
-
     );
 
     if(!dados){
@@ -1016,22 +1436,61 @@ function carregarRascunho(){
 
     }
 
-    const rascunho = JSON.parse(dados);
+    const rascunho =
+        JSON.parse(dados);
 
-    nome.value = rascunho.nome || "";
 
-    descricao.value = rascunho.descricao || "";
+    nome.value =
+        rascunho.nome || "";
 
-    ativo.value = rascunho.ativo || "1";
 
-    nivel.value = rascunho.nivel || "";
+    descricao.value =
+        rascunho.descricao || "";
 
-    categoria.value = rascunho.categoria || "";
 
-    youtube.value = rascunho.youtube || "";
+    ativo.value =
+        rascunho.ativo || "1";
+
+
+    nivel.value =
+        rascunho.nivel || "";
+
+
+    categoria.value =
+        rascunho.categoria || "";
+
+
+    youtubeIngles.value =
+        rascunho.youtubeIngles || "";
+
+
+    youtubePortugues.value =
+        rascunho.youtubePortugues || "";
+
+
+    if(possuiExplicacaoPortugues){
+
+        possuiExplicacaoPortugues.checked =
+            rascunho.possuiExplicacaoPortugues || false;
+
+
+        if(
+            possuiExplicacaoPortugues.checked
+        ){
+
+            campoVideoPortugues.style.display =
+                "flex";
+
+        }else{
+
+            campoVideoPortugues.style.display =
+                "none";
+
+        }
+
+    }
 
 }
-
 /*=====================================================
 =
 =              FIM DO ARQUIVO

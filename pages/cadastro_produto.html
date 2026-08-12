@@ -22,12 +22,15 @@
         type="image/png"
         href="../assets/logo.png">
 
-    <!-- Font Awesome -->
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-Saira/6.7.2/css/all.min.css">
-
+    <!-- Font Saira -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
+
 
 <body>
 
@@ -46,11 +49,13 @@
 
     </div>
 
+
     <!--=========================================
         CONTAINER
     ==========================================-->
 
     <main class="cadastro-container">
+
 
         <!--=========================================
             CABEÇALHO
@@ -63,10 +68,11 @@
             </h1>
 
             <p id="descricaoPagina">
-                Cadastre primeiro o produto, depois o vídeo e por último a imagem.
+                Cadastre primeiro a aula, depois os vídeos e por último a imagem.
             </p>
 
         </header>
+
 
         <!--=========================================
             ETAPAS
@@ -83,12 +89,14 @@
                 </div>
 
                 <span>
-                    Produto
+                    Aula
                 </span>
 
             </div>
 
+
             <div class="step-line"></div>
+
 
             <div
                 class="step"
@@ -104,7 +112,9 @@
 
             </div>
 
+
             <div class="step-line"></div>
+
 
             <div
                 class="step"
@@ -122,14 +132,16 @@
 
         </section>
 
+
         <!--=========================================
             FORMULÁRIO
         ==========================================-->
 
         <form id="formCadastro">
 
+
             <!--=========================================
-                CARD PRODUTO
+                CARD - INFORMAÇÕES DA AULA
             ==========================================-->
 
             <section class="card">
@@ -137,83 +149,83 @@
                 <div class="section-title">
 
                     <h2 id="tituloInformacoes">
-
-                        Informações do Produto
-
+                        Informações da Aula
                     </h2>
 
                     <p id="descricaoInformacoes">
-
-                        Cadastre as informações da aula.
-
+                        Informe os dados principais da aula.
                     </p>
 
                 </div>
 
-                <div class="grid-2">
 
-                    <div class="input-group">
+                <!--=====================================
+                    NOME DA AULA
+                ======================================-->
 
-                        <label for="nome">
+                <div class="input-group">
 
-                            Título da Aula
+                    <label for="nome">
+                        Título da Aula
+                    </label>
 
-                        </label>
-
-                        <input
-                            type="text"
-                            id="nome"
-                            placeholder="Digite o título da aula">
-
-                    </div>
+                    <input
+                        type="text"
+                        id="nome"
+                        placeholder="Digite o título da aula"
+                        maxlength="200">
 
                 </div>
+
+
+                <!--=====================================
+                    DESCRIÇÃO
+                ======================================-->
 
                 <div class="input-group">
 
                     <label for="descricao">
-
-                        Descrição
-
+                        Descrição da Aula
                     </label>
 
                     <textarea
                         id="descricao"
-                        rows="6"
-                        placeholder="Descreva a aula"></textarea>
+                        placeholder="Digite a descrição da aula"
+                        rows="5"></textarea>
 
                 </div>
+
+
+                <!--=====================================
+                    STATUS
+                ======================================-->
 
                 <div class="input-group">
 
                     <label for="ativo">
-
-                        Status
-
+                        Status da Aula
                     </label>
 
                     <select id="ativo">
 
                         <option value="1">
-
-                            Ativo
-
+                            Ativa
                         </option>
 
                         <option value="0">
-
-                            Inativo
-
+                            Inativa
                         </option>
 
                     </select>
 
                 </div>
 
+
                 <div
                     id="mensagemProduto"
                     class="mensagem">
                 </div>
+
 
                 <div class="buttons">
 
@@ -221,7 +233,7 @@
                         type="button"
                         id="btnSalvarProduto">
 
-                        Salvar Produto
+                        Salvar Aula
 
                     </button>
 
@@ -229,7 +241,8 @@
 
             </section>
 
-                  <!--=========================================
+
+            <!--=========================================
                 CARD - VÍDEO
             ==========================================-->
 
@@ -242,21 +255,25 @@
                     </h2>
 
                     <p id="descricaoVideo">
-                        Adicione o vídeo relacionado a esta aula.
+                        Cadastre o vídeo relacionado à aula.
                     </p>
 
                 </div>
 
+
+                <!--=====================================
+                    NÍVEL E CATEGORIA
+                ======================================-->
+
                 <div class="grid-2">
 
-                    <!-- Nível -->
+
+                    <!-- NÍVEL -->
 
                     <div class="input-group">
 
                         <label for="nivel">
-
                             Nível
-
                         </label>
 
                         <select id="nivel">
@@ -281,20 +298,19 @@
 
                     </div>
 
-                    <!-- Categoria -->
+
+                    <!-- CATEGORIA -->
 
                     <div class="input-group">
 
                         <label for="categoria">
-
                             Categoria
-
                         </label>
 
                         <select id="categoria">
 
                             <option value="">
-                                Selecione
+                                Selecione uma categoria
                             </option>
 
                             <option value="pronuncia">
@@ -309,63 +325,89 @@
                                 Gramática
                             </option>
 
-                            <option value="speaking">
-                                Speaking
+                            <option value="exterior_trabalho">
+                                Exterior - Trabalho
                             </option>
 
-                            <option value="listening">
-                                Listening
+                            <option value="exterior_travel">
+                                Exterior - Travel
                             </option>
 
-                            <option value="writing">
-                                Writing
-                            </option>
-
-                            <option value="reading">
-                                Reading
-                            </option>
-
-                            <option value="phrasal_verbs">
-                                Phrasal Verbs
-                            </option>
-
-                            <option value="expressoes">
-                                Expressões
-                            </option>
-
+                            
                         </select>
 
                     </div>
 
                 </div>
 
-                <!-- Link -->
 
-                <div class="input-group">
+                <!--=====================================
+                    VÍDEO EM INGLÊS
+                ======================================-->
 
-                    <label for="youtube">
+                <!-- VÍDEO EM INGLÊS -->
 
-                        Link do YouTube
+<div class="input-group">
 
-                    </label>
+    <label for="youtubeIngles">
+        Vídeo em Inglês
+    </label>
 
-                    <input
-                        type="url"
-                        id="youtube"
-                        placeholder="https://www.youtube.com/watch?v=...">
+    <input
+        type="url"
+        id="youtubeIngles"
+        placeholder="Cole o link do vídeo em inglês">
 
-                </div>
+</div>
+
+
+<!-- OPÇÃO DE VÍDEO EM PORTUGUÊS -->
+
+<div class="checkbox-container">
+
+    <input
+        type="checkbox"
+        id="possuiExplicacaoPortugues">
+
+    <label for="possuiExplicacaoPortugues">
+        Adicionar vídeo explicativo em português
+    </label>
+
+</div>
+
+
+<!-- VÍDEO EM PORTUGUÊS -->
+
+<div
+    class="input-group"
+    id="campoVideoPortugues"
+    style="display: none;"
+>
+
+    <label for="youtubePortugues">
+        Vídeo Explicativo em Português
+    </label>
+
+    <input
+        type="url"
+        id="youtubePortugues"
+        placeholder="Cole o link da explicação em português">
+
+</div>
+
 
                 <div
                     id="mensagemVideo"
                     class="mensagem">
                 </div>
 
+
                 <div class="buttons">
 
                     <button
                         type="button"
-                        id="btnSalvarVideo">
+                        id="btnSalvarVideo"
+                        disabled>
 
                         Salvar Vídeo
 
@@ -374,6 +416,7 @@
                 </div>
 
             </section>
+
 
             <!--=========================================
                 CARD - IMAGEM
@@ -384,26 +427,28 @@
                 <div class="section-title">
 
                     <h2 id="tituloImagem">
-
-                        Capa da Aula
-
+                        Imagem da Aula
                     </h2>
 
                     <p id="descricaoImagem">
-
-                        Escolha a imagem de capa da aula.
-
+                        Escolha a imagem que será exibida na plataforma.
                     </p>
 
                 </div>
 
+
                 <div class="grid-2">
 
-                    <!-- Upload -->
+
+                    <!--=================================
+                        UPLOAD
+                    ==================================-->
 
                     <div class="upload-box">
 
                         <label for="thumbnail">
+
+                            <i class="fa-regular fa-image"></i>
 
                             Selecionar Imagem
 
@@ -416,7 +461,10 @@
 
                     </div>
 
-                    <!-- Preview -->
+
+                    <!--=================================
+                        PREVIEW
+                    ==================================-->
 
                     <div class="imagem-preview-area">
 
@@ -427,12 +475,11 @@
                             <i class="fa-regular fa-image fa-4x"></i>
 
                             <p>
-
                                 Nenhuma imagem selecionada
-
                             </p>
 
                         </div>
+
 
                         <button
                             type="button"
@@ -447,16 +494,19 @@
 
                 </div>
 
+
                 <div
                     id="mensagemImagem"
                     class="mensagem">
                 </div>
 
+
                 <div class="buttons">
 
                     <button
                         type="button"
-                        id="btnSalvarImagem">
+                        id="btnSalvarImagem"
+                        disabled>
 
                         Salvar Imagem
 
@@ -465,6 +515,7 @@
                 </div>
 
             </section>
+
 
             <!--=========================================
                 BOTÕES FINAIS
@@ -480,6 +531,7 @@
 
                 </button>
 
+
                 <button
                     type="button"
                     id="btnRascunho">
@@ -487,6 +539,7 @@
                     Salvar Rascunho
 
                 </button>
+
 
                 <button
                     type="button"
@@ -498,14 +551,18 @@
 
             </section>
 
+
         </form>
 
     </main>
 
-    <!-- JavaScript -->
+
+    <!--=========================================
+        JAVASCRIPT
+    ==========================================-->
 
     <script src="../js/cadastro_produto.js"></script>
 
 </body>
 
-</html>      
+</html>

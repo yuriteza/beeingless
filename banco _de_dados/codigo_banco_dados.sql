@@ -1,156 +1,310 @@
-/* COMENTARIO DE VARIAS LINHAS*/
--- COMENTARIO DE 1 LINHA
+/* =========================================================
+   BANCO DE DADOS
+   ========================================================= */
 
--- CRIAR TABELAS QUE NÃO TEM CHAVE ESTRANGEIRA
-
--- CRIANDO O BANCO DE DADOS
 CREATE DATABASE BEEINGLES;
+
 USE BEEINGLES;
 
-insert into lojista (nome,cpf,email,senha,telefone) values("cleiciane",63539189863,"acobeyuri@gmail.com","armywire09", 639982715);
-select * from lojista; 
 
-CREATE TABLE Lojista(
-idLojista int primary key auto_increment,
-nome varchar(200) not null,
-cpf mediumint(12) not null unique,
-cnpj mediumint (15) unique,
-email varchar(120) not null,
-senha varchar(13) not null,
-telefone mediumint(14) 
-);
-
-CREATE TABLE Marca(
-idMarca int primary key auto_increment,
-nome varchar(100) not null,
-logo longblob
-);
+/* =========================================================
+   TABELAS SEM CHAVE ESTRANGEIRA
+   ========================================================= */
 
 
--- CRIAR TABELAS COM CHAVE ESTRANGEIRA FK
-insert into loja(nome, whatsapp, telefone, email, lojista_idlojista) 
-values ("bee ingles", "8534326", 6399802715,"acobeyuri@gmail.com",1);
+/* =========================================================
+   1. TABELA LOJISTA
+   ========================================================= */
 
-select * from loja;
+CREATE TABLE Lojista (
 
+    idLojista INT PRIMARY KEY AUTO_INCREMENT,
 
-CREATE TABLE Loja(
-idLoja int primary key auto_increment,
-nome varchar(200) not null,
-whatsapp varchar(50),
-instagram varchar(50),
-facebook varchar(50),
-telefone mediumint(14) not null,
-email varchar(120) not null,
-Lojista_idLojista int,
-FOREIGN KEY (Lojista_idLojista) REFERENCES Lojista (idLojista)
-);
+    nome VARCHAR(200) NOT NULL,
 
-CREATE TABLE USUARIO (
-idUsuario int primary key auto_increment,
-nome varchar(200) not null,
-telefone mediumint(15) not null,
-email varchar(120) not null,
-senha varchar(13) not null,
-Loja_idLoja int,
-FOREIGN KEY (Loja_idLoja) REFERENCES Loja (idLoja)
-);
+    cpf VARCHAR(45) NOT NULL UNIQUE,
 
-CREATE TABLE Banner(
-idBanner int primary key auto_increment,
-imagem longblob not null,
-Loja_idLoja int,
-FOREIGN KEY (Loja_idLoja) REFERENCES Loja (idLoja),
-FOREIGN KEY (Niveis_idNiveis) REFERENCES Niveis (idNiveis)
-);
-CREATE TABLE Produto(
-idProduto int primary key auto_increment,
-nome varchar(45) not null,
-descricao text(1000) not null,
-ativo boolean,
-Loja_idLoja int,
-FOREIGN KEY (Loja_idLoja) REFERENCES Loja (idLoja)
-);
+    cnpj VARCHAR(45) UNIQUE,
 
-CREATE TABLE Imagem_produto(
-idImagem_produto int primary key auto_increment,
-arquivo longblob not null,
-Produto_idProduto int,
-FOREIGN KEY (Produto_idProduto) REFERENCES Produto (idProduto)
-);
- 
-CREATE TABLE NIVEIS(
-idNiveis INT primary key auto_increment,
+    email VARCHAR(120) NOT NULL,
 
-basico VARCHAR(2000),
-basico_pronuncia VARCHAR(2000),
-basico_vocabulario VARCHAR(2000),
-basico_grammtica VARCHAR(2000),
-basico_exterio_trabalho VARCHAR(2000),
-basico_exterior_travel VARCHAR(2000),
+    senha VARCHAR(255) NOT NULL,
 
-intermediario VARCHAR(2000),
-intermediario_pronuncia VARCHAR(2000),
-intermediario_vocabulario VARCHAR(2000),
-intremediario_gramatica VARCHAR(2000),
-intremediario_exterior_trabalho VARCHAR(2000),
-intremediario_exterior_travel VARCHAR(2000),
+    telefone VARCHAR(14) NOT NULL
 
-avancado VARCHAR(2000),
-avancado_pronuncia VARCHAR(2000),
-avancado_vocabulario VARCHAR(2000),
-avancado_gramatica VARCHAR(2000),
-avancado_exterior_trabalho VARCHAR(2000),
-avancado_exerio_travel VARCHAR(2000),
-Produto_idProduto INT,
-FOREIGN KEY (Produto_idProduto) REFERENCES Produto (idProduto)
-);
-
-CREATE TABLE VIDEO(
-idVideo INT  primary key auto_increment,
-Produto_idProduto INT,
-
-basico VARCHAR(2000),
-basico_pronuncia VARCHAR(2000),
-basico_vocabulario VARCHAR(2000),
-basico_grammtica VARCHAR(2000),
-basico_exterio_trabalho VARCHAR(2000),
-basico_exterior_travel VARCHAR(2000),
-
-intermediario VARCHAR(2000),
-intermediario_pronuncia VARCHAR(2000),
-intermediario_vocabulario VARCHAR(2000),
-intremediario_gramatica VARCHAR(2000),
-intremediario_exterior_trabalho VARCHAR(2000),
-intremediario_exterior_travel VARCHAR(2000),
-
-avancado VARCHAR(2000),
-avancado_pronuncia VARCHAR(2000),
-avancado_vocabulario VARCHAR(2000),
-avancado_gramatica VARCHAR(2000),
-avancado_exterior_trabalho VARCHAR(2000),
-avancado_exerio_travel VARCHAR(2000),
-FOREIGN KEY (Produto_idProduto) REFERENCES Produto (idProduto),
-FOREIGN KEY (Niveis_idNiveis) REFERENCES Niveis (idNiveis)
 );
 
 
+/* =========================================================
+   2. TABELA NIVEIS
+   ========================================================= */
+
+CREATE TABLE Niveis (
+
+    idNiveis INT PRIMARY KEY AUTO_INCREMENT,
+
+    nome VARCHAR(50) NOT NULL
+
+);
 
 
+/* =========================================================
+   3. INSERIR NIVEIS
+   ========================================================= */
+
+INSERT INTO Niveis (nome)
+VALUES
+    ('Básico'),
+    ('Intermediário'),
+    ('Avançado');
 
 
+/* =========================================================
+   TABELAS COM CHAVE ESTRANGEIRA
+   ========================================================= */
 
 
--- DML-- COMANDOS DE MODELAGEM DO BD
--- INSERIR, EDITAR, EXCLUIR, LISTAR
+/* =========================================================
+   4. TABELA LOJA
+   Depende de: Lojista
+   ========================================================= */
 
--- LISTAGEM DE TABELAS
-show tables;
+CREATE TABLE Loja (
 
--- INSERT - INSERIR DADOS NA TABELA
-insert INTO -- endereco
+    idLoja INT PRIMARY KEY AUTO_INCREMENT,
 
--- LISTAR DADOS DA TABELA
-select * from -- nome da tabela
+    nome VARCHAR(200) NOT NULL,
+
+    whatsapp VARCHAR(50),
+
+    instagram VARCHAR(50),
+
+    facebook VARCHAR(50),
+
+    telefone VARCHAR(14) NOT NULL,
+
+    email VARCHAR(120) NOT NULL,
+
+    Lojista_idLojista INT,
+
+    FOREIGN KEY (Lojista_idLojista)
+        REFERENCES Lojista(idLojista)
+
+);
 
 
+/* =========================================================
+   5. TABELA USUARIO
+   Depende de: Loja
+   ========================================================= */
+
+CREATE TABLE Usuario (
+
+    idUsuario INT PRIMARY KEY AUTO_INCREMENT,
+
+    nome VARCHAR(200) NOT NULL,
+
+    telefone VARCHAR(45),
+
+    email VARCHAR(120) NOT NULL,
+
+    senha VARCHAR(255) NOT NULL,
+
+    Loja_idLoja INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja)
+
+);
+
+
+/* =========================================================
+   6. TABELA PRODUTO
+   Depende de: Loja
+   ========================================================= */
+
+CREATE TABLE Produto (
+
+    idProduto INT PRIMARY KEY AUTO_INCREMENT,
+
+    nome VARCHAR(100) NOT NULL,
+
+    descricao TEXT NOT NULL,
+
+    ativo BOOLEAN DEFAULT TRUE,
+
+    Loja_idLoja INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja)
+
+);
+
+
+/* =========================================================
+   7. TABELA BANNER
+   Depende de: Loja
+   ========================================================= */
+
+CREATE TABLE Banner (
+
+    idBanner INT PRIMARY KEY AUTO_INCREMENT,
+
+    imagem LONGBLOB NOT NULL,
+
+    Loja_idLoja INT,
+
+    FOREIGN KEY (Loja_idLoja)
+        REFERENCES Loja(idLoja)
+
+);
+
+
+/* =========================================================
+   8. TABELA IMAGEM_PRODUTO
+   Depende de: Produto
+   ========================================================= */
+
+CREATE TABLE Imagem_produto (
+
+    idImagem_produto INT PRIMARY KEY AUTO_INCREMENT,
+
+    arquivo LONGBLOB NOT NULL,
+
+    Produto_idProduto INT,
+
+    FOREIGN KEY (Produto_idProduto)
+        REFERENCES Produto(idProduto)
+
+);
+
+
+/* =========================================================
+   9. TABELA VIDEO
+   Depende de: Produto e Niveis
+   ========================================================= */
+
+CREATE TABLE Video (
+
+    idVideo INT PRIMARY KEY AUTO_INCREMENT,
+
+    Produto_idProduto INT NOT NULL,
+
+    Niveis_idNiveis INT NOT NULL,
+
+    categoria ENUM(
+        'pronuncia',
+        'vocabulario',
+        'gramatica',
+        'exterior_trabalho',
+        'exterior_travel'
+    ) NOT NULL,
+
+    link VARCHAR(2000) NOT NULL,
+
+    FOREIGN KEY (Produto_idProduto)
+        REFERENCES Produto(idProduto),
+
+    FOREIGN KEY (Niveis_idNiveis)
+        REFERENCES Niveis(idNiveis)
+
+);
+
+
+/* =========================================================
+   VERIFICAR TABELAS CRIADAS
+   ========================================================= */
+
+SHOW TABLES;
+
+
+/* =========================================================
+   TESTES DE INSERÇÃO
+   ========================================================= */
+
+
+/* =========================================================
+   10. INSERIR LOJISTA
+   ========================================================= */
+
+INSERT INTO Lojista
+(
+    nome,
+    cpf,
+    email,
+    senha,
+    telefone
+)
+VALUES
+(
+    'cleiciane',
+    '63539189863',
+    'acobeyuri@gmail.com',
+    'armywire09',
+    '639982715'
+);
+
+
+/* =========================================================
+   11. INSERIR LOJA
+   Depende do Lojista criado acima
+   ========================================================= */
+
+INSERT INTO Loja
+(
+    nome,
+    whatsapp,
+    telefone,
+    email,
+    Lojista_idLojista
+)
+VALUES
+(
+    'bee ingles',
+    '8534326',
+    '6399802715',
+    'acobeyuri@gmail.com',
+    1
+);
+
+
+/* =========================================================
+   CONSULTAS DE TESTE
+   ========================================================= */
+
+SELECT * FROM Lojista;
+
+SELECT * FROM Loja;
+
+SELECT * FROM Usuario;
+
+SELECT * FROM Produto;
+
+SELECT * FROM Banner;
+
+SELECT * FROM Imagem_produto;
+
+SELECT * FROM Niveis;
+
+SELECT * FROM Video;
+
+
+/* =========================================================
+   DESCREVER TABELAS
+   ========================================================= */
+
+DESC Lojista;
+
+DESC Loja;
+
+DESC Usuario;
+
+DESC Produto;
+
+DESC Banner;
+
+DESC Imagem_produto;
+
+DESC Niveis;
+
+DESC Video;

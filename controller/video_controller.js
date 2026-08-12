@@ -8,58 +8,84 @@ const videoModel = require("../model/video_model");
 //==========================================
 // CADASTRAR VÍDEO
 //==========================================
-
 function cadastrar(req, res) {
 
     const video = req.body;
 
-    // Validação dos campos obrigatórios
 
-     if (
-    !video.Produto_idProduto ||
-    !video.Niveis_idNiveis ||
-    !video.categoria ||
-    !video.link
-) {
+    if (
+        !video.Produto_idProduto ||
+        !video.Niveis_idNiveis ||
+        !video.categoria ||
+        !video.linkIngles
+    ) {
 
-    return res.status(400).json({
-        sucesso: false,
-        mensagem: "Preencha todos os campos."
-    });
+        return res.status(400).json({
 
-}
-   
-    
+            sucesso: false,
 
-    // Verifica se já existe um usuário com o mesmo e-mail
-
-videoModel.cadastrar(video, (erro, resultado) => {
-
-    if (erro) {
-
-        return res.status(500).json({
-
-            sucesso:false,
-
-            mensagem:"Erro ao cadastrar vídeo."
+            mensagem:
+                "Preencha todos os campos obrigatórios."
 
         });
 
     }
 
-    return res.status(201).json({
 
-        sucesso:true,
+    if (
+        video.categoria === "aula_com_explicacao" &&
+        !video.linkPortugues
+    ) {
 
-        mensagem:"Vídeo cadastrado com sucesso!",
+        return res.status(400).json({
 
-        idVideo: resultado.insertId
+            sucesso: false,
 
-    });
+            mensagem:
+                "A categoria Aula com explicação exige um vídeo em português."
 
-});
+        });
+
+    }
+
+
+    videoModel.cadastrar(
+        video,
+        (erro, resultado) => {
+
+            if (erro) {
+
+                console.log(erro);
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem:
+                        "Erro ao cadastrar vídeo."
+
+                });
+
+            }
+
+
+            return res.status(201).json({
+
+                sucesso: true,
+
+                mensagem:
+                    "Vídeo cadastrado com sucesso!",
+
+                idVideo:
+                    resultado.insertId
+
+            });
+
+        }
+    );
 
 }
+    
   
 
 
@@ -165,13 +191,29 @@ function atualizar(req, res) {
     !video.Produto_idProduto ||
     !video.Niveis_idNiveis ||
     !video.categoria ||
-    !video.link
+    !video.linkIngles
 ) {
 
     return res.status(400).json({
         sucesso: false,
         mensagem: "Preencha todos os campos."
     });
+
+}
+
+if (
+    video.categoria === "aula_com_explicacao" &&
+    !video.linkPortugues
+) {
+
+    return res.status(400).json({
+
+        sucesso: false,
+
+        mensagem:
+            "A categoria Aula com explicação exige um vídeo em português."
+
+    });okay
 
 }
 

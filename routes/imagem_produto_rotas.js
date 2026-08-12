@@ -12,13 +12,52 @@ const express = require("express");
 const router = express.Router();
 
 // Criando um objeto router para definir as rotas relacionadas às imagens de produto.
-const Imagem_ProdutoController = require("../controller/imagem_produto_controller.js");
+const Imagem_ProdutoController = 
+        require("../controller/imagem_produto_controller.js");
 
 const upload = require("../config/upload");
 
 router.post(
     "/",
-    upload.single("arquivo"),
+
+    (req, res, next) => {
+
+        console.log("=================================");
+        console.log("ROTA DE IMAGEM FOI CHAMADA");
+        console.log("=================================");
+
+        upload.single("arquivo")(req, res, function (erro) {
+
+            if (erro) {
+
+                console.log("=================================");
+                console.log("ERRO DO MULTER");
+                console.log("=================================");
+                console.log(erro);
+
+                return res.status(500).json({
+
+                    sucesso: false,
+
+                    mensagem:
+                        erro.message ||
+                        "Erro ao enviar imagem."
+
+                });
+
+            }
+
+            console.log("MULTER PROCESSOU A REQUISIÇÃO");
+
+            console.log("ARQUIVO:", req.file);
+            console.log("BODY:", req.body);
+
+            next();
+
+        });
+
+    },
+
     Imagem_ProdutoController.cadastrar
 );
 

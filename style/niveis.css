@@ -382,6 +382,48 @@ box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
     background:black;
 }
 
+.modal-content h2 {
+
+    color: #EFEBBB;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    font-size: 28px;
+
+}
+
+.video-area,
+.explicacao-area {
+
+    margin-bottom: 25px;
+
+}
+
+.video-area h3,
+.explicacao-area h3 {
+
+    color: white;
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+}
+
+#videoPlayerIngles,
+#videoPlayerPortugues {
+
+    width: 100%;
+
+    border-radius: 12px;
+
+    background: black;
+
+}
+
+
 /* ==========================
    FOOTER
 ========================== */

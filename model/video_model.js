@@ -9,18 +9,28 @@ function cadastrar(video, callback) {
 
     const sql = `
         INSERT INTO Video
+<<<<<<< HEAD
 (
+=======
+     (
+>>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
     Produto_idProduto,
     Niveis_idNiveis,
     categoria,
     linkIngles,
     linkPortugues
+<<<<<<< HEAD
 )
 VALUES (?, ?, ?, ?, ?)
+=======
+   )
+    VALUES (?, ?, ?, ?, ?)
+>>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
     `;
 
     conexao.query(
         sql,
+<<<<<<< HEAD
     [
     video.Produto_idProduto,
     video.Niveis_idNiveis,
@@ -28,6 +38,15 @@ VALUES (?, ?, ?, ?, ?)
     video.linkIngles,
     video.linkPortugues
     ],
+=======
+        [
+            video.Produto_idProduto,
+            video.Niveis_idNiveis,
+            video.categoria,
+            video.linkIngles,
+            video.linkPortugues
+        ],
+>>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
         callback
     );
 
@@ -51,7 +70,11 @@ SELECT
     v.categoria,
 
     v.linkIngles,
+<<<<<<< HEAD
    
+=======
+    
+>>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
     v.linkPortugues
 
 FROM Video v
@@ -120,7 +143,11 @@ function atualizar(id, video, callback) {
             categoria = ?,
 
             linkIngles = ?,
+<<<<<<< HEAD
 
+=======
+            
+>>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
             linkPortugues = ?
 
         WHERE idVideo = ?

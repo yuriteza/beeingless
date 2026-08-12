@@ -11,6 +11,14 @@ const imagem_produtoModel = require("../model/imagem_produto_model");
 
 function cadastrar(req, res) {
 
+    console.log("ENTROU NO CONTROLLER");
+
+    console.log("req.body:", req.body);
+
+    console.log("req.file:", req.file);
+
+
+
     // Verifica se uma imagem foi enviada
     if (!req.file) {
 
