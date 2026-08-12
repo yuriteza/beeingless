@@ -64,8 +64,11 @@ document.getElementById("nivel");
 const categoria =
 document.getElementById("categoria");
 
-const youtube =
-document.getElementById("youtube");
+const youtubeIngles =
+    document.getElementById("youtubeIngles");
+
+const youtubePortugues =
+    document.getElementById("youtubePortugues");
 
 /*=====================================================
 =
@@ -450,10 +453,10 @@ function validarVideo(){
             mensagemVideo,
             "Selecione o nível."
         );
-
-        nivel.focus();
-
-        return false;
+                            
+            nivel.focus();
+                                                                                
+        return false;                                                                      
 
     }
 
@@ -505,18 +508,19 @@ async function cadastrarVideo(){
         return;
 
     }
+const video = {
 
-    const video = {
+    Produto_idProduto: idProduto,
 
-        Produto_idProduto: idProduto,
+    Niveis_idNiveis: nivel.value,
 
-        Niveis_idNiveis: Number(nivel.value),
+    categoria: categoria.value,
 
-        categoria: categoria.value,
+    linkIngles: youtubeIngles.value,
 
-        link: youtube.value.trim()
+    linkPortugues: youtubePortugues.value
 
-    };
+};
 
     btnSalvarVideo.disabled = true;
 

@@ -9,23 +9,25 @@ function cadastrar(video, callback) {
 
     const sql = `
         INSERT INTO Video
-        (
-            Produto_idProduto,
-            Niveis_idNiveis,
-            categoria,
-            link
-        )
-        VALUES (?, ?, ?, ?)
+(
+    Produto_idProduto,
+    Niveis_idNiveis,
+    categoria,
+    linkIngles,
+    linkPortugues
+)
+VALUES (?, ?, ?, ?, ?)
     `;
 
     conexao.query(
         sql,
-        [
-            video.Produto_idProduto,
-            video.Niveis_idNiveis,
-            video.categoria,
-            video.link
-        ],
+    [
+    video.Produto_idProduto,
+    video.Niveis_idNiveis,
+    video.categoria,
+    video.linkIngles,
+    video.linkPortugues
+    ],
         callback
     );
 
@@ -48,7 +50,9 @@ SELECT
 
     v.categoria,
 
-    v.link
+    v.linkIngles,
+   
+    v.linkPortugues
 
 FROM Video v
 
@@ -115,7 +119,9 @@ function atualizar(id, video, callback) {
 
             categoria = ?,
 
-            link = ?
+            linkIngles = ?,
+
+            linkPortugues = ?
 
         WHERE idVideo = ?
     `;
@@ -126,7 +132,8 @@ function atualizar(id, video, callback) {
             video.Produto_idProduto,
             video.Niveis_idNiveis,
             video.categoria,
-            video.link,
+            video.linkIngles,
+            video.linkPortugues,
             id
         ],
         callback
