@@ -1678,3 +1678,55 @@ console.log(
     "Projeto inicializado."
 
 );
+
+/*=========================================================
+    MENU DE NAVEGAÇÃO
+=========================================================*/
+
+document.getElementById("idhome").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../index.html";
+
+});
+
+document.getElementById("idnivel").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../pages/niveis.html";
+
+});
+
+document.getElementById("idblog").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../pages/blog.html";
+
+});
+
+document.getElementById("idtopicos").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../pages/topicos.html";
+
+});
+
+document.getElementById("idexercicios").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../pages/exercicios.html";
+
+});
+
+document.getElementById("idteste").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../pages/teste_nivel.html";
+
+});

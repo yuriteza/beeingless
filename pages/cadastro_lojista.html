@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<link rel="icon" type="image/png" href="/assets/logo.png">
+
 <head>
 
     <meta charset="UTF-8">
@@ -13,15 +13,21 @@
     <title>Cadastro do Lojista</title>
 
     <link
+        rel="icon"
+        type="image/png"
+        href="/assets/logo.png"
+    >
+
+    <link
         rel="stylesheet"
         href="../style/cadastro_lojista.css"
     >
 
-    <!-- Font Awesome -->
+    <!-- Font Saira -->
 
     <link
         rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Saira/6.7.2/css/all.min.css"
     >
 
 </head>
@@ -32,10 +38,8 @@
             FUNDO ANIMADO
     ============================ -->
 
-    <div id="background-circles">
+    <div id="background-circles"></div>
 
-        
-    </div>
 
     <!-- ===========================
             CONTAINER
@@ -43,7 +47,9 @@
 
     <main id="cadastro-container">
 
-        <!-- Cabeçalho -->
+        <!-- ===========================
+                CABEÇALHO
+        ============================ -->
 
         <header id="cabecalho">
 
@@ -53,7 +59,10 @@
 
         </header>
 
-        <!-- Card -->
+
+        <!-- ===========================
+                CARD
+        ============================ -->
 
         <section id="card-cadastro">
 
@@ -64,7 +73,10 @@
 
                 <div id="grid-formulario">
 
-                    <!-- Nome -->
+
+                    <!-- =====================
+                            NOME
+                    ====================== -->
 
                     <div class="campo">
 
@@ -82,7 +94,10 @@
 
                     </div>
 
-                    <!-- Email -->
+
+                    <!-- =====================
+                            EMAIL
+                    ====================== -->
 
                     <div class="campo">
 
@@ -100,7 +115,10 @@
 
                     </div>
 
-                    <!-- CPF -->
+
+                    <!-- =====================
+                            CPF
+                    ====================== -->
 
                     <div class="campo">
 
@@ -112,13 +130,17 @@
                         <input
                             id="cpf"
                             type="text"
+                            maxlength="14"
                         >
 
                         <small id="erroCpf"></small>
 
                     </div>
 
-                    <!-- Senha -->
+
+                    <!-- =====================
+                            SENHA
+                    ====================== -->
 
                     <div class="campo">
 
@@ -149,7 +171,10 @@
 
                     </div>
 
-                    <!-- CNPJ -->
+
+                    <!-- =====================
+                            CNPJ
+                    ====================== -->
 
                     <div class="campo">
 
@@ -161,13 +186,17 @@
                         <input
                             id="cnpj"
                             type="text"
+                            maxlength="18"
                         >
 
                         <small id="erroCnpj"></small>
 
                     </div>
 
-                    <!-- Telefone -->
+
+                    <!-- =====================
+                            TELEFONE
+                    ====================== -->
 
                     <div class="campo">
 
@@ -179,6 +208,7 @@
                         <input
                             id="telefone"
                             type="text"
+                            maxlength="15"
                         >
 
                         <small id="erroTelefone"></small>
@@ -187,7 +217,10 @@
 
                 </div>
 
-                <!-- Botões -->
+
+                <!-- ===========================
+                        BOTÕES
+                ============================ -->
 
                 <div id="botoes">
 
@@ -208,6 +241,11 @@
         </section>
 
     </main>
+
+
+    <!-- ===========================
+            JAVASCRIPT
+    ============================ -->
 
     <script src="../js/cadastro_lojista.js"></script>
 

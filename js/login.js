@@ -730,6 +730,45 @@ document.addEventListener(
 
 );
 
+
+const telefoneInput = document.getElementById("registerPhone");
+
+telefoneInput.addEventListener("input", function () {
+
+    let telefone = this.value.replace(/\D/g, "");
+
+    // Limita a 11 números
+    telefone = telefone.substring(0, 11);
+
+    if (telefone.length > 6) {
+
+        telefone =
+            "(" +
+            telefone.substring(0, 2) +
+            ") " +
+            telefone.substring(2, 7) +
+            "-" +
+            telefone.substring(7);
+
+    } else if (telefone.length > 2) {
+
+        telefone =
+            "(" +
+            telefone.substring(0, 2) +
+            ") " +
+            telefone.substring(2);
+
+    } else if (telefone.length > 0) {
+
+        telefone = "(" + telefone;
+
+    }
+
+    this.value = telefone;
+
+});
+
+
 /*=========================================================
     EXPORTAÇÃO (opcional)
 =========================================================*/
@@ -745,8 +784,7 @@ document.getElementById("registerButton").addEventListener("click", () => {
     const senha = document.getElementById("registerPassword").value.trim();
     const confirmPassword = document.getElementById("confirmPassword").value;
     const telefone = document.getElementById("registerPhone").value.trim();
-    const mensagem = document.getElementById("mensagem");
-
+    const mensagem = document.getElementById("mensagemCadastro");
     // Campos obrigatórios
     if (
         nome === "" ||
@@ -930,8 +968,7 @@ btnEntrar.addEventListener("click", () => {
     const email = document.getElementById("loginEmail").value.trim();
     const senha = document.getElementById("loginPassword").value.trim();
 
-    const mensagem = document.getElementById("mensagem");
-
+   const mensagem = document.getElementById("mensagemLogin");
     if (email === "" || senha === "") {
 
         mensagem.style.color = "red";

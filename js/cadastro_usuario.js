@@ -1,66 +1,147 @@
 /*==========================================================
-            GERENCIAMENTO DE USUÁRIOS
+                ELEMENTOS DA PÁGINA
 ==========================================================*/
+
+const tituloPagina =
+    document.getElementById("tituloPagina");
+
+const subtituloPagina =
+    document.getElementById("subtituloPagina");
+
+const tituloFormulario =
+    document.getElementById("tituloFormulario");
+
+const tituloTabela =
+    document.getElementById("tituloTabela");
+
+const pesquisa =
+    document.getElementById("pesquisa");
+
+const filtroStatus =
+    document.getElementById("filtroStatus");
+
+const nome =
+    document.getElementById("nome");
+
+const email =
+    document.getElementById("email");
+
+const telefone =
+    document.getElementById("telefone");
+
+const cadastro =
+    document.getElementById("cadastro");
+
+const ultimoAcesso =
+    document.getElementById("ultimoAcesso");
+
+const status =
+    document.getElementById("status");
+
+const observacoes =
+    document.getElementById("observacoes");
+
+const btnPesquisar =
+    document.getElementById("btnPesquisar");
+
+const btnSalvar =
+    document.getElementById("btnSalvar");
+
+const btnBloquear =
+    document.getElementById("btnBloquear");
+
+const btnExcluir =
+    document.getElementById("btnExcluir");
+
+const btnLimpar =
+    document.getElementById("btnLimpar");
+
+const listaUsuarios =
+    document.getElementById("listaUsuarios");
+
+const btnAnterior =
+    document.getElementById("btnAnterior");
+
+const btnProximo =
+    document.getElementById("btnProximo");
+
+const numerosPaginas =
+    document.getElementById("numerosPaginas");
+
 
 /*==========================================================
-            ELEMENTOS DA PÁGINA
+                CONFIGURAÇÃO DA API
 ==========================================================*/
 
-const tituloPagina = document.getElementById("tituloPagina");
-const subtituloPagina = document.getElementById("subtituloPagina");
+const API = "http://localhost:3000";
 
-const tituloFormulario = document.getElementById("tituloFormulario");
-const tituloTabela = document.getElementById("tituloTabela");
 
-const pesquisa = document.getElementById("pesquisa");
-const filtroStatus = document.getElementById("filtroStatus");
+/*==========================================================
+                DADOS DOS USUÁRIOS
+==========================================================*/
 
-const nome = document.getElementById("nome");
-const email = document.getElementById("email");
-const telefone = document.getElementById("telefone");
-const cadastro = document.getElementById("cadastro");
-const ultimoAcesso = document.getElementById("ultimoAcesso");
-const status = document.getElementById("status");
-const observacoes = document.getElementById("observacoes");
+/*
+    IMPORTANTE:
 
-const btnPesquisar = document.getElementById("btnPesquisar");
-const btnSalvar = document.getElementById("btnSalvar");
-const btnBloquear = document.getElementById("btnBloquear");
-const btnExcluir = document.getElementById("btnExcluir");
-const btnLimpar = document.getElementById("btnLimpar");
+    Os usuários NÃO são cadastrados aqui.
 
-const listaUsuarios = document.getElementById("listaUsuarios");
+    Eles serão buscados do banco de dados
+    através da API /usuario.
+*/
 
-const btnAnterior = document.getElementById("btnAnterior");
-const btnProximo = document.getElementById("btnProximo");
-const numerosPaginas = document.getElementById("numerosPaginas");
+let usuarios = [];
+
+let paginaAtual = 1;
+
+const usuariosPorPagina = 8;
+
+let usuarioSelecionado = null;
+
 
 /*==========================================================
                 DADOS DA PÁGINA
 ==========================================================*/
 
-tituloPagina.textContent = "Gerenciamento de Usuários";
+tituloPagina.textContent =
+    "Gerenciamento de Usuários";
 
 subtituloPagina.textContent =
-"Visualize, pesquise e gerencie todos os usuários cadastrados.";
+    "Visualize, pesquise e gerencie todos os usuários cadastrados.";
 
-tituloFormulario.textContent = "Informações do Usuário";
+tituloFormulario.textContent =
+    "Informações do Usuário";
 
-tituloTabela.textContent = "Usuários Cadastrados";
+tituloTabela.textContent =
+    "Usuários Cadastrados";
 
-btnPesquisar.textContent = "Pesquisar";
+btnPesquisar.innerHTML =
+    '<i class="fa-solid fa-magnifying-glass"></i> Pesquisar';
 
-btnSalvar.textContent = "Salvar";
+btnSalvar.innerHTML =
+    '<i class="fa-solid fa-floppy-disk"></i> Salvar';
 
-btnBloquear.textContent = "Bloquear";
+btnBloquear.innerHTML =
+    '<i class="fa-solid fa-lock"></i> Bloquear';
 
-btnExcluir.textContent = "Excluir";
+btnExcluir.innerHTML =
+    '<i class="fa-solid fa-trash"></i> Excluir';
 
-btnLimpar.textContent = "Limpar";
+btnLimpar.innerHTML =
+    '<i class="fa-solid fa-eraser"></i> Limpar';
+
 
 /*==========================================================
-                STATUS
+                    STATUS
 ==========================================================*/
+
+/*
+    Estes status são apenas para o funcionamento
+    visual do filtro neste momento.
+
+    Eles NÃO estão sendo buscados do banco,
+    porque sua tabela Usuario atual não possui
+    uma coluna status.
+*/
 
 const listaStatus = [
 
@@ -74,103 +155,149 @@ const listaStatus = [
 
 ];
 
-listaStatus.forEach(item=>{
 
-    filtroStatus.innerHTML +=
+listaStatus.forEach(item => {
 
-    `<option>${item}</option>`;
+    const option =
+        document.createElement("option");
+
+    option.value = item;
+
+    option.textContent = item;
+
+    filtroStatus.appendChild(option);
+
+});
+
+
+listaStatus.slice(1).forEach(item => {
+
+    const option =
+        document.createElement("option");
+
+    option.value = item;
+
+    option.textContent = item;
+
+    status.appendChild(option);
 
 });
 
-listaStatus
-.slice(1)
-.forEach(item=>{
-
-    status.innerHTML +=
-
-    `<option>${item}</option>`;
-
-});
 
 /*==========================================================
-            CRIAR CÍRCULOS
+                CÍRCULOS ANIMADOS
 ==========================================================*/
 
-/*==================================================
-=          CÍRCULOS ANIMADOS
-==================================================*/
-
-const fundo = document.getElementById("background-circles");
+const fundo =
+    document.getElementById("background-circles");
 
 const TOTAL_CIRCULOS = 30;
 
 const circulos = [];
 
-function numero(min,max){
 
-    return Math.random()*(max-min)+min;
+function numero(min, max) {
+
+    return Math.random() * (max - min) + min;
 
 }
 
-/*==================================================
-=          CRIAR CÍRCULOS
-==================================================*/
 
-function criarCirculos(){
+/*==========================================================
+                CRIAR CÍRCULOS
+==========================================================*/
+
+function criarCirculos() {
 
     fundo.innerHTML = "";
 
     circulos.length = 0;
 
-    for(let i=0;i<TOTAL_CIRCULOS;i++){
+    for (
+        let i = 0;
+        i < TOTAL_CIRCULOS;
+        i++
+    ) {
 
-        const circle = document.createElement("span");
+        const circle =
+            document.createElement("span");
 
         circle.className = "circle";
 
-        const tamanho = numero(60,320);
 
-        const blur = numero(8,30);
+        const tamanho =
+            numero(60, 320);
 
-        const opacity = numero(.08,.25);
+        const blur =
+            numero(8, 30);
 
-        circle.style.width = tamanho + "px";
-        circle.style.height = tamanho + "px";
+        const opacity =
+            numero(0.08, 0.25);
 
-        circle.style.filter = `blur(${blur}px)`;
 
-        circle.style.opacity = opacity;
+        circle.style.width =
+            tamanho + "px";
+
+        circle.style.height =
+            tamanho + "px";
+
+        circle.style.filter =
+            `blur(${blur}px)`;
+
+        circle.style.opacity =
+            opacity;
+
 
         circle.style.background = `
-        radial-gradient(
-            circle,
-            rgb(61, 153, 138),
-            rgba(0, 255, 98, 0.77)
-        )`;
+            radial-gradient(
+                circle,
+                rgb(61, 153, 138),
+                rgba(0, 255, 98, 0.77)
+            )
+        `;
+
 
         fundo.appendChild(circle);
 
+
         circulos.push({
 
-            el:circle,
+            el: circle,
 
-            x:numero(-200,window.innerWidth),
+            x: numero(
+                -200,
+                window.innerWidth
+            ),
 
-            y:numero(-200,window.innerHeight),
+            y: numero(
+                -200,
+                window.innerHeight
+            ),
 
-            velocidadeX:numero(.15,.8),
+            velocidadeX:
+                numero(0.15, 0.8),
 
-            velocidadeY:numero(.10,.6),
+            velocidadeY:
+                numero(0.10, 0.6),
 
-            direcaoX:Math.random()>0.5?1:-1,
+            direcaoX:
+                Math.random() > 0.5
+                    ? 1
+                    : -1,
 
-            direcaoY:Math.random()>0.5?1:-1,
+            direcaoY:
+                Math.random() > 0.5
+                    ? 1
+                    : -1,
 
-            escala:numero(.8,1.3),
+            escala:
+                numero(0.8, 1.3),
 
-            angulo:numero(0,360),
+            angulo:
+                numero(0, 360),
 
-            rotacao:numero(.02,.15)
+            rotacao:
+                numero(0.02, 0.15)
 
         });
 
@@ -178,278 +305,237 @@ function criarCirculos(){
 
 }
 
+
 criarCirculos();
 
-/*==================================================
-=        ANIMAÇÃO PRINCIPAL
-==================================================*/
 
-function animar(){
+/*==========================================================
+                ANIMAÇÃO DOS CÍRCULOS
+==========================================================*/
 
-    circulos.forEach(c=>{
+function animar() {
 
-        c.x += c.velocidadeX*c.direcaoX;
+    circulos.forEach(c => {
 
-        c.y += c.velocidadeY*c.direcaoY;
+        c.x +=
+            c.velocidadeX *
+            c.direcaoX;
 
-        c.angulo += c.rotacao;
+        c.y +=
+            c.velocidadeY *
+            c.direcaoY;
 
-        if(c.x>window.innerWidth+250){
 
-            c.x=-250;
+        c.angulo +=
+            c.rotacao;
+
+
+        if (
+            c.x >
+            window.innerWidth + 250
+        ) {
+
+            c.x = -250;
+
+        }
+
+
+        if (c.x < -250) {
+
+            c.x =
+                window.innerWidth + 250;
 
         }
 
-        if(c.x<-250){
 
-            c.x=window.innerWidth+250;
+        if (
+            c.y >
+            window.innerHeight + 250
+        ) {
 
-        }
-
-        if(c.y>window.innerHeight+250){
-
-            c.y=-250;
+            c.y = -250;
 
         }
 
-        if(c.y<-250){
 
-            c.y=window.innerHeight+250;
+        if (c.y < -250) {
+
+            c.y =
+                window.innerHeight + 250;
 
         }
+
 
         const pulsar =
+            c.escala +
+            Math.sin(
+                Date.now() / 1500 +
+                c.angulo
+            ) * 0.08;
 
-        c.escala +
 
-        Math.sin(Date.now()/1500+c.angulo)*0.08;
+        c.el.style.transform = `
+            translate(${c.x}px, ${c.y}px)
+            scale(${pulsar})
+            rotate(${c.angulo}deg)
+        `;
 
-       c.el.style.transform = `
-    translate(${c.x}px, ${c.y}px)
-    scale(${pulsar})
-    rotate(${c.angulo}deg)
-`;
     });
+
 
     requestAnimationFrame(animar);
 
 }
 
+
 animar();
 
-/*==================================================
-=              PARALLAX
-==================================================*/
+
+/*==========================================================
+                    EFEITO PARALLAX
+==========================================================*/
 
 let mouseX = 0;
+
 let mouseY = 0;
 
-document.addEventListener("mousemove",(e)=>{
 
-    mouseX =
+document.addEventListener(
+    "mousemove",
+    event => {
 
-    (e.clientX/window.innerWidth)-0.5;
+        mouseX =
+            (event.clientX /
+                window.innerWidth) - 0.5;
 
-    mouseY =
+        mouseY =
+            (event.clientY /
+                window.innerHeight) - 0.5;
 
-    (e.clientY/window.innerHeight)-0.5;
+    }
+);
 
-});
 
-function efeitoParallax(){
+function efeitoParallax() {
 
-    circulos.forEach((c,index)=>{
+    circulos.forEach(
+        (c, index) => {
 
-        const intensidade =
+            const intensidade =
+                (index % 6) + 1;
 
-        (index%6)+1;
 
-        c.el.style.marginLeft =
+            c.el.style.marginLeft =
+                `${mouseX * intensidade * 6}px`;
 
-        `${mouseX*intensidade*6}px`;
 
-        c.el.style.marginTop =
+            c.el.style.marginTop =
+                `${mouseY * intensidade * 6}px`;
 
-        `${mouseY*intensidade*6}px`;
+        }
+    );
 
-    });
 
-    requestAnimationFrame(efeitoParallax);
+    requestAnimationFrame(
+        efeitoParallax
+    );
 
 }
+
 
 efeitoParallax();
 
-/*==================================================
-=         REDIMENSIONAMENTO
-==================================================*/
-
-window.addEventListener("resize",()=>{
-
-    circulos.forEach(c=>{
-
-        if(c.x>window.innerWidth){
-
-            c.x = numero(0,window.innerWidth);
-
-        }
-
-        if(c.y>window.innerHeight){
-
-            c.y = numero(0,window.innerHeight);
-
-        }
-
-    });
-
-});
-
-/*==================================================
-=          ANIMAÇÃO DE ENTRADA
-==================================================*/
-
-window.addEventListener("load",()=>{
-
-    document.body.style.opacity="0";
-
-    requestAnimationFrame(()=>{
-
-        document.body.style.transition="opacity .8s";
-
-        document.body.style.opacity="1";
-
-    });
-
-});
 
 /*==========================================================
-            DADOS DOS USUÁRIOS
+                REDIMENSIONAMENTO
 ==========================================================*/
 
-let usuarios=[
+window.addEventListener(
+    "resize",
+    () => {
 
-{
+        circulos.forEach(c => {
 
-id:1,
+            if (
+                c.x >
+                window.innerWidth
+            ) {
 
-nome:"João Silva",
+                c.x =
+                    numero(
+                        0,
+                        window.innerWidth
+                    );
 
-email:"joao@email.com",
+            }
 
-telefone:"(63)99999-1111",
 
-status:"Ativo",
+            if (
+                c.y >
+                window.innerHeight
+            ) {
 
-cadastro:"20/07/2026"
+                c.y =
+                    numero(
+                        0,
+                        window.innerHeight
+                    );
 
-},
+            }
 
-{
+        });
 
-id:2,
+    }
+);
 
-nome:"Maria Souza",
-
-email:"maria@email.com",
-
-telefone:"(63)99999-2222",
-
-status:"Ativo",
-
-cadastro:"18/07/2026"
-
-},
-
-{
-
-id:3,
-
-nome:"Carlos Lima",
-
-email:"carlos@email.com",
-
-telefone:"(63)99999-3333",
-
-status:"Bloqueado",
-
-cadastro:"12/07/2026"
-
-}
-
-];
-
-let paginaAtual = 1;
-
-const usuariosPorPagina = 8;
-
-let usuarioSelecionado = null;
 
 /*==========================================================
-            CARREGAR TABELA
+                ANIMAÇÃO DA PÁGINA
 ==========================================================*/
 
-function carregarTabela(lista = usuarios){
+window.addEventListener(
+    "load",
+    () => {
 
-    listaUsuarios.innerHTML = "";
+        document.body.style.opacity =
+            "0";
 
-    const inicio = (paginaAtual - 1) * usuariosPorPagina;
 
-    const fim = inicio + usuariosPorPagina;
+        requestAnimationFrame(
+            () => {
 
-    const usuariosPagina = lista.slice(inicio, fim);
+                document.body.style.transition =
+                    "opacity .8s";
 
-    usuariosPagina.forEach(usuario=>{
+                document.body.style.opacity =
+                    "1";
 
-        listaUsuarios.innerHTML += `
+            }
+        );
+
+    }
+);
+
+
+/*==========================================================
+            BUSCAR USUÁRIOS DO BANCO
+==========================================================*/
+
+async function carregarUsuarios() {
+
+    try {
+
+        listaUsuarios.innerHTML = `
 
             <tr>
 
-                <td>
+                <td colspan="7">
 
-                    <img
-                        src="../assets/img/user.png"
-                        class="user-photo"
-                        alt="Usuário">
+                    <div class="loading">
 
-                </td>
+                        <i class="fa-solid fa-spinner"></i>
 
-                <td>${usuario.nome}</td>
-
-                <td>${usuario.email}</td>
-
-                <td>${usuario.telefone}</td>
-
-                <td>
-
-                    <span class="status ${usuario.status.toLowerCase()}">
-
-                        ${usuario.status}
-
-                    </span>
-
-                </td>
-
-                <td>${usuario.cadastro}</td>
-
-                <td>
-
-                    <div class="actions">
-
-                        <button
-                            class="btn-view"
-                            onclick="selecionarUsuario(${usuario.id})">
-
-                            <i class="fa-solid fa-eye"></i>
-
-                        </button>
-
-                        <button
-                            class="btn-delete"
-                            onclick="excluirUsuario(${usuario.id})">
-
-                            <i class="fa-solid fa-trash"></i>
-
-                        </button>
+                        Carregando usuários...
 
                     </div>
 
@@ -459,66 +545,353 @@ function carregarTabela(lista = usuarios){
 
         `;
 
-    });
 
-    atualizarPaginacao(lista);
+        const resposta =
+            await fetch(
+                `${API}/usuario`
+            );
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Não foi possível carregar os usuários."
+            );
+
+        }
+
+
+        usuarios =
+            await resposta.json();
+
+
+        console.log(
+            "Usuários recebidos da API:",
+            usuarios
+        );
+
+
+        paginaAtual = 1;
+
+
+        carregarTabela();
+
+
+        if (
+            usuarios.length > 0
+        ) {
+
+            selecionarUsuario(
+                usuarios[0].idUsuario
+            );
+
+        }
+
+    }
+    catch (erro) {
+
+        console.error(
+            "Erro ao carregar usuários:",
+            erro
+        );
+
+
+        listaUsuarios.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty">
+
+                        <i class="fa-solid fa-circle-exclamation"></i>
+
+                        <h3>
+                            Não foi possível carregar os usuários
+                        </h3>
+
+                        <p>
+                            Verifique se o servidor está funcionando.
+                        </p>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
 
 }
 
+
 /*==========================================================
-            SELECIONAR USUÁRIO
+                STATUS VISUAL
 ==========================================================*/
 
-function selecionarUsuario(id){
+/*
+    Como a tabela Usuario atual não possui
+    uma coluna status, todos aparecem como
+    "Ativo" visualmente.
 
-    const usuario = usuarios.find(item=>item.id === id);
+    Quando você adicionar status no banco,
+    esta função poderá ser alterada.
+*/
 
-    if(!usuario){
+function obterStatus(usuario) {
+
+    return usuario.status || "Ativo";
+
+}
+
+
+/*==========================================================
+                CARREGAR TABELA
+==========================================================*/
+
+function carregarTabela(lista = usuarios) {
+
+    listaUsuarios.innerHTML = "";
+
+
+    if (lista.length === 0) {
+
+        listaUsuarios.innerHTML = `
+
+            <tr>
+
+                <td colspan="7">
+
+                    <div class="empty">
+
+                        <i class="fa-solid fa-users-slash"></i>
+
+                        <h3>
+                            Nenhum usuário encontrado
+                        </h3>
+
+                        <p>
+                            Não existem usuários para exibir.
+                        </p>
+
+                    </div>
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        atualizarPaginacao(lista);
 
         return;
 
     }
 
-    usuarioSelecionado = usuario;
 
-    nome.value = usuario.nome;
+    const inicio =
+        (paginaAtual - 1) *
+        usuariosPorPagina;
 
-    email.value = usuario.email;
 
-    telefone.value = usuario.telefone;
+    const fim =
+        inicio +
+        usuariosPorPagina;
 
-    cadastro.value = usuario.cadastro;
 
-    ultimoAcesso.value = usuario.ultimoAcesso || "";
+    const usuariosPagina =
+        lista.slice(
+            inicio,
+            fim
+        );
 
-    status.value = usuario.status;
 
-    observacoes.value = usuario.observacoes || "";
+    usuariosPagina.forEach(
+        usuario => {
+
+            const statusUsuario =
+                obterStatus(usuario);
+
+
+            listaUsuarios.innerHTML += `
+
+                <tr>
+
+                    <td>
+
+                        <div class="user-photo">
+
+                            <i class="fa-solid fa-user"></i>
+
+                        </div>
+
+                    </td>
+
+
+                    <td>
+                        ${usuario.nome || "Não informado"}
+                    </td>
+
+
+                    <td>
+                        ${usuario.email || "Não informado"}
+                    </td>
+
+
+                    <td>
+                        ${usuario.telefone || "Não informado"}
+                    </td>
+
+
+                    <td>
+
+                        <span
+                            class="status ${statusUsuario.toLowerCase()}">
+
+                            ${statusUsuario}
+
+                        </span>
+
+                    </td>
+
+
+                    <td>
+                        ${usuario.dataCadastro || "Não informado"}
+                    </td>
+
+
+                    <td>
+
+                        <div class="actions">
+
+                            <button
+                                class="btn-view"
+                                title="Visualizar"
+                                onclick="selecionarUsuario(${usuario.idUsuario})">
+
+                                <i class="fa-solid fa-eye"></i>
+
+                            </button>
+
+
+                            <button
+                                class="btn-delete"
+                                title="Excluir"
+                                onclick="excluirUsuario(${usuario.idUsuario})">
+
+                                <i class="fa-solid fa-trash"></i>
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `;
+
+        }
+    );
+
+
+    atualizarPaginacao(lista);
 
 }
 
+
 /*==========================================================
-            PAGINAÇÃO
+                SELECIONAR USUÁRIO
 ==========================================================*/
 
-function atualizarPaginacao(lista){
+function selecionarUsuario(id) {
+
+    const usuario =
+        usuarios.find(
+            item =>
+                item.idUsuario === id
+        );
+
+
+    if (!usuario) {
+
+        return;
+
+    }
+
+
+    usuarioSelecionado =
+        usuario;
+
+
+    nome.value =
+        usuario.nome || "";
+
+
+    email.value =
+        usuario.email || "";
+
+
+    telefone.value =
+        usuario.telefone || "";
+
+
+    /*
+        Estes campos não existem atualmente
+        na tabela Usuario.
+
+        Por isso permanecem vazios.
+    */
+
+    cadastro.value =
+        usuario.dataCadastro || "";
+
+
+    ultimoAcesso.value =
+        usuario.ultimoAcesso || "";
+
+
+    status.value =
+        usuario.status || "Ativo";
+
+
+    observacoes.value =
+        usuario.observacoes || "";
+
+}
+
+
+/*==========================================================
+                PAGINAÇÃO
+==========================================================*/
+
+function atualizarPaginacao(lista) {
 
     numerosPaginas.innerHTML = "";
 
-    const totalPaginas = Math.ceil(
 
-        lista.length / usuariosPorPagina
+    const totalPaginas =
+        Math.ceil(
+            lista.length /
+            usuariosPorPagina
+        );
 
-    );
 
-    for(let i = 1; i <= totalPaginas; i++){
+    for (
+        let i = 1;
+        i <= totalPaginas;
+        i++
+    ) {
 
         numerosPaginas.innerHTML += `
 
             <button
-
-                class="${i === paginaAtual ? 'ativo' : ''}"
-
+                class="${i === paginaAtual
+                    ? "ativo"
+                    : ""}"
                 onclick="irParaPagina(${i})">
 
                 ${i}
@@ -531,215 +904,240 @@ function atualizarPaginacao(lista){
 
 }
 
+
 /*==========================================================
-            TROCAR DE PÁGINA
+                IR PARA PÁGINA
 ==========================================================*/
 
-function irParaPagina(numero){
+function irParaPagina(numero) {
 
-    paginaAtual = numero;
+    paginaAtual =
+        numero;
+
+
+    const texto =
+        pesquisa.value
+            .trim()
+            .toLowerCase();
+
+
+    const filtro =
+        filtroStatus.value;
+
+
+    if (
+        texto ||
+        filtro !== "Todos"
+    ) {
+
+        pesquisarUsuarios();
+
+        return;
+
+    }
+
 
     carregarTabela();
 
 }
 
+
 /*==========================================================
-            BOTÃO ANTERIOR
+                BOTÃO ANTERIOR
 ==========================================================*/
 
-btnAnterior.addEventListener("click",()=>{
+btnAnterior.addEventListener(
+    "click",
+    () => {
 
-    if(paginaAtual > 1){
+        if (paginaAtual <= 1) {
+
+            return;
+
+        }
+
 
         paginaAtual--;
 
-        carregarTabela();
+
+        pesquisarUsuarios();
 
     }
+);
 
-});
 
 /*==========================================================
-            BOTÃO PRÓXIMO
+                BOTÃO PRÓXIMO
 ==========================================================*/
 
-btnProximo.addEventListener("click",()=>{
+btnProximo.addEventListener(
+    "click",
+    () => {
 
-    const totalPaginas = Math.ceil(
+        const totalPaginas =
+            Math.ceil(
+                usuarios.length /
+                usuariosPorPagina
+            );
 
-        usuarios.length / usuariosPorPagina
 
-    );
+        if (
+            paginaAtual >=
+            totalPaginas
+        ) {
 
-    if(paginaAtual < totalPaginas){
+            return;
+
+        }
+
 
         paginaAtual++;
 
-        carregarTabela();
+
+        pesquisarUsuarios();
 
     }
+);
 
-});
-
-/*==========================================================
-            PRIMEIRO CARREGAMENTO
-==========================================================*/
-
-carregarTabela();
-
-if(usuarios.length > 0){
-
-    selecionarUsuario(usuarios[0].id);
-
-}
 
 /*==========================================================
                 PESQUISAR USUÁRIOS
 ==========================================================*/
 
-function pesquisarUsuarios(){
+function pesquisarUsuarios() {
 
-    const texto = pesquisa.value
-        .trim()
-        .toLowerCase();
+    const texto =
+        pesquisa.value
+            .trim()
+            .toLowerCase();
 
-    const filtro = filtroStatus.value;
 
-    const resultado = usuarios.filter(usuario=>{
+    const filtro =
+        filtroStatus.value;
 
-        const encontrouTexto =
 
-            usuario.nome
-            .toLowerCase()
-            .includes(texto)
+    const resultado =
+        usuarios.filter(
+            usuario => {
 
-            ||
+                const nomeUsuario =
+                    (
+                        usuario.nome || ""
+                    ).toLowerCase();
 
-            usuario.email
-            .toLowerCase()
-            .includes(texto)
 
-            ||
+                const emailUsuario =
+                    (
+                        usuario.email || ""
+                    ).toLowerCase();
 
-            usuario.telefone
-            .toLowerCase()
-            .includes(texto);
 
-        const encontrouStatus =
+                const telefoneUsuario =
+                    (
+                        usuario.telefone || ""
+                    ).toLowerCase();
 
-            filtro === "Todos"
 
-            ||
+                const encontrouTexto =
 
-            usuario.status === filtro;
+                    nomeUsuario.includes(
+                        texto
+                    )
 
-        return encontrouTexto && encontrouStatus;
+                    ||
 
-    });
+                    emailUsuario.includes(
+                        texto
+                    )
+
+                    ||
+
+                    telefoneUsuario.includes(
+                        texto
+                    );
+
+
+                const statusUsuario =
+                    obterStatus(usuario);
+
+
+                const encontrouStatus =
+
+                    filtro === "Todos"
+
+                    ||
+
+                    statusUsuario === filtro;
+
+
+                return (
+                    encontrouTexto &&
+                    encontrouStatus
+                );
+
+            }
+        );
+
 
     paginaAtual = 1;
 
-    carregarTabela(resultado);
+
+    carregarTabela(
+        resultado
+    );
 
 }
+
 
 /*==========================================================
                 EVENTOS DA PESQUISA
 ==========================================================*/
 
 btnPesquisar.addEventListener(
-
     "click",
-
     pesquisarUsuarios
-
 );
+
 
 pesquisa.addEventListener(
-
-    "keyup",
-
+    "input",
     pesquisarUsuarios
-
 );
+
 
 filtroStatus.addEventListener(
-
     "change",
-
     pesquisarUsuarios
-
 );
 
-/*==========================================================
-                SALVAR ALTERAÇÕES
-==========================================================*/
 
-btnSalvar.addEventListener(
+pesquisa.addEventListener(
+    "keypress",
+    event => {
 
-    "click",
+        if (
+            event.key === "Enter"
+        ) {
 
-    ()=>{
-
-        if(usuarioSelecionado == null){
-
-            alert("Selecione um usuário.");
-
-            return;
+            pesquisarUsuarios();
 
         }
 
-        usuarioSelecionado.nome =
-
-            nome.value;
-
-        usuarioSelecionado.email =
-
-            email.value;
-
-        usuarioSelecionado.telefone =
-
-            telefone.value;
-
-        usuarioSelecionado.status =
-
-            status.value;
-
-        usuarioSelecionado.cadastro =
-
-            cadastro.value;
-
-        usuarioSelecionado.ultimoAcesso =
-
-            ultimoAcesso.value;
-
-        usuarioSelecionado.observacoes =
-
-            observacoes.value;
-
-        pesquisarUsuarios();
-
-        alert(
-
-            "Usuário atualizado com sucesso!"
-
-        );
-
     }
-
 );
+
 
 /*==========================================================
                 LIMPAR FORMULÁRIO
 ==========================================================*/
 
 btnLimpar.addEventListener(
-
     "click",
+    () => {
 
-    ()=>{
+        usuarioSelecionado =
+            null;
 
-        usuarioSelecionado = null;
 
         nome.value = "";
 
@@ -753,164 +1151,271 @@ btnLimpar.addEventListener(
 
         observacoes.value = "";
 
-        status.selectedIndex = 0;
 
-    }
+        if (status.options.length > 0) {
 
-);
-
-/*==========================================================
-            ATALHO ENTER
-==========================================================*/
-
-pesquisa.addEventListener(
-
-    "keypress",
-
-    (evento)=>{
-
-        if(evento.key === "Enter"){
-
-            pesquisarUsuarios();
-
-        }
-
-    }
-
-);
-
-/*==========================================================
-                EXCLUIR USUÁRIO
-==========================================================*/
-
-function excluirUsuario(id){
-
-    const confirmar = confirm(
-        "Deseja realmente excluir este usuário?"
-    );
-
-    if(!confirmar){
-
-        return;
-
-    }
-
-    usuarios = usuarios.filter(usuario=>{
-
-        return usuario.id !== id;
-
-    });
-
-    if(usuarioSelecionado){
-
-        if(usuarioSelecionado.id === id){
-
-            usuarioSelecionado = null;
-
-            nome.value = "";
-            email.value = "";
-            telefone.value = "";
-            cadastro.value = "";
-            ultimoAcesso.value = "";
-            observacoes.value = "";
             status.selectedIndex = 0;
 
         }
 
     }
+);
 
-    pesquisarUsuarios();
+
+/*==========================================================
+                EXCLUIR USUÁRIO
+==========================================================*/
+
+async function excluirUsuario(id) {
+
+    const confirmar =
+        confirm(
+            "Deseja realmente excluir este usuário?"
+        );
+
+
+    if (!confirmar) {
+
+        return;
+
+    }
+
+
+    try {
+
+        const resposta =
+            await fetch(
+                `${API}/usuario/${id}`,
+                {
+                    method: "DELETE"
+                }
+            );
+
+
+        if (!resposta.ok) {
+
+            throw new Error(
+                "Não foi possível excluir o usuário."
+            );
+
+        }
+
+
+        alert(
+            "Usuário excluído com sucesso!"
+        );
+
+
+        usuarioSelecionado =
+            null;
+
+
+        await carregarUsuarios();
+
+
+    }
+    catch (erro) {
+
+        console.error(
+            "Erro ao excluir usuário:",
+            erro
+        );
+
+
+        alert(
+            "Não foi possível excluir o usuário."
+        );
+
+    }
 
 }
 
+
 /*==========================================================
-            BLOQUEAR / DESBLOQUEAR
+                BLOQUEAR USUÁRIO
 ==========================================================*/
 
+/*
+    ATENÇÃO:
+
+    Sua tabela Usuario atual não possui
+    uma coluna status.
+
+    Portanto, NÃO vamos alterar o banco
+    com esta função ainda.
+
+    Por enquanto ela apenas informa
+    que o recurso precisa ser criado
+    no banco.
+*/
+
 btnBloquear.addEventListener(
-
     "click",
+    () => {
 
-    ()=>{
-
-        if(!usuarioSelecionado){
+        if (!usuarioSelecionado) {
 
             alert(
-                "Selecione um usuário."
+                "Selecione um usuário primeiro."
             );
 
             return;
 
         }
 
-        if(usuarioSelecionado.status === "Ativo"){
 
-            usuarioSelecionado.status = "Bloqueado";
-
-        }
-
-        else{
-
-            usuarioSelecionado.status = "Ativo";
-
-        }
-
-        status.value = usuarioSelecionado.status;
-
-        pesquisarUsuarios();
+        alert(
+            "O bloqueio ainda precisa ser implementado no banco de dados."
+        );
 
     }
-
 );
 
-/*==========================================================
-            RECARREGAR TABELA
-==========================================================*/
-
-function atualizarSistema(){
-
-    carregarTabela();
-
-}
 
 /*==========================================================
-            RESTAURAR PRIMEIRO USUÁRIO
+                SALVAR
 ==========================================================*/
 
-function selecionarPrimeiro(){
+/*
+    O botão salvar não será usado para
+    alterar dados fictícios.
 
-    if(usuarios.length === 0){
+    Os dados precisam ser enviados
+    para a API através de PUT.
 
-        return;
+    A função abaixo será utilizada quando
+    o endpoint de atualização estiver
+    configurado no seu backend.
+*/
+
+btnSalvar.addEventListener(
+    "click",
+    async () => {
+
+        if (!usuarioSelecionado) {
+
+            alert(
+                "Selecione um usuário primeiro."
+            );
+
+            return;
+
+        }
+
+
+        const dadosAtualizados = {
+
+            nome:
+                nome.value.trim(),
+
+            email:
+                email.value.trim(),
+
+            telefone:
+                telefone.value.trim()
+
+        };
+
+
+        if (
+            !dadosAtualizados.nome ||
+            !dadosAtualizados.email
+        ) {
+
+            alert(
+                "Nome e e-mail são obrigatórios."
+            );
+
+            return;
+
+        }
+
+
+        try {
+
+            const resposta =
+                await fetch(
+                    `${API}/usuario/${usuarioSelecionado.idUsuario}`,
+                    {
+
+                        method: "PUT",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+
+                        },
+
+                        body:
+                            JSON.stringify(
+                                dadosAtualizados
+                            )
+
+                    }
+                );
+
+
+            if (!resposta.ok) {
+
+                throw new Error(
+                    "Erro ao atualizar usuário."
+                );
+
+            }
+
+
+            alert(
+                "Usuário atualizado com sucesso!"
+            );
+
+
+            await carregarUsuarios();
+
+        }
+        catch (erro) {
+
+            console.error(
+                "Erro ao atualizar usuário:",
+                erro
+            );
+
+
+            alert(
+                "Não foi possível atualizar o usuário."
+            );
+
+        }
 
     }
+);
 
-    selecionarUsuario(
 
-        usuarios[0].id
+/*==========================================================
+                ATUALIZAR SISTEMA
+==========================================================*/
 
-    );
+function atualizarSistema() {
+
+    carregarUsuarios();
 
 }
 
+
 /*==========================================================
-            INICIALIZAÇÃO
+                INICIALIZAÇÃO
 ==========================================================*/
 
 window.addEventListener(
-
     "load",
+    () => {
 
-    ()=>{
-
-        carregarTabela();
-
-        selecionarPrimeiro();
+        carregarUsuarios();
 
     }
-
 );
 
+
 /*==========================================================
-                    FIM
+                    FIM DO JS
 ==========================================================*/

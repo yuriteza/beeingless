@@ -4,6 +4,9 @@
 =
 =====================================================*/
 
+
+
+
 const API = "http://localhost:3000";
 
 const URL_PRODUTO = `${API}/produto`;
@@ -145,22 +148,21 @@ const btnFinalizar =
 document.getElementById("btnFinalizar");
 
 
-/*=====================================================*
-*=              CADASTRAR VÍDEO
-*=====================================================*/
+/*=====================================================
+=
+=              CADASTRAR VÍDEO
+=
+=====================================================*/
 
 btnSalvarVideo.addEventListener(
     "click",
     cadastrarVideo
 );
 
+
 async function cadastrarVideo() {
 
     limparMensagens();
-
-    /*=================================================
-      VERIFICA PRODUTO
-    =================================================*/
 
     if (idProduto === null) {
 
@@ -172,11 +174,6 @@ async function cadastrarVideo() {
         return;
     }
 
-
-    /*=================================================
-      VALIDA NÍVEL
-    =================================================*/
-
     if (nivel.value === "") {
 
         mostrarMensagem(
@@ -185,14 +182,8 @@ async function cadastrarVideo() {
         );
 
         nivel.focus();
-
         return;
     }
-
-
-    /*=================================================
-      VALIDA CATEGORIA
-    =================================================*/
 
     if (categoria.value === "") {
 
@@ -202,14 +193,8 @@ async function cadastrarVideo() {
         );
 
         categoria.focus();
-
         return;
     }
-
-
-    /*=================================================
-      VALIDA VÍDEO EM INGLÊS
-    =================================================*/
 
     if (youtubeIngles.value.trim() === "") {
 
@@ -219,19 +204,12 @@ async function cadastrarVideo() {
         );
 
         youtubeIngles.focus();
-
         return;
     }
-
-
-    /*=================================================
-      VÍDEO EM PORTUGUÊS
-    =================================================*/
 
     const temExplicacaoPortugues =
         possuiExplicacaoPortugues &&
         possuiExplicacaoPortugues.checked;
-
 
     if (
         temExplicacaoPortugues &&
@@ -244,25 +222,14 @@ async function cadastrarVideo() {
         );
 
         youtubePortugues.focus();
-
         return;
     }
 
-
-    /*=================================================
-      DESABILITA BOTÃO
-    =================================================*/
-
     btnSalvarVideo.disabled = true;
-
 
     try {
 
-        /*=================================================
-          CADASTRA VÍDEO EM INGLÊS
-        =================================================*/
-
-        const videoIngles = {
+        const video = {
 
             Produto_idProduto: idProduto,
 
@@ -270,107 +237,38 @@ async function cadastrarVideo() {
 
             categoria: categoria.value,
 
-            link: youtubeIngles.value.trim()
+            linkIngles: youtubeIngles.value.trim(),
 
+            linkPortugues: temExplicacaoPortugues
+                ? youtubePortugues.value.trim()
+                : null
         };
 
-
-        const respostaIngles = await fetch(
+        const resposta = await fetch(
             URL_VIDEO,
             {
-
                 method: "POST",
 
                 headers: {
-
                     "Content-Type": "application/json"
-
                 },
 
-                body: JSON.stringify(videoIngles)
-
+                body: JSON.stringify(video)
             }
         );
 
+        const retorno = await resposta.json();
 
-        const retornoIngles =
-            await respostaIngles.json();
-
-
-        if (!retornoIngles.sucesso) {
+        if (!retorno.sucesso) {
 
             mostrarMensagem(
                 mensagemVideo,
-                retornoIngles.mensagem ||
-                "Erro ao cadastrar o vídeo em inglês."
+                retorno.mensagem ||
+                "Erro ao cadastrar vídeo."
             );
-
-            btnSalvarVideo.disabled = false;
 
             return;
         }
-
-
-        /*=================================================
-          CADASTRA VÍDEO EXPLICATIVO EM PORTUGUÊS
-        =================================================*/
-
-        if (temExplicacaoPortugues) {
-
-            const videoPortugues = {
-
-                Produto_idProduto: idProduto,
-
-                Niveis_idNiveis: Number(nivel.value),
-
-                categoria: categoria.value,
-
-                link: youtubePortugues.value.trim()
-
-            };
-
-
-            const respostaPortugues = await fetch(
-                URL_VIDEO,
-                {
-
-                    method: "POST",
-
-                    headers: {
-
-                        "Content-Type": "application/json"
-
-                    },
-
-                    body: JSON.stringify(videoPortugues)
-
-                }
-            );
-
-
-            const retornoPortugues =
-                await respostaPortugues.json();
-
-
-            if (!retornoPortugues.sucesso) {
-
-                mostrarMensagem(
-                    mensagemVideo,
-                    retornoPortugues.mensagem ||
-                    "O vídeo em inglês foi salvo, mas houve erro ao salvar a explicação em português."
-                );
-
-                btnSalvarVideo.disabled = false;
-
-                return;
-            }
-
-        }
-
-
-        /*=================================================
-          SUCESSO
-        =================================================*/
 
         mostrarMensagem(
             mensagemVideo,
@@ -378,34 +276,26 @@ async function cadastrarVideo() {
             true
         );
 
-
         liberarImagem();
 
-
-    }
-    catch (erro) {
+    } catch (erro) {
 
         console.error(
             "Erro ao cadastrar vídeo:",
             erro
         );
 
-
         mostrarMensagem(
             mensagemVideo,
             "Erro ao conectar com o servidor."
         );
 
-    }
-    finally {
+    } finally {
 
         btnSalvarVideo.disabled = false;
 
     }
-
 }
-
-
 
 /*=====================================================
 =

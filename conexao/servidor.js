@@ -37,7 +37,13 @@ app.use("/produto", produtoRoutas);
 const videoRoutas = require("../routes/video_rotas.js");
 app.use("/video", videoRoutas);
 
+const lojistaRotas =
+    require("../routes/lojista.rotas.js");
 
+app.use(
+    "/lojista",
+    lojistaRotas
+);
 
 // importar as rotas do servidor 
 app.listen(3000, () => {

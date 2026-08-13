@@ -82,7 +82,7 @@
                     <button id="loginButton" type="button">
                     </button>
 
-                    <div id="mensagem"></div>
+                    <div id="mensagemLogin"></div>
 
                     <!-- Separador -->
 
@@ -139,14 +139,22 @@
                         <input id="registerEmail" type="email">
 
                     </div>
+
+                    <!-- Telefone -->
+
                       <div class="form-group">
 
                         <label id="registerPhoneLabel" for="registerPhone">
                             Telefone
                         </label>
 
-                        <input id="registerPhone" type="tel" placeholder="(00) 00000-0000" pattern="\(\d{2}\)\s\d{4,5}-\d{4}">
-
+                         <input
+                                id="registerPhone"
+                                type="tel"
+                                placeholder="(00) 00000-0000"
+                                maxlength="15"
+                                autocomplete="off"
+                            >
                     </div>
                     <!-- Senha -->
 
@@ -179,7 +187,7 @@
                        
                     </button>
 
-                    <DIV id="mensagem"></DIV>
+                   <div id="mensagemCadastro"></div>
 
                 </form>
 

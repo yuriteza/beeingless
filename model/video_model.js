@@ -1,116 +1,108 @@
-//CONEXAO com o banco de dados
+// ==========================================
+// CONEXÃO COM O BANCO DE DADOS
+// ==========================================
+
 const conexao = require("../conexao/conexao.js");
 
-// =========================
-// Cadastrar Video
-// =========================
+
+// ==========================================
+// CADASTRAR VÍDEO
+// ==========================================
 
 function cadastrar(video, callback) {
 
     const sql = `
         INSERT INTO Video
-<<<<<<< HEAD
-(
-=======
-     (
->>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
-    Produto_idProduto,
-    Niveis_idNiveis,
-    categoria,
-    linkIngles,
-    linkPortugues
-<<<<<<< HEAD
-)
-VALUES (?, ?, ?, ?, ?)
-=======
-   )
-    VALUES (?, ?, ?, ?, ?)
->>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
+        (
+            Produto_idProduto,
+            Niveis_idNiveis,
+            categoria,
+            linkIngles,
+            linkPortugues
+        )
+        VALUES (?, ?, ?, ?, ?)
     `;
 
     conexao.query(
         sql,
-<<<<<<< HEAD
-    [
-    video.Produto_idProduto,
-    video.Niveis_idNiveis,
-    video.categoria,
-    video.linkIngles,
-    video.linkPortugues
-    ],
-=======
         [
             video.Produto_idProduto,
             video.Niveis_idNiveis,
             video.categoria,
             video.linkIngles,
-            video.linkPortugues
+            video.linkPortugues || null
         ],
->>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
         callback
     );
-
 }
 
-// =========================
-// Listar Video
-// =========================
+
+// ==========================================
+// LISTAR VÍDEOS
+// ==========================================
 
 function listar(callback) {
 
     const sql = `
-SELECT
+        SELECT
 
-    v.idVideo,
+            v.idVideo,
 
-    p.nome AS produto,
+            p.nome AS produto,
 
-    n.nome AS nivel,
+            n.nome AS nivel,
 
-    v.categoria,
+            v.categoria,
 
-    v.linkIngles,
-<<<<<<< HEAD
-   
-=======
-    
->>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
-    v.linkPortugues
+            v.linkIngles,
 
-FROM Video v
+            v.linkPortugues
 
-INNER JOIN Produto p
+        FROM Video v
 
-ON p.idProduto = v.Produto_idProduto
+        INNER JOIN Produto p
+            ON p.idProduto = v.Produto_idProduto
 
-INNER JOIN Niveis n
+        INNER JOIN Niveis n
+            ON n.idNiveis = v.Niveis_idNiveis
+    `;
 
-ON n.idNiveis = v.Niveis_idNiveis
-`;
-
-   conexao.query(sql, callback);
-
+    conexao.query(sql, callback);
 }
 
+
+// ==========================================
+// LISTAR VÍDEOS POR PRODUTO
+// ==========================================
 
 function listarPorProduto(idProduto, callback) {
 
     const sql = `
         SELECT
+
             v.*,
+
             n.nome AS nivel
+
         FROM Video v
+
         INNER JOIN Niveis n
-        ON n.idNiveis = v.Niveis_idNiveis
-        WHERE Produto_idProduto = ?
+            ON n.idNiveis = v.Niveis_idNiveis
+
+        WHERE v.Produto_idProduto = ?
     `;
 
-    conexao.query(sql, [idProduto], callback);
-
+    conexao.query(
+        sql,
+        [idProduto],
+        callback
+    );
 }
-// =========================
-// Buscar por ID
-// =========================
+
+
+// ==========================================
+// BUSCAR VÍDEO POR ID
+// ==========================================
 
 function buscarPorId(id, callback) {
 
@@ -120,15 +112,17 @@ function buscarPorId(id, callback) {
         WHERE idVideo = ?
     `;
 
-    conexao.query(sql, [id], callback);
-
+    conexao.query(
+        sql,
+        [id],
+        callback
+    );
 }
 
 
-
-// =========================
-// Atualizar Video
-// =========================
+// ==========================================
+// ATUALIZAR VÍDEO
+// ==========================================
 
 function atualizar(id, video, callback) {
 
@@ -143,11 +137,7 @@ function atualizar(id, video, callback) {
             categoria = ?,
 
             linkIngles = ?,
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 232029b (ajeitando tela de cadastro dnv meu deus)
             linkPortugues = ?
 
         WHERE idVideo = ?
@@ -160,16 +150,17 @@ function atualizar(id, video, callback) {
             video.Niveis_idNiveis,
             video.categoria,
             video.linkIngles,
-            video.linkPortugues,
+            video.linkPortugues || null,
             id
         ],
         callback
     );
-
 }
-// =========================
-// Excluir Video
-// =========================
+
+
+// ==========================================
+// EXCLUIR VÍDEO
+// ==========================================
 
 function excluir(id, callback) {
 
@@ -178,9 +169,17 @@ function excluir(id, callback) {
         WHERE idVideo = ?
     `;
 
-    conexao.query(sql, [id], callback);
-
+    conexao.query(
+        sql,
+        [id],
+        callback
+    );
 }
+
+
+// ==========================================
+// EXPORTAÇÃO
+// ==========================================
 
 module.exports = {
 
