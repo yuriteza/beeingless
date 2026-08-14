@@ -1,80 +1,238 @@
+/* ==========================================================
+                FUNDO ANIMADO
+========================================================== */
+
 const fundo = document.getElementById("background-circles");
 
-for (let i = 0; i < 30; i++) {
+const TOTAL_CIRCULOS = 30;
 
-    const circulo = document.createElement("div");
+const circulos = [];
 
-    circulo.classList.add("circle");
 
-    // Metade preenchido e metade apenas com borda
-    circulo.classList.add(Math.random() > 0.5 ? "fill" : "outline");
+/* ==========================================================
+                FUNÇÃO NÚMERO ALEATÓRIO
+========================================================== */
 
-    // Tamanho aleatório
-    const tamanho = Math.random() * 120 + 40;
+function numero(min, max) {
+    return Math.random() * (max - min) + min;
+}
 
-    circulo.style.width = tamanho + "px";
-    circulo.style.height = tamanho + "px";
 
-    // Posição aleatória dentro da seção
-    circulo.style.left = Math.random() * 100 + "%";
-    circulo.style.top = Math.random() * 100 + "%";
+/* ==========================================================
+                TAMANHO DA PÁGINA
+========================================================== */
 
-    // Velocidade diferente para cada círculo
-    circulo.style.animationDuration = (8 + Math.random() * 8) + "s";
-    circulo.style.animationDelay = -(Math.random() * 8) + "s";
+function obterAlturaPagina() {
 
-    fundo.appendChild(circulo);
+    return Math.max(
+        document.body.scrollHeight,
+        document.documentElement.scrollHeight
+    );
 
 }
 
-/*=========================================================
-    MENU DE NAVEGAÇÃO
-=========================================================*/
 
-document.getElementById("idhome").addEventListener("click", function (event) {
+/* ==========================================================
+                CRIAR CÍRCULOS
+========================================================== */
 
-    event.preventDefault();
+function criarCirculos() {
 
-    window.location.href = "../index.html";
+    fundo.innerHTML = "";
 
-});
+    circulos.length = 0;
 
-document.getElementById("idnivel").addEventListener("click", function (event) {
+    const alturaPagina = obterAlturaPagina();
 
-    event.preventDefault();
+    fundo.style.height = alturaPagina + "px";
 
-    window.location.href = "../pages/niveis.html";
 
-});
+    for (let i = 0; i < TOTAL_CIRCULOS; i++) {
 
-document.getElementById("idblog").addEventListener("click", function (event) {
+        const circle = document.createElement("span");
 
-    event.preventDefault();
+        circle.className = "circle";
 
-    window.location.href = "../pages/blog.html";
 
-});
+        /* TAMANHO */
 
-document.getElementById("idtopicos").addEventListener("click", function (event) {
+        const tamanho = numero(60, 320);
 
-    event.preventDefault();
+        const blur = numero(8, 30);
 
-    window.location.href = "../pages/topicos.html";
+        const opacity = numero(0.08, 0.25);
 
-});
 
-document.getElementById("idexercicios").addEventListener("click", function (event) {
+        circle.style.width = tamanho + "px";
 
-    event.preventDefault();
+        circle.style.height = tamanho + "px";
 
-    window.location.href = "../pages/exercicios.html";
+        circle.style.filter = `blur(${blur}px)`;
 
-});
+        circle.style.opacity = opacity;
 
-document.getElementById("idteste").addEventListener("click", function (event) {
 
-    event.preventDefault();
+        /* COR */
 
-    window.location.href = "../pages/teste_nivel.html";
+        circle.style.background = `
+            radial-gradient(
+                circle,
+                 rgb(71, 223, 84),
+                rgb(33, 182, 187)
+            )
+        `;
+
+
+        fundo.appendChild(circle);
+
+
+        /* POSIÇÃO */
+
+        circulos.push({
+
+            el: circle,
+
+            x: numero(
+                -200,
+                window.innerWidth
+            ),
+
+            y: numero(
+                0,
+                alturaPagina
+            ),
+
+            velocidadeX: numero(0.15, 0.8),
+
+            velocidadeY: numero(0.10, 0.6),
+
+            direcaoX:
+                Math.random() > 0.5
+                    ? 1
+                    : -1,
+
+            direcaoY:
+                Math.random() > 0.5
+                    ? 1
+                    : -1,
+
+            escala: numero(0.8, 1.3),
+
+            angulo: numero(0, 360),
+
+            rotacao: numero(0.02, 0.15)
+
+        });
+
+    }
+
+}
+
+
+/* ==========================================================
+                CRIAR
+========================================================== */
+
+criarCirculos();
+
+
+/* ==========================================================
+                ANIMAÇÃO
+========================================================== */
+
+function animar() {
+
+    const alturaPagina = obterAlturaPagina();
+
+    circulos.forEach(c => {
+
+        c.x +=
+            c.velocidadeX *
+            c.direcaoX;
+
+        c.y +=
+            c.velocidadeY *
+            c.direcaoY;
+
+
+        c.angulo += c.rotacao;
+
+
+        /* LIMITE HORIZONTAL */
+
+        if (
+            c.x >
+            window.innerWidth + 250
+        ) {
+
+            c.x = -250;
+
+        }
+
+
+        if (c.x < -250) {
+
+            c.x =
+                window.innerWidth + 250;
+
+        }
+
+
+        /* LIMITE VERTICAL */
+
+        if (
+            c.y >
+            alturaPagina + 250
+        ) {
+
+            c.y = -250;
+
+        }
+
+
+        if (c.y < -250) {
+
+            c.y =
+                alturaPagina + 250;
+
+        }
+
+
+        /* PULSAÇÃO */
+
+        const pulsar =
+            c.escala +
+            Math.sin(
+                Date.now() / 1500 +
+                c.angulo
+            ) * 0.08;
+
+
+        c.el.style.transform = `
+            translate(${c.x}px, ${c.y}px)
+            scale(${pulsar})
+            rotate(${c.angulo}deg)
+        `;
+
+    });
+
+
+    requestAnimationFrame(animar);
+
+}
+
+
+animar();
+
+
+/* ==========================================================
+                REDIMENSIONAMENTO
+========================================================== */
+
+window.addEventListener("resize", () => {
+
+    const alturaPagina = obterAlturaPagina();
+
+    fundo.style.height = alturaPagina + "px";
 
 });

@@ -3,10 +3,11 @@ const mysql = require("mysql2");
 
 // variavel que armazena a conexao com o banco de dados
 const conexao = mysql.createConnection({
-    host: "localhost",
+    host: "reseau.proxy.rlwy.net",
     user: "root",
-    password: "", // senha do mysql
-    database: "BEE_INGLES"
+    port: 25146,
+    password: "IppCWjiAaAwROGvxCjHxWKSnLZXGsiso", // senha do mysql
+    database: "railway"
 });
 conexao.connect((erro) => {
     
