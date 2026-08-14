@@ -1,19 +1,162 @@
-// express é um framework para criar servidores web
-// aplicacoes web com node.js
+codigo para o servidor.js
+//==========================================
+
+// IMPORTAÇÕES
+
+//==========================================
+ 
 const express = require("express");
-// cors é um middleware que permite que o servidor aceite requisicoes de outros dominios
+
 const cors = require("cors");
 
-// criar uma istancia do express para criar o servidor
+const path = require("path");
+ 
 const app = express();
+ 
+console.log(">>> ESTE SERVIDOR.JS ESTÁ RODANDO <<<");
+ 
+ 
+//==========================================
 
-//permitir que o servidor aceite requisicoes de outros dominios
+// CONFIGURAÇÕES
+
+//==========================================
+ 
 app.use(cors());
+ 
 app.use(express.json());
+ 
+app.use(
+
+    express.urlencoded({
+
+        extended: true
+
+    })
+
+);
+ 
+ 
+//==========================================
+
+// ARQUIVOS PÚBLICOS / ASSETS
+
+//==========================================
+ 
+app.use(
+
+    "/assets",
+
+    express.static(
+
+        path.join(__dirname, "..", "assets")
+
+    )
+
+);
+ 
+ 
+//==========================================
+
+// CONEXÃO COM O BANCO
+
+//==========================================
+ 
+const conexao = require("./conexao");
+ 
+ 
+//==========================================
+
+// ARQUIVOS ESTÁTICOS
+
+//==========================================
+ 
+// Arquivos da raiz do projeto
+
+app.use(
+
+    express.static(
+
+        path.join(__dirname, "..")
+
+    )
+
+);
+ 
+ 
+// Arquivos da pasta PAGES
+
+app.use(
+
+    "/pages",
+
+    express.static(
+
+        path.join(__dirname, "..", "PAGES")
+
+    )
+
+);
+ 
+ 
+// Arquivos da pasta STYLE
+
+app.use(
+
+    "/style",
+
+    express.static(
+
+        path.join(__dirname, "..", "STYLE")
+
+    )
+
+);
+ 
+ 
+// Arquivos da pasta JS
+
+app.use(
+
+    "/js",
+
+    express.static(
+
+        path.join(__dirname, "..", "JS")
+
+    )
+
+);
+ 
+ 
+//==========================================
+
+// PÁGINA INICIAL
+
+//==========================================
+ 
+app.get("/", (req, res) => {
+ 
+    res.sendFile(
+
+        path.join(
+
+            __dirname,
+
+            "..",
+
+            "index.html"
+
+        )
+
+    );
+ 
+});
+
+ 
 app.use("/uploads", express.static("uploads"));
 
-// importar a conexao com o banco de dados
-const conexao = require("./conexao");
+
 
 // cria uma rota para testar a conexao com o banco de dados
 const usuarioRoutas = require("../routes/usuario_rotas.js");
