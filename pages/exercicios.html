@@ -1,1086 +1,665 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exercícios | BEE Inglês</title>
+
+    <title>Exercícios - BEE INGLÊS</title>
+
     <link rel="stylesheet" href="/style/exercicios.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
-  <!--IMAGEM DA LOGO P/ NAVEGADOR-->
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Saira:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Saira+Stencil:wght@100..900&family=Saira:wght@100..900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
 
-  <header>
-    <div class="topo">
-      <!-- Logo do site -->
-      <div class="logo">
-        <img src="/assets/logo.png" alt="Logo do BEE INGLES">
-      </div>
-      <!-- CAIXAS DE PESQUISA -->
-      <div class="caixa-de-pesquisa">
-        <input type="text" placeholder="what would you like to learn today?">
-        <img src="/assets/lupa 128.png" alt="Lupa de pesquisa">
-      </div>
-      <!-- -->
-      <div class="icones">
-        <a href="">
-          <img src="/assets/user.png" alt="login">
-          <small>Olá aluno(a)</small>
-          <p>ENTRAR</p>
-        </a>
-        <a href="">
-          <img src="/assets/notificacao pixel.png" alt="notification">
-          <p>NOTIFICAÇÃO</p>
-        </a>
-      </div>
-    </div>
-
-
-    <!-- Menu de navegação -->
-    <nav class="menu">
-<!-- Menu de navegação -->
-
-    <a href="#" id="idhome">Home</a>
-
-    <a href="#" id="idnivel">Nível</a>
-
-    <a href="#" id="idblog">Blog</a>
-
-    <a href="#" id="idtopicos">Tópicos</a>
-
-    <a href="#" id="idexercicios">Exercícios</a>
-
-    <a href="#" id="idteste">Teste de Nível</a>
-
-    </nav>
-</header>
-
-
-
-<body>
-
-
-<!-- =========================================================
-     FUNDO
-========================================================= -->
-
-<div id="background-circles"></div>
-
-
-<!-- =========================================================
-     MENU
-========================================================= -->
-
-<header class="menu">
-
-    <div class="menu-container">
-
-
-        <!-- LOGO -->
-
-        <a
-            href="#"
-            class="logo"
-            id="logo"
-        >
-        </a>
-
-
-        <!-- NAVEGAÇÃO -->
-
-        <nav class="menu-links">
-
-            <a
-                href="#"
-                id="linkInicio"
-            >
-            </a>
-
-            <a
-                href="#"
-                id="linkCursos"
-            >
-            </a>
-
-            <a
-                href="#"
-                id="linkExercicios"
-                class="active"
-            >
-            </a>
-
-        </nav>
-
-
-        <!-- PERFIL -->
-
-        <button
-            class="perfil-button"
-            id="perfilButton"
-            type="button"
-        >
-
-            <i class="fa-solid fa-user"></i>
-
-            <span id="nomeUsuario"></span>
-
-        </button>
-
-
-        <!-- MENU MOBILE -->
-
-        <button
-            class="menu-mobile-button"
-            id="menuMobileButton"
-            type="button"
-            aria-label="Abrir menu"
-        >
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-    </div>
-
-</header>
-
-
-
-<!-- =========================================================
-     MENU MOBILE
-========================================================= -->
-
-<nav
-    class="menu-mobile"
-    id="menuMobile"
->
-
-    <a
-        href="#"
-        id="mobileInicio"
-    >
-    </a>
-
-    <a
-        href="#"
-        id="mobileCursos"
-    >
-    </a>
-
-    <a
-        href="#"
-        id="mobileExercicios"
-    >
-    </a>
-
-</nav>
-
-
-
-<!-- =========================================================
-     CONTEÚDO PRINCIPAL
-========================================================= -->
-
-<main class="pagina">
-
-
     <!-- =====================================================
-         CABEÇALHO DA AULA
+         CABEÇALHO
     ====================================================== -->
 
-    <section class="cabecalho-exercicio">
+    <header class="header">
 
+        <div class="topo">
 
-        <div class="cabecalho-texto">
-
-            <span
-                class="categoria"
-                id="categoria"
-            >
-            </span>
-
-
-            <h1 id="tituloExercicio">
-            </h1>
-
-
-            <p id="descricaoExercicio">
-            </p>
-
-
-            <div class="informacoes-aula">
-
-
-                <span>
-
-                    <i class="fa-solid fa-signal"></i>
-
-                    <strong id="nivelExercicio">
-                    </strong>
-
-                </span>
-
-
-                <span>
-
-                    <i class="fa-regular fa-clock"></i>
-
-                    <strong id="tempoExercicio">
-                    </strong>
-
-                </span>
-
-
-                <span>
-
-                    <i class="fa-solid fa-list-check"></i>
-
-                    <strong id="totalQuestoes">
-                    </strong>
-
-                </span>
-
+            <!-- LOGO -->
+            <div class="logo">
+                <img src="/assets/logo.png" alt="Logo do BEE INGLÊS">
             </div>
 
-        </div>
-
-
-        <!-- ILUSTRAÇÃO -->
-
-        <div class="cabecalho-ilustracao">
-
-            <div class="icone-ingles">
-
-                <i
-                    class="fa-solid fa-book-open"
-                ></i>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         PROGRESSO
-    ====================================================== -->
-
-    <section class="progresso-container">
-
-
-        <div class="progresso-topo">
-
-            <span id="textoProgresso">
-            </span>
-
-            <span id="porcentagemProgresso">
-            </span>
-
-        </div>
-
-
-        <div class="progresso-barra">
-
-            <div
-                class="progresso-preenchimento"
-                id="progressoPreenchimento"
-            >
-            </div>
-
-        </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         LAYOUT DO EXERCÍCIO
-    ====================================================== -->
-
-    <section class="layout-exercicio">
-
-
-        <!-- =================================================
-             ÁREA PRINCIPAL
-        ================================================== -->
-
-        <div class="area-principal">
-
-
-            <!-- INSTRUÇÃO -->
-
-            <div class="instrucao-card">
-
-                <div class="instrucao-icone">
-
-                    <i
-                        class="fa-solid fa-lightbulb"
-                    ></i>
-
-                </div>
-
-
-                <div>
-
-                    <span id="textoInstrucaoTitulo">
-                    </span>
-
-                    <p id="textoInstrucao">
-                    </p>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =================================================
-                 QUESTÃO ATUAL
-            ================================================== -->
-
-            <article
-                class="questao-card"
-                id="questaoCard"
-            >
-
-
-                <div class="questao-cabecalho">
-
-
-                    <span
-                        class="numero-questao"
-                        id="numeroQuestao"
-                    >
-                    </span>
-
-
-                    <span
-                        class="tipo-questao"
-                        id="tipoQuestao"
-                    >
-                    </span>
-
-                </div>
-
-
-
-                <div class="questao-conteudo">
-
-
-                    <p
-                        class="frase-questao"
-                        id="fraseQuestao"
-                    >
-                    </p>
-
-
-                    <!-- CAMPO DE RESPOSTA -->
-
-                    <div class="campo-resposta">
-
-
-                        <label
-                            for="resposta"
-                            id="labelResposta"
-                        >
-                        </label>
-
-
-                        <input
-                            type="text"
-                            id="resposta"
-                            autocomplete="off"
-                        >
-
-
-                        <button
-                            type="button"
-                            class="audio-button"
-                            id="audioButton"
-                            aria-label="Ouvir frase"
-                        >
-
-                            <i
-                                class="fa-solid fa-volume-high"
-                            ></i>
-
-                        </button>
-
-                    </div>
-
-
-                    <!-- DICA -->
-
-                    <button
-                        type="button"
-                        class="dica-button"
-                        id="dicaButton"
-                    >
-
-                        <i
-                            class="fa-regular fa-lightbulb"
-                        ></i>
-
-                        <span id="textoDica">
-                        </span>
-
-                    </button>
-
-
-                    <div
-                        class="dica-box"
-                        id="dicaBox"
-                    >
-
-                        <i
-                            class="fa-solid fa-circle-info"
-                        ></i>
-
-                        <span id="dicaTexto">
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-
-                <!-- =================================================
-                     FEEDBACK
-                ================================================== -->
-
-                <div
-                    class="feedback"
-                    id="feedback"
+            <!-- PESQUISA -->
+            <div class="caixa-de-pesquisa">
+
+                <input
+                    type="text"
+                    placeholder="what would you like to learn today?"
                 >
 
-
-                    <div class="feedback-icone">
-
-                        <i
-                            id="feedbackIcone"
-                            class="fa-solid fa-check"
-                        ></i>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong id="feedbackTitulo">
-                        </strong>
-
-                        <p id="feedbackTexto">
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- =================================================
-                     AÇÕES
-                ================================================== -->
-
-                <div class="questao-acoes">
-
-
-                    <button
-                        type="button"
-                        class="botao-secundario"
-                        id="botaoAnterior"
-                    >
-
-                        <i
-                            class="fa-solid fa-arrow-left"
-                        ></i>
-
-                        <span id="textoAnterior">
-                        </span>
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="botao-principal"
-                        id="botaoVerificar"
-                    >
-
-                        <span id="textoVerificar">
-                        </span>
-
-                        <i
-                            class="fa-solid fa-check"
-                        ></i>
-
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="botao-principal botao-proximo"
-                        id="botaoProximo"
-                    >
-
-                        <span id="textoProximo">
-                        </span>
-
-                        <i
-                            class="fa-solid fa-arrow-right"
-                        ></i>
-
-                    </button>
-
-                </div>
-
-
-            </article>
-
-
-
-            <!-- =================================================
-                 EXPLICAÇÃO
-            ================================================== -->
-
-            <section
-                class="explicacao"
-                id="explicacao"
-            >
-
-
-                <div class="explicacao-titulo">
-
-                    <i
-                        class="fa-solid fa-graduation-cap"
-                    ></i>
-
-                    <span id="tituloExplicacao">
-                    </span>
-
-                </div>
-
-
-                <p id="textoExplicacao">
-                </p>
-
-
-                <div
-                    class="exemplo"
-                    id="exemploExplicacao"
+                <img
+                    src="/assets/lupa 128.png"
+                    alt="Lupa de pesquisa"
                 >
-                </div>
-
-            </section>
-
-        </div>
-
-
-
-        <!-- =================================================
-             PAINEL LATERAL
-        ================================================== -->
-
-        <aside class="painel-lateral">
-
-
-            <!-- RESULTADO -->
-
-            <div class="resultado-card">
-
-
-                <div class="resultado-titulo">
-
-                    <i
-                        class="fa-solid fa-chart-simple"
-                    ></i>
-
-                    <span id="tituloSeuProgresso">
-                    </span>
-
-                </div>
-
-
-                <div class="pontuacao">
-
-                    <strong id="pontuacao">
-                    </strong>
-
-                    <span id="textoPontos">
-                    </span>
-
-                </div>
-
-
-                <div class="estatisticas">
-
-
-                    <div class="estatistica acertos">
-
-                        <i
-                            class="fa-solid fa-check"
-                        ></i>
-
-                        <div>
-
-                            <strong id="acertos">
-                            </strong>
-
-                            <span id="textoAcertos">
-                            </span>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="estatistica erros">
-
-                        <i
-                            class="fa-solid fa-xmark"
-                        ></i>
-
-                        <div>
-
-                            <strong id="erros">
-                            </strong>
-
-                            <span id="textoErros">
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
 
             </div>
 
+            <!-- ÍCONES -->
+            <div class="icones">
 
-
-            <!-- QUESTÕES -->
-
-            <div class="questoes-card">
-
-
-                <div class="questoes-titulo">
-
-                    <span id="tituloQuestoes">
-                    </span>
-
-                    <span id="contadorQuestoes">
-                    </span>
-
-                </div>
-
-
-                <div
-                    class="lista-questoes"
-                    id="listaQuestoes"
-                >
-
-                    <!-- OS 20 ITENS JÁ EXISTEM NO HTML.
-                         O JAVASCRIPT APENAS PREENDE. -->
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero1"
+                <a href="#">
+                    <img
+                        src="/assets/user.png"
+                        alt="Login"
                     >
-                    </button>
 
+                    <small>Olá aluno(a)</small>
 
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero2"
+                    <p>ENTRAR</p>
+                </a>
+
+                <a href="#">
+                    <img
+                        src="/assets/notificacao pixel.png"
+                        alt="Notificação"
                     >
-                    </button>
 
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero3"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero4"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero5"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero6"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero7"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero8"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero9"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero10"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero11"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero12"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero13"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero14"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero15"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero16"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero17"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero18"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero19"
-                    >
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="questao-numero"
-                        id="questaoNumero20"
-                    >
-                    </button>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- MATERIAL -->
-
-            <div class="material-card">
-
-
-                <div class="material-icone">
-
-                    <i
-                        class="fa-solid fa-file-lines"
-                    ></i>
-
-                </div>
-
-
-                <div>
-
-                    <strong id="tituloMaterial">
-                    </strong>
-
-                    <p id="descricaoMaterial">
-                    </p>
-
-                </div>
-
-
-                <a
-                    href="#"
-                    id="botaoMaterial"
-                    target="_blank"
-                >
-
-                    <i
-                        class="fa-solid fa-arrow-up-right-from-square"
-                    ></i>
-
+                    <p>NOTIFICAÇÃO</p>
                 </a>
 
             </div>
 
-        </aside>
+        </div>
+
+
+        <!-- MENU -->
+        <nav class="menu">
+
+            <a href="#" id="idhome">
+                Home
+            </a>
+
+            <a href="#" id="idnivel">
+                Nível
+            </a>
+
+            <a href="#" id="idblog">
+                Blog
+            </a>
+
+            <a href="#" id="idtopicos">
+                Tópicos
+            </a>
+
+            <a href="#" id="idexercicios">
+                Exercícios
+            </a>
+
+            <a href="#" id="idteste">
+                Teste de Nível
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =====================================================
+         CONTEÚDO
+    ====================================================== -->
+
+    <main class="conteudo-exercicios">
+
+    <!-- =====================================================
+         TÍTULO
+    ====================================================== -->
+
+    <section class="titulo-exercicios">
+
+        <h1>Exercícios</h1>
+
+        <p>
+            Escolha uma categoria para começar a praticar.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         CATEGORIAS
+    ====================================================== -->
+
+    <section class="categorias-exercicios" id="categoriasExercicios">
+
+
+        <!-- VOCABULÁRIO -->
+
+        <article class="card-exercicio" data-categoria="vocabulario">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-book"></i>
+            </div>
+
+            <h2>Vocabulário</h2>
+
+            <p>
+                Pratique palavras e expressões
+                utilizadas no inglês.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+
+        <!-- GRAMÁTICA -->
+
+        <article class="card-exercicio" data-categoria="gramatica">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-spell-check"></i>
+            </div>
+
+            <h2>Gramática</h2>
+
+            <p>
+                Pratique estruturas e regras
+                da língua inglesa.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+
+        <!-- PRONÚNCIA -->
+
+        <article class="card-exercicio" data-categoria="pronuncia">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-microphone"></i>
+            </div>
+
+            <h2>Pronúncia</h2>
+
+            <p>
+                Trabalhe os sons e a pronúncia
+                das palavras em inglês.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+
+        <!-- LISTENING -->
+
+        <article class="card-exercicio" data-categoria="listening">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-headphones"></i>
+            </div>
+
+            <h2>Listening</h2>
+
+            <p>
+                Desenvolva sua compreensão
+                ao ouvir inglês.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+
+        <!-- SPEAKING -->
+
+        <article class="card-exercicio" data-categoria="speaking">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-comments"></i>
+            </div>
+
+            <h2>Speaking</h2>
+
+            <p>
+                Pratique conversação e
+                comunicação em inglês.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+
+        <!-- READING -->
+
+        <article class="card-exercicio" data-categoria="reading">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-book-open"></i>
+            </div>
+
+            <h2>Reading</h2>
+
+            <p>
+                Leia textos e desenvolva
+                sua compreensão.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+
+        <!-- WRITING -->
+
+        <article class="card-exercicio" data-categoria="writing">
+
+            <div class="icone-exercicio">
+                <i class="fa-solid fa-pen"></i>
+            </div>
+
+            <h2>Writing</h2>
+
+            <p>
+                Pratique a escrita e a
+                formação de frases.
+            </p>
+
+            <button class="botao-exercicio">
+                Escolher
+            </button>
+
+        </article>
+
+    </section>
+
+
+    <!-- =====================================================
+         ESCOLHA DO NÍVEL
+    ====================================================== -->
+
+    <section class="selecao-nivel" id="selecaoNivel">
+
+        <button
+            class="botao-voltar"
+            id="voltarCategorias">
+            ← Voltar
+        </button>
+
+        <h2 id="tituloCategoria">
+            Escolha seu nível
+        </h2>
+
+        <p>
+            Selecione o nível que deseja praticar.
+        </p>
+
+
+        <div class="niveis-container">
+
+
+            <button
+                class="card-nivel"
+                data-nivel="basico">
+
+                <span>
+                    <i class="fa-solid fa-seedling"></i>
+                </span>
+
+                <strong>Básico</strong>
+
+                <small>
+                    Comece pelo fundamental
+                </small>
+
+            </button>
+
+
+            <button
+                class="card-nivel"
+                data-nivel="intermediario">
+
+                <span>
+                    <i class="fa-solid fa-leaf"></i>
+                </span>
+
+                <strong>Intermediário</strong>
+
+                <small>
+                    Desenvolva seus conhecimentos
+                </small>
+
+            </button>
+
+
+            <button
+                class="card-nivel"
+                data-nivel="avancado">
+
+                <span>
+                    <i class="fa-solid fa-tree"></i>
+                </span>
+
+                <strong>Avançado</strong>
+
+                <small>
+                    Desafie seus conhecimentos
+                </small>
+
+            </button>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ÁREA DO EXERCÍCIO
+    ====================================================== -->
+
+    <section
+        class="area-exercicio"
+        id="areaExercicio">
+
+
+        <button
+            class="botao-voltar"
+            id="voltarNivel">
+
+            ← Voltar
+
+        </button>
+
+
+        <div class="cabecalho-questao">
+
+            <div>
+
+                <span id="categoriaAtual">
+                    Vocabulário
+                </span>
+
+                <h2 id="nivelAtual">
+                    Básico
+                </h2>
+
+            </div>
+
+
+            <div class="contador">
+
+                <span id="questaoAtual">
+                    1
+                </span>
+
+                /
+
+                <span id="totalQuestoes">
+                    10
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="barra-progresso">
+
+            <div
+                id="progresso"
+                class="progresso">
+            </div>
+
+        </div>
+
+
+        <div class="questao">
+
+            <p
+                class="numero-questao"
+                id="numeroQuestao">
+                Questão 1
+            </p>
+
+
+            <h3 id="pergunta">
+                Choose the correct answer.
+            </h3>
+
+
+            <div
+                class="alternativas"
+                id="alternativas">
+
+            </div>
+
+
+            <p
+                class="feedback"
+                id="feedback">
+            </p>
+
+
+            <button
+                class="botao-proxima"
+                id="botaoProxima">
+
+                Próxima
+
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         RESULTADO
+    ====================================================== -->
+
+    <section
+        class="resultado-exercicio"
+        id="resultadoExercicio">
+
+
+        <div class="resultado-card">
+
+            <div class="resultado-icone">
+
+                <i class="fa-solid fa-trophy"></i>
+
+            </div>
+
+
+            <h2>Resultado</h2>
+
+
+            <p>
+                Você terminou o exercício!
+            </p>
+
+
+            <div class="pontuacao">
+
+                <strong id="pontuacao">
+                    0
+                </strong>
+
+                <span>
+                    /
+                </span>
+
+                <span id="pontuacaoTotal">
+                    10
+                </span>
+
+            </div>
+
+
+            <p id="mensagemResultado">
+                Muito bem!
+            </p>
+
+
+            <div class="resultado-botoes">
+
+                <button
+                    id="tentarNovamente">
+
+                    Tentar novamente
+
+                </button>
+
+
+                <button
+                    id="voltarExercicios">
+
+                    Voltar aos exercícios
+
+                </button>
+
+            </div>
+
+        </div>
 
     </section>
 
 </main>
 
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
 
+    <footer class="footer">
 
-<!-- =========================================================
-     MODAL FINAL
-========================================================= -->
+        <div class="footer-container">
 
-<div
-    class="modal-overlay"
-    id="modalFinal"
->
+            <div class="footer-logo">
 
-
-    <div class="modal-final">
-
-
-        <button
-            type="button"
-            class="fechar-modal"
-            id="fecharModal"
-        >
-
-            <i
-                class="fa-solid fa-xmark"
-            ></i>
-
-        </button>
-
-
-        <div class="trofeu">
-
-            <i
-                class="fa-solid fa-trophy"
-            ></i>
-
-        </div>
-
-
-        <h2 id="tituloFinal">
-        </h2>
-
-
-        <p id="descricaoFinal">
-        </p>
-
-
-        <div class="resultado-final">
-
-
-            <div>
-
-                <strong id="resultadoPontuacao">
-                </strong>
-
-                <span id="resultadoPontos">
-                </span>
+                <h2>
+                    BEE<br>
+                    INGLÊS
+                </h2>
 
             </div>
 
 
-            <div>
+            <div class="footer-links">
 
-                <strong id="resultadoAcertos">
-                </strong>
+                <div class="social-item">
 
-                <span id="resultadoTextoAcertos">
-                </span>
+                    <div>
 
-            </div>
+                        <span>WHATSAPP</span>
 
+                        <p>
+                            (63) 9302-3352
+                        </p>
 
-            <div>
+                    </div>
 
-                <strong id="resultadoErros">
-                </strong>
+                    <i>
+                        <img
+                            src="/assets/whatsapp.png"
+                            alt="WhatsApp"
+                        >
+                    </i>
 
-                <span id="resultadoTextoErros">
-                </span>
-
-            </div>
-
-        </div>
-
-
-        <div class="modal-acoes">
-
-
-            <button
-                type="button"
-                class="botao-secundario"
-                id="botaoRefazer"
-            >
-            </button>
-
-
-            <button
-                type="button"
-                class="botao-principal"
-                id="botaoProximaAula"
-            >
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-<!-- =========================================================
-     FOOTER
-========================================================= -->
-
-<!--==========================
-            FOOTER
-    ===========================-->
-
-   <footer class="footer">
-
-    <div class="footer-container">
-      
-
-        <div class="footer-logo">
-            <h2>BEE<br>INGLÊS</h2>
-            <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Saira+Stencil:ital,wght@0,100..900;1,100..900&family=Saira:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-        </div>
-
-        <div class="footer-links">
-
-            <div class="social-item">
-                <div>
-                    <span>WHATSAPP</span>
-                    <p>(63) 9302-3352</p>
                 </div>
-                <i class><img src= "/assets/whatsapp.png"></i>
-            </div>
 
-            <div class="social-item">
-                <div>
-                    <span>INSTAGRAM</span>
-                    <p>@BEEINGLES</p>
-                </div>
-                <i class><img src="/assets/instagram.png"></i>
-            </div>
 
-            <div class="social-item">
-                <div>
-                    <span>G-MAIL</span>
-                    <p>DFG@MAIL</p>
+                <div class="social-item">
+
+                    <div>
+
+                        <span>INSTAGRAM</span>
+
+                        <p>
+                            @BEEINGLES
+                        </p>
+
+                    </div>
+
+                    <i>
+                        <img
+                            src="/assets/instagram.png"
+                            alt="Instagram"
+                        >
+                    </i>
+
                 </div>
-                <i class><img src="/assets/mail.png"></i>
+
+
+                <div class="social-item">
+
+                    <div>
+
+                        <span>G-MAIL</span>
+
+                        <p>
+                            DFG@MAIL
+                        </p>
+
+                    </div>
+
+                    <i>
+                        <img
+                            src="/assets/mail.png"
+                            alt="E-mail"
+                        >
+                    </i>
+
+                </div>
+
             </div>
 
         </div>
 
-    </div>
 
-    <div class="footer-bottom">
+        <div class="footer-bottom">
 
-        <p>© BEE INGLÊS</p>
+            <p>
+                © BEE INGLÊS
+            </p>
 
-        <p>POLITICA DE PRIVACIDADE</p>
+            <p>
+                POLÍTICA DE PRIVACIDADE
+            </p>
 
-        <p>TERMOS DE USO</p>
+            <p>
+                TERMOS DE USO
+            </p>
 
-    </div>
+        </div>
 
-</footer>
+    </footer>
 
 
-
-<!-- JAVASCRIPT -->
-
-<script
-    src="../js/exercicios.js"
-></script>
-
+    <script src="/js/exercicios.js"></script>
 
 </body>
 

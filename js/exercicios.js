@@ -1,1684 +1,1870 @@
 /* =========================================================
-   BEE INGLÊS
-   SISTEMA DE EXERCÍCIOS
+   MENU
 ========================================================= */
+
+document
+    .getElementById("idhome")
+    .addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        window.location.href="../index.html";
+
+    });
+
+
+document
+    .getElementById("idnivel")
+    .addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        window.location.href="../pages/niveis.html";
+
+    });
+
+
+document
+    .getElementById("idblog")
+    .addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        window.location.href="../pages/blog.html";
+
+    });
+
+
+document
+    .getElementById("idtopicos")
+    .addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        window.location.href="../pages/topicos.html";
+
+    });
+
+
+document
+    .getElementById("idexercicios")
+    .addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        window.location.href="../pages/exercicios.html";
+
+    });
+
+
+document
+    .getElementById("idteste")
+    .addEventListener("click", function(event){
+
+        event.preventDefault();
+
+        window.location.href="../pages/teste_nivel.html";
+
+    });
 
 
 /* =========================================================
-   CONFIGURAÇÕES
+   BANCO DE EXERCÍCIOS
 ========================================================= */
 
-const app = {
+const exercicios = {
 
-    nome: "BEE Inglês",
 
-    usuario: "Aluno",
+/* =====================================================
+   VOCABULÁRIO
+===================================================== */
 
-    categoria: "Grammar",
+vocabulario: {
 
-    titulo: "Present Simple",
+    basico: [
 
-    descricao:
-        "Pratique o uso do Present Simple e aprenda a formar frases afirmativas, negativas e interrogativas.",
+        {
+            pergunta:"What is the meaning of 'apple'?",
+            alternativas:[
+                "Maçã",
+                "Casa",
+                "Carro",
+                "Livro"
+            ],
+            correta:0
+        },
 
-    nivel: "Básico",
+        {
+            pergunta:"Choose the correct word: I drink ___ every morning.",
+            alternativas:[
+                "coffee",
+                "chair",
+                "window",
+                "shoe"
+            ],
+            correta:0
+        },
 
-    tempo: "10 min",
+        {
+            pergunta:"What is 'dog' in Portuguese?",
+            alternativas:[
+                "Gato",
+                "Cachorro",
+                "Pássaro",
+                "Peixe"
+            ],
+            correta:1
+        },
 
-    instrucaoTitulo:
-        "Complete a frase",
+        {
+            pergunta:"Which word means 'casa'?",
+            alternativas:[
+                "House",
+                "Horse",
+                "Hand",
+                "Hat"
+            ],
+            correta:0
+        },
 
-    instrucao:
-        "Digite a forma correta do verbo indicado entre parênteses.",
+        {
+            pergunta:"Choose the correct word: The sky is ___.",
+            alternativas:[
+                "blue",
+                "table",
+                "run",
+                "book"
+            ],
+            correta:0
+        }
 
-    textoDica:
-        "Ver dica",
+    ],
 
-    textoAnterior:
-        "Anterior",
 
-    textoVerificar:
-        "Verificar",
+    intermediario: [
 
-    textoProximo:
-        "Próxima",
+        {
+            pergunta:"What does 'improve' mean?",
+            alternativas:[
+                "Melhorar",
+                "Esquecer",
+                "Perder",
+                "Comprar"
+            ],
+            correta:0
+        },
 
-    tituloExplicacao:
-        "Por que esta é a resposta?",
+        {
+            pergunta:"Choose the correct word: She has a very ___ job.",
+            alternativas:[
+                "interesting",
+                "eat",
+                "quickly",
+                "yesterday"
+            ],
+            correta:0
+        },
 
-    tituloSeuProgresso:
-        "Seu progresso",
+        {
+            pergunta:"What does 'although' express?",
+            alternativas:[
+                "Contraste",
+                "Tempo",
+                "Lugar",
+                "Quantidade"
+            ],
+            correta:0
+        },
 
-    textoPontos:
-        "pontos",
+        {
+            pergunta:"Choose the synonym of 'happy'.",
+            alternativas:[
+                "Sad",
+                "Angry",
+                "Glad",
+                "Tired"
+            ],
+            correta:2
+        },
 
-    textoAcertos:
-        "Acertos",
+        {
+            pergunta:"What does 'environment' mean?",
+            alternativas:[
+                "Ambiente",
+                "Equipamento",
+                "Experiência",
+                "Emprego"
+            ],
+            correta:0
+        }
 
-    textoErros:
-        "Erros",
+    ],
 
-    tituloQuestoes:
-        "Questões",
 
-    tituloMaterial:
-        "Material da aula",
+    avancado: [
 
-    descricaoMaterial:
-        "Consulte o material original desta atividade.",
+        {
+            pergunta:"What does 'accurate' mean?",
+            alternativas:[
+                "Preciso",
+                "Rápido",
+                "Barulhento",
+                "Perigoso"
+            ],
+            correta:0
+        },
 
-    material:
-        "#",
+        {
+            pergunta:"Choose the synonym of 'significant'.",
+            alternativas:[
+                "Unimportant",
+                "Important",
+                "Tiny",
+                "Simple"
+            ],
+            correta:1
+        },
 
-    footerDescricao:
-        "Aprenda inglês de forma simples, prática e interativa.",
+        {
+            pergunta:"What does 'despite' indicate?",
+            alternativas:[
+                "Contraste",
+                "Causa",
+                "Tempo",
+                "Lugar"
+            ],
+            correta:0
+        },
 
-    footerDireitos:
-        "© 2026 BEE Inglês. Todos os direitos reservados."
+        {
+            pergunta:"Choose the correct word: The results were highly ___.",
+            alternativas:[
+                "reliable",
+                "eat",
+                "chair",
+                "slowly"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"What does 'achievement' mean?",
+            alternativas:[
+                "Conquista",
+                "Problema",
+                "Tentativa",
+                "Mudança"
+            ],
+            correta:0
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   GRAMÁTICA
+===================================================== */
+
+gramatica: {
+
+    basico: [
+
+        {
+            pergunta:"She ___ a student.",
+            alternativas:[
+                "is",
+                "are",
+                "am",
+                "be"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"They ___ happy.",
+            alternativas:[
+                "is",
+                "am",
+                "are",
+                "be"
+            ],
+            correta:2
+        },
+
+        {
+            pergunta:"I ___ coffee every morning.",
+            alternativas:[
+                "drink",
+                "drinks",
+                "drinking",
+                "drank"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"He ___ football on Sundays.",
+            alternativas:[
+                "play",
+                "plays",
+                "playing",
+                "played"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "She are happy.",
+                "She is happy.",
+                "She am happy.",
+                "She be happy."
+            ],
+            correta:1
+        }
+
+    ],
+
+
+    intermediario: [
+
+        {
+            pergunta:"I have lived here ___ 2020.",
+            alternativas:[
+                "for",
+                "since",
+                "during",
+                "from"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"If I had more time, I ___ travel.",
+            alternativas:[
+                "will",
+                "would",
+                "can",
+                "am"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"She has ___ finished her homework.",
+            alternativas:[
+                "already",
+                "yet",
+                "still",
+                "ever"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"They ___ to London last year.",
+            alternativas:[
+                "go",
+                "gone",
+                "went",
+                "going"
+            ],
+            correta:2
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "He don't like coffee.",
+                "He doesn't like coffee.",
+                "He doesn't likes coffee.",
+                "He not like coffee."
+            ],
+            correta:1
+        }
+
+    ],
+
+
+    avancado: [
+
+        {
+            pergunta:"If she had studied, she ___ the exam.",
+            alternativas:[
+                "would pass",
+                "would have passed",
+                "will pass",
+                "passes"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"The report ___ by the manager yesterday.",
+            alternativas:[
+                "was written",
+                "wrote",
+                "has wrote",
+                "writing"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"I wish I ___ more time.",
+            alternativas:[
+                "have",
+                "had",
+                "will have",
+                "having"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"By next year, they ___ the project.",
+            alternativas:[
+                "will complete",
+                "will have completed",
+                "completed",
+                "complete"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Hardly ___ when the phone rang.",
+            alternativas:[
+                "I had arrived",
+                "had I arrived",
+                "I arrived",
+                "did I arrived"
+            ],
+            correta:1
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   PRONÚNCIA
+===================================================== */
+
+pronuncia: {
+
+    basico: [
+
+        {
+            pergunta:"Which word starts with the /b/ sound?",
+            alternativas:[
+                "Book",
+                "Phone",
+                "Chair",
+                "Think"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word starts with the /k/ sound?",
+            alternativas:[
+                "Cat",
+                "Girl",
+                "Phone",
+                "Ship"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has the /sh/ sound?",
+            alternativas:[
+                "Ship",
+                "Dog",
+                "Cat",
+                "Pen"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has the /ch/ sound?",
+            alternativas:[
+                "Chair",
+                "Book",
+                "Dog",
+                "Fish"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word rhymes with 'cat'?",
+            alternativas:[
+                "Hat",
+                "Dog",
+                "Book",
+                "Sun"
+            ],
+            correta:0
+        }
+
+    ],
+
+    intermediario: [
+
+        {
+            pergunta:"Which word has a silent 'k'?",
+            alternativas:[
+                "Know",
+                "Keep",
+                "Kind",
+                "Kitchen"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has the /θ/ sound?",
+            alternativas:[
+                "Think",
+                "Drink",
+                "Sing",
+                "Bring"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word contains the /v/ sound?",
+            alternativas:[
+                "Very",
+                "Berry",
+                "Ferry",
+                "Merry"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has the /dʒ/ sound?",
+            alternativas:[
+                "Job",
+                "Shop",
+                "Stop",
+                "Top"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has a silent 'b'?",
+            alternativas:[
+                "Comb",
+                "Baby",
+                "Table",
+                "Number"
+            ],
+            correta:0
+        }
+
+    ],
+
+    avancado: [
+
+        {
+            pergunta:"Which word has the /ʃən/ ending?",
+            alternativas:[
+                "Nation",
+                "Nation's",
+                "Native",
+                "Nature"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word contains the /ʒ/ sound?",
+            alternativas:[
+                "Vision",
+                "Mission",
+                "Kitchen",
+                "Question"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has stress on the second syllable?",
+            alternativas:[
+                "Hotel",
+                "Table",
+                "Window",
+                "Teacher"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word contains a silent 'gh'?",
+            alternativas:[
+                "Though",
+                "Together",
+                "Garden",
+                "Mother"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Which word has the vowel sound /iː/?",
+            alternativas:[
+                "Beach",
+                "Bed",
+                "Bad",
+                "Book"
+            ],
+            correta:0
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   LISTENING
+===================================================== */
+
+listening: {
+
+    basico: [
+
+        {
+            pergunta:"Imagine you hear: 'Good morning! How are you?' What is the person doing?",
+            alternativas:[
+                "Greeting someone",
+                "Saying goodbye",
+                "Ordering food",
+                "Asking for directions"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"You hear: 'My name is John.' What information did you hear?",
+            alternativas:[
+                "A name",
+                "An address",
+                "An age",
+                "A phone number"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"You hear: 'I am twenty years old.' What is the person's age?",
+            alternativas:[
+                "12",
+                "20",
+                "30",
+                "40"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"You hear: 'I like pizza.' What food does the person like?",
+            alternativas:[
+                "Pizza",
+                "Rice",
+                "Fish",
+                "Bread"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"You hear: 'See you tomorrow!' What does the person mean?",
+            alternativas:[
+                "See you today",
+                "See you tomorrow",
+                "Good morning",
+                "Good afternoon"
+            ],
+            correta:1
+        }
+
+    ],
+
+    intermediario: [
+
+        {
+            pergunta:"You hear: 'The meeting starts at half past nine.' What time is it?",
+            alternativas:[
+                "8:30",
+                "9:00",
+                "9:30",
+                "10:30"
+            ],
+            correta:2
+        },
+
+        {
+            pergunta:"You hear: 'I have been working here for three years.' How long?",
+            alternativas:[
+                "Three months",
+                "Three years",
+                "Five years",
+                "Ten years"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"You hear: 'She missed the bus because she woke up late.' Why did she miss it?",
+            alternativas:[
+                "The bus was early",
+                "She was sick",
+                "She woke up late",
+                "She forgot the address"
+            ],
+            correta:2
+        },
+
+        {
+            pergunta:"You hear: 'Could you send me the report by Friday?' What is being requested?",
+            alternativas:[
+                "A meeting",
+                "A report",
+                "A phone call",
+                "A presentation"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"You hear: 'The flight has been delayed.' What happened?",
+            alternativas:[
+                "The flight arrived early",
+                "The flight was cancelled",
+                "The flight was delayed",
+                "The flight departed"
+            ],
+            correta:2
+        }
+
+    ],
+
+    avancado: [
+
+        {
+            pergunta:"You hear: 'Despite the difficulties, the company managed to increase its profits.' What happened?",
+            alternativas:[
+                "Profits decreased",
+                "The company closed",
+                "Profits increased",
+                "The company lost money"
+            ],
+            correta:2
+        },
+
+        {
+            pergunta:"You hear: 'The project was postponed due to budget constraints.' Why was it postponed?",
+            alternativas:[
+                "Lack of time",
+                "Budget problems",
+                "Staff problems",
+                "Technical problems"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"You hear: 'She was reluctant to accept the offer.' What does reluctant suggest?",
+            alternativas:[
+                "She was eager",
+                "She was uncertain or unwilling",
+                "She was excited",
+                "She was prepared"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"You hear: 'The results were considerably better than expected.' How were the results?",
+            alternativas:[
+                "Much better",
+                "Much worse",
+                "Exactly the same",
+                "Unclear"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"You hear: 'Had they known about the problem, they would have acted sooner.' What does this imply?",
+            alternativas:[
+                "They knew immediately",
+                "They did not know about it",
+                "They caused the problem",
+                "They ignored the problem"
+            ],
+            correta:1
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   SPEAKING
+===================================================== */
+
+speaking: {
+
+    basico: [
+
+        {
+            pergunta:"How would you introduce yourself?",
+            alternativas:[
+                "My name is Ana.",
+                "Yesterday is blue.",
+                "I am table.",
+                "Good is house."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Someone asks: 'How are you?' Choose an appropriate answer.",
+            alternativas:[
+                "I'm fine, thank you.",
+                "My name is John.",
+                "I live tomorrow.",
+                "It's a chair."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Someone asks: 'Where are you from?'",
+            alternativas:[
+                "I'm from Brazil.",
+                "I'm twenty.",
+                "I'm a student.",
+                "I'm fine."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Someone asks: 'What do you do?'",
+            alternativas:[
+                "I'm a student.",
+                "I'm from Brazil.",
+                "I'm fine.",
+                "It's Monday."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How can you politely ask for someone's name?",
+            alternativas:[
+                "What's your name?",
+                "Where your name?",
+                "You name what?",
+                "Name you?"
+            ],
+            correta:0
+        }
+
+    ],
+
+    intermediario: [
+
+        {
+            pergunta:"How would you give your opinion?",
+            alternativas:[
+                "In my opinion, this is a good idea.",
+                "My opinion yesterday.",
+                "I opinion good.",
+                "This opinion is yesterday."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How can you politely disagree?",
+            alternativas:[
+                "I see your point, but I disagree.",
+                "You are wrong!",
+                "No you!",
+                "Wrong idea."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How would you make a suggestion?",
+            alternativas:[
+                "Why don't we try again?",
+                "We tried yesterday?",
+                "Try why?",
+                "Yesterday we."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How would you ask someone to repeat?",
+            alternativas:[
+                "Could you say that again, please?",
+                "Say again!",
+                "You repeat?",
+                "Again that."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How would you express uncertainty?",
+            alternativas:[
+                "I'm not completely sure.",
+                "I completely sure.",
+                "Sure not completely.",
+                "I know everything."
+            ],
+            correta:0
+        }
+
+    ],
+
+    avancado: [
+
+        {
+            pergunta:"Which expression is appropriate in a formal discussion?",
+            alternativas:[
+                "I would argue that...",
+                "That's totally crazy!",
+                "No way!",
+                "Whatever."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How can you politely interrupt someone?",
+            alternativas:[
+                "Sorry to interrupt, but...",
+                "Stop talking.",
+                "Be quiet.",
+                "Listen to me."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How can you clarify your position?",
+            alternativas:[
+                "What I mean is...",
+                "You know.",
+                "Whatever.",
+                "I don't know."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How can you introduce a contrasting idea?",
+            alternativas:[
+                "On the other hand...",
+                "Because yesterday...",
+                "At the table...",
+                "For example yesterday..."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"How can you conclude an argument?",
+            alternativas:[
+                "Taking everything into account...",
+                "Anyway, whatever.",
+                "That's it, maybe.",
+                "I don't care."
+            ],
+            correta:0
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   READING
+===================================================== */
+
+reading: {
+
+    basico: [
+
+        {
+            pergunta:"Read: 'Tom is 20 years old. He lives in London.' Where does Tom live?",
+            alternativas:[
+                "Paris",
+                "London",
+                "Madrid",
+                "New York"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'Mary likes apples and bananas.' What fruit does Mary like?",
+            alternativas:[
+                "Apples and bananas",
+                "Oranges",
+                "Grapes",
+                "Pears"
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Read: 'John goes to school every morning.' Where does John go?",
+            alternativas:[
+                "Work",
+                "School",
+                "Home",
+                "The park"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'The dog is under the table.' Where is the dog?",
+            alternativas:[
+                "On the table",
+                "Under the table",
+                "Behind the house",
+                "In the car"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'Sarah has two brothers.' How many brothers does Sarah have?",
+            alternativas:[
+                "One",
+                "Two",
+                "Three",
+                "Four"
+            ],
+            correta:1
+        }
+
+    ],
+
+    intermediario: [
+
+        {
+            pergunta:"Read: 'James decided to study abroad because he wanted to experience a different culture.' Why did he study abroad?",
+            alternativas:[
+                "To find a job",
+                "To experience a different culture",
+                "To visit family",
+                "To learn to drive"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'The restaurant was crowded, so we decided to eat somewhere else.' Why did they leave?",
+            alternativas:[
+                "The food was expensive",
+                "The restaurant was crowded",
+                "They were tired",
+                "It was closed"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'Emma usually takes the bus, but today she walked to work.' How did Emma go to work today?",
+            alternativas:[
+                "By bus",
+                "By car",
+                "On foot",
+                "By train"
+            ],
+            correta:2
+        },
+
+        {
+            pergunta:"Read: 'Although it was raining, they continued playing.' What happened?",
+            alternativas:[
+                "They stopped",
+                "They continued",
+                "They went home",
+                "They cancelled the game"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'Peter saved money for six months before buying the computer.' What did Peter do first?",
+            alternativas:[
+                "Bought the computer",
+                "Saved money",
+                "Sold the computer",
+                "Borrowed money"
+            ],
+            correta:1
+        }
+
+    ],
+
+    avancado: [
+
+        {
+            pergunta:"Read: 'Despite facing considerable opposition, the proposal was eventually approved.' What happened?",
+            alternativas:[
+                "It was rejected",
+                "It was approved",
+                "It was cancelled",
+                "It was forgotten"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'The researcher acknowledged that further studies would be necessary.' What does this suggest?",
+            alternativas:[
+                "The research is complete",
+                "More research is needed",
+                "The study was cancelled",
+                "No evidence exists"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'The company experienced a significant decline in revenue.' What happened?",
+            alternativas:[
+                "Revenue increased",
+                "Revenue decreased considerably",
+                "Revenue remained unchanged",
+                "Revenue disappeared"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'The policy was implemented gradually to minimize potential disruption.' Why was it implemented gradually?",
+            alternativas:[
+                "To save money",
+                "To reduce possible disruption",
+                "To increase competition",
+                "To delay the project"
+            ],
+            correta:1
+        },
+
+        {
+            pergunta:"Read: 'The findings challenge several assumptions previously considered valid.' What do the findings do?",
+            alternativas:[
+                "Confirm all assumptions",
+                "Question previous assumptions",
+                "Ignore previous studies",
+                "Repeat the same experiment"
+            ],
+            correta:1
+        }
+
+    ]
+
+},
+
+
+/* =====================================================
+   WRITING
+===================================================== */
+
+writing: {
+
+    basico: [
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "I am a student.",
+                "I student am.",
+                "Am student I.",
+                "Student I am a."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "She likes music.",
+                "She like music.",
+                "She liking music.",
+                "She music likes."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "They live in Brazil.",
+                "They lives Brazil.",
+                "They Brazil live.",
+                "They living Brazil."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "I have a dog.",
+                "I has a dog.",
+                "I dog have.",
+                "Have I dog."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "My favorite color is blue.",
+                "My color favorite blue.",
+                "Blue favorite my is.",
+                "My is color blue."
+            ],
+            correta:0
+        }
+
+    ],
+
+    intermediario: [
+
+        {
+            pergunta:"Choose the best sentence.",
+            alternativas:[
+                "I have been studying English for two years.",
+                "I studying English two years.",
+                "I have study English two years.",
+                "I am study English."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the best sentence.",
+            alternativas:[
+                "If I have time, I will call you.",
+                "If I will have time, I call you.",
+                "If I time have, I calling.",
+                "If time I have, I called."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "She has already finished her work.",
+                "She already finish her work.",
+                "She has finish already work.",
+                "She finished has her work."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the correct sentence.",
+            alternativas:[
+                "I went to the store because I needed milk.",
+                "I go store because milk.",
+                "I went because store milk.",
+                "I needed went store."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the best sentence.",
+            alternativas:[
+                "Although it was raining, we went outside.",
+                "Although raining we outside.",
+                "It raining although outside.",
+                "Although we rain outside."
+            ],
+            correta:0
+        }
+
+    ],
+
+    avancado: [
+
+        {
+            pergunta:"Choose the most appropriate formal sentence.",
+            alternativas:[
+                "I would appreciate your response at your earliest convenience.",
+                "Answer me quickly.",
+                "I want your answer now.",
+                "Give me an answer."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the grammatically correct sentence.",
+            alternativas:[
+                "Had I known, I would have acted differently.",
+                "Had I knew, I would act differently.",
+                "If I had know, I acted.",
+                "Had I know, I would acted."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the best academic sentence.",
+            alternativas:[
+                "The results indicate that further research is required.",
+                "The results say research more.",
+                "Results further research maybe.",
+                "Research is results required."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the most natural sentence.",
+            alternativas:[
+                "It is worth considering the potential consequences.",
+                "It worth consider potential.",
+                "Worth it considering consequences.",
+                "The consequences worth."
+            ],
+            correta:0
+        },
+
+        {
+            pergunta:"Choose the best conclusion.",
+            alternativas:[
+                "Taking all these factors into account, the proposal appears to be the most suitable option.",
+                "All factors, proposal good.",
+                "These factors proposal.",
+                "The proposal all."
+            ],
+            correta:0
+        }
+
+    ]
+
+}
 
 };
 
 
-
 /* =========================================================
-   EXERCÍCIOS
+   VARIÁVEIS
 ========================================================= */
 
-const exercicios = [
+let categoriaSelecionada = "";
 
-    {
-        numero: 1,
-
-        frase:
-            "Sarah __________ (like) to play tennis.",
-
-        resposta:
-            "likes",
-
-        dica:
-            "Sarah = she. No Present Simple, usamos -s com he, she e it.",
-
-        explicacao:
-            "Quando o sujeito é he, she ou it, normalmente acrescentamos -s ao verbo no Present Simple.",
-
-        exemplo:
-            "Sarah likes to play tennis."
-    },
-
-
-    {
-        numero: 2,
-
-        frase:
-            "They __________ (watch) cartoons on TV every Friday.",
-
-        resposta:
-            "watch",
-
-        dica:
-            "O sujeito é They.",
-
-        explicacao:
-            "Com I, you, we e they, usamos o verbo em sua forma base.",
-
-        exemplo:
-            "They watch cartoons every Friday."
-    },
-
-
-    {
-        numero: 3,
-
-        frase:
-            "My mom __________ (cook) delicious meals for dinner.",
-
-        resposta:
-            "cooks",
-
-        dica:
-            "My mom = she.",
-
-        explicacao:
-            "My mom é uma pessoa no singular. Por isso, usamos a terceira pessoa do singular.",
-
-        exemplo:
-            "My mom cooks delicious meals."
-    },
-
-
-    {
-        numero: 4,
-
-        frase:
-            "We __________ (go) to the park after school.",
-
-        resposta:
-            "go",
-
-        dica:
-            "O sujeito é We.",
-
-        explicacao:
-            "Com We, usamos o verbo em sua forma base: go.",
-
-        exemplo:
-            "We go to the park."
-    },
-
-
-    {
-        numero: 5,
-
-        frase:
-            "__________ he __________ (study) English every day?",
-
-        resposta:
-            "does study",
-
-        dica:
-            "Perguntas com he usam Does.",
-
-        explicacao:
-            "Nas perguntas do Present Simple usamos Does com he, she e it. O verbo principal volta para a forma base.",
-
-        exemplo:
-            "Does he study English every day?"
-    },
-
-
-    {
-        numero: 6,
-
-        frase:
-            "Dogs __________ (sleep) a lot during the day.",
-
-        resposta:
-            "sleep",
-
-        dica:
-            "Dogs está no plural.",
-
-        explicacao:
-            "Como Dogs está no plural, usamos a forma base do verbo.",
-
-        exemplo:
-            "Dogs sleep a lot."
-    },
-
-
-    {
-        numero: 7,
-
-        frase:
-            "I __________ (not eat) vegetables.",
-
-        resposta:
-            "do not eat",
-
-        dica:
-            "Use do not com I.",
-
-        explicacao:
-            "Para frases negativas com I, you, we e they, usamos do not + verbo na forma base.",
-
-        exemplo:
-            "I do not eat vegetables."
-    },
-
-
-    {
-        numero: 8,
-
-        frase:
-            "The bus __________ (arrive) at 9:00 AM.",
-
-        resposta:
-            "arrives",
-
-        dica:
-            "The bus = it.",
-
-        explicacao:
-            "The bus é singular. Por isso, o verbo recebe -s.",
-
-        exemplo:
-            "The bus arrives at 9:00 AM."
-    },
-
-
-    {
-        numero: 9,
-
-        frase:
-            "He __________ (play) the guitar in a band.",
-
-        resposta:
-            "plays",
-
-        dica:
-            "He é terceira pessoa do singular.",
-
-        explicacao:
-            "Com he, she e it, acrescentamos -s ao verbo na forma afirmativa.",
-
-        exemplo:
-            "He plays the guitar."
-    },
-
-
-    {
-        numero: 10,
-
-        frase:
-            "Dogs __________ (bark) when they see strangers.",
-
-        resposta:
-            "bark",
-
-        dica:
-            "Dogs está no plural.",
-
-        explicacao:
-            "Com sujeitos no plural, usamos o verbo na forma base.",
-
-        exemplo:
-            "Dogs bark when they see strangers."
-    },
-
-
-    {
-        numero: 11,
-
-        frase:
-            "She __________ (read) a book before bedtime.",
-
-        resposta:
-            "reads",
-
-        dica:
-            "She é terceira pessoa do singular.",
-
-        explicacao:
-            "Com She, usamos reads.",
-
-        exemplo:
-            "She reads a book."
-    },
-
-
-    {
-        numero: 12,
-
-        frase:
-            "__________ you often __________ (visit) your grandparents?",
-
-        resposta:
-            "do visit",
-
-        dica:
-            "Perguntas com you usam Do.",
-
-        explicacao:
-            "Com you, usamos Do para formar perguntas no Present Simple.",
-
-        exemplo:
-            "Do you often visit your grandparents?"
-    },
-
-
-    {
-        numero: 13,
-
-        frase:
-            "He __________ (always forget) his keys.",
-
-        resposta:
-            "always forgets",
-
-        dica:
-            "He exige a terceira pessoa do singular.",
-
-        explicacao:
-            "O advérbio always vem antes do verbo principal. Como o sujeito é He, o verbo recebe -s.",
-
-        exemplo:
-            "He always forgets his keys."
-    },
-
-
-    {
-        numero: 14,
-
-        frase:
-            "The sun __________ (rise) in the east.",
-
-        resposta:
-            "rises",
-
-        dica:
-            "The sun = it.",
-
-        explicacao:
-            "The sun é singular, então usamos rises.",
-
-        exemplo:
-            "The sun rises in the east."
-    },
-
-
-    {
-        numero: 15,
-
-        frase:
-            "They __________ (usually go) shopping on weekends.",
-
-        resposta:
-            "usually go",
-
-        dica:
-            "They não recebe -s.",
-
-        explicacao:
-            "Com They usamos a forma base do verbo. O advérbio usually aparece antes do verbo principal.",
-
-        exemplo:
-            "They usually go shopping."
-    },
-
-
-    {
-        numero: 16,
-
-        frase:
-            "I __________ (not like) spicy food.",
-
-        resposta:
-            "do not like",
-
-        dica:
-            "Use do not com I.",
-
-        explicacao:
-            "A forma negativa com I é do not + verbo base.",
-
-        exemplo:
-            "I do not like spicy food."
-    },
-
-
-    {
-        numero: 17,
-
-        frase:
-            "Cats __________ (chase) after mice.",
-
-        resposta:
-            "chase",
-
-        dica:
-            "Cats está no plural.",
-
-        explicacao:
-            "Com sujeitos plurais usamos a forma base do verbo.",
-
-        exemplo:
-            "Cats chase mice."
-    },
-
-
-    {
-        numero: 18,
-
-        frase:
-            "My dad __________ (work) in an office.",
-
-        resposta:
-            "works",
-
-        dica:
-            "My dad = he.",
-
-        explicacao:
-            "My dad é singular, então usamos works.",
-
-        exemplo:
-            "My dad works in an office."
-    },
-
-
-    {
-        numero: 19,
-
-        frase:
-            "Birds __________ (sing) in the morning.",
-
-        resposta:
-            "sing",
-
-        dica:
-            "Birds está no plural.",
-
-        explicacao:
-            "Com Birds usamos a forma base do verbo: sing.",
-
-        exemplo:
-            "Birds sing in the morning."
-    },
-
-
-    {
-        numero: 20,
-
-        frase:
-            "We __________ (play) board games on rainy days.",
-
-        resposta:
-            "play",
-
-        dica:
-            "We usa a forma base do verbo.",
-
-        explicacao:
-            "Com We não adicionamos -s ao verbo.",
-
-        exemplo:
-            "We play board games on rainy days."
-    }
-
-];
-
-
-
-/* =========================================================
-   ESTADO
-========================================================= */
+let nivelSelecionado = "";
 
 let questaoAtual = 0;
 
-let acertos = 0;
-
-let erros = 0;
+let pontuacao = 0;
 
 let respondeu = false;
-
 
 
 /* =========================================================
    ELEMENTOS
 ========================================================= */
 
-const logo =
-    document.getElementById("logo");
+const categorias =
+    document.getElementById("categoriasExercicios");
 
-const linkInicio =
-    document.getElementById("linkInicio");
+const selecaoNivel =
+    document.getElementById("selecaoNivel");
 
-const linkCursos =
-    document.getElementById("linkCursos");
+const areaExercicio =
+    document.getElementById("areaExercicio");
 
-const linkExercicios =
-    document.getElementById("linkExercicios");
+const resultadoExercicio =
+    document.getElementById("resultadoExercicio");
 
-const nomeUsuario =
-    document.getElementById("nomeUsuario");
+const tituloCategoria =
+    document.getElementById("tituloCategoria");
 
-const categoria =
-    document.getElementById("categoria");
+const categoriaAtual =
+    document.getElementById("categoriaAtual");
 
-const tituloExercicio =
-    document.getElementById("tituloExercicio");
+const nivelAtual =
+    document.getElementById("nivelAtual");
 
-const descricaoExercicio =
-    document.getElementById("descricaoExercicio");
+const pergunta =
+    document.getElementById("pergunta");
 
-const nivelExercicio =
-    document.getElementById("nivelExercicio");
+const alternativas =
+    document.getElementById("alternativas");
 
-const tempoExercicio =
-    document.getElementById("tempoExercicio");
+const questaoAtualElemento =
+    document.getElementById("questaoAtual");
 
 const totalQuestoes =
     document.getElementById("totalQuestoes");
 
-const textoInstrucaoTitulo =
-    document.getElementById("textoInstrucaoTitulo");
-
-const textoInstrucao =
-    document.getElementById("textoInstrucao");
-
 const numeroQuestao =
     document.getElementById("numeroQuestao");
 
-const tipoQuestao =
-    document.getElementById("tipoQuestao");
-
-const fraseQuestao =
-    document.getElementById("fraseQuestao");
-
-const labelResposta =
-    document.getElementById("labelResposta");
-
-const resposta =
-    document.getElementById("resposta");
-
-const dicaButton =
-    document.getElementById("dicaButton");
-
-const dicaBox =
-    document.getElementById("dicaBox");
-
-const dicaTexto =
-    document.getElementById("dicaTexto");
+const progresso =
+    document.getElementById("progresso");
 
 const feedback =
     document.getElementById("feedback");
 
-const feedbackIcone =
-    document.getElementById("feedbackIcone");
+const botaoProxima =
+    document.getElementById("botaoProxima");
 
-const feedbackTitulo =
-    document.getElementById("feedbackTitulo");
-
-const feedbackTexto =
-    document.getElementById("feedbackTexto");
-
-const botaoAnterior =
-    document.getElementById("botaoAnterior");
-
-const botaoVerificar =
-    document.getElementById("botaoVerificar");
-
-const botaoProximo =
-    document.getElementById("botaoProximo");
-
-const textoAnterior =
-    document.getElementById("textoAnterior");
-
-const textoVerificar =
-    document.getElementById("textoVerificar");
-
-const textoProximo =
-    document.getElementById("textoProximo");
-
-const explicacao =
-    document.getElementById("explicacao");
-
-const tituloExplicacao =
-    document.getElementById("tituloExplicacao");
-
-const textoExplicacao =
-    document.getElementById("textoExplicacao");
-
-const exemploExplicacao =
-    document.getElementById("exemploExplicacao");
-
-const pontuacao =
+const pontuacaoElemento =
     document.getElementById("pontuacao");
 
-const acertosElemento =
-    document.getElementById("acertos");
+const pontuacaoTotal =
+    document.getElementById("pontuacaoTotal");
 
-const errosElemento =
-    document.getElementById("erros");
-
-const contadorQuestoes =
-    document.getElementById("contadorQuestoes");
-
-const textoProgresso =
-    document.getElementById("textoProgresso");
-
-const porcentagemProgresso =
-    document.getElementById("porcentagemProgresso");
-
-const progressoPreenchimento =
-    document.getElementById("progressoPreenchimento");
-
-const modalFinal =
-    document.getElementById("modalFinal");
-
-const fecharModal =
-    document.getElementById("fecharModal");
-
-const botaoRefazer =
-    document.getElementById("botaoRefazer");
-
-const botaoProximaAula =
-    document.getElementById("botaoProximaAula");
-
-const resultadoPontuacao =
-    document.getElementById("resultadoPontuacao");
-
-const resultadoAcertos =
-    document.getElementById("resultadoAcertos");
-
-const resultadoErros =
-    document.getElementById("resultadoErros");
-
-const botaoMaterial =
-    document.getElementById("botaoMaterial");
-
-const menuMobileButton =
-    document.getElementById("menuMobileButton");
-
-const menuMobile =
-    document.getElementById("menuMobile");
-
+const mensagemResultado =
+    document.getElementById("mensagemResultado");
 
 
 /* =========================================================
-   INICIALIZAÇÃO
+   SELECIONAR CATEGORIA
 ========================================================= */
 
-function iniciarPagina() {
+document
+    .querySelectorAll(".card-exercicio")
+    .forEach(function(card){
 
-    preencherInformacoes();
+        card.addEventListener("click", function(){
 
-    preencherMenuMobile();
+            categoriaSelecionada =
+                card.dataset.categoria;
 
-    preencherQuestoesLaterais();
+            tituloCategoria.textContent =
+                card.querySelector("h2").textContent;
 
-    carregarQuestao();
+            categorias.style.display = "none";
 
-    criarCirculos();
+            selecaoNivel.classList.add("ativo");
 
-}
+        });
 
+    });
 
 
 /* =========================================================
-   PREENCHER INFORMAÇÕES
+   SELECIONAR NÍVEL
 ========================================================= */
 
-function preencherInformacoes() {
+document
+    .querySelectorAll(".card-nivel")
+    .forEach(function(card){
 
-    logo.textContent =
-        app.nome;
+        card.addEventListener("click", function(){
 
-    nomeUsuario.textContent =
-        app.usuario;
+            nivelSelecionado =
+                card.dataset.nivel;
 
-    categoria.textContent =
-        app.categoria;
+            iniciarExercicio();
 
-    tituloExercicio.textContent =
-        app.titulo;
+        });
 
-    descricaoExercicio.textContent =
-        app.descricao;
-
-    nivelExercicio.textContent =
-        app.nivel;
-
-    tempoExercicio.textContent =
-        app.tempo;
-
-    totalQuestoes.textContent =
-        `${exercicios.length} questões`;
-
-    textoInstrucaoTitulo.textContent =
-        app.instrucaoTitulo;
-
-    textoInstrucao.textContent =
-        app.instrucao;
-
-    textoDica.textContent =
-        app.textoDica;
-
-    textoAnterior.textContent =
-        app.textoAnterior;
-
-    textoVerificar.textContent =
-        app.textoVerificar;
-
-    textoProximo.textContent =
-        app.textoProximo;
-
-    tituloExplicacao.textContent =
-        app.tituloExplicacao;
-
-    tituloSeuProgresso.textContent =
-        app.tituloSeuProgresso;
-
-    textoPontos.textContent =
-        app.textoPontos;
-
-    textoAcertos.textContent =
-        app.textoAcertos;
-
-    textoErros.textContent =
-        app.textoErros;
-
-    tituloQuestoes.textContent =
-        app.tituloQuestoes;
-
-    tituloMaterial.textContent =
-        app.tituloMaterial;
-
-    descricaoMaterial.textContent =
-        app.descricaoMaterial;
-
-    botaoMaterial.href =
-        app.material;
-
-    footerLogo.textContent =
-        app.nome;
-
-    footerDescricao.textContent =
-        app.footerDescricao;
-
-    footerDireitos.textContent =
-        app.footerDireitos;
-
-}
-
+    });
 
 
 /* =========================================================
-   MENU MOBILE
+   INICIAR EXERCÍCIO
 ========================================================= */
 
-function preencherMenuMobile() {
+function iniciarExercicio(){
 
-    mobileInicio.textContent =
-        "Início";
+    questaoAtual = 0;
 
-    mobileCursos.textContent =
-        "Cursos";
+    pontuacao = 0;
 
-    mobileExercicios.textContent =
-        "Exercícios";
-
-}
+    respondeu = false;
 
 
+    selecaoNivel.classList.remove("ativo");
 
-/* =========================================================
-   QUESTÕES LATERAIS
-========================================================= */
+    resultadoExercicio.classList.remove("ativo");
 
-function preencherQuestoesLaterais() {
+    areaExercicio.classList.add("ativo");
 
-    for (
-        let i = 1;
-        i <= exercicios.length;
-        i++
-    ) {
 
-        const elemento =
-            document.getElementById(
-                `questaoNumero${i}`
-            );
+    categoriaAtual.textContent =
+        tituloCategoria.textContent;
 
-        elemento.textContent =
-            i;
+
+    if(nivelSelecionado === "basico"){
+
+        nivelAtual.textContent =
+            "Básico";
 
     }
 
-}
+    else if(nivelSelecionado === "intermediario"){
 
+        nivelAtual.textContent =
+            "Intermediário";
+
+    }
+
+    else{
+
+        nivelAtual.textContent =
+            "Avançado";
+
+    }
+
+
+    carregarQuestao();
+
+}
 
 
 /* =========================================================
    CARREGAR QUESTÃO
 ========================================================= */
 
-function carregarQuestao() {
+function carregarQuestao(){
 
-    const exercicio =
-        exercicios[questaoAtual];
+    const lista =
+        exercicios[
+            categoriaSelecionada
+        ][
+            nivelSelecionado
+        ];
+
+
+    const questao =
+        lista[questaoAtual];
 
 
     respondeu = false;
 
 
+    pergunta.textContent =
+        questao.pergunta;
+
+
     numeroQuestao.textContent =
-        `Questão ${exercicio.numero}`;
+        `Questão ${questaoAtual + 1}`;
 
 
-    tipoQuestao.textContent =
-        "Complete";
-
-
-    fraseQuestao.textContent =
-        exercicio.frase;
-
-
-    labelResposta.textContent =
-        "Sua resposta";
-
-
-    resposta.value =
-        "";
-
-
-    resposta.disabled =
-        false;
-
-
-    dicaTexto.textContent =
-        app.textoDica;
-
-
-    dicaTexto.textContent =
-        "Ver dica";
-
-
-    dicaTexto.textContent =
-        app.textoDica;
-
-
-    dicaTexto.textContent =
-        "Ver dica";
-
-
-    dicaBox.classList.remove("show");
-
-    dicaTexto.textContent =
-        exercicio.dica;
-
-
-    feedback.classList.remove(
-        "show",
-        "correct",
-        "incorrect"
-    );
-
-
-    explicacao.classList.remove(
-        "show"
-    );
-
-
-    botaoVerificar.style.display =
-        "inline-flex";
-
-
-    botaoProximo.style.display =
-        "none";
-
-
-    botaoAnterior.disabled =
-        questaoAtual === 0;
-
-
-    atualizarProgresso();
-
-    atualizarQuestoesLaterais();
-
-    resposta.focus();
-
-}
-
-
-
-/* =========================================================
-   ATUALIZAR PROGRESSO
-========================================================= */
-
-function atualizarProgresso() {
-
-    const atual =
+    questaoAtualElemento.textContent =
         questaoAtual + 1;
 
-    const total =
-        exercicios.length;
 
-    const porcentagem =
-        Math.round(
-            (atual / total) * 100
-        );
+    totalQuestoes.textContent =
+        lista.length;
 
 
-    textoProgresso.textContent =
-        `Questão ${atual} de ${total}`;
+    pontuacaoTotal.textContent =
+        lista.length;
 
 
-    porcentagemProgresso.textContent =
-        `${porcentagem}%`;
+    progresso.style.width =
+        `${((questaoAtual + 1) / lista.length) * 100}%`;
 
 
-    progressoPreenchimento.style.width =
-        `${porcentagem}%`;
+    alternativas.innerHTML = "";
 
 
-    pontuacao.textContent =
-        acertos * 10;
+    feedback.textContent = "";
 
 
-    acertosElemento.textContent =
-        acertos;
+    botaoProxima.textContent =
+        questaoAtual === lista.length - 1
+            ? "Finalizar"
+            : "Próxima";
 
 
-    errosElemento.textContent =
-        erros;
+    questao.alternativas.forEach(
+        function(texto, indice){
+
+            const botao =
+                document.createElement("button");
+
+            botao.classList.add("alternativa");
+
+            botao.textContent =
+                texto;
 
 
-    contadorQuestoes.textContent =
-        `${atual}/${total}`;
+            botao.addEventListener(
+                "click",
+                function(){
 
-}
+                    responder(
+                        botao,
+                        indice,
+                        questao.correta
+                    );
 
-
-
-/* =========================================================
-   ATUALIZAR QUESTÕES LATERAIS
-========================================================= */
-
-function atualizarQuestoesLaterais() {
-
-    for (
-        let i = 1;
-        i <= exercicios.length;
-        i++
-    ) {
-
-        const elemento =
-            document.getElementById(
-                `questaoNumero${i}`
+                }
             );
 
 
-        elemento.classList.remove(
-            "atual"
-        );
-
-
-        if (
-            i === questaoAtual + 1
-        ) {
-
-            elemento.classList.add(
-                "atual"
-            );
+            alternativas.appendChild(botao);
 
         }
-
-    }
+    );
 
 }
 
 
-
 /* =========================================================
-   VERIFICAR RESPOSTA
+   RESPONDER
 ========================================================= */
 
-function verificarResposta() {
+function responder(
+    botao,
+    indiceEscolhido,
+    indiceCorreto
+){
 
-    if (respondeu) {
-        return;
-    }
-
-
-    const exercicio =
-        exercicios[questaoAtual];
-
-
-    const respostaAluno =
-        resposta.value
-            .trim()
-            .toLowerCase();
-
-
-    if (!respostaAluno) {
-
-        resposta.focus();
+    if(respondeu){
 
         return;
 
     }
-
-
-    const respostaCorreta =
-        exercicio.resposta
-            .trim()
-            .toLowerCase();
 
 
     respondeu = true;
 
 
-    if (
-        respostaAluno ===
-        respostaCorreta
-    ) {
+    const botoes =
+        document.querySelectorAll(".alternativa");
 
-        acertarQuestao(
-            exercicio
-        );
 
-    } else {
+    botoes.forEach(function(item){
 
-        errarQuestao(
-            exercicio
-        );
+        item.disabled = true;
+
+    });
+
+
+    if(indiceEscolhido === indiceCorreto){
+
+        botao.classList.add("correta");
+
+        feedback.textContent =
+            "✓ Resposta correta!";
+
+        pontuacao++;
+
+    }
+
+    else{
+
+        botao.classList.add("errada");
+
+        botoes[
+            indiceCorreto
+        ].classList.add("correta");
+
+        feedback.textContent =
+            "✗ Resposta incorreta.";
 
     }
 
 }
-
-
-
-/* =========================================================
-   ACERTO
-========================================================= */
-
-function acertarQuestao(
-    exercicio
-) {
-
-    acertos++;
-
-
-    feedback.classList.add(
-        "show",
-        "correct"
-    );
-
-
-    feedbackIcone.className =
-        "fa-solid fa-check";
-
-
-    feedbackTitulo.textContent =
-        "Muito bem!";
-
-
-    feedbackTexto.textContent =
-        `Resposta correta: ${exercicio.resposta}.`;
-
-
-    resposta.disabled =
-        true;
-
-
-    mostrarExplicacao(
-        exercicio
-    );
-
-
-    marcarQuestao(
-        questaoAtual + 1,
-        "correta"
-    );
-
-
-    botaoVerificar.style.display =
-        "none";
-
-
-    botaoProximo.style.display =
-        "inline-flex";
-
-
-    atualizarProgresso();
-
-}
-
-
-
-/* =========================================================
-   ERRO
-========================================================= */
-
-function errarQuestao(
-    exercicio
-) {
-
-    erros++;
-
-
-    feedback.classList.add(
-        "show",
-        "incorrect"
-    );
-
-
-    feedbackIcone.className =
-        "fa-solid fa-xmark";
-
-
-    feedbackTitulo.textContent =
-        "Quase lá!";
-
-
-    feedbackTexto.textContent =
-        `A resposta correta é: ${exercicio.resposta}.`;
-
-
-    resposta.disabled =
-        true;
-
-
-    mostrarExplicacao(
-        exercicio
-    );
-
-
-    marcarQuestao(
-        questaoAtual + 1,
-        "incorreta"
-    );
-
-
-    botaoVerificar.style.display =
-        "none";
-
-
-    botaoProximo.style.display =
-        "inline-flex";
-
-
-    atualizarProgresso();
-
-}
-
-
-
-/* =========================================================
-   EXPLICAÇÃO
-========================================================= */
-
-function mostrarExplicacao(
-    exercicio
-) {
-
-    textoExplicacao.textContent =
-        exercicio.explicacao;
-
-
-    exemploExplicacao.textContent =
-        exercicio.exemplo;
-
-
-    explicacao.classList.add(
-        "show"
-    );
-
-}
-
-
-
-/* =========================================================
-   MARCAR QUESTÃO
-========================================================= */
-
-function marcarQuestao(
-    numero,
-    classe
-) {
-
-    const elemento =
-        document.getElementById(
-            `questaoNumero${numero}`
-        );
-
-
-    elemento.classList.remove(
-        "atual"
-    );
-
-
-    elemento.classList.add(
-        classe
-    );
-
-}
-
 
 
 /* =========================================================
    PRÓXIMA QUESTÃO
 ========================================================= */
 
-function proximaQuestao() {
+botaoProxima.addEventListener(
+    "click",
+    function(){
 
-    if (
-        questaoAtual <
-        exercicios.length - 1
-    ) {
+        if(!respondeu){
 
-        questaoAtual++;
+            feedback.textContent =
+                "Escolha uma resposta antes de continuar.";
 
-        carregarQuestao();
+            return;
 
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    } else {
-
-        finalizarExercicio();
-
-    }
-
-}
+        }
 
 
+        const lista =
+            exercicios[
+                categoriaSelecionada
+            ][
+                nivelSelecionado
+            ];
 
-/* =========================================================
-   QUESTÃO ANTERIOR
-========================================================= */
 
-function questaoAnterior() {
+        if(questaoAtual < lista.length - 1){
 
-    if (
-        questaoAtual > 0
-    ) {
+            questaoAtual++;
 
-        questaoAtual--;
+            carregarQuestao();
 
-        carregarQuestao();
+        }
+
+        else{
+
+            mostrarResultado();
+
+        }
 
     }
-
-}
-
+);
 
 
 /* =========================================================
-   FINALIZAR
+   RESULTADO
 ========================================================= */
 
-function finalizarExercicio() {
+function mostrarResultado(){
 
-    const porcentagem =
-        Math.round(
-            (acertos /
-                exercicios.length) *
-                100
-        );
+    areaExercicio.classList.remove("ativo");
+
+    resultadoExercicio.classList.add("ativo");
 
 
-    resultadoPontuacao.textContent =
-        `${porcentagem}%`;
+    pontuacaoElemento.textContent =
+        pontuacao;
 
 
-    resultadoAcertos.textContent =
-        acertos;
-
-
-    resultadoErros.textContent =
-        erros;
-
-
-    modalFinal.classList.add(
-        "show"
-    );
-
-}
-
-
-
-/* =========================================================
-   REFAZER
-========================================================= */
-
-function refazerExercicio() {
-
-    questaoAtual = 0;
-
-    acertos = 0;
-
-    erros = 0;
-
-    respondeu = false;
-
-
-    modalFinal.classList.remove(
-        "show"
-    );
-
-
-    for (
-        let i = 1;
-        i <= exercicios.length;
-        i++
-    ) {
-
-        const elemento =
-            document.getElementById(
-                `questaoNumero${i}`
-            );
-
-
-        elemento.classList.remove(
-            "correta",
-            "incorreta"
-        );
-
-    }
-
-
-    carregarQuestao();
-
-}
-
-
-
-/* =========================================================
-   DICA
-========================================================= */
-
-function mostrarDica() {
-
-    const exercicio =
-        exercicios[questaoAtual];
-
-
-    dicaTexto.textContent =
-        exercicio.dica;
-
-
-    dicaBox.classList.toggle(
-        "show"
-    );
-
-}
-
-
-
-/* =========================================================
-   ÁUDIO
-========================================================= */
-
-function ouvirFrase() {
-
-    const exercicio =
-        exercicios[questaoAtual];
-
-
-    if (
-        "speechSynthesis" in window
-    ) {
-
-        const fala =
-            new SpeechSynthesisUtterance(
-                exercicio.frase
-            );
-
-
-        fala.lang =
-            "en-US";
-
-
-        fala.rate =
-            0.85;
-
-
-        window.speechSynthesis.speak(
-            fala
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-   CÍRCULOS
-========================================================= */
-
-function criarCirculos() {
-
-    const container =
-        document.getElementById(
-            "background-circles"
-        );
+    pontuacaoTotal.textContent =
+        exercicios[
+            categoriaSelecionada
+        ][
+            nivelSelecionado
+        ].length;
 
 
     const total =
-        20;
+        exercicios[
+            categoriaSelecionada
+        ][
+            nivelSelecionado
+        ].length;
 
 
-    for (
-        let i = 0;
-        i < total;
-        i++
-    ) {
-
-        const elemento =
-            document.createElement(
-                "span"
-            );
+    const porcentagem =
+        (pontuacao / total) * 100;
 
 
-        elemento.classList.add(
-            "circle"
-        );
+    if(porcentagem === 100){
 
+        mensagemResultado.textContent =
+            "Excelente! Você acertou todas as questões!";
 
-        const tamanho =
-            Math.floor(
-                Math.random() * 70
-            ) + 25;
+    }
 
+    else if(porcentagem >= 70){
 
-        elemento.style.width =
-            `${tamanho}px`;
+        mensagemResultado.textContent =
+            "Muito bem! Você teve um ótimo resultado.";
 
+    }
 
-        elemento.style.height =
-            `${tamanho}px`;
+    else if(porcentagem >= 50){
 
+        mensagemResultado.textContent =
+            "Bom trabalho! Continue praticando.";
 
-        elemento.style.left =
-            `${Math.random() * 100}%`;
+    }
 
+    else{
 
-        elemento.style.animationDuration =
-            `${Math.floor(
-                Math.random() * 15
-            ) + 15}s`;
-
-
-        elemento.style.animationDelay =
-            `-${Math.floor(
-                Math.random() * 15
-            )}s`;
-
-
-        elemento.style.background =
-            "linear-gradient(135deg, #0f8da2, #f4bd32)";
-
-
-        container.appendChild(
-            elemento
-        );
+        mensagemResultado.textContent =
+            "Continue praticando. Você vai melhorar!";
 
     }
 
 }
 
 
-
 /* =========================================================
-   EVENTOS
+   VOLTAR PARA CATEGORIAS
 ========================================================= */
 
-botaoVerificar.addEventListener(
-    "click",
-    verificarResposta
-);
+document
+    .getElementById("voltarCategorias")
+    .addEventListener("click", function(){
 
+        selecaoNivel.classList.remove("ativo");
 
-botaoProximo.addEventListener(
-    "click",
-    proximaQuestao
-);
+        categorias.style.display = "grid";
 
-
-botaoAnterior.addEventListener(
-    "click",
-    questaoAnterior
-);
-
-
-dicaButton.addEventListener(
-    "click",
-    mostrarDica
-);
-
-
-audioButton.addEventListener(
-    "click",
-    ouvirFrase
-);
-
-
-fecharModal.addEventListener(
-    "click",
-    () => {
-
-        modalFinal.classList.remove(
-            "show"
-        );
-
-    }
-);
-
-
-botaoRefazer.addEventListener(
-    "click",
-    refazerExercicio
-);
-
-
-botaoProximaAula.addEventListener(
-    "click",
-    () => {
-
-        modalFinal.classList.remove(
-            "show"
-        );
-
-        alert(
-            "Aqui você poderá direcionar o aluno para a próxima aula."
-        );
-
-    }
-);
-
-
-menuMobileButton.addEventListener(
-    "click",
-    () => {
-
-        menuMobile.classList.toggle(
-            "show"
-        );
-
-    }
-);
-
-
-resposta.addEventListener(
-    "keydown",
-    (event) => {
-
-        if (
-            event.key === "Enter"
-        ) {
-
-            if (
-                !respondeu
-            ) {
-
-                verificarResposta();
-
-            } else {
-
-                proximaQuestao();
-
-            }
-
-        }
-
-    }
-);
-
+    });
 
 
 /* =========================================================
-   MODAL
+   VOLTAR PARA NÍVEIS
 ========================================================= */
 
-modalFinal.addEventListener(
-    "click",
-    (event) => {
+document
+    .getElementById("voltarNivel")
+    .addEventListener("click", function(){
 
-        if (
-            event.target ===
-            modalFinal
-        ) {
+        areaExercicio.classList.remove("ativo");
 
-            modalFinal.classList.remove(
-                "show"
-            );
+        selecaoNivel.classList.add("ativo");
 
-        }
-
-    }
-);
-
+    });
 
 
 /* =========================================================
-   INICIAR
+   TENTAR NOVAMENTE
 ========================================================= */
 
-iniciarPagina();
+document
+    .getElementById("tentarNovamente")
+    .addEventListener("click", function(){
 
-/*=========================================================
-    MENU DE NAVEGAÇÃO
-=========================================================*/
+        iniciarExercicio();
 
-document.getElementById("idhome").addEventListener("click", function (event) {
+    });
 
-    event.preventDefault();
 
-    window.location.href = "../index.html";
+/* =========================================================
+   VOLTAR AOS EXERCÍCIOS
+========================================================= */
 
-});
+document
+    .getElementById("voltarExercicios")
+    .addEventListener("click", function(){
 
-document.getElementById("idnivel").addEventListener("click", function (event) {
+        resultadoExercicio.classList.remove("ativo");
 
-    event.preventDefault();
+        categorias.style.display = "grid";
 
-    window.location.href = "../pages/niveis.html";
-
-});
-
-document.getElementById("idblog").addEventListener("click", function (event) {
-
-    event.preventDefault();
-
-    window.location.href = "../pages/blog.html";
-
-});
-
-document.getElementById("idtopicos").addEventListener("click", function (event) {
-
-    event.preventDefault();
-
-    window.location.href = "../pages/topicos.html";
-
-});
-
-document.getElementById("idexercicios").addEventListener("click", function (event) {
-
-    event.preventDefault();
-
-    window.location.href = "../pages/exercicios.html";
-
-});
-
-document.getElementById("idteste").addEventListener("click", function (event) {
-
-    event.preventDefault();
-
-    window.location.href = "../pages/teste_nivel.html";
-
-});
+    });

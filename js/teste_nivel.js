@@ -866,3 +866,11 @@ document.getElementById("idteste").addEventListener("click", function (event) {
     window.location.href = "../pages/teste_nivel.html";
 
 });
+
+document.getElementById("irParaMinhasAulas").addEventListener("click", function (event) {
+
+    event.preventDefault();
+
+    window.location.href = "../pages/niveis.html";
+
+});
