@@ -358,7 +358,7 @@ nav a.menu-ativo {
 
 .card-introducao {
 
-    background-color: var(--verde-claro);
+    background-color: var(--creme);
 
     border: 2px solid var(--verde-escuro);
 
@@ -394,7 +394,7 @@ nav a.menu-ativo {
 
     border-radius: 50%;
 
-    background-color: var(--creme);
+    background-color: var(--verde-claro);
 
     display: flex;
 
@@ -452,7 +452,7 @@ nav a.menu-ativo {
 
     padding: 14px 18px;
 
-    background-color: var(--amarelo);
+    background-color: var(--creme);
 
     border-radius: 13px;
 
@@ -558,7 +558,7 @@ nav a.menu-ativo {
 
 .nivel-card.nivel-destaque {
 
-    background-color: var(--amarelo);
+    background-color: var(--verde-claro);
 
 }
 
